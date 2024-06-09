@@ -10,6 +10,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
+    ./../../modules/nixos/rebuild-script.nix
     inputs.home-manager.nixosModules.default
   ];
 
