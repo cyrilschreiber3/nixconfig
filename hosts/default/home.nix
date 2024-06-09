@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-    "./../../modules/home-manager/git.nix"
+    ./../../modules/home-manager/git.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,9 +27,9 @@
     pkgs.git
     pkgs.alejandra
     pkgs.ondir
+    pkgs.libnotify
   ];
 
-  
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

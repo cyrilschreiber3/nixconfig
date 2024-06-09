@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-
 {
-    programs.git = {
+  config,
+  pkgs,
+  ...
+}: {
+  programs.git = {
     enable = true;
     extraConfig = {
       init = {
