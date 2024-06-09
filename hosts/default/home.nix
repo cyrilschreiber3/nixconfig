@@ -28,6 +28,7 @@
     pkgs.alejandra
     pkgs.ondir
     pkgs.libnotify
+    pkgs.btop
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
