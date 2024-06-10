@@ -37,11 +37,13 @@
         cat nixos-switch.log | grep --color error && exit 1
       )
 
-      # Get current generation metadata
-      gen=$(nixos-rebuild list-generations | grep current)
+      # Create commit message
+      genMetadata=$(nixos-rebuild list-generations | grep current)
+      read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<< "$genMetadata"
+      commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
       # Commit all changes with generation metadata
-      git commit -am "$gen"
+      git commit -am "$commitMessage"
       git push
 
       # Go back to the initial dir
