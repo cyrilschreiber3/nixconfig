@@ -70,7 +70,7 @@
     docker
     #nvidia-container-toolkit
 
-    (writeShellScriptBin "rebuild.sh" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
