@@ -10,7 +10,6 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
-    ./../../modules/nixos/rebuild-script.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -50,7 +49,6 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -91,6 +89,7 @@
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
+    backupFileExtension = "backup";
     users = {
       "cyril" = import ./home.nix;
     };

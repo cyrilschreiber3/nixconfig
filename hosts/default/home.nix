@@ -4,8 +4,12 @@
   ...
 }: {
   imports = [
+    ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
+    ./../../modules/home-manager/gnome.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -23,12 +27,50 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.git
-    pkgs.alejandra
-    pkgs.ondir
-    pkgs.libnotify
-    pkgs.btop
+  home.packages = with pkgs; [
+    # media
+    ffmpeg
+    youtube-dl
+    mpv
+    vlc
+    gimp
+    obs-studio
+    kdenlive
+
+    #voip
+    discord
+
+    # gaming
+    # steam
+    # lutris
+    # winetricks
+    # flatpak
+
+    # cli
+    git
+    gh
+    tree
+    unzip
+    rclone
+    ondir
+    libnotify
+    btop
+    nano
+
+    # dev
+    nil
+    alejandra
+    nodejs
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
+    bun
+    python3
+
+    # docker
+    docker
+    #nvidia-container-toolkit
+
+    (writeShellScriptBin "rebuild.sh" (builtins.readFile ./../../modules/bin/rebuild.sh))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
