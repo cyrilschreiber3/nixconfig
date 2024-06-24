@@ -64,10 +64,10 @@
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
     };
-    # "org/gnome/desktop/background" = {
-    #   picture-uri = "file://${config.home}/.background-image.jpg";
-    #   picture-uri-dark = "file://${config.home}/.background-image.jpg";
-    #   picture-options = "zoom";
-    # };
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://${config.home.homeDirectory}/.background-image.jpg";
+      picture-uri-dark = "file://${config.home.homeDirectory}/.background-image.jpg";
+      picture-options = "zoom";
+    };
   };
 }
