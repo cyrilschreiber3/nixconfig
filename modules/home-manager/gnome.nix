@@ -4,6 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [
+    sassc
+    gtk-engine-murrine
+    gnome.gnome-themes-extra
     gnome.dconf-editor
     gnomeExtensions.dash-to-panel
     gnomeExtensions.user-themes
@@ -48,7 +51,7 @@
       ];
     };
     "org/gnome/desktop/wm/preferences" = {
-      "button-layout" = "close,minimize,maximize:";
+      "button-layout" = "close,maximize,minimize:";
     };
   };
 }
