@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    gnomeExtensions.dashbar
+    gnomeExtensions.dash-to-panel
     gnomeExtensions.user-themes
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
@@ -33,7 +33,8 @@
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "dash-to-dock@micxgx.gmail.com"
-        "dashbar@fthx"
+        "just-perfection-desktop@just-perfection"
+        "blur-my-shell@aunetx"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
