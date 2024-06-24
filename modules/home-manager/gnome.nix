@@ -14,6 +14,14 @@
       name = "whitesur-dark";
       package = pkgs.whitesur-gtk-theme;
     };
+    cursorTheme = {
+      name = "whitesur-cursor";
+      package = pkgs.whitesur-cursors;
+    };
+    iconTheme = {
+      name = "whitesur-icon-theme";
+      package = pkgs.whitesur-icon-theme;
+    };
   };
 
   dconf.settings = {
