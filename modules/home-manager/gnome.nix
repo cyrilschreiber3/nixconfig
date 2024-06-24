@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    gnome.gnome-tweaks
     gnomeExtensions.dashbar
   ];
 
