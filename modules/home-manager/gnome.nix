@@ -15,11 +15,11 @@
       package = pkgs.whitesur-gtk-theme;
     };
     cursorTheme = {
-      name = "whitesur-cursor";
+      name = "whitesur-cursors";
       package = pkgs.whitesur-cursors;
     };
     iconTheme = {
-      name = "whitesur-icon-theme";
+      name = "WhiteSur";
       package = pkgs.whitesur-icon-theme;
     };
   };
