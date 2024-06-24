@@ -6,10 +6,15 @@
   home.packages = with pkgs; [
     gnomeExtensions.dash-to-dock
     gnomeExtensions.user-themes
-    whitesur-gtk-theme
-    whitesur-icon-theme
-    whitesur-cursors
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "whitesur-dark";
+      package = pkgs.whitesur-gtk-theme;
+    };
+  };
 
   dconf.settings = {
     "org/gnome/shell" = {
