@@ -26,8 +26,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "papirus-icon-theme";
-      package = pkgs.papirus-icon-theme;
+      name = "suru-icon-theme";
+      package = pkgs.lomiri.suru-icon-theme;
     };
   };
   xdg.configFile = {
