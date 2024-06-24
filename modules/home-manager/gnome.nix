@@ -19,7 +19,7 @@
     enable = true;
     theme = {
       name = "Tokyonight-Dark-BL";
-      package = pkgs.tokyo-night-gtk;
+      package = pkgs.tokyonight-gtk-theme;
     };
     # cursorTheme = {
     #   name = "WhiteSur-cursors";
