@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     gnome.dconf-editor
-    gnome.nautilus
     gnomeExtensions.dash-to-panel
     gnomeExtensions.user-themes
     gnomeExtensions.dash-to-dock
@@ -44,7 +43,7 @@
         "org.gnome.Console.desktop"
       ];
     };
-    "org/gnome/shell/overrides" = {
+    "org/gnome/desktop/wm/preferences" = {
       "button-layout" = "'close,minimize,maximize:'";
     };
   };
