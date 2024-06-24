@@ -8,6 +8,7 @@
     gnomeExtensions.user-themes
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.just-perfection
   ];
 
   gtk = {
