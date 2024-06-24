@@ -26,7 +26,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "Tokyonight-Dark";
+      name = "papirus-icon-theme";
+      package = pkgs.papirus-icon-theme;
     };
   };
   xdg.configFile = {
