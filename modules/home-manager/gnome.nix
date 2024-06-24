@@ -18,7 +18,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark-B-MB";
+      name = "Tokyonight-Dark-B-GS";
       package = pkgs.tokyo-night-gtk;
     };
     # cursorTheme = {
