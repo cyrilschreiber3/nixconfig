@@ -13,6 +13,10 @@
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
     gnomeExtensions.just-perfection
+
+    (whitesur-icon-theme.override {
+      alternativeIcons = true;
+    })
   ];
 
   gtk = {
@@ -26,8 +30,7 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "numix-icon-theme";
-      package = pkgs.numix-icon-theme;
+      name = "WhiteSur";
     };
   };
   xdg.configFile = {
