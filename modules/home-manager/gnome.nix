@@ -26,8 +26,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "suru-icon-theme";
-      package = pkgs.lomiri.suru-icon-theme;
+      name = "WhiteSur-dark";
+      package = pkgs.whitesur-icon-theme;
     };
   };
   xdg.configFile = {
