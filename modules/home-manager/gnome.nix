@@ -15,17 +15,21 @@
   gtk = {
     enable = true;
     theme = {
-      name = "WhiteSur-Dark";
-      package = pkgs.whitesur-gtk-theme;
+      name = "Tokyonight-Dark-B-MB";
+      package = pkgs.tokyo-night-gtk;
     };
-    cursorTheme = {
-      name = "WhiteSur-cursors";
-      package = pkgs.whitesur-cursors;
-    };
+    # cursorTheme = {
+    #   name = "WhiteSur-cursors";
+    #   package = pkgs.whitesur-cursors;
+    # };
     iconTheme = {
-      name = "WhiteSur";
-      package = pkgs.whitesur-icon-theme;
+      name = "Tokyonight-Dark";
     };
+  };
+  xdg.configFile = {
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
   dconf.settings = {
@@ -44,7 +48,7 @@
       ];
     };
     "org/gnome/desktop/wm/preferences" = {
-      "button-layout" = "'close,minimize,maximize:'";
+      "button-layout" = "close,minimize,maximize:";
     };
   };
 }
