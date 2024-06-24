@@ -13,6 +13,7 @@
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
     gnomeExtensions.just-perfection
+    gnomeExtensions.search-light
 
     (whitesur-icon-theme.override {
       alternativeIcons = true;
@@ -52,6 +53,13 @@
         "org.gnome.Nautilus.desktop"
         "org.gnome.Console.desktop"
       ];
+    };
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      apply-custom-theme = true;
+      require-pressure-to-show = false;
+      show-apps-at-top = true;
+      dock-position = "BOTTOM";
+      multi-monitor = false;
     };
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
