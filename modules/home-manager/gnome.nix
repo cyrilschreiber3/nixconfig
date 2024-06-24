@@ -18,7 +18,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark-B";
+      name = "Tokyonight-Dark-BL";
       package = pkgs.tokyo-night-gtk;
     };
     # cursorTheme = {
@@ -40,7 +40,6 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "dash-to-panel@jderose9.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "just-perfection-desktop@just-perfection"
         "blur-my-shell@aunetx"
