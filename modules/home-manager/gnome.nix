@@ -11,11 +11,11 @@
   gtk = {
     enable = true;
     theme = {
-      name = "whitesur-dark";
+      name = "whitesur-gtk-theme";
       package = pkgs.whitesur-gtk-theme;
     };
     cursorTheme = {
-      name = "whitesur-cursors";
+      name = "WhiteSur-cursors";
       package = pkgs.whitesur-cursors;
     };
     iconTheme = {
