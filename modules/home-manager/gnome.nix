@@ -28,16 +28,12 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
         "dash-to-dock@micxgx.gmail.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "org.gnome.terminal.desktop"
       ];
-    };
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "whitesur-gtk-theme";
     };
   };
 }
