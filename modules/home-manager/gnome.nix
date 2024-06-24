@@ -65,8 +65,8 @@
       "button-layout" = ":minimize,maximize,close";
     };
     "org/gnome/desktop/background" = {
-      picture-uri = "file://${config.home.homeDirectory}/.background-image.jpg";
-      picture-uri-dark = "file://${config.home.homeDirectory}/.background-image.jpg";
+      picture-uri = "file://${config.home.homeDirectory}/.background-image";
+      picture-uri-dark = "file://${config.home.homeDirectory}/.background-image";
       picture-options = "zoom";
     };
   };
