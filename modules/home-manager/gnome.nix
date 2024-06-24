@@ -32,7 +32,7 @@
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
-        "org.gnome.terminal.desktop"
+        "org.gnome.console.desktop"
       ];
     };
   };
