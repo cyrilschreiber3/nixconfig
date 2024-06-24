@@ -14,7 +14,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "WhiteSur";
+      name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme;
     };
     cursorTheme = {
@@ -32,6 +32,7 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "dash-to-panel@jderose9.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "just-perfection-desktop@just-perfection"
         "blur-my-shell@aunetx"
