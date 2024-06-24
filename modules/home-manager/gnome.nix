@@ -4,15 +4,14 @@
   ...
 }: {
   home.packages = with pkgs; [
-    gnome.gnome-tweaks
-    gnomeExtensions.dashbar
+    gnomeExtensions.dash-to-panel
   ];
 
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "dashbar"
+        "dash-to-panel"
       ];
     };
   };
