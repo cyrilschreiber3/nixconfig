@@ -11,7 +11,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "whitesur-gtk-theme";
+      name = "WhiteSur";
       package = pkgs.whitesur-gtk-theme;
     };
     cursorTheme = {
