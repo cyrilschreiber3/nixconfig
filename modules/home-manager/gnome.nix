@@ -26,8 +26,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "WhiteSur-dark";
-      package = pkgs.whitesur-icon-theme;
+      name = "numix-icon-theme";
+      package = pkgs.numix-icon-theme;
     };
   };
   xdg.configFile = {
