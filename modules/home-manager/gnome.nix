@@ -16,10 +16,11 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "dash-to-dock@micxgx.gmail.com"
       ];
     };
     "org/gnome/shell/extensions/user-theme" = {
-      name = "whitesur-dark";
+      name = "whitesur-gtk-theme";
     };
   };
 }
