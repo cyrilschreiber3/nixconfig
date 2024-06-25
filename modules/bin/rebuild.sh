@@ -6,7 +6,7 @@ set -e
 pushd ~/nixconfig
 
 # return if no changes
-if git diff --quiet "*.nix"; then
+if git diff --quiet "*.nix", "*.lock"; then
 echo "No changes detected, exiting..."
 popd
 exit 0
