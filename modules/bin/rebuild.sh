@@ -46,6 +46,7 @@ commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flake
 # Commit all changes with generation metadata
 echo "Commiting changes..."
 git commit -am "$commitMessage"
+
 echo "Pushing to remote..."
 git push --porcelain
 
