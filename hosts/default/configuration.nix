@@ -53,6 +53,36 @@
   services.xserver.desktopManager.wallpaper.mode = "fill";
   programs.dconf.enable = true;
 
+  # Set login wallpaper
+  environment.etc = {
+    "/etc/nixos/.login-background".source = ./../../modules/assets/login-wallpaper.jpg;
+  };
+
+  # nixpkgs = {
+  #   overlays = [
+  #     (self: super: {
+  #       gnome = super.gnome.overrideScope' (selfg: superg: {
+  #         gnome-shell = superg.gnome.shell.overrideAttrs (old: {
+  #           patches =
+  #             (old.patches or [])
+  #             ++ [
+  #               (pkgs.substituteAll {
+  #                 src = ./../bin/gnome-shell.patch;
+  #               })
+  #             ];
+  #         });
+  #       });
+  #     })
+  #   ];
+  # };
+  # services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+  #   [com.ubuntu.login-screen]
+  #   background-repeat='no-repeat'
+  #   background-size='cover'
+  #   background-color='#2e3436'
+  #   background-picture-uri='file:///etc/nixos/.login-background'
+  # '';
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "ch";
