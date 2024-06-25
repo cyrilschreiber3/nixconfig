@@ -44,11 +44,11 @@ read generation current buildDate buildTime flakeVersion kernelVersion configRev
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
-echo "Commiting changes with message: $commitMessage"
+echo "Commiting change..."
 git commit -am "$commitMessage"
 
 echo "Pushing to remote..."
-git push --porcelain
+git push
 
 # Go back to the initial dir
 popd
