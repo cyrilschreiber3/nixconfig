@@ -44,7 +44,7 @@ read generation current buildDate buildTime flakeVersion kernelVersion configRev
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
-echo "Commiting changes..."
+echo "Commiting changes with message: $commitMessage"
 git commit -am "$commitMessage"
 
 echo "Pushing to remote..."
