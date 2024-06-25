@@ -63,9 +63,12 @@
       multi-monitor = false;
     };
     "org/gnome/shell/extensions/search-light" = {
-      shortcut-search = "['<Control>space']";
+      shortcut-search = ["<Control>space"];
       border-radius = 1.27;
-      background-color = "(0.040026441216468811, 0.036411110311746597, 0.096666663885116577, 0.92199999094009399)";
+    };
+    "org/gnome/shell/extensions/search-light/background-color" = {
+      value = "(0.040026441216468811, 0.036411110311746597, 0.096666663885116577, 0.92199999094009399)";
+      format = "dddd";
     };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
