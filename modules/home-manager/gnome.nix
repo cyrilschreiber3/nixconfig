@@ -9,7 +9,7 @@
     gtk-engine-murrine
     gnome.gnome-themes-extra
     gnome.dconf-editor
-    gnomeExtensions.dash-to-panel
+    gnomeExtensions.dashbar
     gnomeExtensions.user-themes
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
