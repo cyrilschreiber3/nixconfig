@@ -48,6 +48,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "just-perfection-desktop@just-perfection"
         "blur-my-shell@aunetx"
+        "search-light@icedman.github.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"

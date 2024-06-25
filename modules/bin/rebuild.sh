@@ -1,15 +1,23 @@
 # A rebuild script that commits on a successfull build
 
+# get parameters
+force=false
+while getopts "f" flag; do
+    case $flag in
+        f) force=true;;
+    esac
+done
+
 set -e
 
 # cd in the config dir
 pushd ~/nixconfig
 
-# return if no changes
-if git diff --quiet "*.nix", "*.lock"; then
-echo "No changes detected, exiting..."
-popd
-exit 0
+# return if no changes exept if forced
+if git diff --quiet "*.nix" && test "$force" != "true"; then
+    echo "No changes detected, exiting..."
+    popd
+    exit 0
 fi
 
 # Autoformat nix file
