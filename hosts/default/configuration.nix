@@ -62,12 +62,12 @@
   #   overlays = [
   #     (self: super: {
   #       gnome = super.gnome.overrideScope' (selfg: superg: {
-  #         gnome-shell = superg.gnome.shell.overrideAttrs (old: {
+  #         gnome-shell = superg.gnome-shell.overrideAttrs (old: {
   #           patches =
   #             (old.patches or [])
   #             ++ [
   #               (pkgs.substituteAll {
-  #                 src = ./../bin/gnome-shell.patch;
+  #                 src = ./../../modules/bin/gnome-shell.patch;
   #               })
   #             ];
   #         });
