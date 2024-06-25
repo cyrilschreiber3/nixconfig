@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -65,10 +66,7 @@
     "org/gnome/shell/extensions/search-light" = {
       shortcut-search = ["<Control>space"];
       border-radius = 1.27;
-    };
-    "org/gnome/shell/extensions/search-light/background-color" = {
-      value = "(0.040026441216468811, 0.036411110311746597, 0.096666663885116577, 0.92199999094009399)";
-      format = "dddd";
+      background-color = lib.hm.gvariant.mkTuple [0.040026441216468811 0.036411110311746597 0.096666663885116577 0.92199999094009399];
     };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
