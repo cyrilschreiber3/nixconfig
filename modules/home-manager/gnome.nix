@@ -62,8 +62,13 @@
       dock-position = "BOTTOM";
       multi-monitor = false;
     };
+    "org/gnome/shell/extensions/search-light" = {
+      shortcut-search = "['<Control>space']";
+      border-radius = 1.27;
+      background-color = "(0.040026441216468811, 0.036411110311746597, 0.096666663885116577, 0.92199999094009399)";
+    };
     "org/gnome/desktop/wm/preferences" = {
-      "button-layout" = ":minimize,maximize,close";
+      button-layout = ":minimize,maximize,close";
     };
     "org/gnome/desktop/background" = {
       picture-uri = "file://${config.home.homeDirectory}/.background-image";
