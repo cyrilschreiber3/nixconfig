@@ -31,8 +31,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "bloom-dark";
-      package = pkgs.deepin.deepin-icon-theme;
+      name = "gnome-icon-theme";
+      package = pkgs.numix-icon-theme;
     };
   };
   xdg.configFile = {
