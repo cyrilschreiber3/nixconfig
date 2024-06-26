@@ -31,7 +31,8 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "WhiteSur";
+      name = "bloom-dark";
+      package = pkgs.deepin.deepin-icon-theme;
     };
   };
   xdg.configFile = {
