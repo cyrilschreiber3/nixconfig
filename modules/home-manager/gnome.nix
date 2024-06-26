@@ -31,7 +31,7 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "gnome-icon-theme";
+      name = "breeze-icons";
       package = pkgs.numix-icon-theme;
     };
   };
