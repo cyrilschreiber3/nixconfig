@@ -31,7 +31,7 @@
     #   package = pkgs.whitesur-cursors;
     # };
     iconTheme = {
-      name = "breeze-icons";
+      name = "numix-icon-theme";
       package = pkgs.numix-icon-theme;
     };
   };
