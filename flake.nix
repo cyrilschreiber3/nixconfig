@@ -18,13 +18,7 @@
     ...
   } @ inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
-        pkgs-unstable = import nixpkgs-unstable {
-          inherit inputs;
-          config.allowUnfree = true;
-        };
-      };
+      specialArgs = {inherit inputs;};
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
