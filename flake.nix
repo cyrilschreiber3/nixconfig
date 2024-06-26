@@ -14,11 +14,17 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     ...
   } @ inputs: {
-    overlays = import ./modules/nixos/overlays.nix {inherit inputs;};
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {
+        inherit inputs;
+        pkgs-unstable = import nixpkgs-unstable {
+          inherit inputs;
+          config.allowUnfree = true;
+        };
+      };
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
