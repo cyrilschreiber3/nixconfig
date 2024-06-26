@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   vscode-extensions = import ./vscode-extensions.nix;
 in {
   programs.vscode = {

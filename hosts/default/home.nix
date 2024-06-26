@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
