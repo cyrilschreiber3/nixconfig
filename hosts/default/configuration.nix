@@ -123,9 +123,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    nano
     wget
     curl
-    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -7,6 +7,7 @@
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
     ./../../modules/home-manager/gnome.nix
+    ./../../modules/home-manager/vscode.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
