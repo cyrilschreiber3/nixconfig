@@ -16,6 +16,7 @@
     nixpkgs,
     ...
   } @ inputs: {
+    overlays = import ./modules/nixos/overlays.nix {inherit inputs;};
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
