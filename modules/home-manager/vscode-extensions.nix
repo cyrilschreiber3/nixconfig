@@ -144,12 +144,6 @@
     sha256 = "17p4xjanmaphfx63s6cdji6b237n3ndkfzjjndsvk64imrh2jxdl";
   }
   {
-    name = "alejandra";
-    publisher = "kamadorueda";
-    version = "1.0.0";
-    sha256 = "1ncjzhrc27c3cwl2cblfjvfg23hdajasx8zkbnwx5wk6m2649s88";
-  }
-  {
     name = "marp-vscode";
     publisher = "marp-team";
     version = "2.8.0";
