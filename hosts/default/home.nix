@@ -62,6 +62,7 @@
     # dev
     nil
     alejandra
+    nixpkgs-fmt
     nodejs
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
