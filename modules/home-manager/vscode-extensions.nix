@@ -329,4 +329,10 @@
     version = "1.3.6";
     sha256 = "156gaj7gcm0588hmwkigkmidf0jxnrq2kvaigf3kszisz05854dq";
   }
+  {
+    name = "nix-ide";
+    publisher = "jnoortheen";
+    version = "0.3.1";
+    sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
+  }
 ]

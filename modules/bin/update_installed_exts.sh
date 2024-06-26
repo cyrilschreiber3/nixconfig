@@ -50,6 +50,71 @@ function get_vsixpkg() {
 EOF
 }
 
+function update_extensions() {
+
+    pushd ~/nixconfig
+
+    # Check if we can write to the output file.
+    touch "$OUTPUT_FILE.tmp" || fail "Cannot write to $OUTPUT_FILE.tmp"
+
+    # Begin the printing of the nix expression that will house the list of extensions.
+    printf '[\n' >> "$OUTPUT_FILE.tmp"
+
+    # Get the total number of extensions
+    total_extensions=$($CODE --list-extensions | wc -l)
+
+    # Initialize the progress
+    progress=0
+    percent=0
+    echo "Updating extensions..."
+    printf '\r[%-50s] %d%%' $(printf '%.0s#' $(seq 1 $((percent / 2)))) $percent
+
+    # Note that we are only looking to update extensions that are already installed.
+    for i in $($CODE --list-extensions)
+    do
+        OWNER=$(echo "$i" | cut -d. -f1)
+        EXT=$(echo "$i" | cut -d. -f2)
+
+        get_vsixpkg "$OWNER" "$EXT"
+
+        # Update the progress
+        progress=$((progress + 1))
+
+        # Calculate the percentage
+        percent=$((100 * progress / total_extensions))
+
+        # Print the progress bar
+        printf '\r[%-50s] %d%%' $(printf '%.0s#' $(seq 1 $((percent / 2)))) $percent
+    done
+    # Close off the nix expression.
+    printf ']' >> "$OUTPUT_FILE.tmp"
+
+    # Move the temp file to the final location.
+    mv "$OUTPUT_FILE.tmp" "$OUTPUT_FILE"
+}
+
+function add_extension() {
+
+    echo "Adding extension $1..."
+
+    cp "$OUTPUT_FILE" "$OUTPUT_FILE.tmp"
+
+    # remving the closing bracket
+    sed -i '$ d' "$OUTPUT_FILE.tmp"
+
+    OWNER=$(echo "$1" | cut -d. -f1)
+    EXT=$(echo "$1" | cut -d. -f2)
+
+    get_vsixpkg "$OWNER" "$EXT"
+
+    # Add the closing bracket
+    printf ']' >> "$OUTPUT_FILE.tmp"
+
+    # Move the temp file to the final location.
+    mv "$OUTPUT_FILE.tmp" "$OUTPUT_FILE"
+
+}
+
 # See if can find our code binary somewhere.
 if [ $# -ne 0 ]; then
     CODE=$1
@@ -65,42 +130,9 @@ fi
 # Try to be a good citizen and clean up after ourselves if we're killed.
 trap clean_up SIGINT
 
-pushd ~/nixconfig
 
-# Check if we can write to the output file.
-touch "$OUTPUT_FILE.tmp" || fail "Cannot write to $OUTPUT_FILE.tmp"
-
-# Begin the printing of the nix expression that will house the list of extensions.
-printf '[\n' >> "$OUTPUT_FILE.tmp"
-
-# Get the total number of extensions
-total_extensions=$($CODE --list-extensions | wc -l)
-
-# Initialize the progress
-progress=0
-percent=0
-echo "Updating extensions..."
-printf '\r[%-50s] %d%%' $(printf '%.0s#' $(seq 1 $((percent / 2)))) $percent
-
-# Note that we are only looking to update extensions that are already installed.
-for i in $($CODE --list-extensions)
-do
-    OWNER=$(echo "$i" | cut -d. -f1)
-    EXT=$(echo "$i" | cut -d. -f2)
-
-    get_vsixpkg "$OWNER" "$EXT"
-
-    # Update the progress
-    progress=$((progress + 1))
-
-    # Calculate the percentage
-    percent=$((100 * progress / total_extensions))
-
-    # Print the progress bar
-    printf '\r[%-50s] %d%%' $(printf '%.0s#' $(seq 1 $((percent / 2)))) $percent
-done
-# Close off the nix expression.
-printf ']' >> "$OUTPUT_FILE.tmp"
-
-# Move the temp file to the final location.
-mv "$OUTPUT_FILE.tmp" "$OUTPUT_FILE"
+if [ $# -eq 0 ]; then
+    update_extensions
+else
+    add_extension "$1"
+fi
