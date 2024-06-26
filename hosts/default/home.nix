@@ -56,6 +56,7 @@
     libnotify
     btop
     nano
+    fzf
 
     # dev
     nil
