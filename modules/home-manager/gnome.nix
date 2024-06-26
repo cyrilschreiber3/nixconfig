@@ -26,13 +26,12 @@
       name = "Tokyonight-Dark-BL-LB";
       package = pkgs.tokyonight-gtk-theme;
     };
-    # cursorTheme = {
-    #   name = "WhiteSur-cursors";
-    #   package = pkgs.whitesur-cursors;
-    # };
+    cursorTheme = {
+      name = "WhiteSur-cursors";
+      package = pkgs.whitesur-cursors;
+    };
     iconTheme = {
-      name = "numix-icon-theme";
-      package = pkgs.numix-icon-theme;
+      name = "WhiteSur";
     };
   };
   xdg.configFile = {
