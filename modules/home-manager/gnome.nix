@@ -24,7 +24,7 @@
     enable = true;
     theme = {
       name = "Tokyonight-Dark-BL-LB";
-      package = pkgs.tokyonight-gtk-theme;
+      package = "${import ./../themes/tokyonight-gtk-theme.nix {inherit pkgs;}}";
     };
     cursorTheme = {
       name = "WhiteSur-cursors";
