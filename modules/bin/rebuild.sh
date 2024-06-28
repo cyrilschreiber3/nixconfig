@@ -1,4 +1,3 @@
-#! /usr/bin/env zsh
 # A rebuild script that commits on a successfull build
 
 # get parameters
