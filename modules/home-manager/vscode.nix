@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
+
+    enableUpdateCheck = false;
+
     package = pkgs.vscode.fhsWithPackages (ps:
       with ps; [
         nil
