@@ -1,0 +1,21 @@
+{
+	"nix.enableLanguageServer": true,
+	"nix.serverPath": "nil",
+	"nix.formatterPath": "nixpkgs-fmt",
+	"nix.serverSettings": {
+		"nil": {
+			"formatting": {
+				"command": ["nixpkgs-fmt"]
+			}
+		}
+	},
+	"multiCommand.commands": [
+		{
+			"command": "multiCommand.nixosRebuildSwitch",
+			"sequence": [
+				"workbench.action.createTerminalEditorSide",
+				{ "command": "workbench.action.terminal.sendSequence", "args": { "text": "rebuild\n" } }
+			]
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "NixOS Rebuild",
+			"type": "shell",
+			"command": "rebuild",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			}
+		}
+	]
+}
