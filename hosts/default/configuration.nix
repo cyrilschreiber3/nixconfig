@@ -23,7 +23,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    warn-dirty = false
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
