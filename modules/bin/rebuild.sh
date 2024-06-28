@@ -47,11 +47,13 @@ commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flake
 # Commit all changes with generation metadata
 printf "Commiting change..."
 git commit -am "$commitMessage" --quiet
-echo " Done \n$(git log -1 --pretty='[%h] %s')"
-
-printf "Pushing to remote..."
-git push --porcelain
 echo " Done"
+git log -1 --pretty='[%h] %s'
+
+printf "Pushing to remote $(git remote get-url origin)..."
+push_output=$(git push 2>&1)
+echo " Done"
+echo "$push_output | tail -n 3"
 
 # Go back to the initial dir
 popd > /dev/null
@@ -62,4 +64,4 @@ notify-send -e "NixOS Rebuild successful!" --icon=software-update-available
 # Print time taken
 rebuildEnd=$(date +%s)
 rebuildTime=$((rebuildEnd - rebuildStart))
-echo "Rebuild took $rebuildTime seconds"
+echo "Rebuild took $rebuildTime seconds in total."
