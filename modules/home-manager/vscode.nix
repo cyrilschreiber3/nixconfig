@@ -1,31 +1,17 @@
-{pkgs, ...}: let
-  vscode-extensions = import ./vscode-extensions.nix;
-in {
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
-
-    enableExtensionUpdateCheck = false;
-    enableUpdateCheck = false;
-    mutableExtensionsDir = false;
-
-    extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace vscode-extensions;
-
-    userSettings = {
-      "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "Tokyo Night";
-
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
-      "nix.formatterPath" = "nixpkgs-fmt";
-      "nix.serverSettings" = {
-        "nil" = {
-          "formatting" = {"command" = ["nixpkgs-fmt"];};
-        };
-      };
-
-      "files.autoSave" = "onFocusChange";
-    };
+    package = pkgs.vscode.fhsWithPackages (ps:
+      with ps; [
+        nil
+        alejandra
+        nixpkgs-fmt
+        nodejs
+        nodePackages.vscode-langservers-extracted
+        nodePackages.yaml-language-server
+        bun
+        python3
+      ]);
   };
 
   # enable Wayland support
