@@ -34,13 +34,13 @@ echo "NixOS Rebuilding..."
 rebuildStart=$(date +%s)
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#default --log format internal-json -v 2>&1 |& tee nixos-switch.log |& nom || (
+sudo nixos-rebuild switch --flake ./#default --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
 echo "Rebuild failed, restoring git state...";
 git restore --staged ./**/*.nix;
 cat nixos-switch.log | grep --color error && exit 1
 )
 
-echo " OK"
+echo "Rebuild successful!"
 
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep current)
