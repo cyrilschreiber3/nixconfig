@@ -92,7 +92,7 @@
 
   # nix.optimise.automatic = true;
   # nix.optimise.dates = "weekly";
-  # nix.settings.auto-optimise-store = true;
+  nix.settings.auto-optimise-store = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

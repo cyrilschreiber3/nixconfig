@@ -50,7 +50,7 @@ git commit -am "$commitMessage" --quiet
 echo " Done"
 git log -1 --pretty='[%h] %s'
 
-printf "Pushing to remote $(git remote get-url origin)..."
+printf "Pushing to remote..."
 push_output=$(git push 2>&1)
 echo " Done"
 echo "$push_output | tail -n 3"
