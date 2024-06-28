@@ -86,6 +86,8 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
+    ".zshrc".source = ./../../modules/dotfiles/zshrc;
+
     ".background-image".source = ./../../modules/assets/wallpaper.jpg;
   };
 
