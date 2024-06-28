@@ -53,7 +53,7 @@ git log -1 --pretty='[%h] %s'
 printf "Pushing to remote..."
 push_output=$(git push 2>&1)
 echo " Done"
-echo "$push_output | tail -n 3"
+echo "$($push_output | tail -n 3)"
 
 # Go back to the initial dir
 popd > /dev/null
