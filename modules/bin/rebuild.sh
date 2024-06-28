@@ -4,25 +4,37 @@
 force=false
 while getopts "f" flag; do
     case $flag in
-        f) force=true;;
+    f) force=true ;;
     esac
 done
 
 set -e
 
+function handleExit() {
+    notify-send -e "NixOS Rebuild failed!" --icon=dialog-error
+
+    git restore --staged ./**/*.nix
+
+    popd >/dev/null
+    exit 1
+}
+
 # cd in the config dir
-pushd ~/nixconfig > /dev/null
+pushd ~/nixconfig >/dev/null
 
 # return if no changes exept if forced
 if git diff --quiet "*.nix" && test "$force" != "true"; then
     echo "No changes detected, exiting..."
-    popd > /dev/null
+    popd >/dev/null
     exit 0
 fi
 
 # Autoformat nix file
-alejandra . &>/dev/null \
-|| (alejandra .; echo "Formating failed" && exit 1)
+alejandra . &>/dev/null ||
+    (
+        alejandra .
+        echo "Formating failed" && exit 1
+    )
 
 # Show the changes
 git diff -U0 "*.nix"
@@ -33,15 +45,24 @@ git add .
 echo "NixOS Rebuilding..."
 rebuildStart=$(date +%s)
 
+currentGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
+
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#default --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
-echo "Rebuild failed, restoring git state...";
-git restore --staged ./**/*.nix && exit 1
+    echo "Rebuild failed..."
+    handleExit
 )
+
+# Check if the generation has changed
+newGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
+if [ "$currentGeneration" == "$newGeneration" ]; then
+    echo "No new generation created, exiting..."
+    handleExit
+fi
 
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep current)
-read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<< "$genMetadata"
+read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<<"$genMetadata"
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
@@ -56,7 +77,7 @@ echo " Done"
 echo "$push_output" | tail -n 3
 
 # Go back to the initial dir
-popd > /dev/null
+popd >/dev/null
 
 # Send notification
 notify-send -e "NixOS Rebuild successful!" --icon=software-update-available

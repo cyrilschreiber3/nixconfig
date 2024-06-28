@@ -23,6 +23,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.firewall.enable = true;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     warn-dirty = false
@@ -93,6 +95,14 @@
   # nix.optimise.automatic = true;
   # nix.optimise.dates = "weekly";
   nix.settings.auto-optimise-store = true;
+
+  # Enable the OpenSSH server.
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+    passwordAuthentication = true;
+  };
+  networking.firewall.allowedTCPPorts = [22];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
