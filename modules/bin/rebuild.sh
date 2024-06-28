@@ -11,12 +11,12 @@ done
 set -e
 
 # cd in the config dir
-pushd ~/nixconfig
+pushd ~/nixconfig > /dev/null
 
 # return if no changes exept if forced
 if git diff --quiet "*.nix" && test "$force" != "true"; then
     echo "No changes detected, exiting..."
-    popd
+    popd > /dev/null
     exit 0
 fi
 
@@ -31,7 +31,7 @@ git diff -U0 "*.nix"
 git add .
 
 printf "NixOS Rebuilding..."
-rebuildStart = $(date +%s)
+rebuildStart=$(date +%s)
 
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#default &>nixos-switch.log || (
@@ -58,12 +58,12 @@ git push
 echo " Done"
 
 # Go back to the initial dir
-popd
+popd > /dev/null
 
 # Send notification
 notify-send -e "NixOS Rebuild successful!" --icon=software-update-available
 
 # Print time taken
-rebuildEnd = $(date +%s)
-rebuildTime = $((rebuildEnd - rebuildStart))
+rebuildEnd=$(date +%s)
+rebuildTime=$((rebuildEnd - rebuildStart))
 echo "Rebuild took $rebuildTime seconds"
