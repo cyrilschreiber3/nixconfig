@@ -5,7 +5,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  unstable = import inputs.nixpkgsUnstable {config = {};};
+in {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
