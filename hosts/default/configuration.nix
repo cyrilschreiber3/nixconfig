@@ -5,9 +5,7 @@
   pkgs,
   inputs,
   ...
-}: let
-  unstable = import inputs.nixpkgsUnstable {config = {};};
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
@@ -83,6 +81,16 @@ in {
     #media-session.enable = true;
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # nix.optimise.automatic = true;
+  # nix.optimise.dates = "weekly";
+  # nix.settings.auto-optimise-store = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -127,6 +135,7 @@ in {
     nano
     wget
     curl
+    nix-output-monitor
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

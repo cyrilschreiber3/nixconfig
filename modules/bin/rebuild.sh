@@ -30,13 +30,18 @@ git diff -U0 "*.nix"
 # Stage everything so that nixos-rebuild can see new files
 git add .
 
-echo "NixOS Rebuilding..."
+printf "NixOS Rebuilding..."
+rebuildStart = $(date +%s)
 
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#default &>nixos-switch.log || (
+echo " NOK";
+echo "Reverting changes...";
 git restore --staged ./**/*.nix;
 cat nixos-switch.log | grep --color error && exit 1
 )
+
+echo " OK"
 
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep current)
@@ -44,15 +49,21 @@ read generation current buildDate buildTime flakeVersion kernelVersion configRev
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
-echo "Commiting change..."
+printf "Commiting change..."
 git commit -am "$commitMessage"
+echo " Done"
 
-echo "Pushing to remote..."
+printf "Pushing to remote..."
 git push
+echo " Done"
 
 # Go back to the initial dir
 popd
 
-
 # Send notification
 notify-send -e "NixOS Rebuild successful!" --icon=software-update-available
+
+# Print time taken
+rebuildEnd = $(date +%s)
+rebuildTime = $((rebuildEnd - rebuildStart))
+echo "Rebuild took $rebuildTime seconds"
