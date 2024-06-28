@@ -30,13 +30,12 @@ git diff -U0 "*.nix"
 # Stage everything so that nixos-rebuild can see new files
 git add .
 
-printf "NixOS Rebuilding..."
+echo "NixOS Rebuilding..."
 rebuildStart=$(date +%s)
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#default &>nixos-switch.log || (
-echo " NOK";
-echo "Reverting changes...";
+sudo nixos-rebuild switch --flake ./#default --log format internal-json -v 2>&1 |& tee nixos-switch.log |& nom || (
+echo "Rebuild failed, restoring git state...";
 git restore --staged ./**/*.nix;
 cat nixos-switch.log | grep --color error && exit 1
 )
@@ -50,11 +49,11 @@ commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flake
 
 # Commit all changes with generation metadata
 printf "Commiting change..."
-git commit -am "$commitMessage"
+git commit -am "$commitMessage" > /dev/null
 echo " Done"
 
 printf "Pushing to remote..."
-git push
+git push > /dev/null
 echo " Done"
 
 # Go back to the initial dir
