@@ -49,11 +49,11 @@ commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flake
 
 # Commit all changes with generation metadata
 printf "Commiting change..."
-git commit -am "$commitMessage" >/dev/null
+git commit -am "$commitMessage" --quiet
 echo " Done"
 
 printf "Pushing to remote..."
-git push >/dev/null
+git push --quiet
 echo " Done"
 
 # Go back to the initial dir
