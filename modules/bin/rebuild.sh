@@ -36,11 +36,8 @@ rebuildStart=$(date +%s)
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#default --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
 echo "Rebuild failed, restoring git state...";
-git restore --staged ./**/*.nix;
-cat nixos-switch.log | grep --color error && exit 1
+git restore --staged ./**/*.nix && exit 1
 )
-
-echo "Rebuild successful!"
 
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep current)
@@ -50,10 +47,10 @@ commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flake
 # Commit all changes with generation metadata
 printf "Commiting change..."
 git commit -am "$commitMessage" --quiet
-echo " Done"
+echo " Done: $(git log -1 --pretty='[%h] %s')"
 
 printf "Pushing to remote..."
-git push --quiet
+git push --porcelain --quiet
 echo " Done"
 
 # Go back to the initial dir
