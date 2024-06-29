@@ -82,6 +82,7 @@ in {
       SearchBar = "unified";
       OfferToSaveLogins = false;
       PasswordManagerEnabled = false;
+      NoDefaultBookmarks = true;
       PopupBlocking = {
         Default = true;
         Allow = ["https://*.schreibernet.dev" "https://*.the127001.ch" "https://*.cyrilschreiber.ch"];
@@ -111,7 +112,7 @@ in {
       #   bitwarden
       # ];
 
-      ExtensionsSettings = {
+      ExtensionSettings = {
         "*" = {
           blocked_install_message = "Please install extensions from the NixOS configuration";
           installeation_mode = "blocked";
