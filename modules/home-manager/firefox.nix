@@ -2,18 +2,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  firefox_bookmarks = import ./firefox_bookmarks.nix;
+in {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr;
-    languagePacks = ["en-US" "fr-CH"];
+    package = pkgs.firefox;
 
     profiles = {
       default = {
         id = 0;
         name = "default";
         isDefault = true;
-        bookmarks = "${import ./firefox_bookmarks.nix}".bookmarks;
+        bookmarks = firefox_bookmarks.bookmarks;
 
         search = {
           force = true;
