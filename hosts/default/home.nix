@@ -112,10 +112,7 @@
     # EDITOR = "emacs";
   };
 
-  programs.thefuck = {
-    enable = true;
-    # alias = "fuck";
-  };
+  programs.thefuck.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

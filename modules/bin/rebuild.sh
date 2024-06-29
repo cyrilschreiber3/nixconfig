@@ -29,6 +29,7 @@ pushd ~/nixconfig >/dev/null
 # Update the flake if needed
 if test "$update" == "true"; then
     echo "Updating flake..."
+    nix-channel --update
     sudo nix flake update
 fi
 
