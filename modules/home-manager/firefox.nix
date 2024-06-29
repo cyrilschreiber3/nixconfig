@@ -5,11 +5,12 @@
 }: {
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox;
     languagePacks = ["en-US" "fr-CH"];
 
     profiles = {
       cyril = {
-        id = 0;
+        id = 69;
         name = "Cyril";
         isDefault = true;
         bookmarks = "${import ./firefox_bookmarks.nix}".bookmarks;
@@ -100,6 +101,7 @@
         "extensions.activeThemeID" = "{4520dc08-80f4-4b2e-982a-c17af42e5e4d}";
         "browser.taskbar.lists.recent.enabled" = false;
         "browser.search.defaultEngineName" = "StartPage";
+        "browser.search.order.1" = "StartPage";
       };
 
       ExtensionsUpdate = true;
