@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p git alejandra ondir
+#! nix-shell -i bash -p git alejandra ondir libnotify
 # A rebuild script that commits on a successfull build
 
 # get parameters
