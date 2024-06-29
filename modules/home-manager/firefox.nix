@@ -10,9 +10,9 @@ in {
     package = pkgs.firefox;
 
     profiles = {
-      default = {
-        id = 0;
-        name = "default";
+      cyril = {
+        id = 69;
+        name = "Cyril";
         isDefault = true;
         bookmarks = firefox_bookmarks.bookmarks;
 
@@ -105,7 +105,12 @@ in {
         "browser.search.order.1" = "StartPage";
       };
 
-      ExtensionsUpdate = true;
+      # ExtensionsUpdate = false;
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      #   ublock-origin
+      #   bitwarden
+      # ];
+
       ExtensionsSettings = {
         "*" = {
           blocked_install_message = "Please install extensions from the NixOS configuration";
