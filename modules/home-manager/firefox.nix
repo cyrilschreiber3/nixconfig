@@ -11,7 +11,7 @@ in {
 
     profiles = {
       cyril = {
-        id = 69;
+        id = 0;
         name = "Cyril";
         isDefault = true;
         bookmarks = firefox_bookmarks.bookmarks;
