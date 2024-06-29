@@ -83,11 +83,7 @@ in {
       OfferToSaveLogins = false;
       PasswordManagerEnabled = false;
       NoDefaultBookmarks = true;
-      PopupBlocking = {
-        Default = true;
-        Allow = ["https://*.schreibernet.dev" "https://*.the127001.ch" "https://*.cyrilschreiber.ch"];
-      };
-      PrompttForDownloadLocation = false;
+      PromptForDownloadLocation = false;
       DownloadDirectory = "${config.home.homeDirectory}/Downloads";
       Homepage = {
         URL = "https://dashboard.schreibernet.dev";
@@ -100,18 +96,14 @@ in {
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
         "extensions.autoDisableScopes" = 0;
+        "browser.firefox-view.view-count" = 0;
         "extensions.activeThemeID" = "{4520dc08-80f4-4b2e-982a-c17af42e5e4d}";
         "browser.taskbar.lists.recent.enabled" = false;
         "browser.search.defaultEngineName" = "StartPage";
         "browser.search.order.1" = "StartPage";
       };
 
-      # ExtensionsUpdate = false;
-      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #   ublock-origin
-      #   bitwarden
-      # ];
-
+      ExtensionsUpdate = false;
       ExtensionSettings = {
         "*" = {
           blocked_install_message = "Please install extensions from the NixOS configuration";
@@ -124,7 +116,7 @@ in {
         };
         # Bitwarden
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/tokyo-night-milav/latest.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "force_installed";
           default_area = "navbar";
         };
