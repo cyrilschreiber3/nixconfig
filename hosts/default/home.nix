@@ -26,7 +26,7 @@
   # environment.
   home.packages = with pkgs; [
     # general
-    firefox
+    # firefox
 
     # media
     ffmpeg

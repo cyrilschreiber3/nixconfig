@@ -5,13 +5,13 @@
 }: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.firefox-esr;
     languagePacks = ["en-US" "fr-CH"];
 
     profiles = {
-      cyril = {
-        id = 69;
-        name = "Cyril";
+      default = {
+        id = 0;
+        name = "default";
         isDefault = true;
         bookmarks = "${import ./firefox_bookmarks.nix}".bookmarks;
 
