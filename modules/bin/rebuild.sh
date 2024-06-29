@@ -4,9 +4,11 @@
 
 # get parameters
 force=false
-while getopts "f" flag; do
+update=false
+while getopts "fu" flag; do
     case $flag in
     f) force=true ;;
+    u) update=true ;;
     esac
 done
 
@@ -23,6 +25,12 @@ function handleExit() {
 
 # cd in the config dir
 pushd ~/nixconfig >/dev/null
+
+# Update the flake if needed
+if test "$update" == "true"; then
+    echo "Updating flake..."
+    sudo nix flake update
+fi
 
 # return if no changes exept if forced
 if git diff --quiet "*.nix" && test "$force" != "true"; then
