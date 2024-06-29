@@ -173,4 +173,7 @@
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
   };
+
+  # enable Wayland support
+  home.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
 }
