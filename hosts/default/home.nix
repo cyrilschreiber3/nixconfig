@@ -54,6 +54,7 @@
     btop
     nano
     fzf
+    thefuck
 
     # dev
     nil
@@ -109,6 +110,11 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  programs.thefuck = {
+    enable = true;
+    # alias = "fuck";
   };
 
   # Let Home Manager install and manage itself.
