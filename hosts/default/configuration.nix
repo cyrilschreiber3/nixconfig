@@ -58,6 +58,35 @@
   services.xserver.desktopManager.wallpaper.mode = "fill";
   programs.dconf.enable = true;
 
+  environment.gnome.excludePackages = with pkgs.gnome;
+    [
+      cheese # webcam tool
+      totem # video player
+      evince # document viewer
+      seahorse # password manager
+      epiphany # web browser
+      geary # email reader
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp # Help view
+      gnome-music
+      gnome-contacts
+      gnome-initial-setup
+      gnome-characters
+      gnome-calendar
+      gnome-clocks
+      gnome-font-viewer
+      gnome-maps
+      gnome-weather
+    ]
+    ++ (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ]);
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "ch";
