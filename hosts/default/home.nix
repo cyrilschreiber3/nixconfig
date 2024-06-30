@@ -29,7 +29,6 @@
     # media
     ffmpeg
     youtube-dl
-    mpv
     vlc
     gimp
     obs-studio

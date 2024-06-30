@@ -61,17 +61,22 @@
   environment.gnome.excludePackages = with pkgs.gnome;
     [
       cheese # webcam tool
+      baobab # disk usage
       totem # video player
+      eog # image viewer
       evince # document viewer
       seahorse # password manager
       epiphany # web browser
       geary # email reader
-      gnome-characters
       tali # poker game
       iagno # go game
       hitori # sudoku game
       atomix # puzzle game
       yelp # Help view
+      simple-scan
+      gnome-calculator
+      gnome-logs
+      gnome-characters
       gnome-music
       gnome-contacts
       gnome-initial-setup
@@ -81,6 +86,7 @@
       gnome-font-viewer
       gnome-maps
       gnome-weather
+      gnome-disk-utility
     ]
     ++ (with pkgs; [
       gnome-photos
@@ -97,7 +103,7 @@
   console.keyMap = "fr_CH";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
