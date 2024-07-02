@@ -72,7 +72,7 @@ if [ "$currentGeneration" == "$newGeneration" ]; then
 fi
 
 # Create commit message
-genMetadata=$(nixos-rebuild list-generations | grep current)
+genMetadata=$(nixos-rebuild list-generations | grep current 2>&1)
 read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<<"$genMetadata"
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
