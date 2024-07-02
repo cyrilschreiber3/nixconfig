@@ -53,8 +53,8 @@
     libnotify
     btop
     nano
-    fzf
-    thefuck
+    rsync
+    screen
 
     # dev
     nil
@@ -87,8 +87,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".zshrc".source = ./../../modules/dotfiles/zshrc;
-
     ".background-image".source = ./../../modules/assets/wallpaper.jpg;
   };
 
@@ -111,8 +109,6 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
-  programs.thefuck.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

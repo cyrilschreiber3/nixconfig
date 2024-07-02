@@ -135,8 +135,10 @@
   # Enable the OpenSSH server.
   services.openssh = {
     enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+    };
   };
   networking.firewall.allowedTCPPorts = [22];
 
