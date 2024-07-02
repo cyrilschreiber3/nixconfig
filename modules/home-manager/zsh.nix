@@ -111,7 +111,7 @@
       enable = true;
       plugins = with pkgs.vimPlugins; [tokyonight-nvim];
       extraConfig = ''
-        colorscheme tokyonight-night
+        colorscheme tokyonight
       '';
     };
 
