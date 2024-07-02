@@ -95,6 +95,9 @@
           ZSH_COLORIZE_STYLE="tokyonight-night"
           # VSCode plugin
           VSCODE="code"
+
+          # Prevent less from using pager everytime
+          export PAGER="less -F -X"
         '';
       };
     };
@@ -122,24 +125,22 @@
         "--layout=reverse"
         "--border=none"
         "--color=bg+:#283457"
-        "--color=bg: #16161e"
-        "--color=border: #27a1b9"
-        "--color=fg: #c0caf5"
-        "--color=gutter: #16161e"
-        "--color=header: #ff9e64"
+        "--color=bg:#16161e"
+        "--color=border:#27a1b9"
+        "--color=fg:#c0caf5"
+        "--color=gutter:#16161e"
+        "--color=header:#ff9e64"
         "--color=hl+:#2ac3de"
-        "--color=hl: #2ac3de"
-        "--color=info: #545c7e"
-        "--color=marker: #ff007c"
-        "--color=pointer: #ff007c"
-        "--color=prompt: #2ac3de"
-        "--color=query: #c0caf5:regular"
-        "--color=scrollbar: #27a1b9"
-        "--color=separator: #ff9e64"
-        "--color=spinner: #ff007c"
+        "--color=hl:#2ac3de"
+        "--color=info:#545c7e"
+        "--color=marker:#ff007c"
+        "--color=pointer:#ff007c"
+        "--color=prompt:#2ac3de"
+        "--color=query:#c0caf5:regular"
+        "--color=scrollbar:#27a1b9"
+        "--color=separator:#ff9e64"
+        "--color=spinner:#ff007c"
       ];
     };
   };
-
-  # home.file.".p10k.zsh".text = builtins.readFile ./../p10k.zsh;
 }

@@ -47,9 +47,6 @@ alejandra . &>/dev/null ||
         echo "Formating failed" && exit 1
     )
 
-# Show the changes
-git diff -U0 "*.nix"
-
 # Stage everything so that nixos-rebuild can see new files
 git add .
 
@@ -72,7 +69,7 @@ if [ "$currentGeneration" == "$newGeneration" ]; then
 fi
 
 # Create commit message
-genMetadata=$(nixos-rebuild list-generations | grep current 2>&1)
+genMetadata=$(nixos-rebuild list-generations | grep current)
 read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<<"$genMetadata"
 commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 

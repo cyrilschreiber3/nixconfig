@@ -11,6 +11,7 @@
         nodePackages.yaml-language-server
         bun
         python3
+        nerdfonts
       ]);
   };
 
