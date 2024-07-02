@@ -5,6 +5,7 @@
     ./../../modules/home-manager/gnome.nix
     ./../../modules/home-manager/vscode.nix
     ./../../modules/home-manager/firefox.nix
+    ./../../modules/home-manager/zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

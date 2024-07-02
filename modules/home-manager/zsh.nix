@@ -3,8 +3,7 @@
     fzf
     pls
     thefuck
-    ohmyzsh
-    ohmyposh
+    oh-my-zsh
     chroma # required by the colorize plugin for omz
     zsh-autosuggestions
     zsh-nix-shell
@@ -14,7 +13,7 @@
   programs = {
     zsh = {
       enable = true;
-      autosuggestions.enable = true;
+      autosuggestion.enable = true;
       syntaxHighlighting = {
         enable = true;
         highlighters = [
@@ -23,12 +22,30 @@
           "root"
         ];
       };
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       plugins = [
-        "git"
-        "zsh-autosuggestions"
-        "zsh-syntax-highlighting"
+        {
+          # will source zsh-autosuggestions.plugin.zsh
+          name = "zsh-autosuggestions";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-autosuggestions";
+            rev = "v0.7.0";
+            sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+          };
+        }
+        {
+          # will source zsh-syntax-highlighting.plugin.zsh
+          name = "zsh-syntax-highlighting";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-syntax-highlighting";
+            rev = "0.8.0";
+            sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+          };
+        }
       ];
+
       oh-my-zsh = {
         enable = true;
         theme = "powerlevel10k/powerlevel10k";
@@ -61,7 +78,7 @@
 
     thefuck = {
       enable = true;
-      alias = "fuck";
+      enableZshIntegration = true;
     };
 
     vim = {
@@ -99,14 +116,14 @@
         "--color=spinner: #ff007c"
       ];
     };
+  };
 
-    home.sessionVariables = {
-      # omz plugin colorize
-      ZSH_COLORIZE_TOOL = "chroma";
-      ZSH_COLORIZE_STYLE = "tokyonight-night";
+  home.sessionVariables = {
+    # omz plugin colorize
+    ZSH_COLORIZE_TOOL = "chroma";
+    ZSH_COLORIZE_STYLE = "tokyonight-night";
 
-      # omz plugin vscode
-      VSCODE = "code";
-    };
+    # omz plugin vscode
+    VSCODE = "code";
   };
 }
