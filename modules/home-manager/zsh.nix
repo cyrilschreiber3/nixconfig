@@ -46,28 +46,37 @@
           };
         }
         {
+          name = "powerlevel10k-config";
+          src = ./../dotfiles/p10k.zsh;
+          file = "p10k.zsh";
+        }
+        {
           name = "zsh-powerlevel10k";
           src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
           file = "powerlevel10k.zsh-theme";
         }
       ];
 
+      initExtraFirst = ''
+        # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+        # Initialization code that may require console input (password prompts, [y/n]
+        # confirmations, etc.) must go above this block; everything else may go below.
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      '';
+
       oh-my-zsh = {
         enable = true;
-        theme = "powerlevel10k/powerlevel10k";
         plugins = [
           "ansible"
-          "bun"
           "colored-man-pages"
           "colorize"
           "command-not-found"
           "cp"
-          "docker"
-          "docker-compose"
           "dotenv"
           "encode64"
           "extract"
-          "fancy-ctrl-z"
           "fzf"
           "git"
           "rsync"
@@ -78,6 +87,14 @@
           "zsh-interactive-cd"
         ];
         extraConfig = ''
+          # Display red dots whilst waiting for completion.
+          COMPLETION_WAITING_DOTS="true"
+
+          # Chroma plugin config
+          ZSH_COLORIZE_TOOL="chroma"
+          ZSH_COLORIZE_STYLE="tokyonight-night"
+          # VSCode plugin
+          VSCODE="code"
         '';
       };
     };
@@ -124,12 +141,5 @@
     };
   };
 
-  home.sessionVariables = {
-    # omz plugin colorize
-    ZSH_COLORIZE_TOOL = "chroma";
-    ZSH_COLORIZE_STYLE = "tokyonight-night";
-
-    # omz plugin vscode
-    VSCODE = "code";
-  };
+  # home.file.".p10k.zsh".text = builtins.readFile ./../p10k.zsh;
 }
