@@ -44,6 +44,11 @@
             sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
           };
         }
+        {
+          name = "zsh-powerlevel10k";
+          src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+          file = "powerlevel10k.zsh-theme";
+        }
       ];
 
       oh-my-zsh = {
