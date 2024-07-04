@@ -150,7 +150,7 @@
     thefuck = {
       enable = true;
       enableZshIntegration = true;
-      enableInstantMode = true;
+      # enableInstantMode = true;
     };
 
     vim = {
