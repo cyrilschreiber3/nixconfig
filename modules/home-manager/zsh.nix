@@ -45,7 +45,17 @@
           };
         }
         {
-          name = "powerlevel10k-config";
+          name = "zsh-interactive-cd";
+          src = pkgs.fetchFromGitHub {
+            owner = "mrjohannchang";
+            repo = "zsh-interactive-cd";
+            rev = "master";
+            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+          };
+          file = "zsh-interactive-cd.plugin.zsh";
+        }
+        {
+          name = " powerlevel10k-config ";
           src = ./../dotfiles/p10k;
           file = "p10k.zsh";
         }
@@ -84,7 +94,7 @@
           "systemadmin"
           "thefuck"
           "vscode"
-          "zsh-interactive-cd"
+          # "zsh-interactive-cd"
         ];
         extraConfig = ''
           # Display red dots whilst waiting for completion.
@@ -101,32 +111,6 @@
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
-        '';
-      };
-      shellAliases = {
-        fd = ''
-          fzf \
-          --highlight-line \
-          --info=inline-right \
-          --ansi \
-          --layout=reverse \
-          --border=none \
-          --color=bg+:#283457 \
-          --color=bg:#16161e \
-          --color=border:#27a1b9 \
-          --color=fg:#c0caf5 \
-          --color=gutter:#16161e \
-          --color=header:#ff9e64 \
-          --color=hl+:#2ac3de \
-          --color=hl:#2ac3de \
-          --color=info:#545c7e \
-          --color=marker:#ff007c \
-          --color=pointer:#ff007c \
-          --color=prompt:#2ac3de \
-          --color=query:#c0caf5:regular \
-          --color=scrollbar:#27a1b9 \
-          --color=separator:#ff9e64 \
-          --color=spinner:#ff007c
         '';
       };
     };
@@ -147,30 +131,30 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      # changeDirWidgetOptions = [ "--height 7" ];
-      # defaultOptions = [
-      #   "--highlight-line"
-      #   "--info=inline-right"
-      #   "--ansi"
-      #   "--layout=reverse"
-      #   "--border=none"
-      #   "--color=bg+:#283457"
-      #   "--color=bg:#16161e"
-      #   "--color=border:#27a1b9"
-      #   "--color=fg:#c0caf5"
-      #   "--color=gutter:#16161e"
-      #   "--color=header:#ff9e64"
-      #   "--color=hl+:#2ac3de"
-      #   "--color=hl:#2ac3de"
-      #   "--color=info:#545c7e"
-      #   "--color=marker:#ff007c"
-      #   "--color=pointer:#ff007c"
-      #   "--color=prompt:#2ac3de"
-      #   "--color=query:#c0caf5:regular"
-      #   "--color=scrollbar:#27a1b9"
-      #   "--color=separator:#ff9e64"
-      #   "--color=spinner:#ff007c"
-      # ];
+      changeDirWidgetOptions = ["--height 7"];
+      defaultOptions = [
+        "--highlight-line"
+        "--info=inline-right"
+        "--ansi"
+        "--layout=reverse"
+        "--border=none"
+        "--color=bg+:#283457"
+        "--color=bg:#16161e"
+        "--color=border:#27a1b9"
+        "--color=fg:#c0caf5"
+        "--color=gutter:#16161e"
+        "--color=header:#ff9e64"
+        "--color=hl+:#2ac3de"
+        "--color=hl:#2ac3de"
+        "--color=info:#545c7e"
+        "--color=marker:#ff007c"
+        "--color=pointer:#ff007c"
+        "--color=prompt:#2ac3de"
+        "--color=query:#c0caf5:regular"
+        "--color=scrollbar:#27a1b9"
+        "--color=separator:#ff9e64"
+        "--color=spinner:#ff007c"
+      ];
     };
   };
 }
