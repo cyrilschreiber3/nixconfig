@@ -114,9 +114,8 @@
 
     vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [tokyonight-nvim];
       extraConfig = ''
-        colorscheme tokyonight-night
+        syntax on
       '';
     };
 
@@ -147,9 +146,5 @@
         "--color=spinner:#ff007c"
       ];
     };
-  };
-
-  home.file = {
-    ".vim/colors/tokyonight-night.vim".text = builtins.readFile ./../dotfiles/vim/tokyonight-night.vim;
   };
 }
