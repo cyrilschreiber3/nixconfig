@@ -44,16 +44,16 @@
             sha256 = "1yl8zdip1z9inp280sfa5byjbf2vqh2iazsycar987khjsi5d5w8";
           };
         }
-        {
-          name = "zsh-interactive-cd";
-          src = pkgs.fetchFromGitHub {
-            owner = "mrjohannchang";
-            repo = "zsh-interactive-cd";
-            rev = "master";
-            sha256 = "1x1387zkzhzsnllvpciwnscvm3z77znlwsxrfkxjzvi8bz1w8vcg";
-          };
-          file = "zsh-interactive-cd.plugin.zsh";
-        }
+        # {
+        #   name = "zsh-interactive-cd";
+        #   src = pkgs.fetchFromGitHub {
+        #     owner = "mrjohannchang";
+        #     repo = "zsh-interactive-cd";
+        #     rev = "master";
+        #     sha256 = "1x1387zkzhzsnllvpciwnscvm3z77znlwsxrfkxjzvi8bz1w8vcg";
+        #   };
+        #   file = "zsh-interactive-cd.plugin.zsh";
+        # }
         {
           name = "powerlevel10k-config";
           src = ./../dotfiles/p10k;
@@ -94,7 +94,7 @@
           "systemadmin"
           "thefuck"
           "vscode"
-          # "zsh-interactive-cd"
+          "zsh-interactive-cd"
         ];
         extraConfig = ''
           # Display red dots whilst waiting for completion.
@@ -108,6 +108,8 @@
           # fzf plugin
           DISABLE_FZF_AUTO_COMPLETION="true"
           FZF_BASE=${pkgs.fzf}/bin
+          # zsh-interactive-cd
+          bindkey '^I' zic-completion
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
