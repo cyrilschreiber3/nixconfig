@@ -116,7 +116,7 @@
       enable = true;
       plugins = with pkgs.vimPlugins; [tokyonight-nvim];
       extraConfig = ''
-        colorscheme tokyonight
+        colorscheme tokyonight-night
       '';
     };
 
@@ -150,6 +150,6 @@
   };
 
   home.file = {
-    ".vim/tokyonight-night.vim".text = builtins.readFile ./../dotfiles/vim/tokyonight-night.vim;
+    ".vim/colors/tokyonight-night.vim".text = builtins.readFile ./../dotfiles/vim/tokyonight-night.vim;
   };
 }

@@ -12,13 +12,11 @@
 	"multiCommand.commands": [
 		{
 			"command": "multiCommand.nixosRebuildSwitch",
-			"interval": 500,
+			"interval": 200,
 			"sequence": [
-				"workbench.action.createTerminalEditorSide",
-				{
-					"command": "workbench.action.terminal.sendSequence",
-					"args": { "text": "ssh cyril@localhost clear && rebuild\n" }
-				}
+				"workbench.action.tasks.build",
+				"workbench.action.terminal.moveToEditor",
+				"workbench.action.moveEditorToRightGroup"
 			]
 		}
 	]
