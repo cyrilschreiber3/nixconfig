@@ -98,7 +98,7 @@
           VSCODE="code"
           # fzf plugin
           DISABLE_FZF_AUTO_COMPLETION="true"
-          FZF_BASE=${pkgs.fzf}/bin
+          FZF_BASE=${pkgs.fzf}/bin/fzf
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
@@ -149,7 +149,7 @@
     };
   };
 
-  # home.file = {
-  #   ".vim/tokyonight-night.vim"
-  #     };
+  home.file = {
+    ".vim/tokyonight-night.vim".text = builtins.readFile ./../dotfiles/vim/tokyonight-night.vim;
+  };
 }

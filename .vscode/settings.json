@@ -12,10 +12,13 @@
 	"multiCommand.commands": [
 		{
 			"command": "multiCommand.nixosRebuildSwitch",
+			"interval": 500,
 			"sequence": [
 				"workbench.action.createTerminalEditorSide",
-				{ "command": "workbench.action.terminal.sendSequence", "args": { "text": "ssh cyril@localhost\n" } },
-				{ "command": "workbench.action.terminal.sendSequence", "args": { "text": "clear && rebuild\n" } }
+				{
+					"command": "workbench.action.terminal.sendSequence",
+					"args": { "text": "ssh cyril@localhost clear && rebuild\n" }
+				}
 			]
 		}
 	]
