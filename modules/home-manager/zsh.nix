@@ -98,6 +98,7 @@
           VSCODE="code"
           # fzf plugin
           DISABLE_FZF_AUTO_COMPLETION="true"
+          FZF_BASE=${pkgs.fzf}/bin
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
@@ -108,6 +109,7 @@
     thefuck = {
       enable = true;
       enableZshIntegration = true;
+      enableInstantMode = true;
     };
 
     vim = {
