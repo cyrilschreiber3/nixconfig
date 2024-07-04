@@ -82,6 +82,7 @@
           "rsync"
           "screen"
           "ssh"
+          "systemadmin"
           "thefuck"
           "vscode"
           "zsh-interactive-cd"
@@ -91,10 +92,12 @@
           COMPLETION_WAITING_DOTS="true"
 
           # Chroma plugin config
-          ZSH_COLORIZE_TOOL="chroma"
+          ZSH_COLORIZE_TOOL=chroma
           ZSH_COLORIZE_STYLE="tokyonight-night"
           # VSCode plugin
           VSCODE="code"
+          # fzf plugin
+          DISABLE_FZF_AUTO_COMPLETION="true"
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
@@ -143,4 +146,8 @@
       ];
     };
   };
+
+  # home.file = {
+  #   ".vim/tokyonight-night.vim"
+  #     };
 }
