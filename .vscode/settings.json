@@ -16,7 +16,9 @@
 			"sequence": [
 				"workbench.action.tasks.build",
 				"workbench.action.terminal.moveToEditor",
-				"workbench.action.moveEditorToRightGroup"
+				"workbench.action.moveEditorToRightGroup",
+				"workbench.action.terminal.toggleTerminal",
+				"workbench.action.terminal.toggleTerminal"
 			]
 		}
 	]

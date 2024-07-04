@@ -23,7 +23,6 @@
           "root"
         ];
       };
-      # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       plugins = [
         {
           # will source zsh-autosuggestions.plugin.zsh
@@ -98,7 +97,9 @@
           VSCODE="code"
           # fzf plugin
           DISABLE_FZF_AUTO_COMPLETION="true"
-          FZF_BASE=${pkgs.fzf}/bin/fzf
+          FZF_BASE=${pkgs.fzf}/bin
+          # zsh interactive cd plugin
+          zic_custom_binding='<tab>'
 
           # Prevent less from using pager everytime
           export PAGER="less -F -X"
