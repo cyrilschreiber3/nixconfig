@@ -31,7 +31,7 @@
             owner = "zsh-users";
             repo = "zsh-autosuggestions";
             rev = "v0.7.0";
-            sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+            sha256 = "1g3pij5qn2j7v7jjac2a63lxd97mcsgw6xq6k5p7835q9fjiid98";
           };
         }
         {
@@ -41,7 +41,7 @@
             owner = "zsh-users";
             repo = "zsh-syntax-highlighting";
             rev = "0.8.0";
-            sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+            sha256 = "1yl8zdip1z9inp280sfa5byjbf2vqh2iazsycar987khjsi5d5w8";
           };
         }
         {
@@ -50,12 +50,12 @@
             owner = "mrjohannchang";
             repo = "zsh-interactive-cd";
             rev = "master";
-            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+            sha256 = "1x1387zkzhzsnllvpciwnscvm3z77znlwsxrfkxjzvi8bz1w8vcg";
           };
           file = "zsh-interactive-cd.plugin.zsh";
         }
         {
-          name = " powerlevel10k-config ";
+          name = "powerlevel10k-config";
           src = ./../dotfiles/p10k;
           file = "p10k.zsh";
         }
