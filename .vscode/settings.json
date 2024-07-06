@@ -20,6 +20,16 @@
 				"workbench.action.terminal.toggleTerminal",
 				"workbench.action.terminal.toggleTerminal"
 			]
+		},
+		{
+			"command": "multiCommand.moveTaskTerminalRight",
+			"interval": 200,
+			"sequence": [
+				"workbench.action.terminal.moveToEditor",
+				"workbench.action.moveEditorToRightGroup",
+				"workbench.action.terminal.toggleTerminal",
+				"workbench.action.terminal.toggleTerminal"
+			]
 		}
 	]
 }

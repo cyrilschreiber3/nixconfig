@@ -47,6 +47,9 @@ alejandra . &>/dev/null ||
         echo "Formating failed" && exit 1
     )
 
+# Handle exit signals
+trap handleExit SIGINT
+
 # Stage everything so that nixos-rebuild can see new files
 git add .
 
