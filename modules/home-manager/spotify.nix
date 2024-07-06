@@ -30,7 +30,7 @@
     name = "Spotify";
     genericName = "Music Player";
     icon = "spotify-client";
-    exec = "${pkgs.spotify}/bin/spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
+    exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
     terminal = false;
     mimeType = ["x-scheme-handler/spotify"];
     categories = ["Audio" "Music" "Player" "AudioVideo"];
