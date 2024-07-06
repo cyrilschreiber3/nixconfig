@@ -12,7 +12,6 @@
     };
   in {
     enable = true;
-    windowManagerPatch = true;
     spotifyPackage = pkgs.spotify;
     theme = {
       name = "Tokyo";
@@ -26,7 +25,7 @@
     colorScheme = "Night";
   };
 
-  # # Force Spotify to use X11 backend
+  # Force Spotify to use X11 backend
   # xdg.desktopEntries.spotify = {
   #   name = "Spotify";
   #   exec = "${pkgs.spotify}/bin/spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
