@@ -22,8 +22,17 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
   networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [
+    # SSH
+    22
+    # Spotify
+    57621
+  ];
+  networking.firewall.allowedUDPPorts = [
+    # Spotify
+    5353
+  ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -140,7 +149,6 @@
       PasswordAuthentication = true;
     };
   };
-  networking.firewall.allowedTCPPorts = [22];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
