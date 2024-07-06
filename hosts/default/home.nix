@@ -6,6 +6,7 @@
     ./../../modules/home-manager/vscode.nix
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zsh.nix
+    ./../../modules/home-manager/spotify.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
