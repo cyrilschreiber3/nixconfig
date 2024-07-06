@@ -26,8 +26,8 @@
   };
 
   # Force Spotify to use X11 backend
-  # xdg.desktopEntries.spotify = {
-  #   name = "Spotify";
-  #   exec = "${pkgs.spotify}/bin/spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
-  # };
+  xdg.desktopEntries.spotify = {
+    name = "Spotify";
+    exec = "${pkgs.spotify}/bin/spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
+  };
 }
