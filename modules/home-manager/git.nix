@@ -12,6 +12,12 @@
             "github:"
           ];
         };
+        "https://gitlab.com/" = {
+          insteadOf = [
+            "gl:"
+            "gitlab:"
+          ];
+        };
       };
       user = {
         name = "cyrilschreiber3";
