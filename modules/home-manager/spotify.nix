@@ -29,7 +29,7 @@
   xdg.desktopEntries.spotify = {
     name = "Spotify";
     genericName = "Music Player";
-    icon = "spotify-client";
+    icon = "${pkgs.spotify}/share/icons/hicolor/256x256/apps/spotify.png";
     exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
     terminal = false;
     mimeType = ["x-scheme-handler/spotify"];
