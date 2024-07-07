@@ -11,6 +11,7 @@
       rev = "d88ca06eaeeb424d19e0d6f7f8e614e4bce962be";
       hash = "sha256-cLj9v8qtHsdV9FfzV2Qf4pWO8AOBXu51U/lUMvdEXAk=";
     };
+    spicepkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
     spotifyPackage = pkgs.spotify;
@@ -24,6 +25,13 @@
       homeConfig = true;
     };
     colorScheme = "Night";
+    enabledExtensions = with spicepkgs.extensions; [
+      hidePodcasts
+      shuffle
+      songStats
+      betterGenres
+      playNext
+    ];
   };
 
   # Force Spotify to use X11 backend
