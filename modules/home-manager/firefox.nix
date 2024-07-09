@@ -162,6 +162,12 @@ in {
           installation_mode = "force_installed";
           default_area = "menupanel";
         };
+        # Vue.js Devtools
+        "{66E978CD-981F-47DF-AC42-E3CF417C1467}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/new-tab-homepage/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        };
       };
     };
   };
