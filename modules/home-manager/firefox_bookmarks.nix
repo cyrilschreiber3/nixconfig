@@ -1,7 +1,7 @@
 {
   bookmarks = [
     {
-      name = "bookmarks bar";
+      name = "Bookmarks Toolbar";
       toolbar = true;
       bookmarks = [
         {

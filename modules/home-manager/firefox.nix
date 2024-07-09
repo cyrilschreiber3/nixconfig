@@ -82,7 +82,7 @@ in {
       SearchBar = "unified";
       OfferToSaveLogins = false;
       PasswordManagerEnabled = false;
-      NoDefaultBookmarks = true;
+      NoDefaultBookmarks = false;
       PromptForDownloadLocation = false;
       DownloadDirectory = "${config.home.homeDirectory}/Downloads";
       Homepage = {
