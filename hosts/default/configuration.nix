@@ -11,6 +11,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
+    ./../../modules/nixos/cachix/cachix.nix
     inputs.home-manager.nixosModules.default
   ];
 

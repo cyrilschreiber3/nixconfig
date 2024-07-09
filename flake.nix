@@ -1,15 +1,6 @@
 {
   description = "Nixos config flake";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://cyrilschreiber3.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "cyrilschreiber3.cachix.org-1:UVQRowQE2hwR4J3LGp1aUpaXr0LriZvnDTp9UEqP5jI="
-    ];
-  };
-
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
