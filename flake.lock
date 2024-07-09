@@ -36,6 +36,26 @@
         "type": "github"
       }
     },
+    "mypkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720562777,
+        "narHash": "sha256-+Q07SI2C5O7rzlXFMMZgZu5wSuTp/6sbwKu4e8fWJFc=",
+        "owner": "cyrilschreiber3",
+        "repo": "nur-packages",
+        "rev": "bd833a02fcf812fec758153395f2a8ee79d0f362",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cyrilschreiber3",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1720031269,
@@ -55,6 +75,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "mypkgs": "mypkgs",
         "nixpkgs": "nixpkgs",
         "spicetify-nix": "spicetify-nix"
       }

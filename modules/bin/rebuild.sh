@@ -59,7 +59,7 @@ rebuildStart=$(date +%s)
 currentGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#default --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
+sudo nixos-rebuild switch --flake ./#default --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
     echo "Rebuild failed..."
     handleExit
 )

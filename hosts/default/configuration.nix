@@ -5,7 +5,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  mypkgs = inputs.mypkgs.packages.${pkgs.system};
+in {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
@@ -194,6 +196,7 @@
     wget
     curl
     nix-output-monitor
+    cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
