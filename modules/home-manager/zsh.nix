@@ -147,6 +147,8 @@
       };
     };
 
+    # TheFuck is disabled because the current version (3.23) uses a deprecated module in python 3.12 and fails to build.
+    # A new version as be released for this issue to go away.
     # thefuck = {
     #   enable = true;
     #   enableZshIntegration = true;

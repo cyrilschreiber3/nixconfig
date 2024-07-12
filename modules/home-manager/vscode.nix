@@ -6,12 +6,6 @@
         nil
         alejandra
         nixpkgs-fmt
-        nodejs
-        nodePackages.vscode-langservers-extracted
-        nodePackages.yaml-language-server
-        bun
-        python3
-        nerdfonts
       ]);
   };
 
