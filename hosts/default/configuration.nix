@@ -5,9 +5,7 @@
   pkgs,
   inputs,
   ...
-}: let
-  mypkgs = inputs.mypkgs.packages.${pkgs.system};
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/mainUser.nix
@@ -37,10 +35,22 @@ in {
     5353
   ];
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    warn-dirty = false
-  '';
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      warn-dirty = false
+    '';
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    # optimise.automatic = true;
+    # optimise.dates = "weekly";
+    settings.auto-optimise-store = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
@@ -68,10 +78,36 @@ in {
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.desktopManager.wallpaper.combineScreens = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
-  programs.dconf.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "ch";
+    variant = "fr";
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Configure console keymap
+  console.keyMap = "fr_CH";
 
   environment.gnome.excludePackages = with pkgs.gnome;
     [
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-logs
+      gnome-characters
+      gnome-music
+      gnome-contacts
+      gnome-initial-setup
+      gnome-characters
+      gnome-clocks
+      gnome-maps
+      gnome-weather
+    ]
+    ++ (with pkgs; [
       cheese # webcam tool
       baobab # disk usage
       totem # video player
@@ -80,40 +116,16 @@ in {
       seahorse # password manager
       epiphany # web browser
       geary # email reader
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
       yelp # Help view
       simple-scan
       gnome-calculator
-      gnome-logs
-      gnome-characters
-      gnome-music
-      gnome-contacts
-      gnome-initial-setup
-      gnome-characters
       gnome-calendar
-      gnome-clocks
       gnome-font-viewer
-      gnome-maps
-      gnome-weather
       gnome-disk-utility
-    ]
-    ++ (with pkgs; [
       gnome-photos
       gnome-tour
       loupe # image viewer
     ]);
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "ch";
-    variant = "fr";
-  };
-
-  # Configure console keymap
-  console.keyMap = "fr_CH";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -134,16 +146,6 @@ in {
     #media-session.enable = true;
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
-  # nix.optimise.automatic = true;
-  # nix.optimise.dates = "weekly";
-  nix.settings.auto-optimise-store = true;
-
   # Enable the OpenSSH server.
   services.openssh = {
     enable = true;
@@ -152,9 +154,6 @@ in {
       PasswordAuthentication = true;
     };
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   mainUser.enable = true;
@@ -182,46 +181,22 @@ in {
     }
   ];
 
-  programs.zsh.enable = true;
-
-  programs.nix-ld.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      vim
-      nano
-      wget
-      curl
-      nix-output-monitor
-      cachix
-    ]
-    ++ [
-      mypkgs.yuzu
-    ];
+  programs = {
+    dconf.enable = true;
+    zsh.enable = true;
+    nix-ld.enable = true;
+  };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  environment.systemPackages = with pkgs; [
+    vim
+    nano
+    wget
+    curl
+    cachix
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

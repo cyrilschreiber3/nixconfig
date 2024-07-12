@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  mypkgs = inputs.mypkgs.packages.${pkgs.system};
+in {
   imports = [
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
@@ -27,53 +33,59 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # media
-    ffmpeg
-    yt-dlp
-    vlc
-    gimp
-    obs-studio
-    kdenlive
+  home.packages = with pkgs;
+    [
+      # media
+      ffmpeg
+      yt-dlp
+      vlc
+      gimp
+      obs-studio
+      kdenlive
 
-    #voip
-    discord
+      #voip
+      discord
 
-    # gaming
-    # steam
-    # lutris
-    # winetricks
-    # flatpak
+      # gaming
+      # steam
+      # lutris
+      # winetricks
+      # flatpak
 
-    # cli
-    git
-    gh
-    tree
-    unzip
-    rclone
-    ondir
-    libnotify
-    btop
-    nano
-    rsync
-    screen
+      # cli
+      git
+      gh
+      tree
+      unzip
+      rclone
+      ondir
+      libnotify
+      btop
+      nano
+      rsync
+      screen
 
-    # dev
-    nil
-    alejandra
-    nixpkgs-fmt
-    nodejs
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-    bun
-    python3
+      # dev
+      nil
+      alejandra
+      nixpkgs-fmt
+      nodejs
+      nodePackages.vscode-langservers-extracted
+      nodePackages.yaml-language-server
+      bun
+      python3
 
-    # docker
-    docker
-    #nvidia-container-toolkit
+      # docker
+      docker
+      #nvidia-container-toolkit
 
-    (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
-  ];
+      # virtualization / emulation
+
+      (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    ]
+    ++ [
+      mypkgs.yuzu
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
