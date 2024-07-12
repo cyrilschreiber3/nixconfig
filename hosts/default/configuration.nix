@@ -198,6 +198,9 @@ in {
     curl
     nix-output-monitor
     cachix
+    # ]
+    # ++ [
+    #   mypkgs.yuzu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

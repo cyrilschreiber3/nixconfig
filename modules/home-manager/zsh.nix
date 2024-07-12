@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     fzf
     pls
-    thefuck
+    # thefuck
     oh-my-zsh
     nerdfonts
     chroma # required by the colorize plugin for omz
@@ -97,7 +97,7 @@
           "screen"
           "ssh"
           "systemadmin"
-          "thefuck"
+          # "thefuck"
           "vscode"
           # "zsh-interactive-cd"
         ];
@@ -147,11 +147,11 @@
       };
     };
 
-    thefuck = {
-      enable = true;
-      enableZshIntegration = true;
-      # enableInstantMode = true;
-    };
+    # thefuck = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   # enableInstantMode = true;
+    # };
 
     vim = {
       enable = true;

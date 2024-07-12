@@ -30,7 +30,7 @@
   home.packages = with pkgs; [
     # media
     ffmpeg
-    youtube-dl
+    yt-dlp
     vlc
     gimp
     obs-studio
