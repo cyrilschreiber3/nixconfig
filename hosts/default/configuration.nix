@@ -191,17 +191,18 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    nano
-    wget
-    curl
-    nix-output-monitor
-    cachix
-    # ]
-    # ++ [
-    #   mypkgs.yuzu
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      vim
+      nano
+      wget
+      curl
+      nix-output-monitor
+      cachix
+    ]
+    ++ [
+      mypkgs.yuzu
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
