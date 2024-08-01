@@ -8,8 +8,8 @@ in {
   imports = [
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
-    ./../../modules/home-manager/gnome.nix
-    # ./../../modules/home-manager/plasma.nix
+    # ./../../modules/home-manager/gnome.nix
+    ./../../modules/home-manager/cinnamon.nix
     ./../../modules/home-manager/vscode.nix
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zsh.nix
