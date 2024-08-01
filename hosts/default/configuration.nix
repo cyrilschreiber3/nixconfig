@@ -89,14 +89,14 @@
     };
     greeters.gtk = {
       enable = lib.mkForce true;
-      theme = {
-        name = "Tokyonight-Dark-BL-LB";
-        package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
-      };
-      cursorTheme = {
-        name = "WhiteSur-cursors";
-        package = pkgs.whitesur-cursors;
-      };
+      # theme = {
+      #   name = "Tokyonight-Dark-BL-LB";
+      #   package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
+      # };
+      # cursorTheme = {
+      #   name = "WhiteSur-cursors";
+      #   package = pkgs.whitesur-cursors;
+      # };
     };
     background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
   };
