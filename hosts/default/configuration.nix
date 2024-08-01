@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -78,10 +79,28 @@
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Enable Cinnamon Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    greeter = {
+      name = "lightdm-gtk-greeter";
+      package = pkgs.lightdm-gtk-greeter;
+    };
+    greeters.gtk = {
+      enable = lib.mkForce true;
+      theme = {
+        name = "Tokyonight-Dark-BL-LB";
+        package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
+      };
+      cursorTheme = {
+        name = "WhiteSur-cursors";
+        package = pkgs.whitesur-cursors;
+      };
+    };
+    background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
+  };
   services.xserver.desktopManager.cinnamon.enable = true;
-
   services.xserver.desktopManager.wallpaper.combineScreens = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
 
@@ -90,6 +109,7 @@
     layout = "ch";
     variant = "fr";
   };
+  services.libinput.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
