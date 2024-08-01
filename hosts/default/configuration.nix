@@ -75,12 +75,12 @@
   # # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
-  # Enable KDE Plasma Desktop Environment.
+  # Enable Cinnamon Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
 
   services.xserver.desktopManager.wallpaper.combineScreens = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
@@ -97,7 +97,7 @@
   # Configure console keymap
   console.keyMap = "fr_CH";
 
-  environment.gnome.excludePackages = with pkgs.gnome;
+  environment.cinnamon.excludePackages = with pkgs.gnome;
     [
       tali # poker game
       iagno # go game
@@ -169,7 +169,7 @@
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
-    sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+    # sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
     backupFileExtension = "backup";
     users = {
       "cyril" = import ./home.nix;
