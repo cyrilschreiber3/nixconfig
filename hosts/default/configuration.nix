@@ -76,6 +76,12 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # # Enable KDE Plasma Desktop Environment.
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.sddm.wayland.enable = true;
+  # services.xserver.desktopManager.plasma6.enable = true;
+
   services.xserver.desktopManager.wallpaper.combineScreens = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
 
