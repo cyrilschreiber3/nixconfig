@@ -60,6 +60,7 @@ in {
       rclone
       ondir
       libnotify
+      nix-output-monitor
       btop
       nano
       rsync
