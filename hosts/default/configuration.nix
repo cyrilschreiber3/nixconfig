@@ -83,11 +83,11 @@
   # services.displayManager.sddm.wayland.enable = true;
   services.xserver.displayManager.lightdm = {
     enable = true;
-    greeter = {
-      name = "lightdm-gtk-greeter";
-      package = pkgs.lightdm-gtk-greeter;
-    };
-    greeters.gtk = {
+    #greeter = {
+    #  name = "lightdm-gtk-greeter";
+    #  package = pkgs.lightdm-gtk-greeter;
+    #};
+    greeters.slick = {
       enable = lib.mkForce true;
       # theme = {
       #   name = "Tokyonight-Dark-BL-LB";
