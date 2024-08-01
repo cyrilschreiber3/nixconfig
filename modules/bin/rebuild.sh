@@ -1,5 +1,5 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git -p alejandra -p ondir -p libnotify -p nix-output-monitor
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p git alejandra ondir libnotify nix-output-monitor
 # A rebuild script that commits on a successfull build
 
 # get parameters
