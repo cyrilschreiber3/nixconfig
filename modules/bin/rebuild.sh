@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p git alejandra ondir libnotify nix-output-monitor
+#! nix-shell -i bash -p git -p alejandra -p ondir -p libnotify -p nix-output-monitor
 # A rebuild script that commits on a successfull build
 
 # get parameters
@@ -57,6 +57,9 @@ echo "NixOS Rebuilding..."
 rebuildStart=$(date +%s)
 
 currentGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
+
+# Clear log file
+echo "" >nixos-switch.log
 
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#default --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
