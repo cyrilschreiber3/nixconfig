@@ -98,7 +98,7 @@
       #   package = pkgs.whitesur-cursors;
       # };
     };
-    background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
+    #background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
   };
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.desktopManager.wallpaper.combineScreens = true;
