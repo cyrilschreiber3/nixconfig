@@ -169,6 +169,7 @@
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
+    sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
     backupFileExtension = "backup";
     users = {
       "cyril" = import ./home.nix;
