@@ -83,22 +83,18 @@
   # services.displayManager.sddm.wayland.enable = true;
   services.xserver.displayManager.lightdm = {
     enable = true;
-    #greeter = {
-    #  name = "lightdm-gtk-greeter";
-    #  package = pkgs.lightdm-gtk-greeter;
-    #};
     greeters.slick = {
-      enable = lib.mkForce true;
-      # theme = {
-      #   name = "Tokyonight-Dark-BL-LB";
-      #   package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
-      # };
-      # cursorTheme = {
-      #   name = "WhiteSur-cursors";
-      #   package = pkgs.whitesur-cursors;
-      # };
+      enable = true;
+      theme = {
+        name = "Tokyonight-Dark-BL-LB";
+        package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
+      };
+      cursorTheme = {
+        name = "WhiteSur-cursors";
+        package = pkgs.whitesur-cursors;
+      };
     };
-    #background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
+    background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
   };
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.desktopManager.wallpaper.combineScreens = true;
