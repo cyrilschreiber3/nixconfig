@@ -8,6 +8,7 @@
     gtk-engine-murrine
     gnome-themes-extra
     dconf-editor
+    albert
 
     (whitesur-icon-theme.override {
       alternativeIcons = true;
