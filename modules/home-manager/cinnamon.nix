@@ -33,7 +33,8 @@
     "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
     "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
     "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
-    # "albert/config".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert.conf}";
+    "autostart/albert.desktop".source = "${pkgs.albert}/share/applications/albert.desktop";
+    "albert/config".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert.conf}";
     "albert/websearch/engines.json".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert_search.json}";
   };
 
@@ -63,22 +64,6 @@
       name = "Albert";
       command = "albert toggle";
       binding = ["<Super>space"];
-    };
-  };
-
-  systemd.user.services.albert = {
-    Unit = {
-      Description = "Albert launcher";
-      After = ["graphical-session.target"];
-      PartOf = ["graphical-session.target"];
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.albert}/bin/albert";
-      Restart = "on-failure";
     };
   };
 }
