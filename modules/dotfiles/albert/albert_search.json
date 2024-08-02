@@ -1,0 +1,74 @@
+[
+	{
+		"fallback": true,
+		"iconPath": ":gpt",
+		"id": "6580c468",
+		"name": "Chat GPT",
+		"trigger": "gpt",
+		"url": "https://chat.openai.com/?q=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":default",
+		"id": "361f88c2",
+		"name": "Claude.ai",
+		"trigger": "cl",
+		"url": "https://claude.ai/new/?q=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":github",
+		"id": "f85d93ca",
+		"name": "GitHub",
+		"trigger": "gh",
+		"url": "https://github.com/search?utf8=✓&q=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":google",
+		"id": "1982a8ac",
+		"name": "Google",
+		"trigger": "gg",
+		"url": "https://www.google.com/search?q=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":google_translate",
+		"id": "081db85f",
+		"name": "Google Translate",
+		"trigger": "gt",
+		"url": "https://translate.google.com/?text=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":default",
+		"id": "1da094dd",
+		"name": "Nix Options",
+		"trigger": "no",
+		"url": "https://search.nixos.org/options?channel=unstable&type=packages&query=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":default",
+		"id": "cdc5a7da",
+		"name": "Nix Packages",
+		"trigger": "np",
+		"url": "https://search.nixos.org/packages?channel=unstable&type=packages&query=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":default",
+		"id": "7c6f1fe1",
+		"name": "NixOS Wiki",
+		"trigger": "nw",
+		"url": "https://nixos.wiki/index.php?search=%s"
+	},
+	{
+		"fallback": true,
+		"iconPath": ":youtube",
+		"id": "37e09f94",
+		"name": "YouTube",
+		"trigger": "yt",
+		"url": "https://www.youtube.com/results?search_query=%s"
+	}
+]
