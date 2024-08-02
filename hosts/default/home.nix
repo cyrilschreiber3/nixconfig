@@ -66,7 +66,7 @@ in {
       nano
       rsync
       screen
-      nerdfetch
+      neofetch
 
       # dev
       nil
