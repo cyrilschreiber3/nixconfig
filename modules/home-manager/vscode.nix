@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.vscode.fhsWithPackages (ps:
       with ps; [
-        nil
+        nixd
         alejandra
         nixpkgs-fmt
       ]);
