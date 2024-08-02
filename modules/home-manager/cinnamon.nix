@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -9,11 +8,6 @@
     gtk-engine-murrine
     gnome-themes-extra
     dconf-editor
-    gnomeExtensions.user-themes
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.just-perfection
-    gnomeExtensions.search-light
 
     (whitesur-icon-theme.override {
       alternativeIcons = true;
@@ -44,30 +38,17 @@
     "org/cinnamon" = {
       favorite-apps = [
         "nemo.desktop"
+        "firefox.desktop"
         "org.gnome.Terminal.desktop"
+        "cinnamon-settings.desktop"
       ];
     };
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Tokyonight-Dark-BL-LB";
-    };
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      apply-custom-theme = true;
-      require-pressure-to-show = false;
-      show-apps-at-top = true;
-      dock-position = "BOTTOM";
-      multi-monitor = false;
-    };
-    "org/gnome/shell/extensions/search-light" = {
-      shortcut-search = ["<Control>space"];
-      border-radius = 1.27;
-      background-color = lib.hm.gvariant.mkTuple [0.040026441216468811 0.036411110311746597 0.096666663885116577 0.92199999094009399];
-    };
-    "org/gnome/desktop/wm/preferences" = {
+    "org/cinnamon/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
     };
     "org/cinnamon/desktop/background" = {
-      picture-uri = "file://${config.home.homeDirectory}/.background-image";
-      picture-uri-dark = "file://${config.home.homeDirectory}/.background-image";
+      picture-uri = "file://${pkgs.copyPathToStore ./../../modules/assets/wallpaper.jpg}";
+      picture-uri-dark = "file://${pkgs.copyPathToStore ./../../modules/assets/wallpaper.jpg}";
       picture-options = "zoom";
     };
   };

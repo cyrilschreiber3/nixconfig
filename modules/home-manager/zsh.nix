@@ -147,8 +147,48 @@
       };
     };
 
+    gnome-terminal = {
+      enable = true;
+      themeVariant = "dark";
+      showMenubar = false;
+      profile = {
+        "273f07db-8f33-49f7-8909-da4b9946a21f" = {
+          default = true;
+          visibleName = "Tokyo Night";
+          cursorShape = "block";
+          transparencyPercent = 30;
+          colors = {
+            backgroundColor = "#1A1B26";
+            foregroundColor = "#C0CAF5";
+            cursor = {
+              foreground = "#C0CAF5";
+              background = "#C0CAF5";
+            };
+            palette = [
+              "#414868"
+              "#F7768E"
+              "#9ECE6A"
+              "#E0AF68"
+              "#7AA2F7"
+              "#BB9AF7"
+              "#7DCFFF"
+              "#A9B1D6"
+              "#414868"
+              "#F7768E"
+              "#9ECE6A"
+              "#E0AF68"
+              "#7AA2F7"
+              "#BB9AF7"
+              "#7DCFFF"
+              "#C0CAF5"
+            ];
+          };
+        };
+      };
+    };
+
     # TheFuck is disabled because the current version (3.23) uses a deprecated module in python 3.12 and fails to build.
-    # A new version as be released for this issue to go away.
+    # A new version has be released for this issue to go away.
     # thefuck = {
     #   enable = true;
     #   enableZshIntegration = true;
