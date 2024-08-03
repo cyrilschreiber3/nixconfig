@@ -34,7 +34,8 @@ spinner() {
         sleep $delay
         printf "\b\b\b\b\b\b"
     done
-    printf "    \b\b\b\b"
+    printf "\r%s\r" "$(printf ' %.0s' {1..6})"
+    printf "\b\b\b\b\b\b"
 }
 
 # cd in the config dir
