@@ -25,7 +25,7 @@
       }
     }/modules/vscode-server/home.nix"
   ];
-  services.vscode-server.enable = true;
+  services.vscode-server.enableFHS = true;
 
   systemd.user.services.vscode-tunnel = {
     Unit = {
