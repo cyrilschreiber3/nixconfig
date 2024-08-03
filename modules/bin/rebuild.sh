@@ -90,6 +90,14 @@ push_output=$(git push 2>&1)
 echo " Done"
 echo "$push_output" | tail -n 3
 
+# Delete older generations
+echo "Deleting old generations..."
+nix-env --delete-generations +20 -p /nix/var/nix/profiles/default
+sudo nix-env --delete-generations +20 -p /nix/var/nix/profiles/system
+
+echo "Deleting unused store references..."
+sudo nix-collect-garbage
+
 # Go back to the initial dir
 popd >/dev/null
 
