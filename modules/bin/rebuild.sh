@@ -106,16 +106,19 @@ echo " Done"
 echo "$push_output" | tail -n 3
 
 # Delete older generations
-printf "Deleting old generations..."
+currentGenCount=$(nixos-rebuild list-generations | wc -l)
 maxGenCount=20
-(nix-env --delete-generations +$maxGenCount && sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system >nixos-gc.log 2>&1) &
-pid=$! && spinner $pid && wait $pid
-echo " Done"
+if [ "$currentGenCount" -gt 25 ]; then
+    printf "Deleting old generations..."
+    (nix-env --delete-generations +$maxGenCount >nixos-gc.log 2>&1 && sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system >nixos-gc.log 2>&1) &
+    pid=$! && spinner $pid && wait $pid
+    echo " Done"
 
-printf "Deleting unused store references..."
-(sudo nix-collect-garbage >nixos-gc.log 2>&1) &
-pid=$! && spinner $pid && wait $pid
-echo " Done"
+    printf "Deleting unused store references..."
+    (sudo nix-collect-garbage >nixos-gc.log 2>&1) &
+    pid=$! && spinner $pid && wait $pid
+    echo " Done"
+fi
 
 # Go back to the initial dir
 popd >/dev/null
