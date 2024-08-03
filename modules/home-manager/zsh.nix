@@ -3,7 +3,7 @@
     fzf
     pls
     lsd
-    # thefuck
+    thefuck
     oh-my-zsh
     nerdfonts
     chroma # required by the colorize plugin for omz
@@ -98,7 +98,7 @@
           "screen"
           "ssh"
           "systemadmin"
-          # "thefuck"
+          "thefuck"
           "vscode"
           # "zsh-interactive-cd"
         ];
@@ -190,11 +190,11 @@
 
     # TheFuck is disabled because the current version (3.23) uses a deprecated module in python 3.12 and fails to build.
     # A new version has be released for this issue to go away.
-    # thefuck = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   # enableInstantMode = true;
-    # };
+    thefuck = {
+      enable = true;
+      enableZshIntegration = true;
+      # enableInstantMode = true;
+    };
 
     vim = {
       enable = true;
