@@ -36,6 +36,7 @@
     "autostart/albert.desktop".source = "${pkgs.albert}/share/applications/albert.desktop";
     "albert/config".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert.conf}";
     "albert/websearch/engines.json".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert_search.json}";
+    "cinnamon/spices/".source = "${pkgs.copyPathToStore ./../dotfiles/cinnamon}";
   };
 
   dconf.settings = {
@@ -46,8 +47,8 @@
         "org.gnome.Terminal.desktop"
         "cinnamon-settings.desktop"
       ];
-      app-menu-icon-name = "nix-snowflake-white";
-      system-icon = "nix-snowflake-white";
+      # app-menu-icon-name = "nix-snowflake-white";
+      # system-icon = "nix-snowflake-white";
     };
     "org/cinnamon/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";

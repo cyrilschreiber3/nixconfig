@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamon Settings GUI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1b26;
+            color: #a9b1d6;
+        }
+
+        h1 {
+            color: #7aa2f7;
+            border-bottom: 2px solid #3d59a1;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #bb9af7;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #7dcfff;
+            margin-top: 20px;
+        }
+
+        h4 {
+            color: #bb9af7;
+            margin-top: 15px;
+        }
+
+        button {
+            background-color: #3d59a1;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #7aa2f7;
+        }
+
+        button:active {
+            background-color: #394f7e;
+        }
+
+        button:disabled {
+            background-color: #6c7086;
+            cursor: not-allowed;
+        }
+
+        .setting {
+            margin-bottom: 20px;
+            background-color: #24283b;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .setting label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #e0af68;
+        }
+
+        .setting select,
+        .setting input[type="checkbox"],
+        .setting input[type="number"],
+        .setting input[type="range"] {
+            margin-bottom: 5px;
+            background-color: #414868;
+            color: #c0caf5;
+            border: 1px solid #565f89;
+            border-radius: 3px;
+            padding: 5px;
+        }
+
+        .setting input[type="text"] {
+            margin-bottom: 5px;
+            background-color: #3b4261;
+            color: #c0caf5;
+            border: 1px solid #565f89;
+            border-radius: 3px;
+            padding: 8px;
+            font-size: 14px;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+
+        .setting input[type="text"]:focus {
+            outline: none;
+            border-color: #7aa2f7;
+            box-shadow: 0 0 5px #7aa2f7;
+        }
+
+        .setting input[type="range"] {
+            width: 200px;
+        }
+
+        .setting small {
+            display: block;
+            color: #9aa5ce;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .dependency-link {
+            color: #9aa5ce;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        #burger-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        #burger-button {
+            background: #3d59a1;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        #burger-button:hover {
+            background: #7aa2f7;
+        }
+
+        #menu {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            background: #24283b;
+            color: #a9b1d6;
+            width: 250px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        #menu.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #565f89;
+        }
+
+        #menu li:last-child {
+            border-bottom: none;
+        }
+
+        #menu a {
+            color: #a9b1d6;
+            text-decoration: none;
+        }
+
+        #menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* For WebKit browsers (Chrome, Safari, Edge) */
+        #menu::-webkit-scrollbar {
+            width: 8px;
+            /* Width of the scrollbar */
+        }
+
+        #menu::-webkit-scrollbar-thumb {
+            background-color: #7aa2f7;
+            /* Color of the scrollbar handle */
+            border-radius: 10px;
+            /* Roundness of the scrollbar handle */
+        }
+
+        #menu::-webkit-scrollbar-track {
+            background-color: #3b4261;
+            /* Color of the scrollbar track */
+            border-radius: 10px;
+            /* Roundness of the scrollbar track */
+        }
+
+        /* For Firefox */
+        #menu {
+            scrollbar-width: thin;
+            /* Width of the scrollbar */
+            scrollbar-color: #7aa2f7 #3b4261;
+            /* Color of the scrollbar handle and track */
+        }
+
+        /* For Internet Explorer and older versions of Edge */
+        #menu {
+            -ms-overflow-style: scrollbar;
+            /* Default scrollbar style */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="burger-container">
+        <button id="burger-button">&#9776;</button>
+        <div id="menu" class="hidden">
+            <ul id="menu-list"></ul>
+        </div>
+    </div>
+    <h1>Cinnamon Settings GUI</h1>
+    <div id="settings-container"></div>
+
+    <script>
+        const configPath = '/modules/';
+
+        async function discoverModules() {
+            try {
+                const response = await fetch('/directory_structure.json');
+                const structure = await response.json();
+                return Object.keys(structure).flatMap(module =>
+                    Object.keys(structure[module]).map(file => `${module}/${file}`)
+                );
+            } catch (error) {
+                console.error('Error discovering modules:', error);
+                return [];
+            }
+        }
+
+        async function loadSettings() {
+            const modules = await discoverModules();
+            for (const module of modules) {
+                try {
+                    const response = await fetch(configPath + module);
+                    const settings = await response.json();
+                    displaySettings(settings, module);
+                    buildMenu(settings, document.getElementById('menu-list'), module);
+                } catch (error) {
+                    console.error(`Error loading settings for ${module}:`, error);
+                }
+            }
+        }
+
+        document.getElementById('burger-button').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById('menu');
+            const burgerButton = document.getElementById('burger-button');
+
+            // Check if the click was outside the menu and burger button
+            if (!menu.contains(event.target) && !burgerButton.contains(event.target)) {
+                // Hide the menu if it is visible
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                    menu.classList.add('hidden');
+                }
+            }
+        });
+
+        function buildMenu(settings, menuList, modulePath) {
+            const fileName = modulePath
+            const fileEncodedName = encodeURIComponent(fileName);
+
+            const fileLi = document.createElement('li');
+            fileLi.innerHTML = `<a href="#${fileEncodedName}"><strong>${fileName.split('/')[0]}</strong></a>`;
+            const fileUl = document.createElement('ul');
+
+            if (settings.layout) {
+                for (const pageKey of settings.layout.pages) {
+                    const page = settings.layout[pageKey];
+                    const pageId = `${fileEncodedName}-${encodeURIComponent(pageKey)}`;
+                    const pageLi = document.createElement('li');
+                    pageLi.innerHTML = `<a href="#${pageId}">${page.title}</a>`;
+                    const pageUl = document.createElement('ul');
+
+                    page.sections.forEach(sectionKey => {
+                        const section = settings.layout[sectionKey];
+                        const sectionId = `${pageId}-${encodeURIComponent(sectionKey)}`;
+                        if (section.title) {
+                            const sectionLi = document.createElement('li');
+                            sectionLi.innerHTML = `<a href="#${sectionId}">${section.title}</a>`;
+                            const keyUl = document.createElement('ul');
+
+                            sectionLi.appendChild(keyUl);
+                            pageUl.appendChild(sectionLi);
+                        }
+                    });
+
+                    fileUl.appendChild(pageLi);
+                }
+            } else {
+                for (const [key, setting] of Object.entries(settings)) {
+                    const settingId = `${fileEncodedName}-${encodeURIComponent(key)}`;
+                    if (setting.type === 'section' || setting.type === 'header') {
+                        if (setting.description) {
+                            const sectionLi = document.createElement('li');
+                            sectionLi.innerHTML = `<a href="#${settingId}">${setting.description}</a>`;
+                            fileUl.appendChild(sectionLi);
+                        }
+                    }
+                }
+            }
+
+            fileLi.appendChild(fileUl);
+            menuList.appendChild(fileLi);
+        }
+
+        function displaySettings(settings, modulePath) {
+            const container = document.getElementById('settings-container');
+            const fileName = modulePath
+            const fileEncodedName = encodeURIComponent(fileName);
+
+            const moduleDiv = document.createElement('div');
+            moduleDiv.id = fileEncodedName;
+            moduleDiv.innerHTML = `<h2>${fileName.split('/')[0]}</h2>`;
+
+            if (settings.layout) {
+                for (const pageKey of settings.layout.pages) {
+                    const page = settings.layout[pageKey];
+                    const pageId = `${fileEncodedName}-${encodeURIComponent(pageKey)}`;
+                    const pageDiv = document.createElement('div');
+                    pageDiv.id = pageId;
+                    pageDiv.innerHTML = `<h3>${page.title}</h3>`;
+
+                    for (const sectionKey of page.sections) {
+                        const section = settings.layout[sectionKey];
+                        const sectionId = `${pageId}-${encodeURIComponent(sectionKey)}`;
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.id = sectionId;
+                        sectionDiv.innerHTML = `<h4>${section.title}</h4>`;
+
+                        for (const key of section.keys) {
+                            if (settings[key]) {
+                                const dependency = settings[key].dependency ? settings[settings[key].dependency] : null;
+                                sectionDiv.appendChild(createSettingElement(key, settings[key], sectionId, dependency));
+                            }
+                        }
+
+                        pageDiv.appendChild(sectionDiv);
+                    }
+
+                    moduleDiv.appendChild(pageDiv);
+                }
+            } else {
+                for (const [key, setting] of Object.entries(settings)) {
+                    const settingId = `${fileEncodedName}-${encodeURIComponent(key)}`;
+                    if (setting.type === 'section' || setting.type === 'header') {
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.id = settingId;
+                        sectionDiv.innerHTML = `<h3>${setting.description}</h3>`;
+                        moduleDiv.appendChild(sectionDiv);
+                    } else if (!key.startsWith('_')) {
+                        const dependency = setting.dependency ? settings[setting.dependency] : null;
+                        moduleDiv.appendChild(createSettingElement(key, setting, fileEncodedName, dependency));
+                    }
+                }
+            }
+
+            container.appendChild(moduleDiv);
+        }
+
+        function createSettingElement(key, setting, sectionId, dependency) {
+            const settingDiv = document.createElement('div');
+            settingDiv.className = 'setting';
+            settingDiv.id = `${sectionId}-${encodeURIComponent(key)}`;
+            settingDiv.innerHTML = `<label>${setting.description ? setting.description : key}</label>`;
+            if (dependency) {
+                const dependencyName = dependency.description || setting.dependency;
+                const dependencyLink = document.createElement('a');
+                dependencyLink.href = `#${sectionId}-${encodeURIComponent(setting.dependency)}`;
+                dependencyLink.className = 'dependency-link';
+                dependencyLink.innerHTML = ` - Depends on ${dependencyName}`;
+                settingDiv.querySelector('label').appendChild(dependencyLink);
+            }
+            switch (setting.type) {
+                case 'combobox':
+                    settingDiv.innerHTML += createCombobox(key, setting);
+                    break;
+                case 'switch':
+                    settingDiv.innerHTML += createSwitch(key, setting);
+                    break;
+                case 'checkbox':
+                    settingDiv.innerHTML += createSwitch(key, setting);
+                    break;
+                case 'spinbutton':
+                    settingDiv.innerHTML += createSpinButton(key, setting);
+                    break;
+                case 'scale':
+                    settingDiv.innerHTML += createScale(key, setting);
+                    break;
+                case 'entry':
+                    settingDiv.innerHTML += createEntry(key, setting);
+                    break;
+                case 'keybinding':
+                    settingDiv.innerHTML += createEntry(key, setting);
+                    break;
+                case 'button':
+                    settingDiv.innerHTML += createButton(key, setting);
+                    break;
+                default:
+                    settingDiv.innerHTML += createEntry(key, setting);
+                    break;
+            }
+
+            if (setting.tooltip) {
+                settingDiv.innerHTML += `<small>${setting.tooltip}</small>`;
+            }
+
+            return settingDiv;
+        }
+
+        function createCombobox(key, setting) {
+            let html = `<select id="${key}" onchange="updateSetting('${key}', this.value)">`;
+            for (const [label, value] of Object.entries(setting.options)) {
+                html += `<option value="${value}" ${value === setting.value ? 'selected' : ''}>${label}</option>`;
+            }
+            html += '</select>';
+            return html;
+        }
+
+        function createSwitch(key, setting) {
+            return `<input type="checkbox" id="${key}" ${setting.value ? 'checked' : ''} onchange="updateSetting('${key}', this.checked)">`;
+        }
+
+        function createSpinButton(key, setting) {
+            return `<input type="number" id="${key}" value="${setting.value}" min="${setting.min}" max="${setting.max}" step="${setting.step}" onchange="updateSetting('${key}', this.value)"> ${setting.units}`;
+        }
+
+        function createScale(key, setting) {
+            return `
+                <input type="range" id="${key}" value="${setting.value}" min="${setting.min}" max="${setting.max}" step="${setting.step}" onchange="updateSetting('${key}', this.value)">
+                <span id="${key}-value">${setting.value}</span>${setting.units}
+            `;
+        }
+
+        function createEntry(key, setting) {
+            return `<input type="text" id="${key}" value="${setting.value}" onchange="updateSetting('${key}', this.value)">`;
+        }
+
+        function createButton(key, setting) {
+            const button = document.createElement('button');
+            button.id = key;
+            button.innerHTML = setting.description;
+            button.title = setting.tooltip;
+            button.disabled = true;
+            return button.outerHTML;
+        }
+
+        async function updateSetting(key, value) {
+            // Find the closest ancestor element with an id starting with the file name pattern
+            const fileElement = document.getElementById(key).closest(`div`);
+            if (!fileElement) {
+                console.error('Could not determine parent id for setting:', key);
+                return;
+            }
+
+            const regex = "(.*?)\/(.*?)\.json";
+            const match = decodeURIComponent(fileElement.id).match(regex);
+
+            if (!match) {
+                console.error('Could not determine file for setting:', key);
+                return;
+            }
+
+            const fileId = match[0];
+            const [module, file] = fileId.split('/');
+
+            try {
+                const response = await fetch('/update', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ module, file, key, value }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to update setting');
+                }
+
+                console.log(`Updated setting: ${module}/${file} - ${key} = ${value}`);
+                const valueSpan = document.getElementById(`${key}-value`);
+                if (valueSpan) {
+                    valueSpan.textContent = value;
+                }
+            } catch (error) {
+                console.error('Error updating setting:', error);
+            }
+        }
+
+        loadSettings();
+    </script>
+</body>
+
+</html>

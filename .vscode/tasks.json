@@ -52,6 +52,23 @@
 				"showReuseMessage": false,
 				"clear": false
 			}
+		},
+		{
+			"label": "Serve settings app",
+			"type": "shell",
+			"command": "cd ./utilities/cinnamon-settings && node server.js",
+			"group": {
+				"kind": "none"
+			},
+			"detail": "",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "dedicated",
+				"showReuseMessage": false,
+				"clear": false
+			}
 		}
 	]
 }

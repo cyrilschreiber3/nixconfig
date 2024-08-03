@@ -1,0 +1,32 @@
+{
+    "calendar@cinnamon.org": {
+        "13.json": true
+    },
+    "cornerbar@cinnamon.org": {
+        "14.json": true
+    },
+    "favorites@cinnamon.org": {
+        "9.json": true
+    },
+    "grouped-window-list@cinnamon.org": {
+        "2.json": true
+    },
+    "menu@cinnamon.org": {
+        "0.json": true
+    },
+    "network@cinnamon.org": {
+        "network@cinnamon.org.json": true
+    },
+    "notifications@cinnamon.org": {
+        "notifications@cinnamon.org.json": true
+    },
+    "power@cinnamon.org": {
+        "power@cinnamon.org.json": true
+    },
+    "printers@cinnamon.org": {
+        "6.json": true
+    },
+    "sound@cinnamon.org": {
+        "sound@cinnamon.org.json": true
+    }
+}
