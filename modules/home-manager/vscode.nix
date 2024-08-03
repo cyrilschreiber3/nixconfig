@@ -34,19 +34,19 @@
     nixpkgs-fmt
   ];
 
-  systemd.user.services.vscode-tunnel = {
-    Unit = {
-      Description = "Visual Studio Code Tunnel";
-      After = ["network.target"];
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel '--verbose' '--cli-data-dir' '${config.home.homeDirectory}/.vscode/cli' 'tunnel' 'service' 'internal-run'";
-      Restart = "always";
-      RestartSec = 10;
-    };
-    Install = {
-      WantedBy = ["default.target"];
-    };
-  };
+  # systemd.user.services.vscode-tunnel = {
+  #   Unit = {
+  #     Description = "Visual Studio Code Tunnel";
+  #     After = ["network.target"];
+  #   };
+  #   Service = {
+  #     Type = "simple";
+  #     ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel '--verbose' '--cli-data-dir' '${config.home.homeDirectory}/.vscode/cli' 'tunnel' 'service' 'internal-run'";
+  #     Restart = "always";
+  #     RestartSec = 10;
+  #   };
+  #   Install = {
+  #     WantedBy = ["default.target"];
+  #   };
+  # };
 }
