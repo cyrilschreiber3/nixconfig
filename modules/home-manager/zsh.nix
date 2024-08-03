@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     fzf
     pls
+    lsd
     # thefuck
     oh-my-zsh
     nerdfonts
