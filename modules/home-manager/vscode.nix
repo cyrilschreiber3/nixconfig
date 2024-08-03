@@ -27,6 +27,12 @@
   ];
   services.vscode-server.enable = true;
   services.vscode-server.enableFHS = true;
+  services.vscode-server.installPath = "$HOME/.vscode";
+  services.vscode-server.extraRuntimeDependencies = with pkgs; [
+    nixd
+    alejandra
+    nixpkgs-fmt
+  ];
 
   systemd.user.services.vscode-tunnel = {
     Unit = {
