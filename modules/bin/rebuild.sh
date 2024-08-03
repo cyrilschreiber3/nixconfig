@@ -92,8 +92,9 @@ echo "$push_output" | tail -n 3
 
 # Delete older generations
 echo "Deleting old generations..."
-nix-env --delete-generations +20
-sudo nix-env --delete-generations +20 -p /nix/var/nix/profiles/system
+maxGenCount=20
+nix-env --delete-generations +$maxGenCount
+sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system
 
 echo "Deleting unused store references..."
 sudo nix-collect-garbage
