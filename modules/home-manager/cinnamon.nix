@@ -46,8 +46,8 @@
         "org.gnome.Terminal.desktop"
         "cinnamon-settings.desktop"
       ];
-      app-menu-icon-name = "${pkgs.callPackage ./../../modules/themes/nixos-artwork.nix {}}/share/logo/nix-snowflake-white.svg";
-      system-icon = "${pkgs.callPackage ./../../modules/themes/nixos-artwork.nix {}}/share/logo/nix-snowflake-white.svg";
+      # app-menu-icon-name = "${pkgs.callPackage ./../../modules/themes/nixos-artwork.nix {}}/share/logo/nix-snowflake-white.svg";
+      # system-icon = "${pkgs.callPackage ./../../modules/themes/nixos-artwork.nix {}}/share/logo/nix-snowflake-white.svg";
     };
     "org/cinnamon/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
