@@ -123,7 +123,6 @@
 
       shellAliases = {
         ls = "lsd";
-        "cd.." = "cd ..";
         ".." = "cd ..";
         fzf = ''
           FZF_DEFAULT_OPTS="--highlight-line \
