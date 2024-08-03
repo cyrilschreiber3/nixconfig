@@ -4,7 +4,7 @@
     pls
     # thefuck
     oh-my-zsh
-    (nerdfonts.override {fonts = ["Meslo" "JetBrainsMono"];})
+    nerdfonts
     chroma # required by the colorize plugin for omz
     zsh-autosuggestions
     zsh-nix-shell
