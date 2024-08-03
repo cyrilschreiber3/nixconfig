@@ -72,7 +72,8 @@ rebuildStart=$(date +%s)
 
 currentGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
 
-# Clear log file
+# Clear log files
+echo "" >nixos-gc.log
 echo "" >nixos-switch.log
 
 # Rebuild and output simplified errors
@@ -105,7 +106,7 @@ echo " Done"
 echo "$push_output" | tail -n 3
 
 # Delete older generations
-printf "Deleting old generations..." |& tee nixos-gc.log
+printf "Deleting old generations..." 2>&1 |& tee -a nixos-gc.log
 maxGenCount=20
 (nix-env --delete-generations +$maxGenCount && sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system >nixos-gc.log 2>&1) &
 pid=$!
@@ -113,7 +114,7 @@ spinner $pid
 wait $pid
 echo " Done"
 
-printf "Deleting unused store references..." |& tee nixos-gc.log
+printf "Deleting unused store references..." 2>&1 |& tee -a nixos-gc.log
 (sudo nix-collect-garbage >nixos-gc.log 2>&1) &
 pid=$!
 spinner $pid
