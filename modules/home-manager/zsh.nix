@@ -209,6 +209,13 @@
       changeDirWidgetOptions = ["--height 7"];
       defaultOptions = [""];
     };
+
+    # For command-not-found module
+    # See this blog thread for more info https://discourse.nixos.org/t/command-not-found-unable-to-open-database/3807/9
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   dconf.settings = {
