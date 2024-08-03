@@ -122,6 +122,9 @@
       };
 
       shellAliases = {
+        ls = "lsd";
+        "cd.." = "cd ..";
+        ".." = "cd ..";
         fzf = ''
           FZF_DEFAULT_OPTS="--highlight-line \
           --info=inline-right \
@@ -146,9 +149,6 @@
           --color=spinner:#ff007c" \
           fzf
         '';
-        ls = "lsd";
-        ll = "lsd -l";
-        ".." = "cd ..";
       };
     };
 
