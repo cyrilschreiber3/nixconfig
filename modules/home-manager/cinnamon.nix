@@ -47,8 +47,8 @@
         "org.gnome.Terminal.desktop"
         "cinnamon-settings.desktop"
       ];
-      # app-menu-icon-name = "nix-snowflake-white";
-      # system-icon = "nix-snowflake-white";
+      app-menu-icon-name = "nix-snowflake-white";
+      system-icon = "nix-snowflake-white";
     };
     "org/cinnamon/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
