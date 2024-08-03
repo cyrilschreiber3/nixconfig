@@ -37,7 +37,7 @@
   systemd.user.services.code-tunnel = {
     Unit = {
       Description = "Visual Studio Code Tunnel";
-      After = ["network.target" "multi-user.target" "systemd-user-sessions.service" "auto-fix-vscode-server.service"];
+      After = ["network.target" "multi-user.target" "systemd-user-sessions.service" "auto-fix-vscode-server.service" "graphical.target" "basic.target"];
     };
     Service = {
       Type = "idle";
@@ -46,7 +46,7 @@
       RestartSec = 10;
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = ["graphical.target"];
     };
   };
 }
