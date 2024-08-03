@@ -108,14 +108,14 @@ echo "$push_output" | tail -n 3
 printf "Deleting old generations..." |& tee nixos-gc.log
 maxGenCount=20
 (nix-env --delete-generations +$maxGenCount && sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system >nixos-gc.log 2>&1) &
-pid=!$
+pid=$!
 spinner $pid
 wait $pid
 echo " Done"
 
 printf "Deleting unused store references..." |& tee nixos-gc.log
 (sudo nix-collect-garbage >nixos-gc.log 2>&1) &
-pid=!$
+pid=$!
 spinner $pid
 wait $pid
 echo " Done"
