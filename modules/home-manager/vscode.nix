@@ -41,6 +41,7 @@
     };
     Service = {
       Type = "idle";
+      Environment = "PATH=${pkgs.lib.makeBinPath [pkgs.vscode pkgs.bash pkgs.coreutils]}/bin:/run/current-system/sw/bin";
       ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run'";
       Restart = "always";
       RestartSec = 10;
