@@ -23,6 +23,20 @@ function handleExit() {
     exit 1
 }
 
+spinner() {
+    local pid=$1
+    local delay=0.1
+    local spinstr='|/-\'
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+
 # cd in the config dir
 pushd ~/nixconfig >/dev/null
 
@@ -91,13 +105,20 @@ echo " Done"
 echo "$push_output" | tail -n 3
 
 # Delete older generations
-echo "Deleting old generations..."
+printf "Deleting old generations..." |& tee nixos-gc.log
 maxGenCount=20
-nix-env --delete-generations +$maxGenCount
-sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system
+(nix-env --delete-generations +$maxGenCount && sudo nix-env --delete-generations +$maxGenCount -p /nix/var/nix/profiles/system >nixos-gc.log 2>&1) &
+pid=!$
+spinner $pid
+wait $pid
+echo " Done"
 
-echo "Deleting unused store references..."
-sudo nix-collect-garbage
+printf "Deleting unused store references..." |& tee nixos-gc.log
+(sudo nix-collect-garbage >nixos-gc.log 2>&1) &
+pid=!$
+spinner $pid
+wait $pid
+echo " Done"
 
 # Go back to the initial dir
 popd >/dev/null
