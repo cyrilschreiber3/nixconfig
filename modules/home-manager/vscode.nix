@@ -46,7 +46,7 @@
       RestartSec = 10;
     };
     Install = {
-      WantedBy = ["graphical.target"];
+      WantedBy = ["basic.target"];
     };
   };
 }
