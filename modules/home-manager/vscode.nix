@@ -27,7 +27,7 @@
   ];
   services.vscode-server.enable = true;
   services.vscode-server.enableFHS = true;
-  # services.vscode-server.installPath = "$HOME/.vscode";
+  services.vscode-server.installPath = "$HOME/.vscode";
   services.vscode-server.extraRuntimeDependencies = with pkgs; [
     nixd
     alejandra
@@ -37,11 +37,11 @@
   systemd.user.services.code-tunnel = {
     Unit = {
       Description = "Visual Studio Code Tunnel";
-      After = ["network.target"];
+      After = ["network.target" "multi-user.target" "systemd-user-sessions.service" "auto-fix-vscode-server.service"];
     };
     Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode-server/cli tunnel service internal-run";
+      Type = "idle";
+      ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run";
       Restart = "always";
       RestartSec = 10;
     };
