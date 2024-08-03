@@ -66,5 +66,8 @@
       command = "albert toggle";
       binding = ["<Super>space"];
     };
+    "org/cinnamon/desktop/keybindings/media-keys" = {
+      terminal = ["<Super>t"];
+    };
   };
 }
