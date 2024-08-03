@@ -15,6 +15,7 @@
   programs = {
     zsh = {
       enable = true;
+      autocd = true;
       autosuggestion.enable = true;
       syntaxHighlighting = {
         enable = true;
@@ -145,6 +146,9 @@
           --color=spinner:#ff007c" \
           fzf
         '';
+        ls = "lsd";
+        ll = "lsd -l";
+        ".." = "cd ..";
       };
     };
 
