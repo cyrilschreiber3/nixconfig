@@ -37,12 +37,12 @@
   systemd.user.services.code-tunnel = {
     Unit = {
       Description = "Visual Studio Code Tunnel";
-      After = ["network.target" "multi-user.target" "auto-fix-vscode-server.service" "graphical.target" "nix-deamon.socket"];
+      After = ["network.target" "multi-user.target" "nix-deamon.socket"];
     };
     Service = {
       Type = "idle";
-      Environment = "PATH=${pkgs.lib.makeBinPath [pkgs.vscode pkgs.bash pkgs.coreutils]}/bin:/run/current-system/sw/bin";
-      ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run'";
+      Environment = "PATH=${pkgs.lib.makeBinPath [pkgs.vscode pkgs.nixd pkgs.alejandra pkgs.nixpkgs-fmt pkgs.bash pkgs.coreutils]}/bin:/run/current-system/sw/bin";
+      ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run";
       Restart = "always";
       RestartSec = 10;
     };
