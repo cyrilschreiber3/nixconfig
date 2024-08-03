@@ -41,7 +41,7 @@
     };
     Service = {
       Type = "idle";
-      ExecStart = "${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run";
+      ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.vscode}/lib/vscode/bin/code-tunnel --verbose --cli-data-dir ${config.home.homeDirectory}/.vscode/cli tunnel service internal-run'";
       Restart = "always";
       RestartSec = 10;
     };
