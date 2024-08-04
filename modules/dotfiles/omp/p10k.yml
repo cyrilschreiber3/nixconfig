@@ -25,7 +25,7 @@ blocks:
             template: " \uf0e7 "
           - type: path
             style: plain
-            background: "#303030"
+            background: "p:background"
             foreground: "p:path"
             template: " {{ if .Writable }}{{ if eq .Path \"~\" }}\uf015{{ else }}\uf07c {{ end }}{{ else }}\uf023 {{ end }} {{ .Parent }}"
             properties:
