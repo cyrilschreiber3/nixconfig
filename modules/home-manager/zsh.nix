@@ -82,7 +82,8 @@
         # zsh-interactive-cd plugin
         bindkey '^I' zic-completion
 
-        # oh-my-posh
+        # enable oh-my-posh
+        eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json)"
         function set_poshcontext() {
             export currentDir=$(pwd)
         }
@@ -159,7 +160,7 @@
 
     oh-my-posh = {
       enable = true;
-      enableZshIntegration = true;
+      # enableZshIntegration = true; # disabled because it doesn't let me override the set_poshcontext function after the evaluation.
       settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json"));
     };
 
