@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 final_space: true
 version: 2
-console_title_template: "{{ if SSHSession }}{{ .UserName }}@{{ .HostName }} :: {{ end }}{{ .PWD }}"
 palette:
     background: "#303030"
     separator: "#7a7a7a"
