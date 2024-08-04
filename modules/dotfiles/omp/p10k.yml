@@ -14,7 +14,7 @@ blocks:
       segments:
           - type: os
             style: diamond
-            leading_diamond: "<p:background,transparent>\u256d\u2500</>"
+            leading_diamond: "<p:separator,transparent>\u256d\u2500</>"
             background: "p:background"
             foreground: "#e3e3e3"
             template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}} <p:separator> \ue0b1</>"
@@ -27,18 +27,10 @@ blocks:
             style: plain
             background: "#303030"
             foreground: "p:path"
-            template: " {{ if .Writable }}{{ if eq .Path \"~\" }}\uf015{{ else }}\uf07c{{ end }}{{ else }}\uf023{{ end }} "
+            template: " {{ if .Writable }}{{ if eq .Path \"~\" }}\uf015{{ else }}\uf07c {{ end }}{{ else }}\uf023 {{ end }} {{ .Parent }}"
             properties:
                 style: full
-                home_icon: "\uf015"
-          - type: command
-            style: plain
-            background: "p:background"
-            foreground: "p:path"
-            template: ' {{ if ne .PWD "~" }}{{ .Output }}{{ end }}'
-            properties:
-                shell: bash
-                command: echo "${currentDir%/*}/" | sed "s|^$HOME|~|"
+                home_icon: "~"
           - type: path
             style: plain
             background: "p:background"
@@ -95,7 +87,7 @@ blocks:
       segments:
           - type: text
             style: plain
-            foreground: "p:background"
+            foreground: "p:separator"
             template: "\u2570\u2500"
 
 transient_prompt:
