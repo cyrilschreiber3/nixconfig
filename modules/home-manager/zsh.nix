@@ -81,12 +81,6 @@
       initExtra = ''
         # zsh-interactive-cd plugin
         bindkey '^I' zic-completion
-
-        # enable oh-my-posh here because it doesn't let me override the set_poshcontext function after the evaluation with home-manager
-        eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json)"
-        function set_poshcontext() {
-            export currentDir=$(pwd)
-        }
       '';
 
       oh-my-zsh = {
@@ -157,6 +151,12 @@
           fzf
         '';
       };
+    };
+
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json"));
     };
 
     gnome-terminal = {
