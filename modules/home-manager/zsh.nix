@@ -57,30 +57,35 @@
           };
           file = "zsh-interactive-cd.plugin.zsh";
         }
-        {
-          name = "powerlevel10k-config";
-          src = ./../dotfiles/p10k;
-          file = "p10k.zsh";
-        }
-        {
-          name = "zsh-powerlevel10k";
-          src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-          file = "powerlevel10k.zsh-theme";
-        }
+        # {
+        #   name = "powerlevel10k-config";
+        #   src = ./../dotfiles/p10k;
+        #   file = "p10k.zsh";
+        # }
+        # {
+        #   name = "zsh-powerlevel10k";
+        #   src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+        #   file = "powerlevel10k.zsh-theme";
+        # }
       ];
 
-      initExtraFirst = ''
-        # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-        # Initialization code that may require console input (password prompts, [y/n]
-        # confirmations, etc.) must go above this block; everything else may go below.
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '';
+      # initExtraFirst = ''
+      #   # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+      #   # Initialization code that may require console input (password prompts, [y/n]
+      #   # confirmations, etc.) must go above this block; everything else may go below.
+      #   if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+      #     source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      #   fi
+      # '';
 
       initExtra = ''
         # zsh-interactive-cd plugin
         bindkey '^I' zic-completion
+
+        # oh-my-posh
+        function set_poshcontext() {
+            export currentDir=$(pwd)
+        }
       '';
 
       oh-my-zsh = {
@@ -152,7 +157,11 @@
       };
     };
 
-    # oh-my-posh = {};
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json"));
+    };
 
     gnome-terminal = {
       enable = true;
