@@ -83,7 +83,7 @@ sudo nixos-rebuild switch --flake ./#default --accept-flake-config --log-format 
 )
 
 # Check if the generation has changed
-commitGeneration=$(git log -1 --pretty=%B | grep -oP 'Generation: \K\d+') || echo ""
+commitGeneration=$(git log -1 --pretty=%B | grep -oP 'Generation: \K\d+') || commitGeneration=""
 lastGeneration=${commitGeneration:-$currentGeneration}
 newGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
 
