@@ -17,7 +17,7 @@ blocks:
             leading_diamond: "<p:background,transparent>\u256d\u2500</>"
             background: "p:background"
             foreground: "#e3e3e3"
-            template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}}<p:separator> \ue0b1</> "
+            template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}}<p:separator> \ue0b1 </>"
           - type: root
             style: plain
             background: "p:background"

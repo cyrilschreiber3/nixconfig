@@ -50,7 +50,7 @@ if test "$update" == "true"; then
 fi
 
 # return if no changes exept if forced
-if git diff --quiet "*.nix" && test "$force" != "true"; then
+if git diff --quiet && test "$force" != "true"; then
     echo "No changes detected, exiting..."
     popd >/dev/null
     exit 0
