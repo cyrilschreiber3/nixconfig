@@ -14,7 +14,7 @@ blocks:
       segments:
           - type: os
             style: diamond
-            leading_diamond: "<p:separator,transparent>\u256d\u2500</>"
+            leading_diamond: "<p:background,transparent>\u256d\u2500</>"
             background: "p:background"
             foreground: "#e3e3e3"
             template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}}<p:separator> \ue0b1</>"
@@ -38,7 +38,7 @@ blocks:
             template: ' {{ if ne .PWD "~" }}{{ .Output }}{{ end }}'
             properties:
                 shell: bash
-                command: echo "${POSH%/*}/" | sed "s|^$HOME|~|"
+                command: echo "${currentDir%/*}/" | sed "s|^$HOME|~|"
           - type: path
             style: plain
             background: "p:background"
@@ -95,7 +95,7 @@ blocks:
       segments:
           - type: text
             style: plain
-            foreground: "p:separator"
+            foreground: "p:background"
             template: "\u2570\u2500"
 
 transient_prompt:
