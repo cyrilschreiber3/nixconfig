@@ -6,11 +6,13 @@
 force=false
 update=false
 garbageCollect=false
-while getopts "fug" flag; do
+host=$(hostname)
+while getopts "fugH:" flag; do
     case $flag in
     f) force=true ;;
     u) update=true ;;
     g) garbageCollect=true ;;
+    H) host=$OPTARG ;;
     esac
 done
 
@@ -79,7 +81,7 @@ echo "" >nixos-gc.log
 echo "" >nixos-switch.log
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#scorpius-cl-01 --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
+sudo nixos-rebuild switch --flake ./#$host --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
     echo "Rebuild failed..."
     handleExit
 )
@@ -97,7 +99,7 @@ fi
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep current)
 read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<<"$genMetadata"
-commitMessage="Host: $(hostname), Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
+commitMessage="Host: $host, Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
 printf "Commiting change..."
