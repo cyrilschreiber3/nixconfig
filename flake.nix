@@ -4,6 +4,7 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -31,18 +32,34 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-wsl,
     # plasma-manager,
     spicetify-nix,
     mypkgs,
     ...
   } @ inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/default/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+    nixosConfigurations = {
+      scorpius-cl-01 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/scorpius-cl-01/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+      scorpius-cl-01-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+          }
+          ./hosts/scorpius-cl-01-wsl/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
   };
 }

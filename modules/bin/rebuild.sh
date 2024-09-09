@@ -79,7 +79,7 @@ echo "" >nixos-gc.log
 echo "" >nixos-switch.log
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#default --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
+sudo nixos-rebuild switch --flake ./#scorpius-cl-01 --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
     echo "Rebuild failed..."
     handleExit
 )

@@ -21,7 +21,7 @@
 		"id": "f85d93ca",
 		"name": "GitHub",
 		"trigger": "gh",
-		"url": "https://github.com/search?utf8=✓&q=%s"
+		"url": "https://github.com/search?q=%s&ref=opensearch"
 	},
 	{
 		"fallback": true,
