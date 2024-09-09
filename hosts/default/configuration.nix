@@ -105,41 +105,38 @@
   # Configure console keymap
   console.keyMap = "fr_CH";
 
-  environment.cinnamon.excludePackages = with pkgs.gnome;
-    [
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-      gnome-logs
-      gnome-characters
-      gnome-music
-      gnome-contacts
-      gnome-initial-setup
-      gnome-characters
-      gnome-clocks
-      gnome-maps
-      gnome-weather
-    ]
-    ++ (with pkgs; [
-      cheese # webcam tool
-      baobab # disk usage
-      totem # video player
-      eog # image viewer
-      evince # document viewer
-      seahorse # password manager
-      epiphany # web browser
-      geary # email reader
-      yelp # Help view
-      simple-scan
-      gnome-calculator
-      gnome-calendar
-      gnome-font-viewer
-      gnome-disk-utility
-      gnome-photos
-      gnome-tour
-      loupe # image viewer
-    ]);
+  environment.cinnamon.excludePackages = with pkgs; [
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    cheese # webcam tool
+    baobab # disk usage
+    totem # video player
+    eog # image viewer
+    evince # document viewer
+    seahorse # password manager
+    epiphany # web browser
+    geary # email reader
+    yelp # Help view
+    simple-scan
+    gnome-logs
+    gnome-characters
+    gnome-music
+    gnome-contacts
+    gnome-initial-setup
+    gnome-characters
+    gnome-clocks
+    gnome-maps
+    gnome-weather
+    gnome-calculator
+    gnome-calendar
+    gnome-font-viewer
+    gnome-disk-utility
+    gnome-photos
+    gnome-tour
+    loupe # image viewer
+  ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
