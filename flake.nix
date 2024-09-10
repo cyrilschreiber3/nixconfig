@@ -61,7 +61,9 @@
         ];
       };
     };
-    nixosModules = import "${self}/modules/nixos/default.nix";
-    homeManagerModules = import "${self}/modules/home-manager/default.nix";
+    nixosModules = {
+      nixos = import ./modules/nixos;
+      home-manager = import ./modules/home-manager;
+    };
   };
 }
