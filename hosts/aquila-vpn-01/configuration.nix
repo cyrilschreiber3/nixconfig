@@ -38,7 +38,11 @@ in {
       experimental-features = nix-command flakes
       warn-dirty = false
     '';
-
+    settings.trusted-users = [
+      "root"
+      "admin"
+      "@wheel"
+    ];
     settings.auto-optimise-store = true;
   };
 
@@ -59,7 +63,6 @@ in {
   console = {
     font = "Lat2-Terminus16";
     keyMap = "fr_CH";
-    useXkbConfig = true;
   };
 
   # mainUser = {
@@ -88,13 +91,13 @@ in {
     }
   ];
 
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs;};
-  #   backupFileExtension = "backup";
-  #   users = {
-  #     "admin" = import ./home.nix;
-  #   };
-  # };
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    backupFileExtension = "backup";
+    users = {
+      "admin" = import ./home.nix;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -102,6 +105,11 @@ in {
     git
     tree
   ];
+
+  programs = {
+    zsh.enable = true;
+    nix-ld.enable = true;
+  };
 
   services.openssh = {
     enable = true;

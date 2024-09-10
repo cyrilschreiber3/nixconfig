@@ -36,14 +36,9 @@
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          {
-            nixpkgs.buildPlatform.system = "x86_64-linux";
-            nixpkgs.hostPlatform.system = "aarch64-linux";
-          }
           ./hosts/aquila-vpn-01/configuration.nix
           inputs.home-manager.nixosModules.default
           nixos-hardware.nixosModules.raspberry-pi-3
-          # main-config.nixosModules.nixos.mainUser
         ];
       };
     };

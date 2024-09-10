@@ -104,11 +104,11 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1725993228,
-        "narHash": "sha256-wtLOZXKNCKhILMuicQsXhPM9z9mbv5+eq3Juy/kpcWU=",
+        "lastModified": 1726007287,
+        "narHash": "sha256-mVBljZYP71/ZRig6aWedywWFeGMKIoRFm7EZXYS4M70=",
         "owner": "cyrilschreiber3",
         "repo": "nixconfig",
-        "rev": "a7699f62232a96c1e0da76b55dc316c8e2ba2fcb",
+        "rev": "ff4f16c799de0be6044ae9f2fe519f0dd319c116",
         "type": "github"
       },
       "original": {
