@@ -8,6 +8,8 @@
   imports = [
   ];
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   wsl.enable = true;
   wsl.defaultUser = "cyril";
   users.users."cyril".shell = pkgs.zsh;
