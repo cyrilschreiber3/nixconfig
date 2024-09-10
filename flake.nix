@@ -37,7 +37,12 @@
     spicetify-nix,
     mypkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    importDir = dir:
+      builtins.mapAttrs
+      (name: value: import (dir + "/${name}"))
+      (builtins.readDir dir);
+  in {
     nixosConfigurations = {
       scorpius-cl-01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -60,6 +65,10 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+    };
+    nixosModules = {
+      nixos = importDir ./modules/nixos;
+      home-manager = importDir ./modules/home-manager;
     };
   };
 }
