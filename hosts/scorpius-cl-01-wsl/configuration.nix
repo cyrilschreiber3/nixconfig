@@ -10,6 +10,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = "cyril";
+  users.users."cyril".shell = pkgs.zsh;
 
   networking.hostName = "scorpius-cl-01-wsl";
 
