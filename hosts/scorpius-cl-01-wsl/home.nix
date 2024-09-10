@@ -6,7 +6,7 @@
   imports = [
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
-    # ./../../modules/home-manager/zsh.nix
+    ./../../modules/home-manager/zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -48,6 +48,12 @@
   };
 
   home.sessionVariables = {
+  };
+
+  zshConfig = {
+    enable = true;
+    enableCinnamonDE = false;
+    useLegacyP10k = false;
   };
 
   # Let Home Manager install and manage itself.
