@@ -16,6 +16,15 @@
   users.users."cyril".shell = pkgs.zsh;
 
   networking.hostName = "scorpius-cl-01-wsl";
+  wsl.wslConf.network.generateResolvConf = false;
+  networking.nameservers = [
+    "192.138.1.85"
+    "192.168.1.32"
+    "1.1.1.1"
+  ];
+  networking.search = [
+    "schreibernet.dev"
+  ];
 
   nix = {
     extraOptions = ''
