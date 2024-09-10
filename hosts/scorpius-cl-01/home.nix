@@ -127,6 +127,12 @@ in {
     # EDITOR = "emacs";
   };
 
+  zshConfig = {
+    enable = true;
+    enableCinnamonDE = true;
+    useLegacyP10k = false;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
