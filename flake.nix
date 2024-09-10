@@ -62,8 +62,18 @@
       };
     };
     nixosModules = {
-      nixos = import ./modules/nixos;
-      home-manager = import ./modules/home-manager;
+      mainUser = import ./../../modules/nixos/mainUser.nix;
+      cachix = import ./modules/nixos/cachix/cachix.nix;
+    };
+    homeManagerModules = {
+      btop = import ./modules/home-manager/btop.nix;
+      cinnamon = import ./modules/home-manager/cinnamon.nix;
+      firefox = import ./modules/home-manager/firefox.nix;
+      git = import ./modules/home-manager/git.nix;
+      gnome = import ./modules/home-manager/gnome.nix;
+      spotify = import ./modules/home-manager/spotify.nix;
+      vscode = import ./modules/home-manager/vscode.nix;
+      zsh = import ./modules/home-manager/zsh.nix;
     };
   };
 }
