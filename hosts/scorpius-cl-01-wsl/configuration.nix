@@ -9,6 +9,7 @@
   ];
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  wsl.interop.register = true;
 
   wsl.enable = true;
   wsl.defaultUser = "cyril";
