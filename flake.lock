@@ -150,7 +150,8 @@
         "mypkgs": "mypkgs",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "ssh-keys": "ssh-keys"
       }
     },
     "spicetify-nix": {
@@ -172,6 +173,18 @@
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
         "type": "github"
+      }
+    },
+    "ssh-keys": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9i4NPUuphFLTJUhwc+rzS6ZL3psM3Lg5K6iPmKx7rEk=",
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
       }
     },
     "systems": {

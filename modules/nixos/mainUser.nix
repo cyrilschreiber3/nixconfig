@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   cfg = config.mainUser;
@@ -26,6 +27,7 @@ in {
         extra user groups
       '';
     };
+    importSshKeysFromGithub = lib.mkEnableOption "Import SSH public keys from Github";
   };
 
   config = lib.mkIf cfg.enable {
@@ -35,6 +37,7 @@ in {
       description = cfg.fullUserName;
       extraGroups = cfg.extraGroups;
       shell = pkgs.zsh;
+      openssh.authorizedKeys.keyFiles = lib.mkIf cfg.importSshKeysFromGithub [inputs.ssh-keys.outPath];
     };
   };
 }

@@ -175,10 +175,13 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  mainUser.enable = true;
-  mainUser.userName = "cyril";
-  mainUser.fullUserName = "Cyril Schreiber";
-  mainUser.extraGroups = ["networkmanager" "wheels"];
+  mainUser = {
+    enable = true;
+    userName = "cyril";
+    fullUserName = "Cyril Schreiber";
+    extraGroups = ["networkmanager" "wheels"];
+    importSshKeysFromGithub = true;
+  };
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};

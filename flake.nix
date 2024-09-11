@@ -27,6 +27,11 @@
       url = "github:cyrilschreiber3/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ssh-keys = {
+      url = "https://github.com/cyrilschreiber3.keys";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -36,6 +41,7 @@
     # plasma-manager,
     spicetify-nix,
     mypkgs,
+    ssh-keys,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -62,7 +68,7 @@
       };
     };
     nixosModules = {
-      mainUser = import ./../../modules/nixos/mainUser.nix;
+      mainUser = import ./modules/nixos/mainUser.nix;
       cachix = import ./modules/nixos/cachix/cachix.nix;
     };
     homeManagerModules = {
