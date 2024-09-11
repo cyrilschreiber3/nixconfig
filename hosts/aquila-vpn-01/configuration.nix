@@ -7,13 +7,11 @@
   pkgs,
   inputs,
   ...
-}: let
-  sharedModules = inputs.main-config.nixosModules;
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
 
-    # sharedModules.nixos.mainUser
+    inputs.main-config.nixosModules.mainUser
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
@@ -65,18 +63,12 @@ in {
     keyMap = "fr_CH";
   };
 
-  # mainUser = {
-  #   enable = true;
-  #   userName = "admin";
-  #   fullUserName = "Local Admin";
-  #   extraGroups = ["networkmanager" "wheels"];
-  # };
-
-  users.users.admin = {
-    isNormalUser = true;
-    password = "admin";
+  mainUser = {
+    enable = true;
+    userName = "admin";
+    fullUserName = "Local Admin";
     extraGroups = ["networkmanager" "wheels"];
-    shell = pkgs.zsh;
+    importSshKeysFromGithub = true;
   };
 
   security.sudo.extraRules = [
@@ -104,6 +96,7 @@ in {
     wget
     git
     tree
+    python3
   ];
 
   programs = {

@@ -57,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725948275,
-        "narHash": "sha256-4QOPemDQ9VRLQaAdWuvdDBhh+lEUOAnSMHhdr4nS1mk=",
+        "lastModified": 1726036828,
+        "narHash": "sha256-ZQHbpyti0jcAKnwQY1lwmooecLmSG6wX1JakQ/eZNeM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e5fa72bad0c6f533e8d558182529ee2acc9454fe",
+        "rev": "8a1671642826633586d12ac3158e463c7a50a112",
         "type": "github"
       },
       "original": {
@@ -96,19 +96,22 @@
     "main-config": {
       "inputs": {
         "home-manager": "home-manager_2",
-        "mypkgs": "mypkgs",
+        "mypkgs": [
+          "mypkgs"
+        ],
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "ssh-keys": "ssh-keys"
       },
       "locked": {
-        "lastModified": 1726007287,
-        "narHash": "sha256-mVBljZYP71/ZRig6aWedywWFeGMKIoRFm7EZXYS4M70=",
+        "lastModified": 1726074303,
+        "narHash": "sha256-jlXQmkXTlKq7CYOFbIDRn0gtjEdZDPRuwdEqzaQn4Ek=",
         "owner": "cyrilschreiber3",
         "repo": "nixconfig",
-        "rev": "ff4f16c799de0be6044ae9f2fe519f0dd319c116",
+        "rev": "eeb2b06f8631411ebca05ce60771d0f1399c0c8b",
         "type": "github"
       },
       "original": {
@@ -119,27 +122,6 @@
       }
     },
     "mypkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "main-config",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1725754086,
-        "narHash": "sha256-zKlwIAYVrCacBuFbSU7OMC0NsYIEMObo8MPK18lPjI8=",
-        "owner": "cyrilschreiber3",
-        "repo": "nur-packages",
-        "rev": "6d7ac69535a0b8fc5b01cfcb0cc22c0b3b40878e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cyrilschreiber3",
-        "repo": "nur-packages",
-        "type": "github"
-      }
-    },
-    "mypkgs_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -213,11 +195,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1725634671,
-        "narHash": "sha256-v3rIhsJBOMLR8e/RNWxr828tB+WywYIoajrZKFM+0Gg=",
+        "lastModified": 1725983898,
+        "narHash": "sha256-4b3A9zPpxAxLnkF9MawJNHDtOOl6ruL0r6Og1TEDGCE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "574d1eac1c200690e27b8eb4e24887f8df7ac27c",
+        "rev": "1355a0cbfeac61d785b7183c0caaec1f97361b43",
         "type": "github"
       },
       "original": {
@@ -231,9 +213,10 @@
       "inputs": {
         "home-manager": "home-manager",
         "main-config": "main-config",
-        "mypkgs": "mypkgs_2",
+        "mypkgs": "mypkgs",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "ssh-keys": "ssh-keys_2"
       }
     },
     "spicetify-nix": {
@@ -256,6 +239,30 @@
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
         "type": "github"
+      }
+    },
+    "ssh-keys": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9i4NPUuphFLTJUhwc+rzS6ZL3psM3Lg5K6iPmKx7rEk=",
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
+      }
+    },
+    "ssh-keys_2": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9i4NPUuphFLTJUhwc+rzS6ZL3psM3Lg5K6iPmKx7rEk=",
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/cyrilschreiber3.keys"
       }
     },
     "systems": {
