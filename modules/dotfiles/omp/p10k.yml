@@ -17,6 +17,11 @@ blocks:
             background: "p:background"
             foreground: "#e3e3e3"
             template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}} <p:separator> \ue0b1</>"
+          - type: nix-shell
+            style: plain
+            background: "p:background"
+            foreground: "#e3e3e3"
+            template: via {{ .Type }}-shell
           - type: root
             style: plain
             background: "p:background"
