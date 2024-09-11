@@ -17,11 +17,6 @@ blocks:
             background: "p:background"
             foreground: "#e3e3e3"
             template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}} <p:separator> \ue0b1</>"
-          - type: nix-shell
-            style: plain
-            background: "p:background"
-            foreground: "#e3e3e3"
-            template: via {{ .Type }}-shell
           - type: root
             style: plain
             background: "p:background"
@@ -53,6 +48,11 @@ blocks:
                 fetch_stash_count: true
                 fetch_status: true
                 fetch_upstream_icon: true
+          - type: nix-shell
+            style: plain
+            background: "p:background"
+            foreground: "#7ebae4"
+            template: "<p:separator>\ue0b1</> \uf313 {{ .Name }} "
           - type: text
             style: plain
             background: transparent
