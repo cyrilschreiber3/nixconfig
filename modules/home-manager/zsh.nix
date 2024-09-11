@@ -177,6 +177,7 @@ in {
             visibleName = "Tokyo Night";
             cursorShape = "block";
             transparencyPercent = 30;
+            font = "MesloLGS Nerd Font 10";
             colors = {
               backgroundColor = "#1A1B26";
               foregroundColor = "#C0CAF5";
@@ -241,8 +242,8 @@ in {
       "org/gnome/terminal/legacy/profiles:/:273f07db-8f33-49f7-8909-da4b9946a21f" = {
         default-size-collumns = 125;
         default-size-rows = 32;
-        use-system-font = false;
-        font = "MesloLGS Nerd Font 10";
+        # use-system-font = false;
+        # font = "MesloLGS Nerd Font 10";
       };
     };
   };
