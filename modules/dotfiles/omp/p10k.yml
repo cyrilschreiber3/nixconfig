@@ -51,8 +51,8 @@ blocks:
           - type: nix-shell
             style: plain
             background: "p:background"
-            foreground: "#7ebae4"
-            template: "<p:separator>\ue0b1</> \uf313 {{ .Name }} "
+            foreground: "#f0ac00"
+            template: "<p:separator>\ue0b1</> via {{ .Type }}-shell "
           - type: text
             style: plain
             background: transparent
