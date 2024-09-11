@@ -22,6 +22,11 @@ blocks:
             background: "p:background"
             foreground: "#e3e3e3"
             template: " \uf0e7 "
+          - type: nix-shell
+            style: plain
+            background: "p:background"
+            foreground: "#ac84f5"
+            template: " nix-shell <p:separator>\ue0b1</>"
           - type: path
             style: plain
             background: "p:background"
@@ -48,11 +53,6 @@ blocks:
                 fetch_stash_count: true
                 fetch_status: true
                 fetch_upstream_icon: true
-          - type: nix-shell
-            style: plain
-            background: "p:background"
-            foreground: "#ac84f5"
-            template: "<p:separator>\ue0b1</> via {{ .Type }}-shell "
           - type: text
             style: plain
             background: transparent
