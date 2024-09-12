@@ -1,28 +1,55 @@
-{...}: {
-  programs.git = {
-    enable = true;
-    extraConfig = {
-      init = {
-        defaultBranch = "master";
-      };
-      url = {
-        "https://github.com/" = {
-          insteadOf = [
-            "gh:"
-            "github:"
-          ];
+{
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.gitConfig;
+in {
+  options.gitConfig = {
+    enableGPG = lib.mkEnableOption "Configure GPG and GPG-agent";
+    useWindowsPinentry = lib.mkEnableOption "Use the windows pinentry program";
+  };
+
+  config = {
+    programs.git = {
+      enable = true;
+      extraConfig = {
+        init = {
+          defaultBranch = "master";
         };
-        "https://gitlab.com/" = {
-          insteadOf = [
-            "gl:"
-            "gitlab:"
-          ];
+        url = {
+          "https://github.com/" = {
+            insteadOf = [
+              "gh:"
+              "github:"
+            ];
+          };
+          "https://gitlab.com/" = {
+            insteadOf = [
+              "gl:"
+              "gitlab:"
+            ];
+          };
         };
+        user = {
+          name = "cyrilschreiber3";
+          email = "contact@cyrilschreiber.ch";
+          signingkey = lib.mkIf cfg.enableGPG "5097F4EAD1ED36FBA303EC32CBE8D1DB418EB0DB";
+        };
+        credential.credentialStore = lib.mkIf cfg.enableGPG "gpg";
+        commit.gpgsign = cfg.enableGPG;
       };
-      user = {
-        name = "cyrilschreiber3";
-        email = "contact@cyrilschreiber.ch";
-      };
+    };
+
+    programs.gpg = {
+      enable = cfg.enableGPG;
+    };
+    services.gpg-agent = {
+      enable = cfg.enableGPG;
+      enableZshIntegration = true;
+      extraConfig = lib.mkIf cfg.useWindowsPinentry ''
+        pinentry-program "/mnt/c/Program Files (x86)/GnuPG/bin/pinentry-basic.exe"
+      '';
     };
   };
 }
