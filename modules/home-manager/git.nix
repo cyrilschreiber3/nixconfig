@@ -48,6 +48,8 @@ in {
     services.gpg-agent = {
       enable = cfg.enableGPG;
       enableZshIntegration = true;
+      defaultCacheTtl = 28800;
+      maxCacheTtl = 86400;
       extraConfig = lib.mkIf cfg.useWindowsPinentry ''
         pinentry-program "/mnt/c/Program Files (x86)/GnuPG/bin/pinentry-basic.exe"
       '';
