@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -50,6 +51,7 @@ in {
       enableZshIntegration = true;
       defaultCacheTtl = 28800;
       maxCacheTtl = 86400;
+      pinentryPackage = lib.mkIf (!cfg.useWindowsPinentry) pkgs.pinentry-gnome3;
       extraConfig = lib.mkIf cfg.useWindowsPinentry ''
         pinentry-program "/mnt/c/Program Files (x86)/GnuPG/bin/pinentry-basic.exe"
       '';

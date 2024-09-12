@@ -127,6 +127,12 @@ in {
     # EDITOR = "emacs";
   };
 
+  gitConfig = {
+    enable = true;
+    enableGPG = true;
+    useWindowsPinentry = false;
+  };
+
   zshConfig = {
     enable = true;
     enableCinnamonDE = true;
