@@ -50,6 +50,12 @@
   home.sessionVariables = {
   };
 
+  gitConfig = {
+    enable = true;
+    enableGPG = true;
+    useWindowsPinentry = true;
+  };
+
   zshConfig = {
     enable = true;
     enableCinnamonDE = false;

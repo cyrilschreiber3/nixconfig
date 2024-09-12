@@ -6,11 +6,12 @@
   cfg = config.gitConfig;
 in {
   options.gitConfig = {
+    enable = lib.mkEnableOption "Enable git module";
     enableGPG = lib.mkEnableOption "Configure GPG and GPG-agent";
     useWindowsPinentry = lib.mkEnableOption "Use the windows pinentry program";
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
       extraConfig = {
