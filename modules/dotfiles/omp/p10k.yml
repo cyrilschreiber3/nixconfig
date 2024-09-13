@@ -83,7 +83,7 @@ blocks:
             style: plain
             background: "p:background"
             foreground: "#5fafd7"
-            template: "<p:separator>\ue0b3</> {{ .Type }} \uF313\u00A0"
+            template: "<p:separator>\ue0b3</> {{ .Type }} \uF313\u00A0 "
 
     - type: prompt
       alignment: left
