@@ -8,6 +8,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../../modules/nixos/cockpit.nix
     ./../../modules/nixos/wireguard.nix
 
     inputs.main-config.nixosModules.mainUser
