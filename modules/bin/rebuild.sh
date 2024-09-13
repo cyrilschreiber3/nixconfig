@@ -103,7 +103,7 @@ commitMessage="Host: $host, Generation: $generation, NixOS version: $flakeVersio
 
 # Commit all changes with generation metadata
 printf "Commiting change..."
-git commit -am "$commitMessage" --quiet
+git commit -am "$commitMessage" --allow-empty --quiet
 echo " Done"
 git log -1 --pretty='[%h] %s'
 
