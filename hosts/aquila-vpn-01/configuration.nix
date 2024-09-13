@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos/cockpit.nix
+    ./../../modules/nixos/node-exporter.nix
     ./../../modules/nixos/wireguard.nix
 
     inputs.main-config.nixosModules.mainUser
@@ -28,10 +29,7 @@
     # SSH
     22
   ];
-  networking.firewall.allowedUDPPorts = [
-    # Wireguard
-    51820
-  ];
+  networking.firewall.allowedUDPPorts = [];
 
   nix = {
     extraOptions = ''

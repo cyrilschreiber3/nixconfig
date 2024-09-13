@@ -3,6 +3,8 @@
     wireguard-tools
   ];
 
+  networking.firewall.allowedUDPPorts = [51820];
+
   networking.nat.enable = true;
   networking.nat.externalInterface = "enu1u1u1";
   networking.nat.internalInterfaces = ["wg0"];
