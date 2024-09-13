@@ -22,11 +22,6 @@ blocks:
             background: "p:background"
             foreground: "#e3e3e3"
             template: " \uf0e7 "
-          - type: nix-shell
-            style: plain
-            background: "p:background"
-            foreground: "#ac84f5"
-            template: " nix-shell <p:separator>\ue0b1</>"
           - type: path
             style: plain
             background: "p:background"
@@ -84,6 +79,11 @@ blocks:
             background: "p:background"
             foreground: "#d7af87"
             template: "{{ if .SSHSession }}<p:separator>\ue0b3</> {{ .UserName }}@{{ .HostName }} {{ end }}"
+          - type: nix-shell
+            style: plain
+            background: "p:background"
+            foreground: "#5fafd7"
+            template: "<p:separator>\ue0b3</> {{ .Type }} \uF313\u00A0"
 
     - type: prompt
       alignment: left
