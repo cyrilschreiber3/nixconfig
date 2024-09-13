@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./../../modules/home-manager/btop.nix
     ./../../modules/home-manager/git.nix
@@ -37,7 +33,7 @@
     neofetch
 
     # dev
-    nil
+    nixd
     alejandra
     nixpkgs-fmt
 
