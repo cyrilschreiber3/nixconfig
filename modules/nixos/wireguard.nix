@@ -18,6 +18,9 @@
       postSetup = ''${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.182.192.1/24 -o eth0 -j MASQUERADE'';
       postShutdown = ''${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.182.192.1/24 -o eth0 -j MASQUERADE'';
 
+      # wg genkey > ~/wireguard-keys/private
+      # wg pubkey < ~/wireguard-keys/private > ~/wireguard-keys/public
+      # wg genpsk > ~/wireguard-keys/pre-shared-<client-name>
       privateKeyFile = "/home/admin/wireguard-keys/private";
 
       peers = [
