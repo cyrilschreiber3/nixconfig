@@ -1,0 +1,20 @@
+{
+	"nix.enableLanguageServer": true,
+	"nix.serverPath": "nixd",
+	"nix.formatterPath": "nixpkgs-fmt",
+	"nix.serverSettings": {
+		"nixd": {
+			"formatting": {
+				"command": ["nixpkgs-fmt"]
+			},
+			"options": {
+				"nixos": {
+					"expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.default.options"
+				},
+				"home-manager": {
+					"expr": "(builtins.getFlake \"${workspaceFolder}\").homeConfigurations.default.options"
+				}
+			}
+		}
+	}
+}

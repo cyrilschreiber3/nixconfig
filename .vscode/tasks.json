@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "NixOS Rebuild",
+			"type": "shell",
+			"command": "nixos-rebuild boot --target-host ${input:username}@${input:host} --flake ./#${input:host} --use-remote-sudo --accept-flake-config --log-format internal-json -v |& nom --json",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "rebuild",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": true,
+				"panel": "dedicated",
+				"showReuseMessage": false,
+				"clear": false
+			}
+		},
+		
+    ],
+    "inputs": [
+        {
+            "id": "username",
+            "description": "Remote username:",
+            "default": "admin",
+            "type": "promptString"
+        },
+        {
+            "id": "host",
+            "description": "Remote host:",
+            "default": "",
+            "type": "promptString"
+        },
+    ]
+}
