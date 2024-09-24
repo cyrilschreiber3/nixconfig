@@ -41,7 +41,6 @@
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
           ./hosts/raspi-sika/configuration.nix
           # inputs.home-manager.nixosModules.default
           nixos-hardware.nixosModules.raspberry-pi-4
