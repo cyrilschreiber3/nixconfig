@@ -9,6 +9,7 @@
 }: let
   apInterface = "uap0";
   physicalInterface = "wlan0";
+  wifiConfig = builtins.fromJSON (builtins.readFile "/etc/nixos/wifi-networks.json");
 in {
   imports = [
     ./hardware-configuration.nix
@@ -27,41 +28,28 @@ in {
     wireless = {
       enable = true;
       interfaces = [physicalInterface];
-      networks = {
-        "schreibernet" = {
-          psk = "Schreiber-wifi+";
-        };
-        # Add more networks as needed
-      };
+      networks = lib.mapAttrs (name: value: {psk = value;}) wifiConfig;
+      extraConfig = ''
+        network={
+          ssid=P"Cyril\xe2\x80\x99s Phone"
+          psk=2c6f11616f9e41658061a64f1d3ffad25f38f44d40822dfc2216bdee4b34c517
+        }
+      '';
     };
 
-    # dhcpcd = {
-    #   enable = true;
-    #   extraConfig = ''
-    #     # RaspAP uap0 configuration
-    #     interface ${apInterface}
-    #     static ip_address=192.168.50.1/24
-    #     nohook wpa_supplicant
-    #   '';
-    # };
-
     networkmanager.enable = false;
+  };
 
-    # interfaces.${apInterface} = {
-    #   ipv4.addresses = [
-    #     {
-    #       address = "192.168.50.1";
-    #       prefixLength = 24;
-    #     }
-    #   ];
-    # };
+  # Configure NAT
+  networking.nat = {
+    enable = true;
+    externalInterface = physicalInterface;
+    internalInterfaces = [apInterface];
+  };
 
-    # # Create a bridge for AP and client mode
-    # bridges = {
-    #   ${bridgeInterface} = {
-    #     interfaces = [physicalInterface apInterface];
-    #   };
-    # };
+  # Enable IP forwarding
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
   };
 
   # Create and manage the virtual AP interface
@@ -69,7 +57,7 @@ in {
     description = "Setup AP Interface";
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
-    before = ["hostapd.service" "dnsmasq.service" "dhcpcd.service" "wpa_supplicant-${physicalInterface}.service" "enable-network-services.service"];
+    before = ["enable-network-services.service"];
     path = [pkgs.iproute2 pkgs.iw];
     script = ''
       #!/bin/bash
@@ -115,10 +103,10 @@ in {
 
       # Start services
       echo "Starting services"
-      systemctl start hostapd.service
-      systemctl start dhcpcd.service
-      systemctl start dnsmasq.service
-      systemctl start wpa_supplicant-${physicalInterface}.service
+      systemctl restart hostapd.service
+      systemctl restart dhcpcd.service
+      systemctl restart dnsmasq.service
+      systemctl restart wpa_supplicant-${physicalInterface}.service
     '';
     serviceConfig = {
       Type = "oneshot";
@@ -132,24 +120,21 @@ in {
     radios.${apInterface} = {
       band = "2g";
       channel = 11;
-      # countryCode = "CH";
+      countryCode = "CH";
       wifi4 = {
         enable = true;
         capabilities = ["HT20" "SHORT-GI-20"];
       };
+      wifi5.enable = false;
+      wifi6.enable = false;
+      wifi7.enable = false;
       networks.${apInterface} = {
         ssid = "raspi-sika";
         authentication = {
-          mode = "wpa3-sae-transition";
-          # mode = "wpa3-sae";
-          # mode = "wpa2-sha256";
-          saePasswords = [
-            {password = "Password123";}
-          ];
-          wpaPassword = "Password123";
+          mode = "wpa2-sha256";
+          wpaPassword = "Sika-118";
         };
-        # bssid = "d2:3a:dd:7d:02:de";
-        bssid = "d8:3a:dd:7d:02:de";
+        bssid = "d2:3a:dd:7d:02:de";
         settings = {
           auth_algs = 1;
           wpa_pairwise = "CCMP";
@@ -160,51 +145,48 @@ in {
     };
   };
 
-  # Configure NAT
-  networking.nat = {
-    enable = true;
-    externalInterface = physicalInterface;
-    internalInterfaces = [apInterface];
-  };
-
-  # Enable IP forwarding
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1;
-  };
-
   # DHCP server for the hotspot network
   services.dnsmasq = {
     enable = true;
     settings = {
-      interface = ["lo" apInterface];
+      interface = apInterface;
       bind-interfaces = true;
       dhcp-range = "192.168.50.50,192.168.50.150,24h";
       domain-needed = true;
       bogus-priv = true;
-      # no-resolv = true;
-      # no-hosts = true;
       server = ["1.1.1.1" "1.0.0.1"];
-      # dhcp-option = [
-      #   "option:router,192.168.50.1"
-      #   "option:dns-server,192.168.50.1"
-      # ];
+      dhcp-option = [
+        "option:router,192.168.50.1"
+        "option:dns-server,192.168.50.1"
+      ];
     };
   };
 
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    # SSH
-    22
-    # DNS
-    53
-  ];
-  networking.firewall.allowedUDPPorts = [
-    # DNS
-    53
-    # DHCP
-    67
-    68
-  ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      # SSH
+      22
+      # DNS
+      53
+      # Siren control interface
+      80
+    ];
+    allowedUDPPorts = [
+      # DNS
+      53
+      # DHCP
+      67
+      68
+    ];
+    extraCommands = ''
+      iptables -t nat -A POSTROUTING -o ${physicalInterface} -j MASQUERADE
+      iptables -A FORWARD -i ${apInterface} -o ${physicalInterface} -j ACCEPT
+      iptables -A FORWARD -i ${physicalInterface} -o ${apInterface} -m state --state RELATED,ESTABLISHED -j ACCEPT
+      iptables -t nat -A POSTROUTING -o ${physicalInterface} -j MASQUERADE
+      iptables -t nat -A POSTROUTING -s 192.168.50.0/24 ! -d 192.168.50.0/24 -j MASQUERADE
+    '';
+  };
 
   nix = {
     extraOptions = ''
@@ -260,14 +242,6 @@ in {
 
   hardware.pulseaudio.enable = true;
 
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs;};
-  #   backupFileExtension = "backup";
-  #   users = {
-  #     "cyril" = import ./home.nix;
-  #   };
-  # };
-
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -275,6 +249,7 @@ in {
     git
     tree
     python3
+    libimobiledevice # for usb tethering
   ];
 
   services.openssh = {
@@ -283,6 +258,10 @@ in {
       PermitRootLogin = lib.mkDefault "no";
       PasswordAuthentication = true;
     };
+  };
+
+  services.usbmuxd = {
+    enable = true;
   };
 
   system.stateVersion = "24.11";
