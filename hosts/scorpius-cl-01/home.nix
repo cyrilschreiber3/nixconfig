@@ -34,61 +34,60 @@ in {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs;
-    [
-      # media
-      ffmpeg
-      yt-dlp
-      vlc
-      gimp
-      obs-studio
-      kdenlive
+  home.packages = with pkgs; [
+    # media
+    ffmpeg
+    yt-dlp
+    vlc
+    gimp
+    obs-studio
+    kdenlive
 
-      #voip
-      discord
+    #voip
+    discord
 
-      # gaming
-      # steam
-      # lutris
-      # winetricks
-      # flatpak
+    # gaming
+    # steam
+    # lutris
+    # winetricks
+    # flatpak
 
-      # cli
-      git
-      gh
-      tree
-      unzip
-      rclone
-      ondir
-      libnotify
-      nix-output-monitor
-      btop
-      nano
-      rsync
-      screen
-      neofetch
+    # cli
+    git
+    gh
+    tree
+    unzip
+    rclone
+    ondir
+    libnotify
+    nix-output-monitor
+    btop
+    nano
+    rsync
+    screen
+    neofetch
 
-      # dev
-      nil
-      alejandra
-      nixpkgs-fmt
-      nodejs
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
-      bun
-      python3
+    # dev
+    nil
+    alejandra
+    nixpkgs-fmt
+    nodejs
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
+    bun
+    python3
 
-      # docker
-      docker
-      #nvidia-container-toolkit
+    # docker
+    docker
+    #nvidia-container-toolkit
 
-      # virtualization / emulation
+    # virtualization / emulation
 
-      (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
-    ]
-    ++ [
-      mypkgs.yuzu
-    ];
+    (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    # ]
+    # ++ [
+    #   mypkgs.yuzu
+  ];
 
   fonts.fontconfig.enable = true;
 

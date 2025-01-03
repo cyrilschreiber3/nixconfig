@@ -20,7 +20,8 @@ in {
       thefuck
       oh-my-zsh
       oh-my-posh
-      (nerdfonts.override {fonts = ["Meslo" "JetBrainsMono"];})
+      nerd-fonts.meslo-lg
+      nerd-fonts.jetbrains-mono
       chroma # required by the colorize plugin for omz
       zsh-autosuggestions
       zsh-nix-shell
