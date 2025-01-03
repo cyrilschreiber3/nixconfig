@@ -178,7 +178,7 @@ in {
             visibleName = "Tokyo Night";
             cursorShape = "block";
             transparencyPercent = 30;
-            font = "MesloLGS Nerd Font 10";
+            font = "MesloLGS NF 10";
             colors = {
               backgroundColor = "#1A1B26";
               foregroundColor = "#C0CAF5";
