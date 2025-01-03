@@ -20,7 +20,7 @@ in {
       thefuck
       oh-my-zsh
       oh-my-posh
-      meslo-lgs-nf
+      nerd-fonts.meslo-lg
       nerd-fonts.jetbrains-mono
       chroma # required by the colorize plugin for omz
       zsh-autosuggestions
