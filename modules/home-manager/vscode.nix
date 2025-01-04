@@ -16,87 +16,86 @@
     enableExtensionUpdateCheck = false;
 
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-marketplace; [
-      # utilities
-      formulahendry.auto-close-tag
-      formulahendry.auto-rename-tag
-      aaron-bond.better-comments
-      ryuta46.multi-command
-      chunsen.bracket-select
-      tombonnike.vscode-status-bar-format-toggle
-      esbenp.prettier-vscode
-      ritwickdey.liveserver
-      rangav.vscode-thunder-client
-      shardulm94.trailing-spaces
+    extensions = with pkgs.vscode-marketplace;
+      [
+        # utilities
+        formulahendry.auto-close-tag
+        formulahendry.auto-rename-tag
+        aaron-bond.better-comments
+        ryuta46.multi-command
+        chunsen.bracket-select
+        tombonnike.vscode-status-bar-format-toggle
+        esbenp.prettier-vscode
+        ritwickdey.liveserver
+        rangav.vscode-thunder-client
+        shardulm94.trailing-spaces
 
-      # theme
-      enkia.tokyo-night
-      vscode-icons-team.vscode-icons
+        # theme
+        enkia.tokyo-night
+        vscode-icons-team.vscode-icons
 
-      # remote
-      ms-vscode-remote.remote-containers
-      ms-vscode-remote.remote-ssh
-      ms-vscode-remote.remote-ssh-edit
+        # Copilot
+        github.copilot
+        github.copilot-chat
 
-      # Copilot
-      github.copilot
-      github.copilot-chat
+        # languages
 
-      # languages
+        # Actions
+        github.vscode-github-actions
 
-      # Actions
-      github.vscode-github-actions
+        # Ansible
+        redhat.ansible
+        wolfmah.ansible-vault-inline
 
-      # Ansible
-      redhat.ansible
-      wolfmah.ansible-vault-inline
+        # Bash
+        foxundermoon.shell-format
 
-      # Bash
-      foxundermoon.shell-format
+        # CSS
+        bradlc.vscode-tailwindcss
 
-      # CSS
-      bradlc.vscode-tailwindcss
+        # Docker
+        ms-azuretools.vscode-docker
 
-      # Docker
-      ms-azuretools.vscode-docker
+        # DotEnv
+        mikestead.dotenv
 
-      # DotEnv
-      mikestead.dotenv
+        # HTML
+        adrianwilczynski.format-selection-as-html
+        ecmel.vscode-html-css
+        zignd.html-css-class-completion
 
-      # HTML
-      adrianwilczynski.format-selection-as-html
-      ecmel.vscode-html-css
-      zignd.html-css-class-completion
+        # Json
+        zainchen.json
 
-      # Json
-      zainchen.json
+        # Nix
+        jnoortheen.nix-ide
 
-      # Nix
-      jnoortheen.nix-ide
+        # Powershell
+        ms-vscode.powershell
 
-      # Powershell
-      ms-vscode.powershell
+        # Python
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-python.debugpy
 
-      # Python
-      ms-python.python
-      ms-python.vscode-pylance
-      ms-python.debugpy
+        # SQL
+        formulahendry.vscode-mysql
+        qwtel.sqlite-viewer
+        mtxr.sqltools
 
-      # SQL
-      formulahendry.vscode-mysql
-      qwtel.sqlite-viewer
-      mtxr.sqltools
+        # Vue
+        vue.volar
 
-      # Vue
-      vue.volar
-      vue.vscode-typescript-vue-plugin
+        # XML
+        dotjoshjohnson.xml
 
-      # XML
-      dotjoshjohnson.xml
-
-      # YAML
-      redhat.vscode-yaml
-    ];
+        # YAML
+        redhat.vscode-yaml
+      ]
+      ++ [
+        pkgs.vscode-extensions.ms-vscode-remote.vscode-remote-extensionpack
+        pkgs.vscode-extensions.jnoortheen.nix-ide
+      ];
 
     userSettings = {
       "explorer.confirmDragAndDrop" = false;
