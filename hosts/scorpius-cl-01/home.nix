@@ -69,7 +69,7 @@ in {
     neofetch
 
     # dev
-    nil
+    nixd
     alejandra
     nixpkgs-fmt
     nodejs
