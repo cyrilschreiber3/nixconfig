@@ -1,20 +1,13 @@
 {
   pkgs,
   inputs,
-  config,
   ...
 }: let
   mypkgs = inputs.mypkgs.packages.${pkgs.system};
 in {
   imports = [
-    ./../../modules/home-manager/btop.nix
-    ./../../modules/home-manager/git.nix
+    ./../../modules/home-manager
     # ./../../modules/home-manager/gnome.nix
-    ./../../modules/home-manager/cinnamon.nix
-    ./../../modules/home-manager/vscode.nix
-    ./../../modules/home-manager/firefox.nix
-    ./../../modules/home-manager/zsh.nix
-    ./../../modules/home-manager/spotify.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -44,7 +37,7 @@ in {
     obs-studio
     kdenlive
 
-    #voip
+    # voip
     discord
 
     # gaming
@@ -73,9 +66,6 @@ in {
     alejandra
     nixpkgs-fmt
     nodejs
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-    bun
     python3
 
     # docker
@@ -94,18 +84,44 @@ in {
     #   mypkgs.yuzu
   ];
 
-  xdg.desktopEntries = {
-    mission-chief = {
-      name = "Opérateur 112";
-      genericName = "Video Game";
-      icon = "${pkgs.copyPathToStore ./../../modules/assets/mission-chief-icon.jpg}";
-      exec = "chromium --app=https://www.operateur112.fr/ --disable-glsl-translator --start-maximized";
-      terminal = false;
-      categories = ["Game"];
-    };
+  # ------------------------ #
+  # --- Programs configs --- #
+  # ------------------------ #
+
+  btopConfig.enable = true;
+
+  cinnamonConfig.enable = true;
+
+  firefoxConfig.enable = true;
+
+  gitConfig = {
+    enable = true;
+    enableGPG = true;
+    useWindowsPinentry = false;
   };
 
-  fonts.fontconfig.enable = true;
+  spotifyConfig = {
+    enable = true;
+    enableSpicetify = true;
+  };
+
+  vscodeConfig = {
+    enable = true;
+    enableBaseExtensions = true;
+    enableLanguageExtensions = true;
+  };
+
+  zshConfig = {
+    enable = true;
+    enableCinnamonDE = true;
+    useLegacyP10k = false;
+  };
+
+  # --------------------- #
+  # --- Games configs --- #
+  # --------------------- #
+
+  missionChiefConfig.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -142,18 +158,8 @@ in {
     # EDITOR = "emacs";
   };
 
-  gitConfig = {
-    enable = true;
-    enableGPG = true;
-    useWindowsPinentry = false;
-  };
+  fonts.fontconfig.enable = true;
 
-  zshConfig = {
-    enable = true;
-    enableCinnamonDE = true;
-    useLegacyP10k = false;
-  };
-
-  # Let Home Manager install and manage itself.
+  # DO NOT CHANGE
   programs.home-manager.enable = true;
 }

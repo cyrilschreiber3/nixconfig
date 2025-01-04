@@ -1,0 +1,5 @@
+{...}: {
+  imports = [
+    ./mission-chief.nix
+  ];
+}
