@@ -100,7 +100,7 @@ in {
       genericName = "Video Game";
       comment = "Opérateur 112, Répondez aux appels d'urgence et gérez les situations les plus délicates avec vos amis sur une carte en temps réel !";
       icon = "${pkgs.copyPathToStore ./../../modules/assets/mission-chief-icon.jpg}";
-      exec = "chromium --app=https://www.operateur112.fr/";
+      exec = "chromium --app=https://www.operateur112.fr/ --disable-glsl-translator --start-maximized";
       terminal = false;
       categories = ["Game"];
     };
