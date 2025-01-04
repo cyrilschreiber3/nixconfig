@@ -5,9 +5,15 @@
 }: let
   firefox_bookmarks = import ./firefox_bookmarks.nix;
 in {
+  home.packages = with pkgs; [
+    firefoxpwa
+  ];
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
+
+    nativeMessagingHosts = [pkgs.firefoxpwa];
 
     profiles = {
       cyril = {
@@ -165,6 +171,12 @@ in {
         # Vue.js Devtools
         "{66E978CD-981F-47DF-AC42-E3CF417C1467}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/new-tab-homepage/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        };
+        # Progressive Web Apps
+        "{1c4ac36d-0396-46d1-b6de-56bf93c723d7}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/pwas-for-firefox/latest.xpi";
           installation_mode = "force_installed";
           default_area = "menupanel";
         };

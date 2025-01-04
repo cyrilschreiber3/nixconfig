@@ -15,7 +15,6 @@ in {
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zsh.nix
     ./../../modules/home-manager/spotify.nix
-    ./../../modules/home-modules/firefox-webapp.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -83,6 +82,9 @@ in {
     docker
     #nvidia-container-toolkit
 
+    # browsers
+    chromium
+
     # virtualization / emulation
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
@@ -91,20 +93,20 @@ in {
     #   mypkgs.yuzu
   ];
 
-  programs.firefox.webapps = {
-    mission-chief = {
-      name = "Opérateur 112";
-      url = "https://www.operateur112.fr/";
-      id = 20;
+  # programs.firefox.webapps = {
+  #   mission-chief = {
+  #     name = "Opérateur 112";
+  #     url = "https://www.operateur112.fr/";
+  #     id = 20;
 
-      extraSettings = config.programs.firefox.profiles."cyril".settings;
-      backgroundColor = "#ff0000";
+  #     extraSettings = config.programs.firefox.profiles."cyril".settings;
+  #     backgroundColor = "#ff0000";
 
-      comment = "Opérateur 112, Répondez aux appels d'urgence et gérez les situations les plus délicates avec vos amis sur une carte en temps réel !";
-      genericName = "Video Game";
-      categories = ["Game"];
-    };
-  };
+  #     comment = "Opérateur 112, Répondez aux appels d'urgence et gérez les situations les plus délicates avec vos amis sur une carte en temps réel !";
+  #     genericName = "Video Game";
+  #     categories = ["Game"];
+  #   };
+  # };
 
   fonts.fontconfig.enable = true;
 
