@@ -84,6 +84,7 @@ in {
 
     # browsers
     chromium
+    brave
 
     # virtualization / emulation
 
@@ -93,20 +94,17 @@ in {
     #   mypkgs.yuzu
   ];
 
-  # programs.firefox.webapps = {
-  #   mission-chief = {
-  #     name = "Opérateur 112";
-  #     url = "https://www.operateur112.fr/";
-  #     id = 20;
-
-  #     extraSettings = config.programs.firefox.profiles."cyril".settings;
-  #     backgroundColor = "#ff0000";
-
-  #     comment = "Opérateur 112, Répondez aux appels d'urgence et gérez les situations les plus délicates avec vos amis sur une carte en temps réel !";
-  #     genericName = "Video Game";
-  #     categories = ["Game"];
-  #   };
-  # };
+  xdg.desktopEntries = {
+    mission-chief = {
+      name = "Opoérateur 112";
+      genericName = "Video Game";
+      comment = "Opérateur 112, Répondez aux appels d'urgence et gérez les situations les plus délicates avec vos amis sur une carte en temps réel !";
+      icon = "${pkgs.copyPathToStore ./../../modules/assets/mission-chief-icon.jpg}";
+      exec = "chromium --app=https://www.operateur112.fr/";
+      terminal = false;
+      categories = ["Game"];
+    };
+  };
 
   fonts.fontconfig.enable = true;
 
