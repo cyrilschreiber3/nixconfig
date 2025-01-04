@@ -175,7 +175,7 @@ in {
           default_area = "menupanel";
         };
         # Progressive Web Apps
-        "{1c4ac36d-0396-46d1-b6de-56bf93c723d7}" = {
+        "firefoxpwa@filips.si" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/pwas-for-firefox/latest.xpi";
           installation_mode = "force_installed";
           default_area = "menupanel";
