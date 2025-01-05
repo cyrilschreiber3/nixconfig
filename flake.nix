@@ -6,6 +6,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # url = "github:nix-community/home-manager/release-24.05";
@@ -35,10 +40,11 @@
 
   outputs = {
     self,
-    nixpkgs,
-    nixos-wsl,
-    spicetify-nix,
+    disko,
     mypkgs,
+    nixos-wsl,
+    nixpkgs,
+    spicetify-nix,
     ssh-keys,
     ...
   } @ inputs: {
@@ -47,6 +53,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          disko.nixosModules.disko
           ./hosts/scorpius-cl-01/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
