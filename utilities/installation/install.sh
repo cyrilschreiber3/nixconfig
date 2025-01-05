@@ -49,11 +49,17 @@ if [ ! -f "$CONFIG_FILE" ]; then
     exit 1
 fi
 
-# Clone the config repo
-cd /tmp
-echo "Downloading the config repository..."
-git clone https://github.com/cyrilschreiber3/nixconfig.git
-cd nixconfig
+# Clone the config repo if it doesn't exist
+if [ ! -d /tmp/nixconfig ]; then
+    cd /tmp
+    echo "Downloading the config repository..."
+    git clone https://github.com/cyrilschreiber3/nixconfig.git
+    cd nixconfig
+else 
+    cd /tmp/nixconfig
+    echo "Updating the config repository..."
+    git pull
+fi
 
 # Show available drives
 list_drives
