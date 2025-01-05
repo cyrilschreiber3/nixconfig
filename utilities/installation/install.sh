@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p git nano diffutils tmux
+#! nix-shell -i bash -p git nano diffutils tmux qrencode
 
 # Function to list available drives
 list_drives() {
@@ -173,5 +173,12 @@ esac
 
 echo "Installing NixOS..."
 sudo nixos-install
+
+echo "Setting initial password for user..."
+read -p "Enter the username for the new user: " username
+nixos-enter --root /mnt -c "passwd $username"
+
+echo "Creating ssh keys and showing QR code..."
+nixos-enter --root /mnt -- su - $username -c "ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N '' && qrencode -t ANSI < ~/.ssh/id_ed25519.pub"
 
 echo "Installation complete. You may now reboot."
