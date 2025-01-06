@@ -170,7 +170,7 @@ case $choice in
 esac
 
 echo "Installing NixOS..."
-sudo nixos-install --flake /tmp/nixconfig/flake.nix#scorpius-cl-01
+sudo nixos-install --flake /tmp/nixconfig#scorpius-cl-01
 
 echo "Setting initial password for main user..."
 read -p "Enter the username for the main user: " username
