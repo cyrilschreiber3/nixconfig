@@ -48,7 +48,7 @@ pushd ~/nixconfig >/dev/null
 if test "$update" == "true"; then
     echo "Updating flake..."
     nix-channel --update
-    sudo nix flake update
+    sudo nix flake update --experimental-features "nix-command flakes"
 fi
 
 # return if no changes exept if forced
