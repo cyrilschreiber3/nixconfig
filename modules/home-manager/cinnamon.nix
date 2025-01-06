@@ -80,7 +80,17 @@ in {
       "org/cinnamon/desktop/keybindings/media-keys" = {
         terminal = ["<Super>t"];
       };
+      "org/cinnamon/theme" = {
+        name = "Tokyonight-Dark-BL-LB";
+      };
+      "org/cinnamon/desktop/interface" = {
+        gtk-theme = "Tokyonight-Dark-BL-LB";
+        icon-theme = "WhiteSur";
+        color-scheme = "prefer-dark";
+      };
       "org/gnome/desktop/interface" = {
+        gtk-theme = "Tokyonight-Dark-BL-LB";
+        icon-theme = "WhiteSur";
         color-scheme = "prefer-dark";
       };
     };
