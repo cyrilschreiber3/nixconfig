@@ -77,6 +77,9 @@ in {
       "org/cinnamon/desktop/keybindings/media-keys" = {
         terminal = ["<Super>t"];
       };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
     };
   };
 }

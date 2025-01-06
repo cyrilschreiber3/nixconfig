@@ -21,19 +21,15 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.useOSProber = true;
 
+  # Enable networking
   networking.hostName = "scorpius-cl-01";
-  networking.nameservers = [
-    "192.138.1.85"
+  networking.search = ["schreibernet.dev"];
+  networking.networkmanager.enable = true;
+  networking.networkmanager.insertNameservers = [
+    "192.168.1.85"
     "192.168.1.32"
     "1.1.1.1"
   ];
-  networking.search = [
-    "schreibernet.dev"
-  ];
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     # SSH

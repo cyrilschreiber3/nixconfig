@@ -9,6 +9,11 @@ in {
   options.gitConfig = {
     enable = lib.mkEnableOption "Enable git module";
     enableGPG = lib.mkEnableOption "Configure GPG and GPG-agent";
+    mainGPGKey = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "The GPG key to use to sign git commits";
+    };
     useWindowsPinentry = lib.mkEnableOption "Use the windows pinentry program";
   };
 
@@ -36,7 +41,7 @@ in {
         user = {
           name = "cyrilschreiber3";
           email = "contact@cyrilschreiber.ch";
-          signingkey = lib.mkIf cfg.enableGPG "5097F4EAD1ED36FBA303EC32CBE8D1DB418EB0DB";
+          signingkey = lib.mkIf cfg.enableGPG "${cfg.mainGPGKey}";
         };
         credential.credentialStore = lib.mkIf cfg.enableGPG "gpg";
         commit.gpgsign = cfg.enableGPG;
