@@ -138,7 +138,7 @@ case $choice in
         tmux -2 attach-session -t config_compare
         
         # Open vimdiff with three-way merge view
-        diff -u "$GENERATED_HW_CONFIG" "$GENERATED_HW_CONFIG.merge" | less
+        diff -u "$GENERATED_HW_CONFIG" "$DEFAULT_HW_CONFIG.merge" | less
         
         if [ -f "$merge_config" ]; then
             echo "Would you like to:"
