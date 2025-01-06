@@ -1,4 +1,4 @@
-#! /usr/bin/env nix-shell
+(#! /usr/bin/env nix-shell
 #! nix-shell -i bash -p git nano diffutils tmux qrencode
 
 # Function to list available drives
@@ -174,9 +174,6 @@ sudo nixos-install --flake /tmp/nixconfig#scorpius-cl-01
 
 echo "Setting initial password for main user..."
 read -p "Enter the username for the main user: " username
-nixos-enter --root /mnt -c "passwd $username"
-
-echo "Creating ssh keys and showing QR code..."
-nixos-enter --root /mnt -- su - $username -c "ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N '' && qrencode -t ANSI < ~/.ssh/id_ed25519.pub"
+sudo nixos-enter --root /mnt -c "passwd $username"
 
 echo "Installation complete. You may now reboot."
