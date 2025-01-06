@@ -42,8 +42,6 @@ else
     exit 1
 fi
 
-CONFIG_FILE=$1
-
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Error: Config file $CONFIG_FILE does not exist"
     exit 1
