@@ -159,6 +159,9 @@ in {
             --color=spinner:#ff007c" \
             fzf
           '';
+          # nix
+          ns = "nix-shell --run zsh -p";
+          nr = "nix run nixpkgs#$1";
         };
       };
 
