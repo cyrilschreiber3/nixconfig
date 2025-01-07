@@ -120,7 +120,7 @@ in {
 
   zshConfig = {
     enable = true;
-    enableCinnamonDE = false;
+    enableCinnamonDE = true;
     useLegacyP10k = false;
   };
 
