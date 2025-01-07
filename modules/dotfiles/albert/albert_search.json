@@ -65,6 +65,14 @@
 	},
 	{
 		"fallback": true,
+		"iconPath": ":default",
+		"id": "7c6f1fe2",
+		"name": "Home-Manager Options",
+		"trigger": "hm",
+		"url": "https://home-manager-options.extranix.com/?query=%s&channel=master"
+	},
+	{
+		"fallback": true,
 		"iconPath": ":youtube",
 		"id": "37e09f94",
 		"name": "YouTube",
