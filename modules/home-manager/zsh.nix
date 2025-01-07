@@ -167,6 +167,7 @@ in {
                 shift
                 nix run "nixpkgs#$pkg" -- "$@"
             }
+            nr
           '';
         };
       };
