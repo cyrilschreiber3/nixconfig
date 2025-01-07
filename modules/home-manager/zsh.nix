@@ -161,7 +161,13 @@ in {
           '';
           # nix
           ns = "nix-shell --run zsh -p";
-          nr = "nix run nixpkgs#$1";
+          nr = ''
+            nr() {
+                local pkg=$1
+                shift
+                nix run "nixpkgs#$pkg" -- "$@"
+            }
+          '';
         };
       };
 
