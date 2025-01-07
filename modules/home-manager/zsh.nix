@@ -128,6 +128,13 @@ in {
 
             # Prevent less from using pager everytime
             export PAGER="less -F -X"
+
+            # Shortcut for nix run
+            nr() {
+                local pkg=$1
+                shift
+                nix run "nixpkgs#$pkg" -- "$@"
+            }
           '';
         };
 
@@ -159,16 +166,7 @@ in {
             --color=spinner:#ff007c" \
             fzf
           '';
-          # nix
           ns = "nix-shell --run zsh -p";
-          nr = ''
-            nr() {
-                local pkg=$1
-                shift
-                nix run "nixpkgs#$pkg" -- "$@"
-            }
-            nr
-          '';
         };
       };
 
