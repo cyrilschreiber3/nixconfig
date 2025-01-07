@@ -248,7 +248,7 @@ in {
     };
 
     dconf.settings = lib.mkIf cfg.enableCinnamonDE {
-      "org/gnome/terminal/legacy/profiles:/:273f07db-8f33-49f7-8909-da4b9946a21f" = {
+      "/org/gnome/terminal/legacy/profiles:/:273f07db-8f33-49f7-8909-da4b9946a21f" = {
         default-size-collumns = 125;
         default-size-rows = 32;
       };
