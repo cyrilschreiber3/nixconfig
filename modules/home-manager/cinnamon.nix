@@ -93,13 +93,13 @@ in {
         icon-theme = "WhiteSur";
         color-scheme = "prefer-dark";
       };
-      "/org/nemo/preferences" = {
+      "org/nemo/preferences" = {
         show-open-in-terminal-toolbar = true;
       };
-      "/org/nemo/preferences/menu-config" = {
+      "org/nemo/preferences/menu-config" = {
         selection-menu-make-link = true;
       };
-      "/org/nemo/window-state" = {
+      "org/nemo/window-state" = {
         geometry = "1244x730+1989+35";
       };
     };
