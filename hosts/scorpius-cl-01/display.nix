@@ -60,10 +60,10 @@
     in {
       default = {
         fingerprint = {
-          integrated = fingerprints.integrated;
+          eDP-1 = fingerprints.integrated;
         };
         config = {
-          integrated = {
+          eDP-1 = {
             enable = true;
             primary = true;
             position = "0x0";
@@ -74,26 +74,26 @@
       };
       desk = {
         fingerprint = {
-          integrated = fingerprints.integrated;
-          imac = fingerprints.imac;
-          dell = fingerprints.dell;
+          eDP-1 = fingerprints.integrated;
+          DVI-I-3-2 = fingerprints.imac;
+          DVI-I-2-1 = fingerprints.dell;
         };
         config = {
-          integrated = {
+          eDP-1 = {
             enable = true;
             primary = false;
             position = "0x230";
             mode = config.integrated.resolution;
             rate = config.integrated.rate;
           };
-          imac = {
+          DVI-I-3-2 = {
             enable = true;
             primary = true;
             position = "1920x0";
             mode = config.imac.resolution;
             rate = config.imac.rate;
           };
-          dell = {
+          DVI-I-2-1 = {
             enable = true;
             primary = false;
             position = "3840x0";
