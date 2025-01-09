@@ -35,6 +35,7 @@
 
   services.autorandr = {
     enable = true;
+    matchEdid = true;
     defaultTarget = "default";
     profiles = let
       fingerprints = {

@@ -81,6 +81,7 @@ in {
 
             # Nix
             jnoortheen.nix-ide
+            kamadorueda.alejandra
 
             # Powershell
             ms-vscode.powershell
@@ -193,7 +194,7 @@ in {
           "editor.defaultFormatter" = "ms-vscode.powershell";
         };
         "[nix]" = {
-          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          "editor.defaultFormatter" = "kamadorueda.alejandra";
         };
         "github.copilot.editor.enableAutoCompletions" = true;
         "github.copilot.enable" = {

@@ -99,6 +99,7 @@ in {
         };
 
         Preferences = {
+          "general.autoScroll" = true;
           "extensions.pocket.enabled" = false;
           "browser.disableResetPrompt" = true;
           "browser.download.panel.shown" = true;
