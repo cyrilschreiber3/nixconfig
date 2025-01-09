@@ -218,6 +218,7 @@
     wget
     curl
     cachix
+    nvtopPackages.full
   ];
 
   # This value determines the NixOS release from which the default
