@@ -192,6 +192,9 @@ in {
         "[powershell]" = {
           "editor.defaultFormatter" = "ms-vscode.powershell";
         };
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
         "github.copilot.editor.enableAutoCompletions" = true;
         "github.copilot.enable" = {
           "*" = true;

@@ -9,8 +9,8 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-    ./../../modules/nixos/mainUser.nix
-    ./../../modules/nixos/cachix/cachix.nix
+    ./display.nix
+    ./../../modules/nixos
     inputs.home-manager.nixosModules.default
   ];
 
@@ -75,75 +75,6 @@
     LC_MEASUREMENT = "fr_CH.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable Cinnamon Desktop Environment.
-  services.xserver.displayManager.lightdm = {
-    enable = true;
-    greeters.slick = {
-      enable = true;
-      theme = {
-        name = "Tokyonight-Dark-BL-LB";
-        package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
-      };
-      cursorTheme = {
-        name = "WhiteSur-cursors";
-        package = pkgs.whitesur-cursors;
-      };
-    };
-    background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
-  };
-  services.xserver.desktopManager.cinnamon.enable = true;
-  services.xserver.desktopManager.wallpaper.combineScreens = true;
-  services.xserver.desktopManager.wallpaper.mode = "fill";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "ch";
-    variant = "fr";
-  };
-  services.libinput.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Configure console keymap
-  console.keyMap = "fr_CH";
-
-  environment.cinnamon.excludePackages = with pkgs; [
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    cheese # webcam tool
-    baobab # disk usage
-    totem # video player
-    eog # image viewer
-    evince # document viewer
-    seahorse # password manager
-    epiphany # web browser
-    geary # email reader
-    yelp # Help view
-    simple-scan
-    gnome-logs
-    gnome-characters
-    gnome-music
-    gnome-contacts
-    gnome-initial-setup
-    gnome-characters
-    gnome-clocks
-    gnome-maps
-    gnome-weather
-    gnome-calculator
-    gnome-calendar
-    gnome-font-viewer
-    gnome-disk-utility
-    gnome-photos
-    gnome-tour
-    loupe # image viewer
-  ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
