@@ -16,7 +16,10 @@
   boot.extraModulePackages = [];
 
   services.xserver.dpi = lib.mkDefault 104;
-  services.xserver.videoDrivers = ["nvidia" "displaylink" "modesetting"];
+  services.xserver.videoDrivers = ["nvidia" "displaylink"];
+  services.xserver.displayManager.sessionCommands = ''
+    ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+  '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
