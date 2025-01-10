@@ -13,17 +13,17 @@
   };
 
   environment.etc = {
-    # "autofs.conf" = {
-    #   text = ''
-    #     [ autofs ]
-    #     timeout=300
-    #     browse_mode=no
-    #     mount_nfs_default_protocol=4
-    #     [ amd ]
-    #     dismount_interval=300
-    #   '';
-    #   mode = "0644";
-    # };
+    "autofs.conf" = {
+      text = ''
+        [ autofs ]
+        timeout=300
+        browse_mode=no
+        mount_nfs_default_protocol=4
+        [ amd ]
+        dismount_interval=300
+      '';
+      mode = "0644";
+    };
     "auto.direct" = {
       text = ''
         Media1 -fstype=nfs,rw,nfsvers=4 192.168.1.10:/mnt/Media1/Media1
