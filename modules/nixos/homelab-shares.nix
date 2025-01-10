@@ -1,4 +1,6 @@
 {...}: {
+  boot.kernelModules = ["autofs"];
+
   services.autofs = {
     enable = true;
     autoMaster = ''
