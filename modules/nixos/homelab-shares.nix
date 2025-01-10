@@ -5,7 +5,6 @@
     enable = true;
     autoMaster = ''
       /- /etc/auto.direct --timeout 3600
-
     '';
   };
 
