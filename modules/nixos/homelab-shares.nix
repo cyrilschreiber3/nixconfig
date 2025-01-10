@@ -1,14 +1,14 @@
-{pkgs, ...}: {
+{...}: {
   boot.kernelModules = ["autofs"];
 
   services.autofs = {
     enable = true;
     autoMaster = let
-      mapConf = pkgs.writeText "auto" ''
+      mapConf = ''
         /mnt /etc/auto.direct --timeout 3600
       '';
     in ''
-      /auto file:${mapConf}
+      ${mapConf}
     '';
   };
 
