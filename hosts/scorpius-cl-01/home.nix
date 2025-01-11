@@ -88,6 +88,7 @@ in {
   xdg.mimeApps.defaultApplications = {
     "x-scheme-handler/http" = "firefox.desktop";
     "x-scheme-handler/https" = "firefox.desktop";
+    "text/plain" = "org.x.editor.desktop";
   };
 
   # ------------------------ #
