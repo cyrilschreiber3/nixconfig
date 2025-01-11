@@ -137,12 +137,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  programs = {
-    dconf.enable = true;
-    zsh.enable = true;
-    nix-ld.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     vim
     nano
@@ -151,6 +145,18 @@
     cachix
     nvtopPackages.full
   ];
+
+  programs = {
+    dconf.enable = true;
+    zsh.enable = true;
+    nix-ld.enable = true;
+  };
+
+  autofsConfig = {
+    enable = true;
+    enabledDefaultShares = ["media1" "media2" "turboVault" "vault"];
+    customShares = [];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

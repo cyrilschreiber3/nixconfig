@@ -96,7 +96,10 @@ in {
 
   btopConfig.enable = true;
 
-  cinnamonConfig.enable = true;
+  cinnamonConfig = {
+    enable = true;
+    enableSharesBookmarks = true;
+  };
 
   firefoxConfig.enable = true;
 

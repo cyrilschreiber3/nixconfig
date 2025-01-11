@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./homelab-shares.nix
+    ./autofs.nix
     ./mainUser.nix
     ./cachix/cachix.nix
   ];

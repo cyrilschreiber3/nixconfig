@@ -8,6 +8,7 @@
 in {
   options.cinnamonConfig = {
     enable = lib.mkEnableOption "Enable Cinnamon tweaks";
+    enableSharesBookmarks = lib.mkEnableOption "Enable shares bookmarks";
   };
 
   config = lib.mkIf cfg.enable {
@@ -48,6 +49,18 @@ in {
       "albert/config".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert.conf}";
       "albert/websearch/engines.json".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert_search.json}";
       "cinnamon/spices/".source = "${pkgs.copyPathToStore ./../dotfiles/cinnamon}";
+      "gtk-3.0/bookmarks".text = lib.mkMerge [
+        ''
+          file:///home/cyril/Documents Documents
+          file:///home/cyril/Downloads Downloads
+        ''
+        (lib.mkIf cfg.enableSharesBookmarks ''
+          file:///mnt/Media1 Media1
+          file:///mnt/Media2 Media2
+          file:///mnt/TurboVault TurboVault
+          file:///mnt/Vault Vault
+        '')
+      ];
     };
 
     dconf.settings = {
@@ -94,6 +107,7 @@ in {
         color-scheme = "prefer-dark";
       };
       "org/nemo/preferences" = {
+        default-folder-viewer = "icon-view";
         show-open-in-terminal-toolbar = true;
       };
       "org/nemo/preferences/menu-config" = {
@@ -101,6 +115,7 @@ in {
       };
       "org/nemo/window-state" = {
         geometry = "1244x730+1989+35";
+        sidebar-bookmark-breakpoint = 2;
       };
     };
   };
