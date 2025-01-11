@@ -146,6 +146,7 @@ in {
         "editor.minimap.enabled" = true;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "terminal.integrated.sendKeybindingsToShell" = true;
+        "terminal.integrated.enableMultiLinePasteWarning" = false;
         "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
         "terminal.integrated.fontSize" = 12;
         "terminal.integrated.defaultProfile.linux" = "zsh";
