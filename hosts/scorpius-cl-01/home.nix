@@ -96,6 +96,7 @@ in {
       textEditor = "org.x.editor.desktop";
       imageViewer = "pix.desktop";
       documentViewer = "xreader.desktop";
+      documentEditor = "onlyoffice-desktopeditors.desktop";
     };
   };
 
