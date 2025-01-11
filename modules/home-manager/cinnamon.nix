@@ -117,6 +117,10 @@ in {
         geometry = "1244x730+1989+35";
         sidebar-bookmark-breakpoint = 2;
       };
+      "org/x/pix/browser" = {
+        maximized = true;
+        thumbnail-list-visible = false;
+      };
     };
   };
 }

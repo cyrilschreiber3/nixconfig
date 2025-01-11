@@ -36,6 +36,7 @@ in {
     gimp
     obs-studio
     kdenlive
+    darktable
 
     # voip
     discord
@@ -85,10 +86,17 @@ in {
   ];
 
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = {
-    "x-scheme-handler/http" = "firefox.desktop";
-    "x-scheme-handler/https" = "firefox.desktop";
-    "text/plain" = "org.x.editor.desktop";
+  xdg.mimeApps.defaultApplications = let
+    defaultBrowser = "firefox.desktop";
+    defaultTextEditor = "org.x.editor.desktop";
+    defaultImageViewer = "pix.desktop";
+  in {
+    "x-scheme-handler/http" = defaultBrowser;
+    "x-scheme-handler/https" = defaultBrowser;
+    "text/plain" = defaultTextEditor;
+    "application/octet-stream" = defaultTextEditor;
+    "application/x-shellscript" = defaultTextEditor;
+    "image/image" = defaultImageViewer;
   };
 
   # ------------------------ #
