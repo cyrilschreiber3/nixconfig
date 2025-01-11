@@ -196,6 +196,9 @@ in {
         "[nix]" = {
           "editor.defaultFormatter" = "kamadorueda.alejandra";
         };
+        "[dotenv]" = {
+          "editor.defaultFormatter" = "foxundermoon.shell-format";
+        };
         "github.copilot.editor.enableAutoCompletions" = true;
         "github.copilot.enable" = {
           "*" = true;
