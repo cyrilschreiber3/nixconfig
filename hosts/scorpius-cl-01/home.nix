@@ -38,6 +38,10 @@ in {
     kdenlive
     darktable
 
+    # work
+    onlyoffice-desktopeditors
+    xreader
+
     # voip
     discord
 
@@ -85,18 +89,14 @@ in {
     #   mypkgs.yuzu
   ];
 
-  xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = let
-    defaultBrowser = "firefox.desktop";
-    defaultTextEditor = "org.x.editor.desktop";
-    defaultImageViewer = "pix.desktop";
-  in {
-    "x-scheme-handler/http" = defaultBrowser;
-    "x-scheme-handler/https" = defaultBrowser;
-    "text/plain" = defaultTextEditor;
-    "application/octet-stream" = defaultTextEditor;
-    "application/x-shellscript" = defaultTextEditor;
-    "image/image" = defaultImageViewer;
+  mimeApps = {
+    enable = true;
+    defaultApps = {
+      browser = "firefox.desktop";
+      textEditor = "org.x.editor.desktop";
+      imageViewer = "pix.desktop";
+      documentViewer = "xreader.desktop";
+    };
   };
 
   # ------------------------ #
