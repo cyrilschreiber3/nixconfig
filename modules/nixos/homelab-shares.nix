@@ -1,11 +1,13 @@
-{...}: {
-  boot.kernelModules = ["autofs"];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [nfs-utils];
+  boot.supportedFilesystems = ["nfs"];
+  boot.kernelModules = ["nfs" "autofs"];
 
   services.autofs = {
     enable = true;
     autoMaster = let
       mapConf = ''
-        /mnt /etc/auto.direct --timeout 3600
+        /- /etc/auto.direct --timeout 3600
       '';
     in ''
       ${mapConf}
