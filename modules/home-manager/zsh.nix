@@ -167,6 +167,7 @@ in {
             fzf
           '';
           ns = "nix-shell --run zsh -p";
+          dev = "${pkgs.nix-output-monitor}/bin/nom develop --command zsh";
         };
       };
 

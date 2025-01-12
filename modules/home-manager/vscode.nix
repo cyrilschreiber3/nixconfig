@@ -36,7 +36,6 @@ in {
             aaron-bond.better-comments
             ryuta46.multi-command
             chunsen.bracket-select
-            tombonnike.vscode-status-bar-format-toggle
             esbenp.prettier-vscode
             ritwickdey.liveserver
             rangav.vscode-thunder-client
@@ -188,17 +187,23 @@ in {
         "prettier.tabWidth" = 2;
         "prettier.useTabs" = true;
         "prettier.singleQuote" = false;
-        "[vue]" = {
-          "editor.defaultFormatter" = "Vue.volar";
-        };
-        "[powershell]" = {
-          "editor.defaultFormatter" = "ms-vscode.powershell";
+        "[dotenv]" = {
+          "editor.defaultFormatter" = "foxundermoon.shell-format";
         };
         "[nix]" = {
           "editor.defaultFormatter" = "kamadorueda.alejandra";
         };
-        "[dotenv]" = {
+        "[powershell]" = {
+          "editor.defaultFormatter" = "ms-vscode.powershell";
+        };
+        "[properties]" = {
           "editor.defaultFormatter" = "foxundermoon.shell-format";
+        };
+        "[shellscript]" = {
+          "editor.defaultFormatter" = "foxundermoon.shell-format";
+        };
+        "[vue]" = {
+          "editor.defaultFormatter" = "Vue.volar";
         };
         "github.copilot.editor.enableAutoCompletions" = true;
         "github.copilot.enable" = {

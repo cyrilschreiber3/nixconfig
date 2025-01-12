@@ -176,6 +176,12 @@ in {
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
+          # DuckDuckGo Privacy Essentials
+          "jid1-ZAdIEUB7XOzOJw@jetpack" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/duckduckgo-for-firefox/latest.xpi";
+            installation_mode = "force_installed";
+            default_area = "menupanel";
+          };
         };
       };
     };
