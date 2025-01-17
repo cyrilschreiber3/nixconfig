@@ -80,6 +80,9 @@ currentGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -
 echo "" >nixos-gc.log
 echo "" >nixos-switch.log
 
+# Update the ssh keys flake input
+nix flake update ssh-keys --experimental-features "nix-command flakes"
+
 # Rebuild and output simplified errors
 sudo nixos-rebuild switch --flake ./#$host --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
     echo "Rebuild failed..."

@@ -8,9 +8,6 @@
     enable = true;
     dpi = lib.mkDefault 104;
     videoDrivers = ["nvidia" "displaylink"];
-    # displayManager.sessionCommands = ''$
-    #   ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
-    # '';
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {
@@ -60,10 +57,10 @@
     in {
       mobile = {
         fingerprint = {
-          eDP-1 = fingerprints.integrated;
+          integrated = fingerprints.integrated;
         };
         config = {
-          eDP-1 = {
+          integrated = {
             enable = true;
             primary = true;
             position = "0x0";
@@ -74,26 +71,26 @@
       };
       desk = {
         fingerprint = {
-          eDP-1 = fingerprints.integrated;
-          DVI-I-3-2 = fingerprints.imac;
-          DVI-I-2-1 = fingerprints.dell;
+          integrated = fingerprints.integrated;
+          imac = fingerprints.imac;
+          dell = fingerprints.dell;
         };
         config = {
-          eDP-1 = {
+          integrated = {
             enable = true;
             primary = false;
             position = "0x230";
             mode = config.integrated.resolution;
             rate = config.integrated.rate;
           };
-          DVI-I-3-2 = {
+          imac = {
             enable = true;
             primary = true;
             position = "1920x0";
             mode = config.imac.resolution;
             rate = config.imac.rate;
           };
-          DVI-I-2-1 = {
+          dell = {
             enable = true;
             primary = false;
             position = "3840x0";
@@ -104,6 +101,10 @@
       };
     };
   };
+
+  services.udev.extraRules = ''
+    ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c --match-edid"
+  '';
 
   services.xserver.xkb = {
     layout = "ch";

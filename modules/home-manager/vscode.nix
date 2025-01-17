@@ -19,6 +19,10 @@ in {
       inputs.nix-vscode-extensions.overlays.default
     ];
 
+    home.packages = with pkgs; [
+      shfmt
+    ];
+
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;

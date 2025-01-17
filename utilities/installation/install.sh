@@ -19,7 +19,7 @@ get_current_device() {
 validate_config_device() {
     local config_file=$1
     local device=$(get_current_device "$config_file")
-    
+
     if [[ ! -b "$device" ]]; then
         echo "Error: $device in config is not a valid block device"
         return 1
@@ -170,6 +170,7 @@ case $choice in
 esac
 
 echo "Installing NixOS..."
+nix flake update ssh-keys --flake /tmp/nixconfig
 sudo nixos-install --flake /tmp/nixconfig#scorpius-cl-01
 
 echo "Setting initial password for main user..."
