@@ -112,7 +112,7 @@
       Type=Application
       Name=Autorandr init
       Description=Apply autorandr configuration once the graphical session is ready.
-      Exec="${pkgs.autorandr}/bin/autorandr --change  --match-edid"
+      Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
       X-GNOME-Autostart-enabled=true
     '';
     mode = "0644";
