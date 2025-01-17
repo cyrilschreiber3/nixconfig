@@ -2,7 +2,7 @@
   imports = [
     ./autofs.nix
     ./mainUser.nix
-    ./xrdp.nix
+    ./x11vnc.nix
     ./cachix/cachix.nix
   ];
 }
