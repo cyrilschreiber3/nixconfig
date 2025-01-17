@@ -8,9 +8,6 @@
     enable = true;
     dpi = lib.mkDefault 104;
     videoDrivers = ["nvidia" "displaylink"];
-    displayManager.sessionCommands = ''
-      ${pkgs.autorandr}/bin/autorandr -c --match-edid
-    '';
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {
@@ -108,8 +105,17 @@
     };
   };
 
+  # Run autorandr on startup
+  systemd.user.services.autorandr-init = {
+    description = "Apply autorandr configuration once the graphical session is ready.";
+    script = "${pkgs.autorandr}/bin/autorandr --change  --match-edid";
+    serviceConfig.Type = "oneshot";
+    after = ["graphical-session.target"];
+    wantedBy = ["graphical-session.target"];
+  };
+
   services.udev.extraRules = ''
-    ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c --match-edid"
+    ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr --change --match-edid"
   '';
 
   services.xserver.xkb = {
