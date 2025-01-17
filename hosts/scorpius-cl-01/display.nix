@@ -106,12 +106,16 @@
   };
 
   # Run autorandr on startup
-  systemd.user.services.autorandr-init = {
-    description = "Apply autorandr configuration once the graphical session is ready.";
-    script = "${pkgs.autorandr}/bin/autorandr --change  --match-edid";
-    serviceConfig.Type = "oneshot";
-    after = ["graphical-session.target"];
-    wantedBy = ["graphical-session.target"];
+  environment.etc."xdg/autostart/autorandr-init.desktop" = {
+    text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Autorandr init
+      Description=Apply autorandr configuration once the graphical session is ready.
+      Exec="${pkgs.autorandr}/bin/autorandr --change  --match-edid"
+      X-GNOME-Autostart-enabled=true
+    '';
+    mode = "0644";
   };
 
   services.udev.extraRules = ''
