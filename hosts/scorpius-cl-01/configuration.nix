@@ -38,6 +38,8 @@
     22
     # Spotify
     57621
+    #Temp vnc
+    5900
   ];
   networking.firewall.allowedUDPPorts = [
     # Spotify
