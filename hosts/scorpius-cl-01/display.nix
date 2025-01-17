@@ -8,6 +8,9 @@
     enable = true;
     dpi = lib.mkDefault 104;
     videoDrivers = ["nvidia" "displaylink"];
+    displayManager.sessionCommands = ''
+      ${pkgs.autorandr}/bin/autorandr -c --match-edid
+    '';
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {
@@ -33,6 +36,9 @@
   services.autorandr = {
     enable = true;
     matchEdid = true;
+    hooks.postswitch = {
+      notify-display-change = ''${pkgs.libnotify}/bin/notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE"'';
+    };
     defaultTarget = "mobile";
     profiles = let
       fingerprints = {

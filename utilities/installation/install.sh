@@ -1,4 +1,4 @@
-(#! /usr/bin/env nix-shell
+#! /usr/bin/env nix-shell
 #! nix-shell -i bash -p git nano diffutils tmux qrencode
 
 # Function to list available drives
@@ -53,7 +53,7 @@ if [ ! -d /tmp/nixconfig ]; then
     echo "Downloading the config repository..."
     git clone https://github.com/cyrilschreiber3/nixconfig.git
     cd nixconfig
-else 
+else
     cd /tmp/nixconfig
     echo "Updating the config repository..."
     git pull
@@ -74,7 +74,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     # Open file in nano
     nano "$CONFIG_FILE"
-    
+
     # Validate the new configuration
     if validate_config_device "$CONFIG_FILE"; then
         echo "Configuration updated and validated successfully!"
@@ -116,57 +116,57 @@ echo "3) Keep current configuration entirely"
 read -p "Choose an option (1-3): " choice
 
 case $choice in
-    1)
-        echo "Starting interactive merge with tmux..."
+1)
+    echo "Starting interactive merge with tmux..."
 
-        cp "$DEFAULT_HW_CONFIG" "$DEFAULT_HW_CONFIG.merge"
-        
-        # Create a new tmux session
-        tmux new-session -d -s config_compare
+    cp "$DEFAULT_HW_CONFIG" "$DEFAULT_HW_CONFIG.merge"
 
-        # Split the window horizontally
-        tmux split-window -h
+    # Create a new tmux session
+    tmux new-session -d -s config_compare
 
-        # Send commands to each pane
-        # Left pane: generated config
-        tmux send-keys -t 0 "echo 'Tip: use CTRL + b o to change the focused pane'; echo; echo 'Generated config:'; echo '==========='; cat $GENERATED_HW_CONFIG" C-m
-        
-        # Right pane: current config
-        tmux send-keys -t 1 "nano $DEFAULT_HW_CONFIG.merge" C-m
-        
-        # Attach to the session
-        tmux -2 attach-session -t config_compare
-        
-        # Open vimdiff with three-way merge view
-        diff -u "$GENERATED_HW_CONFIG" "$DEFAULT_HW_CONFIG.merge" | less
-        
-        if [ -f "$merge_config" ]; then
-            echo "Would you like to:"
-            echo "1) Keep changes"
-            echo "2) Discard changes"
-            read -p "Choose an option (1-2): " merge_choice
-            
-            case $merge_choice in
-                1)
-                    cp "$DEFAULT_HW_CONFIG.merge" "$DEFAULT_HW_CONFIG"
-                    echo "Merged configuration saved."
-                    ;;
-                *)
-                    echo "Merged changes discarded."
-                    ;;
-            esac
-        fi
-        ;;
-    2)
-        echo "Copying generated configuration..."
-        cp "$GENERATED_HW_CONFIG" "$DEFAULT_HW_CONFIG"
-        ;;
-    3)
-        echo "Keeping current configuration..."
-        ;;
-    *)
-        echo "Invalid choice. Keeping new configuration..."
-        ;;
+    # Split the window horizontally
+    tmux split-window -h
+
+    # Send commands to each pane
+    # Left pane: generated config
+    tmux send-keys -t 0 "echo 'Tip: use CTRL + b o to change the focused pane'; echo; echo 'Generated config:'; echo '==========='; cat $GENERATED_HW_CONFIG" C-m
+
+    # Right pane: current config
+    tmux send-keys -t 1 "nano $DEFAULT_HW_CONFIG.merge" C-m
+
+    # Attach to the session
+    tmux -2 attach-session -t config_compare
+
+    # Open vimdiff with three-way merge view
+    diff -u "$GENERATED_HW_CONFIG" "$DEFAULT_HW_CONFIG.merge" | less
+
+    if [ -f "$merge_config" ]; then
+        echo "Would you like to:"
+        echo "1) Keep changes"
+        echo "2) Discard changes"
+        read -p "Choose an option (1-2): " merge_choice
+
+        case $merge_choice in
+        1)
+            cp "$DEFAULT_HW_CONFIG.merge" "$DEFAULT_HW_CONFIG"
+            echo "Merged configuration saved."
+            ;;
+        *)
+            echo "Merged changes discarded."
+            ;;
+        esac
+    fi
+    ;;
+2)
+    echo "Copying generated configuration..."
+    cp "$GENERATED_HW_CONFIG" "$DEFAULT_HW_CONFIG"
+    ;;
+3)
+    echo "Keeping current configuration..."
+    ;;
+*)
+    echo "Invalid choice. Keeping new configuration..."
+    ;;
 esac
 
 echo "Installing NixOS..."

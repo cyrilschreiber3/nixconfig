@@ -20,6 +20,7 @@ in {
     ];
 
     home.packages = with pkgs; [
+      # Needed for foxundermoon.shell-format
       shfmt
     ];
 
