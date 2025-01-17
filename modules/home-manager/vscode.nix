@@ -191,6 +191,7 @@ in {
         "prettier.tabWidth" = 2;
         "prettier.useTabs" = true;
         "prettier.singleQuote" = false;
+        "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
         "[dotenv]" = {
           "editor.defaultFormatter" = "foxundermoon.shell-format";
         };
