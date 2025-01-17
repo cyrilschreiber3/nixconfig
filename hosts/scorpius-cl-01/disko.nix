@@ -2,7 +2,7 @@
 {lib, ...}: {
   disko.devices = {
     disk.main = {
-      device = lib.mkDefault "/dev/nvme0n1";
+      device = lib.mkDefault "/dev/disk/by-id/nvme-WD_BLACK_SN850X_4000GB_244603801139";
       type = "disk";
       content = {
         type = "gpt";

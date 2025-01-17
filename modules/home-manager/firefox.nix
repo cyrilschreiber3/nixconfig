@@ -140,12 +140,6 @@ in {
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
-          # Google Seach
-          "google@search.mozilla.org" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/startpage-private-search/latest.xpi";
-            installation_mode = "force_installed";
-            default_area = "menupanel";
-          };
           # Duplicate Tab Shortcut
           "duplicate-tab@firefox.stefansundin.com" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/duplicate-tab-shortcut/latest.xpi";
@@ -170,12 +164,12 @@ in {
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
-          # Vue.js Devtools
-          "{66E978CD-981F-47DF-AC42-E3CF417C1467}" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/new-tab-homepage/latest.xpi";
-            installation_mode = "force_installed";
-            default_area = "menupanel";
-          };
+          # # New Tab Homepage
+          # "{66E978CD-981F-47DF-AC42-E3CF417C1467}" = {
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/new-tab-homepage/latest.xpi";
+          #   installation_mode = "force_installed";
+          #   default_area = "menupanel";
+          # };
           # DuckDuckGo Privacy Essentials
           "jid1-ZAdIEUB7XOzOJw@jetpack" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/duckduckgo-for-firefox/latest.xpi";

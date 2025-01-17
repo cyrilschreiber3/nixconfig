@@ -21,6 +21,8 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.useOSProber = true;
 
+  boot.supportedFilesystems = ["ntfs"];
+
   # Enable networking
   networking.hostName = "scorpius-cl-01";
   networking.search = ["schreibernet.dev"];
