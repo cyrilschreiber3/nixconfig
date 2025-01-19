@@ -20,6 +20,16 @@ in {
         type = lib.types.str;
         description = "The main user of the system";
       };
+      cpuType = lib.mkOption {
+        description = "One of `intel` or `amd`";
+        default = "intel";
+        type = lib.types.str;
+      };
+
+      pciIDs = lib.mkOption {
+        description = "Comma-separated list of PCI IDs to pass-through (lspci -nn)";
+        type = lib.types.str;
+      };
     };
   };
 
@@ -44,10 +54,22 @@ in {
       listen.ip = "0.0.0.0";
     };
 
+    boot.kernelParams = [
+      "${cfg.cpuType}_iommu=on"
+      "kvm.ignore_msrs=1"
+      "iommu=pt"
+    ];
+    boot.kernelModules = [
+      "vfio"
+      "vfio_iommu_type1"
+      "vfio_pci"
+      "vfio_virqfd"
+      "nvidia-vgpu-vfio"
+    ];
     boot.extraModprobeConfig = ''
-      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
-    ''; # (for driver 535) bypasses `error: vmiop_log: NVOS status 0x1` in nvidia-vgpu-mgr.service when starting VM
-    boot.kernelModules = ["nvidia-vgpu-vfio"];
+      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1 vfio-pci.ids=${cfg.pciIDs}
+    '';
+
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
       patcher = {

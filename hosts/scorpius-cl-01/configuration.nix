@@ -167,6 +167,8 @@
 
   vGPUVMConfig = {
     enable = true;
+    cpuType = "intel";
+    pciIDs = "15b7:5030";
     mainUser = "cyril";
   };
 
