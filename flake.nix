@@ -13,12 +13,18 @@
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vgpu4nixos.url = "github:mrzenc/vgpu4nixos";
+    fastapi-dls-nixos = {
+      url = "github:mrzenc/fastapi-dls-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,12 +52,11 @@
   outputs = {
     self,
     disko,
-    mypkgs,
+    home-manager,
     nixos-hardware,
     nixos-wsl,
     nixpkgs,
-    spicetify-nix,
-    ssh-keys,
+    vgpu4nixos,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -60,8 +65,8 @@
         specialArgs = {inherit inputs;};
         modules = [
           disko.nixosModules.disko
-          nixos-hardware.nixosModules.lenovo-legion-16irx8h
-          inputs.home-manager.nixosModules.default
+          # nixos-hardware.nixosModules.lenovo-legion-16irx8h
+          home-manager.nixosModules.default
           ./hosts/scorpius-cl-01/configuration.nix
         ];
       };
@@ -75,7 +80,7 @@
             wsl.enable = true;
           }
           ./hosts/scorpius-cl-01-wsl/configuration.nix
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
         ];
       };
     };

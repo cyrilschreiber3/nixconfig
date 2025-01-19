@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "fastapi-dls-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733667739,
+        "narHash": "sha256-Dy3D7VhdT7kjmlqT0PWsPvnKi2QeLRDnyJBEsE2gyTo=",
+        "owner": "mrzenc",
+        "repo": "fastapi-dls-nixos",
+        "rev": "901891d1eff4dc7c44afa142221380d0817665e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrzenc",
+        "repo": "fastapi-dls-nixos",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -217,9 +237,26 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1733808091,
+        "narHash": "sha256-KWwINTQelKOoQgrXftxoqxmKFZb9pLVfnRvK270nkVk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a0f3e10d94359665dba45b71b4227b0aeb851f8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
+        "fastapi-dls-nixos": "fastapi-dls-nixos",
         "home-manager": "home-manager",
         "mypkgs": "mypkgs",
         "nix-vscode-extensions": "nix-vscode-extensions",
@@ -227,7 +264,8 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "spicetify-nix": "spicetify-nix",
-        "ssh-keys": "ssh-keys"
+        "ssh-keys": "ssh-keys",
+        "vgpu4nixos": "vgpu4nixos"
       }
     },
     "spicetify-nix": {
@@ -275,6 +313,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vgpu4nixos": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1735765841,
+        "narHash": "sha256-oA2oWsxWH7BilFY4to4TfC7qgebTaoVcg3XDZev+mB0=",
+        "owner": "mrzenc",
+        "repo": "vgpu4nixos",
+        "rev": "6c43ebd765ddad9656c29aba470d60b89bdb1eb6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrzenc",
+        "repo": "vgpu4nixos",
         "type": "github"
       }
     }

@@ -160,6 +160,11 @@
     customShares = [];
   };
 
+  vGPUVMConfig = {
+    enable = true;
+    mainUser = "cyril";
+  };
+
   x11vncConfig = {
     enable = true;
     mainUser = "cyril";
