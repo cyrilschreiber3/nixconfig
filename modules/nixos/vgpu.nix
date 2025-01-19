@@ -89,7 +89,7 @@ in {
 
     # VM configuration
 
-    users.users.${cfg.mainUser}.extraGroups = ["libvirtd"];
+    users.users.${cfg.mainUser}.extraGroups = ["libvirtd" "kvm"];
     virtualisation = {
       libvirtd = {
         enable = true;
