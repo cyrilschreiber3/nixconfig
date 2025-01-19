@@ -67,7 +67,7 @@ in {
       "nvidia-vgpu-vfio"
     ];
     boot.extraModprobeConfig = ''
-      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1 vfio-pci.ids=${cfg.pciIDs}
+      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     '';
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
