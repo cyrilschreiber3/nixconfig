@@ -21,6 +21,11 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.useOSProber = true;
 
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv64-linux"
+  ];
+
   boot.supportedFilesystems = ["ntfs"];
 
   # Enable networking

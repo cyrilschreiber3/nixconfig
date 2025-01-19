@@ -27,12 +27,15 @@ in {
     environment.systemPackages = with pkgs; [
       looking-glass-client
       mdevctl
-      virt-manager # virtual machines
-      virt-viewer # needed to choose share folders with windows VM (guide and video: https://www.guyrutenberg.com/2018/10/25/sharing-a-folder-a-windows-guest-under-virt-manager/ and https://www.youtube.com/watch?v=Ow3gVbkWj-c)
-      spice-gtk # for virtual machines (to connect usbs and everything else)
-      qemu
-      OVMF
       pciutils
+      virt-manager # virtual machines
+      virt-viewer
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
+      adwaita-icon-theme
     ];
 
     services.fastapi-dls = {
@@ -45,7 +48,6 @@ in {
       options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     ''; # (for driver 535) bypasses `error: vmiop_log: NVOS status 0x1` in nvidia-vgpu-mgr.service when starting VM
     boot.kernelModules = ["nvidia-vgpu-vfio"];
-    # boot.kernelPackages = pkgs.linuxPackages_6_1; # needed, 6.1 is LTS
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
       patcher = {
@@ -54,7 +56,7 @@ in {
           remapP40ProfilesToV100D = true; # for 17_x
         };
         copyVGPUProfiles = {
-          "1f54:0000" = "1E30:12BA"; # RTX 2060 Mobile 6GB (is already supported in the repo)
+          "1f54:0000" = "1E30:12BA";
         };
       };
       driverSource = {
@@ -63,8 +65,24 @@ in {
       };
     };
 
+    # VM configuration
+
     users.users.${cfg.mainUser}.extraGroups = ["libvirtd"];
-    virtualisation.libvirtd.enable = true;
-    virtualisation.spiceUSBRedirection.enable = true; # to enable USB rederection in virt-manager (https://github.com/NixOS/nixpkgs/issues/106594)
+    virtualisation = {
+      libvirtd = {
+        enable = true;
+
+        qemu = {
+          package = pkgs.qemu_kvm;
+          ovmf = {
+            enable = true;
+            packages = [pkgs.OVMFFull.fd];
+          };
+          swtpm.enable = true;
+        };
+      };
+      spiceUSBRedirection.enable = true;
+    };
+    services.spice-vdagentd.enable = true;
   };
 }
