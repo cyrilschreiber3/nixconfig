@@ -51,7 +51,7 @@ in {
           remapP40ProfilesToV100D = true; # for 17_x
         };
         copyVGPUProfiles = {
-          "1f11:0000" = "1E30:12BA"; # RTX 2060 Mobile 6GB (is already supported in the repo)
+          "1f54:0000" = "1E30:12BA"; # RTX 2060 Mobile 6GB (is already supported in the repo)
         };
       };
       driverSource = {
