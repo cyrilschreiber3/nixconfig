@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  # pkgs,
   ...
 }: let
   cfg = config.wireguardClientConfig;
@@ -22,13 +22,14 @@ in {
         ips = ["10.182.192.3/24"];
         listenPort = 51820;
 
-        postSetup = ''
-          ENDPOINT_IP=$(wg show wg0 endpoints | awk '{print $2}' | cut -d':' -f1)
-          DEFAULT_ROUTE=$(${pkgs.iproute2}/bin/ip route | grep '^default' | grep -v 'docker\|veth\|br-')
-          GW="$(echo $DEFAULT_ROUTE | awk '{print $3}' | head -n 1)"
-          DEV="$(echo $DEFAULT_ROUTE | awk '{print $5}' | head -n 1)"
-          ${pkgs.iproute2}/bin/ip route add $ENDPOINT_IP via $GW dev $DEV
-        '';
+        # postSetup = ''
+        #   ENDPOINT_IP=$(${pkgs.wireguard-tools}/bin/wg show wg0 endpoints | awk '{print $2}' | cut -d':' -f1)
+        #   DEFAULT_ROUTE=$(${pkgs.iproute2}/bin/ip route | grep '^default' | grep -v 'docker\|veth\|br-')
+        #   GW="$(echo $DEFAULT_ROUTE | awk '{print $3}' | head -n 1)"
+        #   DEV="$(echo $DEFAULT_ROUTE | awk '{print $5}' | head -n 1)"
+        #   echo "Running: ip route add $ENDPOINT_IP via $GW dev $DEV"
+        #   ${pkgs.iproute2}/bin/ip route add $ENDPOINT_IP via $GW dev $DEV
+        # '';
 
         privateKeyFile = "/etc/wireguard-keys/private";
 
