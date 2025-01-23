@@ -18,7 +18,7 @@ in {
     networking.wireguard.enable = true;
     networking.wireguard.interfaces = {
       wg0 = {
-        ips = ["10.182.192.3/32"];
+        ips = ["10.182.192.3/24"];
         listenPort = 51820;
 
         privateKeyFile = "/etc/wireguard-keys/private";
@@ -27,6 +27,7 @@ in {
           {
             name = "Aquila-VPN-01";
             publicKey = "Wn8UaNrfnhBz4+JGXz9CKLNXK2opjAyM8AqRnknNF04=";
+            presharedKeyFile = "/etc/wireguard-keys/pre-shared-schreibernet";
 
             # Allow all traffic
             allowedIPs = ["0.0.0.0/0"];
