@@ -172,6 +172,11 @@
     mainUser = "cyril";
   };
 
+  wireguardClientConfig = {
+    enable = true;
+    enableSchreibernet = true;
+  };
+
   x11vncConfig = {
     enable = true;
     mainUser = "cyril";
