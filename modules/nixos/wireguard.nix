@@ -30,6 +30,12 @@
           presharedKeyFile = "/home/admin/wireguard-keys/pre-shared-cyrils-phone";
           allowedIPs = ["10.182.192.2/32"];
         }
+        {
+          name = "Scorpius-CL-01";
+          publicKey = "cT3xDRfTOGLjdG/wKIYcRfFueR9v+qIQArBXanfJNDU=";
+          presharedKeyFile = "/home/admin/wireguard-keys/pre-shared-scorpius-cl-01";
+          allowedIPs = ["10.182.192.3/32"];
+        }
       ];
     };
   };
