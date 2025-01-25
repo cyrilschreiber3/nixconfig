@@ -67,16 +67,17 @@ in {
       "nvidia-vgpu-vfio"
     ];
     boot.extraModprobeConfig = ''
-      softdep nvme pre: vfio-pci
-      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1 vfio-pci ids=15b7:5030
-      override_driver=nvme path=0000:41:00.0
+      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     '';
 
-    # # Add this to bind specific PCI address
-    # services.udev.extraRules = ''
-    #   SUBSYSTEM=="vfio", KERNEL=="vfio*", MODE="0666"
-    #   ACTION=="add|bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", ATTR{power/control}="on", TEST=="power/control", ATTR{remove}="1", ATTR{path}=="*40:00.0*", DRIVER=="", RUN+="${pkgs.kmod}/bin/modprobe vfio-pci"
-    # '';
+    # Add this to bind specific PCI address
+    services.udev.extraRules = ''
+      SUBSYSTEM=="vfio", KERNEL=="vfio*", MODE="0666"
+      # Remove and unbind the existing driver
+      ACTION=="add|bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", KERNELS=="0000:40:00.0", ATTR{power/control}="on", ATTR{driver}=="nvme", ATTR{remove}="1"
+      # Bind to vfio-pci
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", KERNELS=="0000:40:00.0", TEST=="driver", ATTR{driver}=="", RUN+="${pkgs.kmod}/bin/modprobe -i vfio-pci"
+    '';
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
