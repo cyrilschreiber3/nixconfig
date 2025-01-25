@@ -67,7 +67,7 @@ in {
       "nvidia-vgpu-vfio"
     ];
     boot.extraModprobeConfig = ''
-      options nvidia vfio-pci vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
+      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     '';
 
     services.udev.extraRules = ''
