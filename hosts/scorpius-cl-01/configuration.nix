@@ -173,7 +173,7 @@
   };
 
   wireguardClientConfig = {
-    enable = true;
+    enable = false;
     enableSchreibernet = true;
   };
 

@@ -67,7 +67,12 @@ in {
       "nvidia-vgpu-vfio"
     ];
     boot.extraModprobeConfig = ''
-      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
+      options nvidia vfio-pci vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
+    '';
+
+    services.udev.extraRules = ''
+      SUBSYSTEM=="vfio", KERNEL=="vfio*", MODE="0666"
+      ACTION=="add|bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", ATTR{power/control}="on", TEST=="power/control", ATTR{remove}="1", ATTR{path}=="*40:00.0*", DRIVER=="", RUN+="${pkgs.kmod}/bin/modprobe vfio-pci"
     '';
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
