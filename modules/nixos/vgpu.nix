@@ -75,7 +75,7 @@ in {
     '';
 
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 your-username libvirtd -"
+      "f /dev/shm/looking-glass 0660 ${cfg.mainUser} libvirtd -"
     ];
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
