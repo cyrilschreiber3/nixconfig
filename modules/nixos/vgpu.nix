@@ -70,15 +70,6 @@ in {
       options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     '';
 
-    # Add this to bind specific PCI address
-    services.udev.extraRules = ''
-      SUBSYSTEM=="vfio", KERNEL=="vfio*", MODE="0666"
-      # Remove and unbind the existing driver
-      ACTION=="add|bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", KERNELS=="0000:40:00.0", ATTR{power/control}="on", ATTR{driver}=="nvme", ATTR{remove}="1"
-      # Bind to vfio-pci
-      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5030", KERNELS=="0000:40:00.0", TEST=="driver", ATTR{driver}=="", RUN+="${pkgs.kmod}/bin/modprobe -i vfio-pci"
-    '';
-
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
       patcher = {
