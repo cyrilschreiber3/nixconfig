@@ -70,6 +70,14 @@ in {
       options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
     '';
 
+    services.udev.extraRules = ''
+      SUBSYSTEM=="block", ATTRS{serial}=="24434Y4A1N09", MODE="0660", GROUP="libvirtd"
+    '';
+
+    systemd.tmpfiles.rules = [
+      "f /dev/shm/looking-glass 0660 your-username libvirtd -"
+    ];
+
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
       patcher = {
