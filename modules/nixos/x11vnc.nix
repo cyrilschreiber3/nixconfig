@@ -17,7 +17,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [5900];
+    networking.firewall.allowedTCPPorts = [5566];
 
     environment = {
       # VNC used for remote access to the desktop

@@ -38,7 +38,7 @@ in {
       looking-glass-client
       mdevctl
       pciutils
-      virt-manager # virtual machines
+      virt-manager
       virt-viewer
       spice
       spice-gtk
