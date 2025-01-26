@@ -82,6 +82,7 @@ in {
     brave
 
     # virtualization / emulation
+    remmina
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
