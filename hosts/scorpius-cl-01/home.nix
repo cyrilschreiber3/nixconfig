@@ -82,7 +82,6 @@ in {
     brave
 
     # virtualization / emulation
-    remmina
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
@@ -120,6 +119,8 @@ in {
     mainGPGKey = "43FF705A6EDF1601";
     useWindowsPinentry = false;
   };
+
+  remminaConfig.enable = true;
 
   spotifyConfig = {
     enable = true;

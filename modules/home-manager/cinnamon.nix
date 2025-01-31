@@ -73,6 +73,8 @@ in {
         ];
         app-menu-icon-name = "nix-snowflake-white";
         system-icon = "nix-snowflake-white";
+        device-aliases = ["/org/freedesktop/UPower/devices/battery_BAT1:=Main Battery"];
+        enabled-applets = ["panel1:left:0:menu@cinnamon.org:0" "panel1:left:1:separator@cinnamon.org:1" "panel1:left:2:grouped-window-list@cinnamon.org:2" "panel1:right:0:systray@cinnamon.org:3" "panel1:right:1:xapp-status@cinnamon.org:4" "panel1:right:2:notifications@cinnamon.org:5" "panel1:right:4:removable-drives@cinnamon.org:7" "panel1:right:7:network@cinnamon.org:10" "panel1:right:8:sound@cinnamon.org:11" "panel1:right:9:power@cinnamon.org:12" "panel1:right:10:calendar@cinnamon.org:13" "panel1:right:11:cornerbar@cinnamon.org:14"];
       };
       "org/cinnamon/desktop/wm/preferences" = {
         button-layout = ":minimize,maximize,close";
@@ -92,6 +94,18 @@ in {
       };
       "org/cinnamon/desktop/keybindings/media-keys" = {
         terminal = ["<Super>t"];
+      };
+      "org/cinnamon/settings-daemon/plugins/power" = {
+        sleep-display-ac = 1800; # 30min
+        sleep-display-battery = 1800; # 30min
+        sleep-inactive-ac-timeout = 0; # never
+        sleep-inactive-battery-timeout = 0; # never
+        lid-close-ac-action = "suspend";
+        lid-close-battery-action = "suspend";
+        button-power = "interactive";
+        idle-dim-battery = true;
+        idle-dim-time = 120; # 2min
+        idle-brightness = 30;
       };
       "org/cinnamon/theme" = {
         name = "Tokyonight-Dark-BL-LB";
@@ -116,6 +130,10 @@ in {
       "org/nemo/window-state" = {
         geometry = "1244x730+1989+35";
         sidebar-bookmark-breakpoint = 2;
+      };
+      "org/cinnamon/desktop/a11y/applications" = {
+        screen-keyboard-enabled = false;
+        togglekeys-enable-osd = true;
       };
       "org/x/editor/preferences/editor" = {
         bracket-matching = true;

@@ -7,6 +7,7 @@
     ./git.nix
     ./gnome.nix
     ./mimeApps.nix
+    ./remmina.nix
     ./spotify.nix
     ./vscode.nix
     ./zsh.nix
