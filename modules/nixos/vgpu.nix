@@ -80,6 +80,8 @@ in {
       "f /dev/shm/looking-glass 0660 ${cfg.mainUser} libvirtd -"
     ];
 
+    boot.kernelPackages = pkgs.linuxPackages_6_6;
+
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = {
       patcher = {
