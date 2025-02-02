@@ -80,6 +80,7 @@ in {
 
     # browsers
     chromium
+    google-chrome
     brave
 
     # virtualization / emulation

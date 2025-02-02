@@ -18,7 +18,6 @@ in {
       gnome-themes-extra
       dconf-editor
       albert
-      diodon
 
       (whitesur-icon-theme.override {
         alternativeIcons = true;
