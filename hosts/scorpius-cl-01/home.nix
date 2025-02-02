@@ -65,6 +65,7 @@ in {
     rsync
     screen
     neofetch
+    powershell
 
     # dev
     nixd
