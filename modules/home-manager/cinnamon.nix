@@ -135,6 +135,9 @@ in {
         screen-keyboard-enabled = false;
         togglekeys-enable-osd = true;
       };
+      "org/x/apps/portal" = {
+        color-scheme = "prefer-dark";
+      };
       "org/x/editor/preferences/editor" = {
         bracket-matching = true;
         display-line-numbers = true;
