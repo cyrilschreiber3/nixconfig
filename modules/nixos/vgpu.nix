@@ -54,7 +54,7 @@ in {
       debug = true;
       listen.ip = "0.0.0.0";
     };
-    networking.firewall.allowedTCPPorts = [443];
+    networking.firewall.interfaces.virbr0.allowedTCPPorts = [443];
 
     boot.kernelParams = [
       "${cfg.cpuType}_iommu=on"
