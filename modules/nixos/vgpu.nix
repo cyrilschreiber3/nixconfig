@@ -47,6 +47,7 @@ in {
       win-spice
       adwaita-icon-theme
       parsec-bin
+      cifs-utils
     ];
 
     services.fastapi-dls = {
