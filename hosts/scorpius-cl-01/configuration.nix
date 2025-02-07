@@ -41,6 +41,8 @@
   networking.firewall.allowedTCPPorts = [
     # SSH
     22
+    # Generic dev
+    8080
     # Spotify
     57621
   ];
