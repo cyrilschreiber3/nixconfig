@@ -85,6 +85,9 @@ in {
 
     # virtualization / emulation
 
+    # misc
+    obsidian
+
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
     # ++ [
