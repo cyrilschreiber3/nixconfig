@@ -10,28 +10,28 @@
   defaultShares = {
     media1 = {
       mountPoint = "/mnt/Media1";
-      server = "192.168.1.10";
+      server = "10.1.1.20";
       serverPath = "/mnt/Media1/Media1";
       mountOptions = "-fstype=nfs,rw,nfsvers=4";
       description = "First media share";
     };
     media2 = {
       mountPoint = "/mnt/Media2";
-      server = "192.168.1.10";
+      server = "10.1.1.20";
       serverPath = "/mnt/Media2/Media2";
       mountOptions = "-fstype=nfs,rw,nfsvers=4";
       description = "Second media share";
     };
     vault = {
       mountPoint = "/mnt/Vault";
-      server = "192.168.1.10";
+      server = "10.1.1.20";
       serverPath = "/mnt/Vault/VaultData";
       mountOptions = "-fstype=nfs,rw,nfsvers=4";
       description = "Vault storage";
     };
     turboVault = {
       mountPoint = "/mnt/TurboVault";
-      server = "192.168.1.10";
+      server = "10.1.1.20";
       serverPath = "/mnt/TurboVault/TurboVaultData";
       mountOptions = "-fstype=nfs,rw,nfsvers=4";
       description = "High-speed vault storage";
