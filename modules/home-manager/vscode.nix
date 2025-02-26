@@ -28,6 +28,8 @@ in {
       enable = true;
       package = pkgs.vscode;
 
+      mutableExtensionsDir = cfg.mutableExtensionsDir;
+
       profiles.default = {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
