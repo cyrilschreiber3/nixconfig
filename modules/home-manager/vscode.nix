@@ -28,311 +28,312 @@ in {
       enable = true;
       package = pkgs.vscode;
 
-      enableUpdateCheck = false;
-      enableExtensionUpdateCheck = false;
+      profiles.default = {
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
 
-      mutableExtensionsDir = cfg.mutableExtensionsDir;
-      extensions = with pkgs.vscode-marketplace;
-        lib.flatten [
-          (lib.optional cfg.enableBaseExtensions [
-            # utilities
-            formulahendry.auto-close-tag
-            formulahendry.auto-rename-tag
-            aaron-bond.better-comments
-            ryuta46.multi-command
-            chunsen.bracket-select
-            esbenp.prettier-vscode
-            ritwickdey.liveserver
-            rangav.vscode-thunder-client
-            shardulm94.trailing-spaces
+        extensions = with pkgs.vscode-marketplace;
+          lib.flatten [
+            (lib.optional cfg.enableBaseExtensions [
+              # utilities
+              formulahendry.auto-close-tag
+              formulahendry.auto-rename-tag
+              aaron-bond.better-comments
+              ryuta46.multi-command
+              chunsen.bracket-select
+              esbenp.prettier-vscode
+              ritwickdey.liveserver
+              rangav.vscode-thunder-client
+              shardulm94.trailing-spaces
 
-            # theme
-            enkia.tokyo-night
-            vscode-icons-team.vscode-icons
+              # theme
+              enkia.tokyo-night
+              vscode-icons-team.vscode-icons
 
-            # Copilot
-            github.copilot
-            github.copilot-chat
-          ])
+              # Copilot
+              github.copilot
+              github.copilot-chat
+            ])
 
-          (lib.optional cfg.enableLanguageExtensions [
-            # Actions
-            github.vscode-github-actions
+            (lib.optional cfg.enableLanguageExtensions [
+              # Actions
+              github.vscode-github-actions
 
-            # Ansible
-            redhat.ansible
-            wolfmah.ansible-vault-inline
+              # Ansible
+              redhat.ansible
+              wolfmah.ansible-vault-inline
 
-            # Bash
-            foxundermoon.shell-format
+              # Bash
+              foxundermoon.shell-format
 
-            # CSS
-            bradlc.vscode-tailwindcss
+              # CSS
+              bradlc.vscode-tailwindcss
 
-            # Docker
-            ms-azuretools.vscode-docker
+              # Docker
+              ms-azuretools.vscode-docker
 
-            # DotEnv
-            mikestead.dotenv
+              # DotEnv
+              mikestead.dotenv
 
-            # HTML
-            adrianwilczynski.format-selection-as-html
-            ecmel.vscode-html-css
-            zignd.html-css-class-completion
+              # HTML
+              adrianwilczynski.format-selection-as-html
+              ecmel.vscode-html-css
+              zignd.html-css-class-completion
 
-            # Json
-            zainchen.json
+              # Json
+              zainchen.json
 
-            # Nix
-            jnoortheen.nix-ide
-            kamadorueda.alejandra
+              # Nix
+              jnoortheen.nix-ide
+              kamadorueda.alejandra
 
-            # Powershell
-            ms-vscode.powershell
+              # Powershell
+              ms-vscode.powershell
 
-            # Python
-            ms-python.python
-            ms-python.vscode-pylance
-            ms-python.debugpy
+              # Python
+              ms-python.python
+              ms-python.vscode-pylance
+              ms-python.debugpy
 
-            # SQL
-            formulahendry.vscode-mysql
-            qwtel.sqlite-viewer
-            mtxr.sqltools
+              # SQL
+              formulahendry.vscode-mysql
+              qwtel.sqlite-viewer
+              mtxr.sqltools
 
-            # Vue
-            vue.volar
+              # Vue
+              vue.volar
 
-            # XML
-            dotjoshjohnson.xml
+              # XML
+              dotjoshjohnson.xml
 
-            # YAML
-            redhat.vscode-yaml
-          ])
-        ]
-        ++ [
-          pkgs.vscode-extensions.ms-vscode-remote.vscode-remote-extensionpack
-        ];
+              # YAML
+              redhat.vscode-yaml
+            ])
+          ]
+          ++ [
+            pkgs.vscode-extensions.ms-vscode-remote.vscode-remote-extensionpack
+          ];
 
-      userSettings = {
-        "explorer.confirmDragAndDrop" = false;
-        "explorer.confirmDelete" = false;
-        "explorer.fileNesting.patterns" = {
-          "*.ts" = "\${capture}.js";
-          "*.js" = "\${capture}.js.map, \${capture}.min.js, \${capture}.d.ts";
-          "*.jsx" = "\${capture}.js";
-          "*.tsx" = "\${capture}.ts";
-          "tsconfig.json" = "tsconfig.*.json";
-          "package.json" = "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb";
-          "*.sqlite" = "\${capture}.\${extname}-*";
-          "*.db" = "\${capture}.\${extname}-*";
-          "*.sqlite3" = "\${capture}.\${extname}-*";
-          "*.db3" = "\${capture}.\${extname}-*";
-          "*.sdb" = "\${capture}.\${extname}-*";
-          "*.s3db" = "\${capture}.\${extname}-*";
-        };
-        "files.autoSave" = "onFocusChange";
-        "workbench.editorAssociations" = {
-          "*.copilotmd" = "vscode.markdown.preview.editor";
-          "*.ipynb" = "jupyter-notebook";
-          "*.jpeg" = "imagePreview.previewEditor";
-          "{git,gitlens,git-graph}:/**/*.{md,csv,svg}" = "default";
-        };
-        "workbench.colorTheme" = "Tokyo Night";
-        "workbench.iconTheme" = "vscode-icons";
-        "editor.formatOnPaste" = false;
-        "editor.formatOnSave" = true;
-        "editor.formatOnType" = true;
-        "editor.inlineSuggest.enabled" = true;
-        "editor.fontFamily" = "MesloLGS Nerd Font";
-        "editor.fontLigatures" = false;
-        "editor.linkedEditing" = true;
-        "editor.minimap.enabled" = true;
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "terminal.integrated.sendKeybindingsToShell" = true;
-        "terminal.integrated.enableMultiLinePasteWarning" = false;
-        "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
-        "terminal.integrated.fontSize" = 12;
-        "terminal.integrated.defaultProfile.linux" = "zsh";
-        "terminal.integrated.profiles.linux" = {
-          "bash" = {
-            "path" = "bash";
-            "icon" = "terminal-bash";
+        userSettings = {
+          "explorer.confirmDragAndDrop" = false;
+          "explorer.confirmDelete" = false;
+          "explorer.fileNesting.patterns" = {
+            "*.ts" = "\${capture}.js";
+            "*.js" = "\${capture}.js.map, \${capture}.min.js, \${capture}.d.ts";
+            "*.jsx" = "\${capture}.js";
+            "*.tsx" = "\${capture}.ts";
+            "tsconfig.json" = "tsconfig.*.json";
+            "package.json" = "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb";
+            "*.sqlite" = "\${capture}.\${extname}-*";
+            "*.db" = "\${capture}.\${extname}-*";
+            "*.sqlite3" = "\${capture}.\${extname}-*";
+            "*.db3" = "\${capture}.\${extname}-*";
+            "*.sdb" = "\${capture}.\${extname}-*";
+            "*.s3db" = "\${capture}.\${extname}-*";
           };
-          "zsh" = {
-            "path" = "zsh";
+          "files.autoSave" = "onFocusChange";
+          "workbench.editorAssociations" = {
+            "*.copilotmd" = "vscode.markdown.preview.editor";
+            "*.ipynb" = "jupyter-notebook";
+            "*.jpeg" = "imagePreview.previewEditor";
+            "{git,gitlens,git-graph}:/**/*.{md,csv,svg}" = "default";
           };
-          "fish" = {
-            "path" = "fish";
+          "workbench.colorTheme" = "Tokyo Night";
+          "workbench.iconTheme" = "vscode-icons";
+          "editor.formatOnPaste" = false;
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+          "editor.inlineSuggest.enabled" = true;
+          "editor.fontFamily" = "MesloLGS Nerd Font";
+          "editor.fontLigatures" = false;
+          "editor.linkedEditing" = true;
+          "editor.minimap.enabled" = true;
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          "terminal.integrated.sendKeybindingsToShell" = true;
+          "terminal.integrated.enableMultiLinePasteWarning" = false;
+          "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
+          "terminal.integrated.fontSize" = 12;
+          "terminal.integrated.defaultProfile.linux" = "zsh";
+          "terminal.integrated.profiles.linux" = {
+            "bash" = {
+              "path" = "bash";
+              "icon" = "terminal-bash";
+            };
+            "zsh" = {
+              "path" = "zsh";
+            };
+            "fish" = {
+              "path" = "fish";
+            };
+            "tmux" = {
+              "path" = "tmux";
+              "icon" = "terminal-tmux";
+            };
+            "pwsh" = {
+              "path" = "pwsh";
+              "icon" = "terminal-powershell";
+            };
+            "ash" = {
+              "path" = "/bin/ash";
+            };
+            "sh" = {
+              "path" = "/bin/sh";
+            };
           };
-          "tmux" = {
-            "path" = "tmux";
-            "icon" = "terminal-tmux";
+          "security.workspace.trust.untrustedFiles" = "open";
+          "diffEditor.ignoreTrimWhitespace" = false;
+          "git.enableCommitSigning" = true;
+          "git.replaceTagsWhenPull" = true;
+          "git.confirmSync" = false;
+          "git.autofetch" = true;
+          "git.enableSmartCommit" = true;
+          "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
+          "prettier.printWidth" = 120;
+          "prettier.tabWidth" = 2;
+          "prettier.useTabs" = true;
+          "prettier.singleQuote" = false;
+          "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
+          "[dotenv]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
           };
-          "pwsh" = {
-            "path" = "pwsh";
-            "icon" = "terminal-powershell";
+          "[nix]" = {
+            "editor.defaultFormatter" = "kamadorueda.alejandra";
           };
-          "ash" = {
-            "path" = "/bin/ash";
+          "[powershell]" = {
+            "editor.defaultFormatter" = "ms-vscode.powershell";
           };
-          "sh" = {
-            "path" = "/bin/sh";
+          "[properties]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
           };
+          "[shellscript]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[vue]" = {
+            "editor.defaultFormatter" = "Vue.volar";
+          };
+          "github.copilot.editor.enableAutoCompletions" = true;
+          "github.copilot.enable" = {
+            "*" = true;
+            "yaml" = false;
+            "plaintext" = false;
+            "markdown" = true;
+            "html" = true;
+            "php" = true;
+            "vue" = true;
+            "javascript" = true;
+            "jsonc" = true;
+            "python" = true;
+          };
+          "remote.SSH.useLocalServer" = false;
+          "remote.SSH.connectTimeout" = 1800;
+          "liveServer.settings.donotVerifyTags" = true;
+          "liveServer.settings.useWebExt" = true;
+          "liveServer.settings.donotShowInfoMsg" = true;
+          "liveServer.settings.CustomBrowser" = "chromium";
+          "redhat.telemetry.enabled" = false;
+          "turboConsoleLog.insertEmptyLineAfterLogMessage" = true;
+          "turboConsoleLog.insertEmptyLineBeforeLogMessage" = true;
+          "turboConsoleLog.wrapLogMessage" = true;
+          "latex-workshop.intellisense.package.enabled" = true;
+          "latex-workshop.view.pdf.viewer" = "tab";
+          "latex-workshop.message.badbox.show" = false;
+          "latex-workshop.latex.tools" = [
+            {
+              "name" = "latexmk";
+              "command" = "latexmk";
+              "args" = ["-xelatex" "-synctex=1" "-interaction=nonstopmode" "-file-line-error" "%DOC%"];
+            }
+          ];
+          "ltex.additionalRules.motherTongue" = "fr";
+          "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
         };
-        "security.workspace.trust.untrustedFiles" = "open";
-        "diffEditor.ignoreTrimWhitespace" = false;
-        "git.enableCommitSigning" = true;
-        "git.replaceTagsWhenPull" = true;
-        "git.confirmSync" = false;
-        "git.autofetch" = true;
-        "git.enableSmartCommit" = true;
-        "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
-        "prettier.printWidth" = 120;
-        "prettier.tabWidth" = 2;
-        "prettier.useTabs" = true;
-        "prettier.singleQuote" = false;
-        "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
-        "[dotenv]" = {
-          "editor.defaultFormatter" = "foxundermoon.shell-format";
-        };
-        "[nix]" = {
-          "editor.defaultFormatter" = "kamadorueda.alejandra";
-        };
-        "[powershell]" = {
-          "editor.defaultFormatter" = "ms-vscode.powershell";
-        };
-        "[properties]" = {
-          "editor.defaultFormatter" = "foxundermoon.shell-format";
-        };
-        "[shellscript]" = {
-          "editor.defaultFormatter" = "foxundermoon.shell-format";
-        };
-        "[vue]" = {
-          "editor.defaultFormatter" = "Vue.volar";
-        };
-        "github.copilot.editor.enableAutoCompletions" = true;
-        "github.copilot.enable" = {
-          "*" = true;
-          "yaml" = false;
-          "plaintext" = false;
-          "markdown" = true;
-          "html" = true;
-          "php" = true;
-          "vue" = true;
-          "javascript" = true;
-          "jsonc" = true;
-          "python" = true;
-        };
-        "remote.SSH.useLocalServer" = false;
-        "remote.SSH.connectTimeout" = 1800;
-        "liveServer.settings.donotVerifyTags" = true;
-        "liveServer.settings.useWebExt" = true;
-        "liveServer.settings.donotShowInfoMsg" = true;
-        "liveServer.settings.CustomBrowser" = "chromium";
-        "redhat.telemetry.enabled" = false;
-        "turboConsoleLog.insertEmptyLineAfterLogMessage" = true;
-        "turboConsoleLog.insertEmptyLineBeforeLogMessage" = true;
-        "turboConsoleLog.wrapLogMessage" = true;
-        "latex-workshop.intellisense.package.enabled" = true;
-        "latex-workshop.view.pdf.viewer" = "tab";
-        "latex-workshop.message.badbox.show" = false;
-        "latex-workshop.latex.tools" = [
+
+        keybindings = [
           {
-            "name" = "latexmk";
-            "command" = "latexmk";
-            "args" = ["-xelatex" "-synctex=1" "-interaction=nonstopmode" "-file-line-error" "%DOC%"];
+            key = "shift+alt+f";
+            command = "editor.action.formatDocument";
+            when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
+          }
+          {
+            key = "ctrl+shift+i";
+            command = "-editor.action.formatDocument";
+            when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
+          }
+          {
+            key = "ctrl+[BracketRight]";
+            command = "workbench.action.terminal.toggleTerminal";
+            when = "terminal.active";
+          }
+          {
+            key = "ctrl+shift+[Equal]";
+            command = "-workbench.action.terminal.toggleTerminal";
+            when = "terminal.active";
+          }
+          {
+            key = "ctrl+shift+up";
+            command = "-editor.action.insertCursorAbove";
+            when = "editorTextFocus";
+          }
+          {
+            key = "ctrl+shift+down";
+            command = "-editor.action.insertCursorBelow";
+            when = "editorTextFocus";
+          }
+          {
+            key = "shift+alt+up";
+            command = "-editor.action.insertCursorAbove";
+            when = "editorTextFocus";
+          }
+          {
+            key = "shift+alt+down";
+            command = "-editor.action.insertCursorBelow";
+            when = "editorTextFocus";
+          }
+          {
+            key = "shift+alt+down";
+            command = "editor.action.copyLinesDownAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+shift+alt+down";
+            command = "-editor.action.copyLinesDownAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "shift+alt+up";
+            command = "editor.action.copyLinesUpAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+shift+alt+up";
+            command = "-editor.action.copyLinesUpAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+k ctrl+c";
+            command = "-editor.action.addCommentLine";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+[Backquote]";
+            command = "editor.action.commentLine";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "shift+alt+f";
+            command = "editor.action.formatDocument.none";
+            when = "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly";
+          }
+          {
+            key = "ctrl+shift+alt+s";
+            command = "multiCommand.nixosRebuildSwitch";
+          }
+          {
+            key = "ctrl+shift+alt+a";
+            command = "multiCommand.moveTaskTerminalRight";
           }
         ];
-        "ltex.additionalRules.motherTongue" = "fr";
-        "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
       };
-
-      keybindings = [
-        {
-          key = "shift+alt+f";
-          command = "editor.action.formatDocument";
-          when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
-        }
-        {
-          key = "ctrl+shift+i";
-          command = "-editor.action.formatDocument";
-          when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
-        }
-        {
-          key = "ctrl+[BracketRight]";
-          command = "workbench.action.terminal.toggleTerminal";
-          when = "terminal.active";
-        }
-        {
-          key = "ctrl+shift+[Equal]";
-          command = "-workbench.action.terminal.toggleTerminal";
-          when = "terminal.active";
-        }
-        {
-          key = "ctrl+shift+up";
-          command = "-editor.action.insertCursorAbove";
-          when = "editorTextFocus";
-        }
-        {
-          key = "ctrl+shift+down";
-          command = "-editor.action.insertCursorBelow";
-          when = "editorTextFocus";
-        }
-        {
-          key = "shift+alt+up";
-          command = "-editor.action.insertCursorAbove";
-          when = "editorTextFocus";
-        }
-        {
-          key = "shift+alt+down";
-          command = "-editor.action.insertCursorBelow";
-          when = "editorTextFocus";
-        }
-        {
-          key = "shift+alt+down";
-          command = "editor.action.copyLinesDownAction";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "ctrl+shift+alt+down";
-          command = "-editor.action.copyLinesDownAction";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "shift+alt+up";
-          command = "editor.action.copyLinesUpAction";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "ctrl+shift+alt+up";
-          command = "-editor.action.copyLinesUpAction";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "ctrl+k ctrl+c";
-          command = "-editor.action.addCommentLine";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "ctrl+[Backquote]";
-          command = "editor.action.commentLine";
-          when = "editorTextFocus && !editorReadonly";
-        }
-        {
-          key = "shift+alt+f";
-          command = "editor.action.formatDocument.none";
-          when = "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly";
-        }
-        {
-          key = "ctrl+shift+alt+s";
-          command = "multiCommand.nixosRebuildSwitch";
-        }
-        {
-          key = "ctrl+shift+alt+a";
-          command = "multiCommand.moveTaskTerminalRight";
-        }
-      ];
     };
 
     # # enable Wayland support

@@ -35,7 +35,7 @@ in {
     vlc
     gimp
     obs-studio
-    kdenlive
+    kdePackages.kdenlive
     darktable
 
     # work
