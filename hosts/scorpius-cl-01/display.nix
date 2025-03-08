@@ -8,6 +8,7 @@
     colord
     xcalib
     argyllcms
+    xorg.xgamma
   ];
 
   # Enable the X11 windowing system, lightdm display manager and cinnamon desktop environment.
