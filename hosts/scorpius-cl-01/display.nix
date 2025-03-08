@@ -3,6 +3,13 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    # display color management
+    colord
+    xcalib
+    argyllcms
+  ];
+
   # Enable the X11 windowing system, lightdm display manager and cinnamon desktop environment.
   services.xserver = {
     enable = true;

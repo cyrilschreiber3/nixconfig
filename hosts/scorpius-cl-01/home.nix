@@ -89,6 +89,7 @@ in {
     gparted
     exfatprogs
     xfsprogs
+    btrfs-progs
 
     # misc
     obsidian
