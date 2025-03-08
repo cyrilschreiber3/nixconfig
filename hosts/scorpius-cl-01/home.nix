@@ -85,9 +85,13 @@ in {
 
     # virtualization / emulation
 
+    # formatting
+    gparted
+    exfatprogs
+    xfsprogs
+
     # misc
     obsidian
-    gparted
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
