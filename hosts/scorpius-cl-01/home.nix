@@ -87,6 +87,7 @@ in {
 
     # misc
     obsidian
+    gparted
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
