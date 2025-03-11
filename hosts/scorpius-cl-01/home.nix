@@ -66,6 +66,7 @@ in {
     screen
     neofetch
     powershell
+    speedtest-cli
 
     # dev
     nixd
