@@ -37,6 +37,7 @@ in {
     obs-studio
     kdePackages.kdenlive
     darktable
+    figma-linux
 
     # work
     onlyoffice-desktopeditors
