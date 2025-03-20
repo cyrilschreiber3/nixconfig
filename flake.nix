@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -56,13 +56,22 @@
     nixos-hardware,
     nixos-wsl,
     nixpkgs,
+    nixpkgs-stable,
     vgpu4nixos,
     ...
   } @ inputs: {
     nixosConfigurations = {
       scorpius-cl-01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+            };
+          };
+        };
         modules = [
           disko.nixosModules.disko
           # nixos-hardware.nixosModules.lenovo-legion-16irx8h
