@@ -21,7 +21,10 @@ in {
           id = 0;
           name = "Cyril";
           isDefault = true;
-          bookmarks = firefox_bookmarks.bookmarks;
+          bookmarks = {
+            force = true;
+            settings = firefox_bookmarks.bookmarks;
+          };
 
           search = {
             force = true;
