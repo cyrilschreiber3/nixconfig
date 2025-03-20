@@ -47,7 +47,7 @@ in {
     discord
 
     # gaming
-    # steam
+    steam
     # lutris
     # winetricks
     # flatpak
