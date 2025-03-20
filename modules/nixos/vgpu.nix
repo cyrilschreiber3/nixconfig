@@ -101,6 +101,16 @@ in {
       };
     };
 
+    hardware.graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        libva
+        libva-utils
+        libva-vdpau-driver
+        mesa
+      ];
+    };
+
     # VM configuration
 
     users.users.${cfg.mainUser}.extraGroups = ["libvirtd" "kvm"];
