@@ -33,8 +33,9 @@
   networking.search = ["schreibernet.dev"];
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = [
-    "192.168.1.85"
-    "192.168.1.32"
+    "192.168.1.13"
+    "10.1.1.52"
+    "10.1.1.53"
     "1.1.1.1"
   ];
   networking.firewall.enable = true;
