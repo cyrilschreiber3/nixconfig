@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./autofs.nix
+    ./games.nix
     ./mainUser.nix
     ./vgpu.nix
     ./wireguard-client.nix
