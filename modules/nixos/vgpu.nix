@@ -52,7 +52,7 @@ in {
         name = "merlin-cl-06-init";
         desktopName = "Start Merlin-CL-06";
         comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
-        exec = "${pkgs.bash}/bin/bash -c \"${pkgs.libvirt}/bin/virsh start Merlin-CL-06 && ${pkgs.looking-glass-client}/bin/looking-glass-client -d -F\"";
+        exec = "${pkgs.bash}/bin/bash -c \"sudo ${pkgs.libvirt}/bin/virsh start Merlin-CL-06 && ${pkgs.looking-glass-client}/bin/looking-glass-client -d -F\"";
         icon = "utilities-terminal";
         terminal = false;
         categories = ["Utility" "System"];
