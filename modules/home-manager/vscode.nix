@@ -6,6 +6,16 @@
   ...
 }: let
   cfg = config.vscodeConfig;
+
+  pinnedExtensions =
+    (import (builtins.fetchGit {
+      url = "https://github.com/nix-community/nix-vscode-extensions";
+      ref = "refs/heads/master";
+      rev = "8c7340271b722d34cad8cb3a7aabebd29ffe6c6a";
+    })) # TODO: automate the search for latest compatible commit
+    .extensions
+    .${pkgs.system}
+    .vscode-marketplace;
 in {
   options.vscodeConfig = {
     enable = lib.mkEnableOption "Enable Visual Studio Code module";
@@ -37,25 +47,27 @@ in {
         extensions = with pkgs.vscode-marketplace;
           lib.flatten [
             (lib.optional cfg.enableBaseExtensions [
-              # utilities
-              formulahendry.auto-close-tag
-              formulahendry.auto-rename-tag
-              aaron-bond.better-comments
-              ryuta46.multi-command
-              chunsen.bracket-select
-              esbenp.prettier-vscode
-              ritwickdey.liveserver
-              rangav.vscode-thunder-client
-              shardulm94.trailing-spaces
+                # utilities
+                formulahendry.auto-close-tag
+                formulahendry.auto-rename-tag
+                aaron-bond.better-comments
+                ryuta46.multi-command
+                chunsen.bracket-select
+                esbenp.prettier-vscode
+                ritwickdey.liveserver
+                rangav.vscode-thunder-client
+                shardulm94.trailing-spaces
 
-              # theme
-              enkia.tokyo-night
-              vscode-icons-team.vscode-icons
+                # theme
+                enkia.tokyo-night
+                vscode-icons-team.vscode-icons
 
-              # Copilot
-              github.copilot
-              github.copilot-chat
-            ])
+                # Copilot
+                github.copilot
+              ]
+              ++ [
+                (pinnedExtensions.github.copilot-chat.override {meta.license = [];})
+              ])
 
             (lib.optional cfg.enableLanguageExtensions [
               # Actions
