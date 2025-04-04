@@ -8,19 +8,19 @@
     environment.sessionVariables = lib.mkDefault {
       SPECIALISATION = "gaming";
     };
-    system.nixos.tags = lib.mkDefault [
+    system.nixos.tags = [
       "gaming"
     ];
 
-    boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    # boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_13;
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
     ];
     hardware = {
       nvidia = {
-        open = false;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        open = true;
+        package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
       };
       graphics = {
         enable = true;

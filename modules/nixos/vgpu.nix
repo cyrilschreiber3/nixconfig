@@ -95,7 +95,7 @@ in {
     boot.kernelPackages = pkgs.linuxPackages_6_6;
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
-    hardware.nvidia.vgpu = {
+    hardware.nvidia.vgpu = lib.mkIf (config.specialisation != {}) {
       patcher = {
         enable = true;
         options = {
@@ -110,6 +110,7 @@ in {
         url = "http://cdn.the127001.ch/config/nixos/NVIDIA-GRID-Linux-KVM-550.90.05-550.90.07-552.74.zip";
       };
     };
+    # hardware.nvidia.open = true;
 
     hardware.graphics = {
       enable = true;
