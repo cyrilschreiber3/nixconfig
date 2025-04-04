@@ -1,0 +1,4 @@
+{...}: {
+  specialisation."gaming".configuration = {
+  };
+}

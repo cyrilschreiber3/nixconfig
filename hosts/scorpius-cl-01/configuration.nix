@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ./display.nix
     ./../../modules/nixos
+    ./../../modules/specialisations
     inputs.home-manager.nixosModules.default
   ];
 
