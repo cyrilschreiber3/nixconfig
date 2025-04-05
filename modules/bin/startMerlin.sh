@@ -35,7 +35,7 @@ if test "$(lspci | grep 40:00.0)" == ""; then
     exit 1
 fi
 
-$MERLIN_STATUS= $(sudo virsh domstate Merlin-CL-06) || $MERLIN_STATUS = ""
+MERLIN_STATUS=$(sudo virsh domstate Merlin-CL-06) || MERLIN_STATUS=""
 
 if test "$MERLIN_STATUS" == ""; then
     notify-send -e "Merlin-CL-06 is not running" --icon=dialog-error
@@ -57,6 +57,8 @@ sudo virsh start Merlin-CL-06 || (
     echo "Failed to start VM"
     handleExit
 )
+
+notify-send -e "Merlin-CL-06 started sucessfully" --icon=dialog-information
 
 # Start Looking Glass
 echo "Starting Looking Glass..."
