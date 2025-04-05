@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -20,7 +19,7 @@
     hardware = {
       nvidia = {
         open = true;
-        # package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
+        # package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
       graphics = {
         enable = true;

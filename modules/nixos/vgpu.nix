@@ -141,5 +141,12 @@ in {
       spiceUSBRedirection.enable = true;
     };
     services.spice-vdagentd.enable = true;
+
+    environment.etc = let
+      hooksPath = "libvirt/hooks/qemu.d";
+    in {
+      "${hooksPath}/Merlin-CL-06/prepare/begin/start.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/prepare/begin/start.sh}";
+      "${hooksPath}/Merlin-CL-06/release/end/revert.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/release/end/revert.sh}";
+    };
   };
 }
