@@ -48,11 +48,12 @@ in {
       adwaita-icon-theme
       parsec-bin
       cifs-utils
+      (pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh))
       (pkgs.makeDesktopItem {
         name = "merlin-cl-06-init";
         desktopName = "Start Merlin-CL-06";
         comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
-        exec = "${pkgs.bash}/bin/bash -c \"sudo ${pkgs.mdevctl}/bin/mdevctl start -u 1433f6b5-6ebf-4aa5-8733-938e68d00f18 -p 0000:01:00.0 --type nvidia-334 && sudo ${pkgs.libvirt}/bin/virsh start Merlin-CL-06 && ${pkgs.looking-glass-client}/bin/looking-glass-client -d -F\"";
+        exec = "merlin-cl-06-init";
         icon = "utilities-terminal";
         terminal = false;
         categories = ["Utility" "System"];
