@@ -94,7 +94,7 @@ in {
 
     boot.kernelPackages = pkgs.linuxPackages_6_6;
 
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
+    hardware.nvidia.package = lib.mkIf (config.specialisation != {}) config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
     hardware.nvidia.vgpu = lib.mkIf (config.specialisation != {}) {
       patcher = {
         enable = true;
