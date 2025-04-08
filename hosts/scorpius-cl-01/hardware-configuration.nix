@@ -18,7 +18,7 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_hcd" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "sr_mod"];
-  boot.initrd.kernelModules = ["nvidia"];
+  boot.initrd.kernelModules = ["nvidia" "uvcvideo"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
 
