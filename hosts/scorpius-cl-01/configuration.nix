@@ -161,6 +161,9 @@
     curl
     cachix
     nvtopPackages.full
+
+    pciutils
+    usbutils
   ];
 
   programs = {

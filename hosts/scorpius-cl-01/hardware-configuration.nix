@@ -17,9 +17,9 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_hcd" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "sr_mod"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_hcd" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "sr_mod" "uvcvideo"];
   boot.initrd.kernelModules = ["nvidia"];
-  boot.kernelModules = ["kvm-intel" "uvcvideo"];
+  boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
 
   hardware = {
