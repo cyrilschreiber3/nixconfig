@@ -100,7 +100,7 @@ in {
         sleep-display-battery = 1800; # 30min
         sleep-inactive-ac-timeout = 0; # never
         sleep-inactive-battery-timeout = 0; # never
-        lid-close-ac-action = "suspend";
+        lid-close-ac-action = "nothing";
         lid-close-battery-action = "suspend";
         button-power = "interactive";
         idle-dim-battery = true;

@@ -83,6 +83,8 @@ in {
     # TODO: check https://alexbakker.me/post/nixos-pci-passthrough-qemu-vfio.html for passthrough
     boot.extraModprobeConfig = ''
       options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
+
+      blacklist i2c_nvidia_gpu
     '';
 
     services.udev.extraRules = ''
