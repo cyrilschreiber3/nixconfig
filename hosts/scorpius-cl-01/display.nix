@@ -116,8 +116,10 @@
   services.logind = {
     lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
-    lidSwitch = "suspend";
+    lidSwitch = "ignore";
   };
+
+  services.upower.ignoreLid = true;
 
   # Run autorandr on startup
   environment.etc."xdg/autostart/autorandr-init.desktop" = {
