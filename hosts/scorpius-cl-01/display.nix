@@ -113,6 +113,12 @@
     };
   };
 
+  services.logind = {
+    lidSwitchExternalPower = "ignore";
+    lidSwitchDocked = "ignore";
+    lidSwitch = "suspend";
+  };
+
   # Run autorandr on startup
   environment.etc."xdg/autostart/autorandr-init.desktop" = {
     text = ''
