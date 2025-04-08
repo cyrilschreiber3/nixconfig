@@ -3,7 +3,7 @@
   pkgs-stable,
   ...
 }: {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
