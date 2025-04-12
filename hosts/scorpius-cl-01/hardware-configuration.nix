@@ -21,7 +21,6 @@
   boot.initrd.kernelModules = ["nvidia"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
-  boot.blacklistedKernelModules = ["uvcvideo"];
 
   hardware = {
     enableRedistributableFirmware = true;
