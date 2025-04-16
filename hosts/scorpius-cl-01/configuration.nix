@@ -164,6 +164,7 @@
 
     pciutils
     usbutils
+    iperf
   ];
 
   programs = {

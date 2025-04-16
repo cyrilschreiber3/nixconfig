@@ -62,8 +62,8 @@ in {
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = ["@start"];
               };
-              "Bing".metaData.hidden = true;
-              "Google".metaData.alias = "@g";
+              "bing".metaData.hidden = true;
+              "google".metaData.alias = "@g";
             };
           };
         };
