@@ -52,13 +52,13 @@ in {
               };
               "NixOS Wiki" = {
                 urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                icon = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = ["@nw"];
               };
               "StartPage" = {
                 urls = [{template = "https://startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english";}];
-                iconUpdateURL = "https://www.startpage.com/favicon.ico";
+                icon = "https://www.startpage.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = ["@start"];
               };

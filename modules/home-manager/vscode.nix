@@ -57,6 +57,8 @@ in {
                 ritwickdey.liveserver
                 rangav.vscode-thunder-client
                 shardulm94.trailing-spaces
+                usernamehw.errorlens
+                gruntfuggly.todo-tree
 
                 # theme
                 enkia.tokyo-night
@@ -129,8 +131,36 @@ in {
           ];
 
         userSettings = {
-          "explorer.confirmDragAndDrop" = false;
+          "[dotenv]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[nix]" = {
+            "editor.defaultFormatter" = "kamadorueda.alejandra";
+          };
+          "[powershell]" = {
+            "editor.defaultFormatter" = "ms-vscode.powershell";
+          };
+          "[properties]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[shellscript]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[vue]" = {
+            "editor.defaultFormatter" = "Vue.volar";
+          };
+          "diffEditor.ignoreTrimWhitespace" = false;
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          "editor.fontFamily" = "MesloLGS Nerd Font";
+          "editor.fontLigatures" = false;
+          "editor.formatOnPaste" = false;
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+          "editor.inlineSuggest.enabled" = true;
+          "editor.linkedEditing" = true;
+          "editor.minimap.enabled" = true;
           "explorer.confirmDelete" = false;
+          "explorer.confirmDragAndDrop" = false;
           "explorer.fileNesting.patterns" = {
             "*.ts" = "\${capture}.js";
             "*.js" = "\${capture}.js.map, \${capture}.min.js, \${capture}.d.ts";
@@ -146,28 +176,54 @@ in {
             "*.s3db" = "\${capture}.\${extname}-*";
           };
           "files.autoSave" = "onFocusChange";
-          "workbench.editorAssociations" = {
-            "*.copilotmd" = "vscode.markdown.preview.editor";
-            "*.ipynb" = "jupyter-notebook";
-            "*.jpeg" = "imagePreview.previewEditor";
-            "{git,gitlens,git-graph}:/**/*.{md,csv,svg}" = "default";
+          "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
+          "git.autofetch" = true;
+          "git.confirmSync" = false;
+          "git.enableCommitSigning" = true;
+          "git.enableSmartCommit" = true;
+          "git.replaceTagsWhenPull" = true;
+          "github.copilot.editor.enableAutoCompletions" = true;
+          "github.copilot.enable" = {
+            "*" = true;
+            "yaml" = false;
+            "plaintext" = false;
+            "markdown" = true;
+            "html" = true;
+            "php" = true;
+            "vue" = true;
+            "javascript" = true;
+            "jsonc" = true;
+            "python" = true;
           };
-          "workbench.colorTheme" = "Tokyo Night";
-          "workbench.iconTheme" = "vscode-icons";
-          "editor.formatOnPaste" = false;
-          "editor.formatOnSave" = true;
-          "editor.formatOnType" = true;
-          "editor.inlineSuggest.enabled" = true;
-          "editor.fontFamily" = "MesloLGS Nerd Font";
-          "editor.fontLigatures" = false;
-          "editor.linkedEditing" = true;
-          "editor.minimap.enabled" = true;
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          "terminal.integrated.sendKeybindingsToShell" = true;
+          "latex-workshop.intellisense.package.enabled" = true;
+          "latex-workshop.latex.tools" = [
+            {
+              "name" = "latexmk";
+              "command" = "latexmk";
+              "args" = ["-xelatex" "-synctex=1" "-interaction=nonstopmode" "-file-line-error" "%DOC%"];
+            }
+          ];
+          "latex-workshop.message.badbox.show" = false;
+          "latex-workshop.view.pdf.viewer" = "tab";
+          "liveServer.settings.CustomBrowser" = "chromium";
+          "liveServer.settings.donotShowInfoMsg" = true;
+          "liveServer.settings.donotVerifyTags" = true;
+          "liveServer.settings.useWebExt" = true;
+          "ltex.additionalRules.motherTongue" = "fr";
+          "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
+          "prettier.printWidth" = 120;
+          "prettier.singleQuote" = false;
+          "prettier.tabWidth" = 2;
+          "prettier.useTabs" = true;
+          "redhat.telemetry.enabled" = false;
+          "remote.SSH.connectTimeout" = 1800;
+          "remote.SSH.useLocalServer" = false;
+          "security.workspace.trust.untrustedFiles" = "open";
+          "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
+          "terminal.integrated.defaultProfile.linux" = "zsh";
           "terminal.integrated.enableMultiLinePasteWarning" = false;
           "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
           "terminal.integrated.fontSize" = 12;
-          "terminal.integrated.defaultProfile.linux" = "zsh";
           "terminal.integrated.profiles.linux" = {
             "bash" = {
               "path" = "bash";
@@ -194,72 +250,19 @@ in {
               "path" = "/bin/sh";
             };
           };
-          "security.workspace.trust.untrustedFiles" = "open";
-          "diffEditor.ignoreTrimWhitespace" = false;
-          "git.enableCommitSigning" = true;
-          "git.replaceTagsWhenPull" = true;
-          "git.confirmSync" = false;
-          "git.autofetch" = true;
-          "git.enableSmartCommit" = true;
-          "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
-          "prettier.printWidth" = 120;
-          "prettier.tabWidth" = 2;
-          "prettier.useTabs" = true;
-          "prettier.singleQuote" = false;
-          "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
-          "[dotenv]" = {
-            "editor.defaultFormatter" = "foxundermoon.shell-format";
-          };
-          "[nix]" = {
-            "editor.defaultFormatter" = "kamadorueda.alejandra";
-          };
-          "[powershell]" = {
-            "editor.defaultFormatter" = "ms-vscode.powershell";
-          };
-          "[properties]" = {
-            "editor.defaultFormatter" = "foxundermoon.shell-format";
-          };
-          "[shellscript]" = {
-            "editor.defaultFormatter" = "foxundermoon.shell-format";
-          };
-          "[vue]" = {
-            "editor.defaultFormatter" = "Vue.volar";
-          };
-          "github.copilot.editor.enableAutoCompletions" = true;
-          "github.copilot.enable" = {
-            "*" = true;
-            "yaml" = false;
-            "plaintext" = false;
-            "markdown" = true;
-            "html" = true;
-            "php" = true;
-            "vue" = true;
-            "javascript" = true;
-            "jsonc" = true;
-            "python" = true;
-          };
-          "remote.SSH.useLocalServer" = false;
-          "remote.SSH.connectTimeout" = 1800;
-          "liveServer.settings.donotVerifyTags" = true;
-          "liveServer.settings.useWebExt" = true;
-          "liveServer.settings.donotShowInfoMsg" = true;
-          "liveServer.settings.CustomBrowser" = "chromium";
-          "redhat.telemetry.enabled" = false;
+          "terminal.integrated.sendKeybindingsToShell" = true;
+          "todo-tree.highlights.enabled" = false;
           "turboConsoleLog.insertEmptyLineAfterLogMessage" = true;
           "turboConsoleLog.insertEmptyLineBeforeLogMessage" = true;
           "turboConsoleLog.wrapLogMessage" = true;
-          "latex-workshop.intellisense.package.enabled" = true;
-          "latex-workshop.view.pdf.viewer" = "tab";
-          "latex-workshop.message.badbox.show" = false;
-          "latex-workshop.latex.tools" = [
-            {
-              "name" = "latexmk";
-              "command" = "latexmk";
-              "args" = ["-xelatex" "-synctex=1" "-interaction=nonstopmode" "-file-line-error" "%DOC%"];
-            }
-          ];
-          "ltex.additionalRules.motherTongue" = "fr";
-          "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
+          "workbench.colorTheme" = "Tokyo Night";
+          "workbench.editorAssociations" = {
+            "*.copilotmd" = "vscode.markdown.preview.editor";
+            "*.ipynb" = "jupyter-notebook";
+            "*.jpeg" = "imagePreview.previewEditor";
+            "{git,gitlens,git-graph}:/**/*.{md,csv,svg}" = "default";
+          };
+          "workbench.iconTheme" = "vscode-icons";
         };
 
         keybindings = [
