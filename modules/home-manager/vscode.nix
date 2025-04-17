@@ -175,6 +175,7 @@ in {
             "*.sdb" = "\${capture}.\${extname}-*";
             "*.s3db" = "\${capture}.\${extname}-*";
           };
+          "extensions.autoCheckUpdates" = false;
           "files.autoSave" = "onFocusChange";
           "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
           "git.autofetch" = true;
@@ -205,7 +206,7 @@ in {
           ];
           "latex-workshop.message.badbox.show" = false;
           "latex-workshop.view.pdf.viewer" = "tab";
-          "liveServer.settings.CustomBrowser" = "chromium";
+          "liveServer.settings.CustomBrowser" = "firefox";
           "liveServer.settings.donotShowInfoMsg" = true;
           "liveServer.settings.donotVerifyTags" = true;
           "liveServer.settings.useWebExt" = true;
@@ -221,7 +222,7 @@ in {
           "security.workspace.trust.untrustedFiles" = "open";
           "shellformat.path" = "/home/${config.home.username}/.nix-profile/bin/shfmt";
           "terminal.integrated.defaultProfile.linux" = "zsh";
-          "terminal.integrated.enableMultiLinePasteWarning" = false;
+          "terminal.integrated.enableMultiLinePasteWarning" = "never";
           "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
           "terminal.integrated.fontSize" = 12;
           "terminal.integrated.profiles.linux" = {
