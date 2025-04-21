@@ -5,6 +5,10 @@
   ...
 }: let
   cfg = config.cinnamonConfig;
+
+  themeName = "Tokyonight-Dark-BL-LB";
+  iconThemeName = "WhiteSur-dark";
+  cursorThemeName = "WhiteSur-cursors";
 in {
   options.cinnamonConfig = {
     enable = lib.mkEnableOption "Enable Cinnamon tweaks";
@@ -27,15 +31,15 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "Tokyonight-Dark-BL-LB";
+        name = themeName;
         package = "${import ./../themes/tokyonight-gtk-theme.nix {inherit pkgs;}}";
       };
       cursorTheme = {
-        name = "WhiteSur-cursors";
+        name = cursorThemeName;
         package = pkgs.whitesur-cursors;
       };
       iconTheme = {
-        name = "WhiteSur";
+        name = iconThemeName;
       };
     };
 
@@ -108,16 +112,16 @@ in {
         idle-brightness = 30;
       };
       "org/cinnamon/theme" = {
-        name = "Tokyonight-Dark-BL-LB";
+        name = themeName;
       };
       "org/cinnamon/desktop/interface" = {
-        gtk-theme = "Tokyonight-Dark-BL-LB";
-        icon-theme = "WhiteSur";
+        gtk-theme = themeName;
+        icon-theme = iconThemeName;
         color-scheme = "prefer-dark";
       };
       "org/gnome/desktop/interface" = {
-        gtk-theme = "Tokyonight-Dark-BL-LB";
-        icon-theme = "WhiteSur";
+        gtk-theme = themeName;
+        icon-theme = iconThemeName;
         color-scheme = "prefer-dark";
       };
       "org/nemo/preferences" = {

@@ -29,7 +29,7 @@ in {
           search = {
             force = true;
             default = "StartPage";
-            order = ["StartPage" "Google"];
+            order = ["StartPage" "google"];
             engines = {
               "Nix Packages" = {
                 urls = [
