@@ -11,7 +11,7 @@
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/nix-vscode-extensions";
       ref = "refs/heads/master";
-      rev = "8c7340271b722d34cad8cb3a7aabebd29ffe6c6a";
+      rev = "dab6f44ebb63c5f556f61a6c2e540447e640a642";
     })) # TODO: automate the search for latest compatible commit
     .extensions
     .${
@@ -138,6 +138,9 @@ in {
         userSettings = {
           "[dotenv]" = {
             "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[go]" = {
+            "editor.defaultFormatter" = "golang.go";
           };
           "[nix]" = {
             "editor.defaultFormatter" = "kamadorueda.alejandra";
