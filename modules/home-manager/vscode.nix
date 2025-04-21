@@ -14,7 +14,9 @@
       rev = "8c7340271b722d34cad8cb3a7aabebd29ffe6c6a";
     })) # TODO: automate the search for latest compatible commit
     .extensions
-    .${pkgs.system}
+    .${
+      pkgs.system
+    }
     .vscode-marketplace;
 in {
   options.vscodeConfig = {
@@ -90,6 +92,9 @@ in {
 
               # DotEnv
               mikestead.dotenv
+
+              # Go
+              golang.go
 
               # HTML
               adrianwilczynski.format-selection-as-html
