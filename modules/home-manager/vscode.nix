@@ -11,7 +11,7 @@
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/nix-vscode-extensions";
       ref = "refs/heads/master";
-      rev = "dab6f44ebb63c5f556f61a6c2e540447e640a642";
+      rev = "c8270f31af9c37e4fe5711567a6412460e94e9b7";
     })) # TODO: automate the search for latest compatible commit
     .extensions
     .${
