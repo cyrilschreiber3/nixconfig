@@ -13,7 +13,7 @@
   #   };
   # };
 
-  mypkgs = final: _prev: {
+  my-packages = final: _prev: {
     mypkgs = import inputs.mypkgs {
       pkgs = import inputs.nixpkgs {
         system = final.system;
@@ -22,7 +22,7 @@
     };
   };
 
-  mypkgs-2405 = final: _prev: {
+  my-packages-2405 = final: _prev: {
     mypkgs-2405 = import inputs.mypkgs {
       pkgs = import inputs.nixpkgs-2405 {
         system = final.system;

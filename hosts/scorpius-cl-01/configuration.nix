@@ -4,6 +4,7 @@
 {
   pkgs,
   inputs,
+  outputs,
   ...
 }: {
   imports = [
@@ -13,6 +14,13 @@
     ./../../modules/nixos
     ./../../modules/specialisations
     inputs.home-manager.nixosModules.default
+  ];
+
+  # Overlays
+  nixpkgs.overlays = [
+    outputs.overlays.stable-packages
+    outputs.overlays.my-packages
+    outputs.overlays.my-packages-2405
   ];
 
   # Bootloader.
@@ -132,7 +140,7 @@
 
   home-manager = {
     # extraSpecialArgs = {inherit inputs mypkgs mypkgs-2405;};
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs outputs;};
     # sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
     backupFileExtension = "backup";
     users = {

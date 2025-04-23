@@ -1,7 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
     ./../../modules/home-manager
-    # ./../../modules/home-manager/gnome.nix
+  ];
+
+  nixpkgs.overlays = [
+    outputs.overlays.stable-packages
+    outputs.overlays.my-packages
+    outputs.overlays.my-packages-2405
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -45,7 +54,7 @@
     # lutris
     # winetricks
     # flatpak
-    # mypkgs-2405.yuzu
+    mypkgs-2405.yuzu
 
     # cli
     git
@@ -96,7 +105,7 @@
     # ]
     # ++ [
     #   # mypkgs.example-package
-    #   mypkgs-2405.yuzu
+    #   pkgs.mypkgs-2405.yuzu
   ];
 
   mimeApps = {

@@ -62,44 +62,21 @@
     nixos-hardware,
     nixos-wsl,
     nixpkgs,
-    nixpkgs-stable,
-    nixpkgs-2405,
-    vgpu4nixos,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    # # Helper function to create pkgs instances
-    # mkPkgs = nixpkgsInput: system:
-    #   import nixpkgsInput {
-    #     inherit system;
-    #     config = {allowUnfree = true;};
-    #   };
-    # # Stable pkgs
-    # pkgs-stable = mkPkgs inputs.nixpkgs-stable "x86_64-linux";
-    # # Instantiate pkgs from 24.05 input
-    # pkgs-2405 = mkPkgs inputs.nixpkgs-2405 "x86_64-linux";
-    # # Instantiate your NUR repo using the 24.05 pkgs
-    # mypkgs-2405 = import inputs.mypkgs {pkgs = pkgs-2405;};
   in {
     nixosConfigurations = {
       scorpius-cl-01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs;
+          inherit inputs outputs;
         };
         modules = [
           disko.nixosModules.disko
           # nixos-hardware.nixosModules.lenovo-legion-16irx8h
           home-manager.nixosModules.default
           ./hosts/scorpius-cl-01/configuration.nix
-
-          {
-            nixpkgs.overlays = [
-              outputs.overlays.stable-packages
-              outputs.overlays.mypkgs
-              outputs.overlays.mypkgs-2405
-            ];
-          }
         ];
       };
       scorpius-cl-01-wsl = nixpkgs.lib.nixosSystem {
