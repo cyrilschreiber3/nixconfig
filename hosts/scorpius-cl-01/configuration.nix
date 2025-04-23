@@ -167,6 +167,8 @@
     pciutils
     usbutils
     iperf
+    ntfs3g
+    bashmount
   ];
 
   programs = {
