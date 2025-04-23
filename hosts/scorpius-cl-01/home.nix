@@ -95,6 +95,7 @@
 
       # misc
       obsidian
+      postman
 
       (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     ]

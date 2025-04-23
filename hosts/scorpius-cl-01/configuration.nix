@@ -153,6 +153,9 @@
     }
   ];
 
+  # Enable udisks2 to mount USB drives
+  services.udisks2.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
