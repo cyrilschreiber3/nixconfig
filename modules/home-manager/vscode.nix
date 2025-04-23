@@ -29,6 +29,7 @@ in {
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
       inputs.nix-vscode-extensions.overlays.default
+      inputs.nix4vscode.overlays.forVscode
     ];
 
     home.packages = with pkgs; [
@@ -69,8 +70,10 @@ in {
                 # Copilot
                 github.copilot
               ]
-              ++ [
-                (pinnedExtensions.github.copilot-chat.override {meta.license = [];})
+              ++
+              # (pinnedExtensions.github.copilot-chat.override {meta.license = [];})
+              pkgs.nix4vscode.forVscode [
+                "github.copilot-chat"
               ])
 
             (lib.optional cfg.enableLanguageExtensions [
