@@ -157,6 +157,81 @@ in {
           "[vue]" = {
             "editor.defaultFormatter" = "Vue.volar";
           };
+          "better-comments.tags" = [
+            {
+              "tag" = "[ ]";
+              "color" = "#FF8C00";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "[x]";
+              "color" = "#FF8C00";
+              "strikethrough" = true;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "fixme";
+              "color" = "#FFFFFF";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            # Default tags
+            {
+              "tag" = "!";
+              "color" = "#FF2D00";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "?";
+              "color" = "#3498DB";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "//";
+              "color" = "#474747";
+              "strikethrough" = true;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "todo";
+              "color" = "#FF8C00";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+            {
+              "tag" = "*";
+              "color" = "#98C379";
+              "strikethrough" = false;
+              "underline" = false;
+              "backgroundColor" = "transparent";
+              "bold" = false;
+              "italic" = false;
+            }
+          ];
           "diffEditor.ignoreTrimWhitespace" = false;
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "editor.fontFamily" = "MesloLGS Nerd Font";

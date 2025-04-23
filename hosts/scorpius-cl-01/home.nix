@@ -1,10 +1,9 @@
 {
   pkgs,
-  inputs,
+  mypkgs,
+  mypkgs-2405,
   ...
-}: let
-  mypkgs = inputs.mypkgs.packages.${pkgs.system};
-in {
+}: {
   imports = [
     ./../../modules/home-manager
     # ./../../modules/home-manager/gnome.nix
@@ -28,79 +27,81 @@ in {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # media
-    ffmpeg
-    yt-dlp
-    vlc
-    gimp
-    obs-studio
-    kdePackages.kdenlive
-    darktable
-    figma-linux
+  home.packages = with pkgs;
+    [
+      # media
+      ffmpeg
+      yt-dlp
+      vlc
+      gimp
+      obs-studio
+      kdePackages.kdenlive
+      darktable
+      figma-linux
 
-    # work
-    onlyoffice-desktopeditors
-    xreader
+      # work
+      onlyoffice-desktopeditors
+      xreader
 
-    # voip
-    discord
+      # voip
+      discord
 
-    # gaming
-    # steam
-    # lutris
-    # winetricks
-    # flatpak
+      # gaming
+      # steam
+      # lutris
+      # winetricks
+      # flatpak
 
-    # cli
-    git
-    gh
-    tree
-    unzip
-    rclone
-    ondir
-    libnotify
-    nix-output-monitor
-    btop
-    nano
-    rsync
-    screen
-    neofetch
-    powershell
-    speedtest-cli
+      # cli
+      git
+      gh
+      tree
+      unzip
+      rclone
+      ondir
+      libnotify
+      nix-output-monitor
+      btop
+      nano
+      rsync
+      screen
+      neofetch
+      powershell
+      speedtest-cli
 
-    # dev
-    nixd
-    alejandra
-    nixpkgs-fmt
-    nodejs
-    python3
+      # dev
+      nixd
+      alejandra
+      nixpkgs-fmt
+      nodejs
+      python3
 
-    # docker
-    docker
-    #nvidia-container-toolkit
+      # docker
+      docker
+      #nvidia-container-toolkit
 
-    # browsers
-    chromium
-    google-chrome
-    brave
+      # browsers
+      chromium
+      google-chrome
+      brave
 
-    # virtualization / emulation
+      # virtualization / emulation
 
-    # formatting
-    gparted
-    exfatprogs
-    xfsprogs
-    btrfs-progs
+      # formatting
+      gparted
+      exfatprogs
+      xfsprogs
+      btrfs-progs
 
-    # misc
-    obsidian
+      # misc
+      obsidian
 
-    (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
-    # ]
-    # ++ [
-    #   mypkgs.yuzu
-  ];
+      (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    ]
+    ++ [
+      # mypkgs.example-package
+      mypkgs-2405.yuzu
+    ];
 
   mimeApps = {
     enable = true;

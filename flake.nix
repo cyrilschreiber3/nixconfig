@@ -2,8 +2,9 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-2405.url = "github:nixos/nixpkgs/nixos-24.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     disko = {
@@ -40,7 +41,7 @@
 
     mypkgs = {
       url = "github:cyrilschreiber3/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ssh-keys = {
@@ -57,20 +58,34 @@
     nixos-wsl,
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-2405,
     vgpu4nixos,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    # Helper function to create pkgs instances
+    mkPkgs = nixpkgsInput: system:
+      import nixpkgsInput {
+        inherit system;
+        config = {allowUnfree = true;};
+      };
+
+    # Stable pkgs
+    pkgs-stable = mkPkgs inputs.nixpkgs-stable "x86_64-linux";
+
+    # Instantiate pkgs from 24.05 input
+    pkgs-2405 = mkPkgs inputs.nixpkgs-2405 "x86_64-linux";
+
+    # Instantiate your NUR repo using the 24.05 pkgs
+    mypkgs-2405 = import inputs.mypkgs {pkgs = pkgs-2405;};
+  in {
     nixosConfigurations = {
       scorpius-cl-01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config = {
-              allowUnfree = true;
-            };
-          };
+          inherit inputs pkgs-stable mypkgs-2405;
+
+          # Instantiate pkgs from unstable input
+          mypkgs = import inputs.mypkgs {pkgs = self.nixosConfigurations."scorpius-cl-01".pkgs;};
         };
         modules = [
           disko.nixosModules.disko
