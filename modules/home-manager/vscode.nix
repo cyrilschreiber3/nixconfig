@@ -6,18 +6,6 @@
   ...
 }: let
   cfg = config.vscodeConfig;
-
-  pinnedExtensions =
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/nix-vscode-extensions";
-      ref = "refs/heads/master";
-      rev = "c8270f31af9c37e4fe5711567a6412460e94e9b7";
-    })) # TODO: automate the search for latest compatible commit
-    .extensions
-    .${
-      pkgs.system
-    }
-    .vscode-marketplace;
 in {
   options.vscodeConfig = {
     enable = lib.mkEnableOption "Enable Visual Studio Code module";
@@ -70,9 +58,7 @@ in {
                 # Copilot
                 github.copilot
               ]
-              ++
-              # (pinnedExtensions.github.copilot-chat.override {meta.license = [];})
-              pkgs.nix4vscode.forVscode [
+              ++ pkgs.nix4vscode.forVscode [
                 "github.copilot-chat"
               ])
 

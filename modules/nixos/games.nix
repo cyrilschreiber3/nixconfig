@@ -1,15 +1,11 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   hardware.graphics = {
     enable = true;
   };
 
   programs.steam = {
     enable = true;
-    package = pkgs-stable.steam;
+    package = pkgs.stable.steam;
     gamescopeSession.enable = true;
   };
 

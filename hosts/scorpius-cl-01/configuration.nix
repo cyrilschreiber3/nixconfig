@@ -4,8 +4,6 @@
 {
   pkgs,
   inputs,
-  mypkgs,
-  mypkgs-2405,
   ...
 }: {
   imports = [
@@ -133,7 +131,8 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs mypkgs mypkgs-2405;};
+    # extraSpecialArgs = {inherit inputs mypkgs mypkgs-2405;};
+    extraSpecialArgs = {inherit inputs;};
     # sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
     backupFileExtension = "backup";
     users = {
