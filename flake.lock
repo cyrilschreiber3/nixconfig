@@ -100,11 +100,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1745877584,
-        "narHash": "sha256-SyztsJVx/GJGoWVs85yCJj3IlTeu9ueoiLPHQ09V6RA=",
+        "lastModified": 1745878009,
+        "narHash": "sha256-kYlT5daImHFs/v7ys6Or1XTLVNaLpxUzhnOBQ1YZHyc=",
         "owner": "cyrilschreiber3",
         "repo": "nur-packages",
-        "rev": "058bf64bf8a7e0055a80a366209da3720cd8f16a",
+        "rev": "41cfa0117b5a676e701b4310b2906ce471b1ab04",
         "type": "github"
       },
       "original": {
