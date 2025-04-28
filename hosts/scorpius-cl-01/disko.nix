@@ -19,6 +19,7 @@
             content = {
               type = "filesystem";
               format = "vfat";
+              # Set the bootloader to use the main partition for kernel and initrd
               mountpoint = "/boot/efi";
             };
           };

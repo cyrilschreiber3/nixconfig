@@ -25,6 +25,7 @@
 
   # Bootloader
   boot.loader = {
+    # Set the bootloader to use the main partition for kernel and initrd
     efi = {
       # canTouchEfiVariables = true;
       efiSysMountPoint = "/boot/efi";
