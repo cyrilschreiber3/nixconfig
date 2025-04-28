@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   outputs,
   ...
@@ -119,7 +121,7 @@
     };
   };
 
-  xdg.desktopEntries.editConfig = {
+  xdg.desktopEntries.editConfig = lib.mkIf (config.vscodeConfig.enable) {
     name = "Edit configuration";
     comment = "Edit your nixos configuration";
     genericName = "Settings";

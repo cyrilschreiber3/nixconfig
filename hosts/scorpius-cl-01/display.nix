@@ -9,6 +9,17 @@
     xcalib
     argyllcms
     xorg.xgamma
+    (pkgs.makeDesktopItem {
+      name = "autorandr-refresh";
+      desktopName = "Autorandr refresh";
+      comment = "Refresh autorandr configuration";
+      exec = "${pkgs.autorandr}/bin/autorandr --change --match-edid";
+      icon = "utilities-terminal";
+      terminal = false;
+      categories = ["Utility" "System"];
+      genericName = "Update display configuration";
+      keywords = ["autorandr" "refresh" "display" "configuration"];
+    })
   ];
 
   # Enable the X11 windowing system, lightdm display manager and cinnamon desktop environment.
