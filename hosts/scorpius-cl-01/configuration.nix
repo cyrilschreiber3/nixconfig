@@ -37,6 +37,16 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "loader_2";
+  boot.plymouth.themePackages = [
+    (pkgs.mypkgs.adi1090x-plymouth-themes.override
+      {
+        selected_themes = ["connect" "loader_2" "spinner_alt"];
+        display_nixos_logo = true;
+      })
+  ];
+
   # Enable networking
   networking.hostName = "scorpius-cl-01";
   networking.search = ["schreibernet.dev"];
