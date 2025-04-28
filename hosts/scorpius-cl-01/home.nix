@@ -119,6 +119,18 @@
     };
   };
 
+  xdg.desktopEntries.editConfig = {
+    name = "Edit configuration";
+    comment = "Edit your nixos configuration";
+    genericName = "Settings";
+    icon = "${pkgs.whitesur-icon-theme}/share/icons/WhiteSur-dark/preferences/32/preferences-web-browser-stylesheets.svg";
+    exec = "${pkgs.writeShellScript "editConfig" ''
+      code ~/nixconfig
+    ''}";
+    terminal = false;
+    categories = ["Development" "Settings" "System"];
+  };
+
   # ------------------------ #
   # --- Programs configs --- #
   # ------------------------ #
