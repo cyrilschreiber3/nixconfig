@@ -23,20 +23,31 @@
     outputs.overlays.my-packages-2405
   ];
 
-  # Bootloader.
-  boot.loader = {
-    efi = {
-      # canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      #  device = "/dev/sda"; # no need to set devices, disko will add all devices that have a EF02 partition to the list already
-      useOSProber = true;
-    };
-  };
+  # Bootloader
+  # boot.loader = {
+  #   efi = {
+  #     # canTouchEfiVariables = true;
+  #     efiSysMountPoint = "/boot/efi";
+  #   };
+  #   grub = {
+  #     enable = true;
+  #     efiSupport = true;
+  #     efiInstallAsRemovable = true;
+  #     #  device = "/dev/sda"; # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+  #     useOSProber = true;
+  #   };
+  # };
+
+  boot.loader.grub.enable = true;
+
+  # boot.loader.grub.device = "/dev/sda"; # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+
+  boot.loader.grub.efiSupport = true;
+
+  boot.loader.grub.efiInstallAsRemovable = true;
+
+  boot.loader.grub.useOSProber = true;
+
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "riscv64-linux"
@@ -44,15 +55,15 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "loader_2";
-  boot.plymouth.themePackages = [
-    (pkgs.mypkgs.adi1090x-plymouth-themes.override
-      {
-        selected_themes = ["connect" "loader_2" "spinner_alt"];
-        display_nixos_logo = true;
-      })
-  ];
+  # boot.plymouth.enable = true;
+  # boot.plymouth.theme = "loader_2";
+  # boot.plymouth.themePackages = [
+  #   (pkgs.mypkgs.adi1090x-plymouth-themes.override
+  #     {
+  #       selected_themes = ["connect" "loader_2" "spinner_alt"];
+  #       display_nixos_logo = true;
+  #     })
+  # ];
 
   # Enable networking
   networking.hostName = "scorpius-cl-01";
