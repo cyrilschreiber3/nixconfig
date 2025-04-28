@@ -18,7 +18,7 @@
       terminal = false;
       categories = ["Utility" "System"];
       genericName = "Update display configuration";
-      keywords = ["autorandr" "refresh" "display" "configuration"];
+      keywords = ["autorandr" "refresh" "display"];
     })
   ];
 

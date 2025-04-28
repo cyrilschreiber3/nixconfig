@@ -57,6 +57,7 @@ in {
         terminal = false;
         categories = ["Utility" "System"];
         genericName = "Virtual Machine Display";
+        keywords = ["merlin" "cl" "06" "vm" "looking-glass"];
       })
     ];
 

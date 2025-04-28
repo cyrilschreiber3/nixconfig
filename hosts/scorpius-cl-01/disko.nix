@@ -14,7 +14,7 @@
           };
           esp = {
             name = "ESP";
-            size = "512M"; # make if bigger for future installations
+            size = "512M"; # make it bigger for future installations
             type = "EF00";
             content = {
               type = "filesystem";
