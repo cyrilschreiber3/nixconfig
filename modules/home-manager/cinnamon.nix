@@ -22,8 +22,7 @@ in {
       gnome-themes-extra
       dconf-editor
       albert
-      diodon
-      zeitgeist
+      gpaste
 
       (whitesur-icon-theme.override {
         alternativeIcons = true;
@@ -99,9 +98,9 @@ in {
         binding = ["<Super>space"];
       };
       "org/cinnamon/desktop/keybindings/custom-keybindings/custom1" = {
-        name = "Diodon";
-        command = "${pkgs.diodon}/bin/diodon";
-        binding = ["<Super><Alt>v"];
+        name = "GPaste";
+        command = "gpaste";
+        binding = ["<Super>v"];
       };
       "org/cinnamon/desktop/keybindings/media-keys" = {
         terminal = ["<Super>t"];
