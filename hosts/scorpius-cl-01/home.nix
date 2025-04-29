@@ -105,6 +105,7 @@
     # misc
     obsidian
     postman
+    bitwarden
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
