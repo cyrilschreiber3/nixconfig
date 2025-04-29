@@ -45,7 +45,10 @@ in {
       };
     };
 
-    home.sessionVariables.GTK_THEME = "Tokyonight-Dark-BL-LB";
+    home.sessionVariables = {
+      GTK_THEME = "Tokyonight-Dark-BL-LB";
+      ZEITGEIST_DATABASE_PATH = ":memory:";
+    };
 
     xdg.configFile = {
       "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
@@ -95,7 +98,7 @@ in {
       };
       "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
         name = "Albert";
-        command = "albert toggle";
+        command = "${pkgs.albert}/bin/albert toggle";
         binding = ["<Super>space"];
       };
       "org/cinnamon/desktop/keybindings/custom-keybindings/custom1" = {
