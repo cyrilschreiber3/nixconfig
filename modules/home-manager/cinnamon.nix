@@ -90,7 +90,7 @@ in {
         picture-options = "zoom";
       };
       "org/cinnamon/desktop/keybindings" = {
-        custom-list = ["custom0"];
+        custom-list = ["custom0" "custom1"];
       };
       "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
         name = "Albert";
