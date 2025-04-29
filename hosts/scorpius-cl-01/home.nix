@@ -50,6 +50,7 @@
 
     # voip
     discord
+    legcord
 
     # gaming
     # steam
@@ -81,6 +82,8 @@
     nixpkgs-fmt
     nodejs
     python3
+    bruno
+    yaak
 
     # docker
     docker
