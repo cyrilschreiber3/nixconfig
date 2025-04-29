@@ -160,6 +160,18 @@ in {
         maximized = true;
         thumbnail-list-visible = false;
       };
+      "net/launchpad/diodon/clipboard" = {
+        use-clipboard = true;
+        use-primary = false;
+        add-images = true;
+        keep-clipboard-content = true;
+        synchronize-clipboard = false;
+        instant-paste = true;
+        recent-items-size = 25;
+      };
+      "net/launchpad/diodon/plugins" = {
+        active-plugins = [];
+      };
     };
   };
 }
