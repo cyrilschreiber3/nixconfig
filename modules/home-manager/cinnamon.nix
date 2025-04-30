@@ -167,7 +167,7 @@ in {
         keep-clipboard-content = true;
         synchronize-clipboard = false;
         instant-paste = true;
-        recent-items-size = 25;
+        recent-items-size = 20;
       };
       "net/launchpad/diodon/plugins" = {
         active-plugins = [];

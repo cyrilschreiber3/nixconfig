@@ -52,7 +52,7 @@ in {
         name = "merlin-cl-06-init";
         desktopName = "Start Merlin-CL-06";
         comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
-        exec = pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh);
+        exec = "${pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh)}";
         icon = "utilities-terminal";
         terminal = false;
         categories = ["Utility" "System"];
