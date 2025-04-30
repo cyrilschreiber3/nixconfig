@@ -48,11 +48,12 @@ in {
       adwaita-icon-theme
       parsec-bin
       cifs-utils
+      (pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh))
       (pkgs.makeDesktopItem {
         name = "merlin-cl-06-init";
         desktopName = "Start Merlin-CL-06";
         comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
-        exec = "${pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh)}";
+        exec = "merlin-cl-06-init";
         icon = "utilities-terminal";
         terminal = false;
         categories = ["Utility" "System"];
