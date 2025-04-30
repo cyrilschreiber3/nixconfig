@@ -2,8 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  pkgs,
   inputs,
+  lib,
+  pkgs,
   outputs,
   ...
 }: {
@@ -37,6 +38,7 @@
       #  device = "/dev/sda"; # no need to set devices, disko will add all devices that have a EF02 partition to the list already
       useOSProber = true;
     };
+    timeout = 2; # Time before booting the default entry
   };
 
   boot.binfmt.emulatedSystems = [
@@ -60,6 +62,7 @@
   networking.hostName = "scorpius-cl-01";
   networking.search = ["schreibernet.dev"];
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce []; # Disable wait-online for faster boot
   networking.networkmanager.insertNameservers = [
     "192.168.1.13"
     "10.1.1.52"
@@ -96,6 +99,9 @@
     # optimise.dates = "weekly";
     settings.auto-optimise-store = true;
   };
+
+  # Limit journald log size to keep fast boot times
+  services.journald.extraConfig = "SystemMaxUse=50M";
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";

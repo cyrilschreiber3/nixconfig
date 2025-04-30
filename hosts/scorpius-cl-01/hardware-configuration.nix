@@ -19,6 +19,7 @@
   boot.initrd.kernelModules = ["nvidia"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
+  boot.kernelParams = ["quiet"]; # Disables Systemd load screen for faster boot
 
   hardware = {
     enableRedistributableFirmware = true;
