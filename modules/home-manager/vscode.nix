@@ -146,6 +146,8 @@ in {
           "[vue]" = {
             "editor.defaultFormatter" = "Vue.volar";
           };
+          "ansible.lightspeed.enabled" = false;
+          "ansible.lightspeed.suggestions.enabled" = false;
           "better-comments.tags" = [
             {
               "tag" = "[ ]";
