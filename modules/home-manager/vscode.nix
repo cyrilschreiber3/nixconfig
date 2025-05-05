@@ -50,6 +50,7 @@ in {
                 shardulm94.trailing-spaces
                 usernamehw.errorlens
                 gruntfuggly.todo-tree
+                selfrefactor.order-props
 
                 # theme
                 enkia.tokyo-night
