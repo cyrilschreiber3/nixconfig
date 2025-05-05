@@ -85,6 +85,8 @@ in {
 
               # Go
               golang.go
+              jinliming2.vscode-go-template
+              otovo-oss.htmx-tags
 
               # HTML
               adrianwilczynski.format-selection-as-html
