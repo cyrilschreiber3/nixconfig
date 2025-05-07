@@ -114,6 +114,9 @@ in {
               qwtel.sqlite-viewer
               mtxr.sqltools
 
+              # Toml
+              tamasfe.even-better-toml
+
               # Vue
               vue.volar
 
@@ -254,6 +257,9 @@ in {
             "*.s3db" = "\${capture}.\${extname}-*";
           };
           "extensions.autoCheckUpdates" = false;
+          "files.associations" = {
+            "*.gohtml" = "html";
+          };
           "files.autoSave" = "onFocusChange";
           "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
           "git.autofetch" = true;
@@ -291,6 +297,7 @@ in {
           "ltex.additionalRules.motherTongue" = "fr";
           "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
           "prettier.printWidth" = 120;
+          "prettier.quoteProps" = "consistent";
           "prettier.singleQuote" = false;
           "prettier.tabWidth" = 2;
           "prettier.useTabs" = true;
@@ -337,9 +344,11 @@ in {
           "workbench.colorTheme" = "Tokyo Night";
           "workbench.editorAssociations" = {
             "*.copilotmd" = "vscode.markdown.preview.editor";
+            "*.gohtml" = "html";
             "*.ipynb" = "jupyter-notebook";
             "*.jpeg" = "imagePreview.previewEditor";
             "{git,gitlens,git-graph}:/**/*.{md,csv,svg}" = "default";
+            "*.toml" = "toml";
           };
           "workbench.iconTheme" = "vscode-icons";
         };
