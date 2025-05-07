@@ -138,6 +138,9 @@ in {
           "[go]" = {
             "editor.defaultFormatter" = "golang.go";
           };
+          "[ignore]" = {
+            "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
           "[nix]" = {
             "editor.defaultFormatter" = "kamadorueda.alejandra";
           };
