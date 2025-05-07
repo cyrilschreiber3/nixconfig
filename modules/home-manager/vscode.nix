@@ -51,6 +51,7 @@ in {
                 usernamehw.errorlens
                 gruntfuggly.todo-tree
                 selfrefactor.order-props
+                jkillian.custom-local-formatters
 
                 # theme
                 enkia.tokyo-night
