@@ -97,6 +97,9 @@ in {
               # Json
               zainchen.json
 
+              # Makefile
+              ms-vscode.makefile-tools
+
               # Nix
               jnoortheen.nix-ide
               kamadorueda.alejandra
@@ -155,6 +158,9 @@ in {
           };
           "[shellscript]" = {
             "editor.defaultFormatter" = "foxundermoon.shell-format";
+          };
+          "[templ]" = {
+            "editor.defaultFormatter" = "a-h.templ";
           };
           "[vue]" = {
             "editor.defaultFormatter" = "Vue.volar";
