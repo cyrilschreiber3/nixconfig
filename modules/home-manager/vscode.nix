@@ -114,6 +114,9 @@ in {
               qwtel.sqlite-viewer
               mtxr.sqltools
 
+              # Templ
+              a-h.templ
+
               # Toml
               tamasfe.even-better-toml
 
@@ -431,6 +434,11 @@ in {
             key = "shift+alt+f";
             command = "editor.action.formatDocument.none";
             when = "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly";
+          }
+          {
+            key = "alt+y";
+            command = "bracket-select.undo-select";
+            when = "editorTextFocus";
           }
           {
             key = "ctrl+shift+alt+s";
