@@ -61,7 +61,7 @@ in {
                 github.copilot
               ]
               ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
-                "github.copilot-chat"
+                "github.copilot-chat.0.26.0"
               ])
 
             (lib.optional cfg.enableLanguageExtensions [
