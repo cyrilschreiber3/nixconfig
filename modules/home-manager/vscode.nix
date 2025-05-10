@@ -60,7 +60,7 @@ in {
                 # Copilot
                 github.copilot
               ]
-              ++ pkgs.nix4vscode.forVscode [
+              ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
                 "github.copilot-chat"
               ])
 

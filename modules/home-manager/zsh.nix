@@ -87,7 +87,7 @@ in {
             }
           ];
 
-        initExtra = ''
+        initContent = ''
           # zsh-interactive-cd plugin
           bindkey '^I' zic-completion
         '';
