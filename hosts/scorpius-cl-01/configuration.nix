@@ -120,15 +120,6 @@
     LC_IDENTIFICATION = "en_GB.UTF-8";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  # Printer autodiscovery
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -216,6 +207,10 @@
     enable = true;
     enabledDefaultShares = ["media1" "media2" "turboVault" "vault"];
     customShares = [];
+  };
+
+  printersConfig = {
+    enable = true;
   };
 
   vGPUVMConfig = {
