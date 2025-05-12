@@ -15,11 +15,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      epsonscan2
+    hardware.sane.extraBackends = [
+      (pkgs.epsonscan2.override {withNonFreePlugins = true;})
     ];
 
-    # Enable CUPS to print documents.
     services.printing = {
       enable = true;
       drivers = with pkgs; [
