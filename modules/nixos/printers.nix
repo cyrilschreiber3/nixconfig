@@ -15,8 +15,17 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      sane-airscan
+      sane-backends
+      sane-frontends
+      xsane
+      epson-escpr2
+      (epsonscan2.override {withNonFreePlugins = true;})
+    ];
+
     hardware.sane.extraBackends = [
-      (pkgs.epsonscan2.override {withNonFreePlugins = true;})
+      pkgs.epsonscan2
     ];
 
     services.printing = {
