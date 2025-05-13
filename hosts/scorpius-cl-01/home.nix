@@ -43,6 +43,7 @@
     kdePackages.kdenlive
     darktable
     figma-linux
+    davinci-resolve
 
     # work
     onlyoffice-desktopeditors
