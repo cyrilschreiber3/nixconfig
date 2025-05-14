@@ -138,6 +138,16 @@
     categories = ["Development" "Settings" "System"];
   };
 
+  xdg.desktopEntries.davinci-resolve-studio = {
+    name = "Davinci Resolve Studio";
+    comment = "Professional video editing, color, effects and audio post-processing";
+    genericName = "Video Editor";
+    icon = "davinci-resolve-studio";
+    exec = "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia davinci-resolve-studio";
+    terminal = false;
+    categories = ["AudioVideo" "AudioVideoEditing" "Video" "Graphics"];
+  };
+
   # ------------------------ #
   # --- Programs configs --- #
   # ------------------------ #
