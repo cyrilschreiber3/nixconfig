@@ -183,18 +183,30 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Editors
     vim
     nano
+
+    # Networking
     wget
     curl
-    cachix
-    nvtopPackages.full
+    iperf
 
+    # Hardware Info
+    nvtopPackages.full
     pciutils
     usbutils
-    iperf
+
+    # Filesystem
     ntfs3g
     bashmount
+
+    # Audio
+    alsa-scarlett-gui
+    scarlett2
+
+    # Package Management
+    cachix
   ];
 
   programs = {
