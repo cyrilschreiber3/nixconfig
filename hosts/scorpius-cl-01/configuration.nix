@@ -132,7 +132,7 @@
       "10-split-surround-mic" = {
         context.modules = [
           {
-            name = "libpipewire-module-loopback";
+            name = "module-loopback";
             args = {
               node.description = "Microphone";
               capture.props = {
@@ -150,7 +150,7 @@
             };
           }
           {
-            name = "libpipewire-module-loopback";
+            name = "module-loopback";
             args = {
               node.description = "Loopback";
               capture.props = {
