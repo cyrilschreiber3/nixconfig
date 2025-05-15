@@ -135,15 +135,49 @@
           {
             name = "libpipewire-module-loopback";
             args = {
-              "node.description" = "Scarlett Solo Input 1+2";
+              "node.description" = "Scarlett Solo Input 1";
               "capture.props" = {
-                "audio.position" = ["FL" "FR"];
+                "audio.position" = ["FL"];
                 "stream.dont-remix" = true;
                 "target.object" = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
                 "node.passive" = true;
               };
               "playback.props" = {
-                "node.name" = "SF_in_12";
+                "node.name" = "SF_in_1";
+                "media.class" = "Audio/Source";
+                "audio.position" = ["MONO"];
+              };
+            };
+          }
+          {
+            name = "libpipewire-module-loopback";
+            args = {
+              "node.description" = "Scarlett Solo Input 2";
+              "capture.props" = {
+                "audio.position" = ["FR"];
+                "stream.dont-remix" = true;
+                "target.object" = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                "node.passive" = true;
+              };
+              "playback.props" = {
+                "node.name" = "SF_in_2";
+                "media.class" = "Audio/Source";
+                "audio.position" = ["MONO"];
+              };
+            };
+          }
+          {
+            name = "libpipewire-module-loopback";
+            args = {
+              "node.description" = "Scarlett Solo Input Loopback";
+              "capture.props" = {
+                "audio.position" = ["RL" "RR"];
+                "stream.dont-remix" = true;
+                "target.object" = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                "node.passive" = true;
+              };
+              "playback.props" = {
+                "node.name" = "SF_in_LB";
                 "media.class" = "Audio/Source";
                 "audio.position" = ["FL" "FR"];
               };
