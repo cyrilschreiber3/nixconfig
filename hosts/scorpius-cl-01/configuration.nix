@@ -170,7 +170,7 @@
       "10-split-surround-mic" = {
         "context.modules" = [
           {
-            "name" = "module-loopback";
+            name = "libpipewire-module-loopback";
             args = {
               source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
               sink = "virtual-scarlett-solo-mic";
@@ -180,7 +180,7 @@
             };
           }
           {
-            "name" = "module-loopback";
+            name = "libpipewire-module-loopback";
             args = {
               source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
               sink = "virtual-scarlett-solo-loopback";
