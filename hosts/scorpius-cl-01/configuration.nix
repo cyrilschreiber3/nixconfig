@@ -124,8 +124,12 @@
   # services.pulseaudio.enable = false;
   hardware.pulseaudio.extraConfig = "load-module module-loopback";
   security.rtkit.enable = true;
-  services.pipewire = let
-    pipewireConfig = {
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    extraConfig.pipewire = {
       "10-split-surround-output" = {
         "context.modules" = [
           {
@@ -148,39 +152,6 @@
         ];
       };
     };
-    # pipewireConfig = {
-    #   "10-split-surround-mic" = {
-    #     "context.modules" = [
-    #       {
-    #         name = "libpipewire-module-loopback";
-    #         args = {
-    #           source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-    #           sink = "virtual-scarlett-solo-mic";
-    #           channels = 2;
-    #           channel_map = ["FL" "FR"];
-    #           node.description = "Microphone";
-    #         };
-    #       }
-    #       {
-    #         name = "libpipewire-module-loopback";
-    #         args = {
-    #           source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-    #           sink = "virtual-scarlett-solo-loopback";
-    #           channels = 2;
-    #           channel_map = ["RL" "RR"];
-    #           node.description = "Loopback";
-    #         };
-    #       }
-    #     ];
-    #   };
-    # };
-  in {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    extraConfig.pipewire = pipewireConfig;
-    extraConfig.pipewire-pulse = pipewireConfig;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
