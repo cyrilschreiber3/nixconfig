@@ -125,74 +125,74 @@
   hardware.pulseaudio.extraConfig = "load-module module-loopback";
   security.rtkit.enable = true;
   services.pipewire = let
-    # pipewireConfig = {
-    #   "10-split-surround-mic" = {
-    #     context.modules = [
-    #       {
-    #         name = "module-loopback";
-    #         args = {
-    #           node.description = "Microphone";
-    #           capture.props = {
-    #             node.name = "capture.Mic";
-    #             audio.position = ["FL" "FR"];
-    #             stream.dont-remix = true;
-    #             target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-    #             node.passive = true;
-    #           };
-    #           playback.props = {
-    #             node.name = "Mic";
-    #             media.class = "Audio/Source";
-    #             audio.position = ["FL" "FR"];
-    #           };
-    #         };
-    #       }
-    #       {
-    #         name = "module-loopback";
-    #         args = {
-    #           node.description = "Loopback";
-    #           capture.props = {
-    #             node.name = "capture.Loopback";
-    #             audio.position = ["RL" "RR"];
-    #             stream.dont-remix = true;
-    #             target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-    #             node.passive = true;
-    #           };
-    #           playback.props = {
-    #             node.name = "Loopback";
-    #             media.class = "Audio/Source";
-    #             audio.position = ["RL" "RR"];
-    #           };
-    #         };
-    #       }
-    #     ];
-    #   };
-    # };
     pipewireConfig = {
       "10-split-surround-mic" = {
-        "context.modules" = [
+        context.modules = [
           {
-            name = "libpipewire-module-loopback";
+            name = "module-loopback";
             args = {
-              source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-              sink = "virtual-scarlett-solo-mic";
-              channels = 2;
-              channel_map = ["FL" "FR"];
               node.description = "Microphone";
+              capture.props = {
+                node.name = "capture.Mic";
+                audio.position = ["FL" "FR"];
+                stream.dont-remix = true;
+                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                node.passive = true;
+              };
+              playback.props = {
+                node.name = "Mic";
+                media.class = "Audio/Source";
+                audio.position = ["FL" "FR"];
+              };
             };
           }
           {
-            name = "libpipewire-module-loopback";
+            name = "module-loopback";
             args = {
-              source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-              sink = "virtual-scarlett-solo-loopback";
-              channels = 2;
-              channel_map = ["RL" "RR"];
               node.description = "Loopback";
+              capture.props = {
+                node.name = "capture.Loopback";
+                audio.position = ["RL" "RR"];
+                stream.dont-remix = true;
+                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                node.passive = true;
+              };
+              playback.props = {
+                node.name = "Loopback";
+                media.class = "Audio/Source";
+                audio.position = ["RL" "RR"];
+              };
             };
           }
         ];
       };
     };
+    # pipewireConfig = {
+    #   "10-split-surround-mic" = {
+    #     "context.modules" = [
+    #       {
+    #         name = "libpipewire-module-loopback";
+    #         args = {
+    #           source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+    #           sink = "virtual-scarlett-solo-mic";
+    #           channels = 2;
+    #           channel_map = ["FL" "FR"];
+    #           node.description = "Microphone";
+    #         };
+    #       }
+    #       {
+    #         name = "libpipewire-module-loopback";
+    #         args = {
+    #           source = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+    #           sink = "virtual-scarlett-solo-loopback";
+    #           channels = 2;
+    #           channel_map = ["RL" "RR"];
+    #           node.description = "Loopback";
+    #         };
+    #       }
+    #     ];
+    #   };
+    # };
   in {
     enable = true;
     alsa.enable = true;
