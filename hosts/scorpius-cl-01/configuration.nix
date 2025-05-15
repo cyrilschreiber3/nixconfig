@@ -122,6 +122,7 @@
 
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;
+  hardware.pulseaudio.extraConfig = "load-module module-loopback";
   security.rtkit.enable = true;
   services.pipewire = let
     # pipewireConfig = {
@@ -221,7 +222,7 @@
     enable = true;
     userName = "cyril";
     fullUserName = "Cyril Schreiber";
-    extraGroups = ["networkmanager" "wheels" "jackaudio"];
+    extraGroups = ["networkmanager" "wheels" "audio"];
     importSshKeysFromGithub = true;
   };
 
