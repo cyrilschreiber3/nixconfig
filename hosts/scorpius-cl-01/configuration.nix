@@ -128,7 +128,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    extraConfig.pipewire = {
+    extraConfig.pipewire-pulse = {
       "10-split-surround-mic" = {
         context.modules = [
           {
