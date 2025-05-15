@@ -128,6 +128,48 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    extraConfig.pipewire = {
+      "10-split-surround-mic" = {
+        context.modules = [
+          {
+            name = "libpipewire-module-loopback";
+            args = {
+              node.description = "Microphone";
+              capture.props = {
+                node.name = "capture.Mic";
+                audio.position = ["FL" "FR"];
+                stream.dont-remix = true;
+                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                node.passive = true;
+              };
+              playback.props = {
+                node.name = "Mic";
+                media.class = "Audio/Source";
+                audio.position = ["FL" "FR"];
+              };
+            };
+          }
+          {
+            name = "libpipewire-module-loopback";
+            args = {
+              node.description = "Loopback";
+              capture.props = {
+                node.name = "capture.Loopback";
+                audio.position = ["RL" "RR"];
+                stream.dont-remix = true;
+                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                node.passive = true;
+              };
+              playback.props = {
+                node.name = "Loopback";
+                media.class = "Audio/Source";
+                audio.position = ["RL" "RR"];
+              };
+            };
+          }
+        ];
+      };
+    };
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
