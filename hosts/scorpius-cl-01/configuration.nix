@@ -126,41 +126,22 @@
   security.rtkit.enable = true;
   services.pipewire = let
     pipewireConfig = {
-      "10-split-surround-mic" = {
-        context.modules = [
+      "10-split-surround-output" = {
+        "context.modules" = [
           {
-            name = "module-loopback";
+            name = "libpipewire-module-loopback";
             args = {
-              node.description = "Microphone";
-              capture.props = {
-                node.name = "capture.Mic";
-                audio.position = ["FL" "FR"];
-                stream.dont-remix = true;
-                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-                node.passive = true;
+              "node.description" = "Scarlett Solo Input 1+2";
+              "capture.props" = {
+                "audio.position" = ["FL" "FR"];
+                "stream.dont-remix" = true;
+                "target.object" = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
+                "node.passive" = true;
               };
-              playback.props = {
-                node.name = "Mic";
-                media.class = "Audio/Source";
-                audio.position = ["FL" "FR"];
-              };
-            };
-          }
-          {
-            name = "module-loopback";
-            args = {
-              node.description = "Loopback";
-              capture.props = {
-                node.name = "capture.Loopback";
-                audio.position = ["RL" "RR"];
-                stream.dont-remix = true;
-                target.object = "alsa_input.usb-Focusrite_Scarlett_Solo_4th_Gen_S1DVHEG360E2D1-00.analog-surround-40";
-                node.passive = true;
-              };
-              playback.props = {
-                node.name = "Loopback";
-                media.class = "Audio/Source";
-                audio.position = ["RL" "RR"];
+              "playback.props" = {
+                "node.name" = "SF_in_12";
+                "media.class" = "Audio/Source";
+                "audio.position" = ["FL" "FR"];
               };
             };
           }
