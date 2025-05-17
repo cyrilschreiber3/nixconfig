@@ -109,7 +109,6 @@
     bitwarden
     onedrive
     onedrivegui
-    onedriver
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
@@ -141,7 +140,7 @@
     categories = ["Development" "Settings" "System"];
   };
 
-  xdg.desktopEntries.davinci-resolve-studio = {
+  xdg.desktopEntries.davinci-resolve = {
     name = "Davinci Resolve Studio";
     comment = "Professional video editing, color, effects and audio post-processing";
     genericName = "Video Editor";
@@ -149,6 +148,10 @@
     exec = "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia davinci-resolve-studio";
     terminal = false;
     categories = ["AudioVideo" "AudioVideoEditing" "Video" "Graphics"];
+  };
+
+  xdg.configFile = {
+    "autostart/OneDriveGUI.desktop".source = "${pkgs.onedrivegui}/share/applications/OneDriveGUI.desktop";
   };
 
   # ------------------------ #
