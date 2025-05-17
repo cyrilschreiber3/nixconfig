@@ -107,6 +107,8 @@
     obsidian
     postman
     bitwarden
+    onedrive
+    onedrivegui
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
