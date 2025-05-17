@@ -109,6 +109,7 @@
     bitwarden
     onedrive
     onedrivegui
+    onedriver
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
