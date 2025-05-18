@@ -109,6 +109,7 @@
     bitwarden
     onedrive
     onedrivegui
+    onedriver
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
@@ -140,6 +141,7 @@
     categories = ["Development" "Settings" "System"];
   };
 
+  # FIXME: desktop entry not showing in menu
   xdg.desktopEntries.davinci-resolve = {
     name = "Davinci Resolve Studio";
     comment = "Professional video editing, color, effects and audio post-processing";
