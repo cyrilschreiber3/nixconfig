@@ -35,7 +35,7 @@
   # environment.
   home.packages = with pkgs; [
     # media
-    ffmpeg
+    ffmpeg-full
     yt-dlp
     vlc
     gimp
