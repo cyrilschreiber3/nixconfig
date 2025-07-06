@@ -53,6 +53,13 @@ in {
                 selfrefactor.order-props
                 jkillian.custom-local-formatters
 
+                # remote development
+                ms-vscode.remote-server
+                ms-vscode.remote-explorer
+                ms-vscode-remote.remote-ssh
+                ms-vscode.remote-repositories
+                ms-vscode-remote.remote-containers
+
                 # theme
                 enkia.tokyo-night
                 vscode-icons-team.vscode-icons
@@ -61,7 +68,7 @@ in {
                 github.copilot
               ]
               ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
-                "github.copilot-chat.0.26.0"
+                "github.copilot-chat"
               ])
 
             (lib.optional cfg.enableLanguageExtensions [
@@ -363,6 +370,7 @@ in {
             "*.toml" = "toml";
           };
           "workbench.iconTheme" = "vscode-icons";
+          "workbench.startupEditor" = "none";
         };
 
         keybindings = [
