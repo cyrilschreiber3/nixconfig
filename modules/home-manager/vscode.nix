@@ -316,6 +316,8 @@ in {
           "liveServer.settings.useWebExt" = true;
           "ltex.additionalRules.motherTongue" = "fr";
           "ltex.enabled" = ["bibtex" "context" "context.tex" "latex" "markdown" "org" "restructuredtext" "rsweave"];
+          "nixEnvSelector.useFlakes" = true;
+          "nixEnvSelector.nixFile" = "\${workspaceFolder}/flake.nix";
           "prettier.printWidth" = 120;
           "prettier.quoteProps" = "consistent";
           "prettier.singleQuote" = false;
