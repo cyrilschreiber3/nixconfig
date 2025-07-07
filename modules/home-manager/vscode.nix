@@ -52,6 +52,7 @@ in {
                 gruntfuggly.todo-tree
                 selfrefactor.order-props
                 jkillian.custom-local-formatters
+                arrterian.nix-env-selector
 
                 # remote development
                 ms-vscode.remote-server

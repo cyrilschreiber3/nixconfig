@@ -329,7 +329,7 @@
     "ssh-keys": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-1o9ugt/3rx3/YJbR/PlsRHf7GEFz813fObPkwqFd+Ow=",
+        "narHash": "sha256-r0v8V3dgMnfQwdeAI7UFkR5mwxDUAsLDgrkasIIZAJA=",
         "type": "file",
         "url": "https://github.com/cyrilschreiber3.keys"
       },
