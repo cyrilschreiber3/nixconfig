@@ -103,7 +103,7 @@
       default = import ./modules/home-manager/default.nix;
     };
     packages = {
-      myOMPConfig = nixpkgs.pkgs.callPackage ./modules/dotfiles/omp/oh-my-posh-config.nix {};
+      myOMPConfig = import ./modules/dotfiles/omp/oh-my-posh-config.nix;
     };
   };
 }
