@@ -102,8 +102,19 @@
     homeManagerModules = {
       default = import ./modules/home-manager/default.nix;
     };
-    packages = {
-      myOMPConfig = import ./modules/dotfiles/omp/oh-my-posh-config.nix;
-    };
+    packages = let
+      forAllSys = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+      # forSupportedSys = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
+    in
+      forAllSys (system: let
+        pkgs = import nixpkgs {inherit system;};
+      in {
+        myOMPConfig = pkgs.callPackage ./modules/dotfiles/omp/oh-my-posh-config.nix {};
+        # })
+        # ++ forSupportedSys (system: let
+        #   pkgs = import nixpkgs {inherit system;};
+        # in {
+        #   myPackage = pkgs.callPackage ./blah.nix {};
+      });
   };
 }
