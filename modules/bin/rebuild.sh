@@ -101,7 +101,7 @@ fi
 
 # Create commit message
 genMetadata=$(nixos-rebuild list-generations | grep True)
-read generation current buildDate buildTime flakeVersion kernelVersion configRev specialisation <<<"$genMetadata"
+read generation buildDate buildTime flakeVersion kernelVersion configRev specialisation current <<<"$genMetadata"
 commitMessage="Host: $host, Generation: $generation, NixOS version: $flakeVersion, Kernel: $kernelVersion"
 
 # Commit all changes with generation metadata
