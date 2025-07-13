@@ -83,7 +83,7 @@ blocks:
         style: plain
         background: "p:background"
         foreground: "#fff93d"
-        template: "<p:separator>\ue0b3</> {{ .Full }} \uE235 "
+        template: "<p:separator>\ue0b3</> {{ .Full }} \uE235\u00A0 "
       - type: nix-shell
         style: plain
         background: "p:background"
