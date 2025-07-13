@@ -92,7 +92,7 @@ sudo nixos-rebuild switch --flake ./#$host --accept-flake-config --log-format in
 # Check if the generation has changed
 commitGeneration=$(git log -1 --pretty=%B | grep -oP 'Generation: \K\d+') || commitGeneration=""
 lastGeneration=${commitGeneration:-$currentGeneration}
-newGeneration=$(nixos-rebuild list-generations | grep current | cut -d ' ' -f 1)
+newGeneration=$(nixos-rebuild list-generations | grep True | cut -d ' ' -f 1)
 
 if [ "$lastGeneration" == "$newGeneration" ]; then
     echo "No new generation created, exiting..."
