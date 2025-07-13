@@ -89,6 +89,9 @@ in {
         initContent = ''
           # zsh-interactive-cd plugin
           bindkey '^I' zic-completion
+
+          # zsh-nix-shell plugin
+          source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
         '';
 
         oh-my-zsh = {
