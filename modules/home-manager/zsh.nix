@@ -15,15 +15,12 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       fzf
-      pls
       lsd
       oh-my-zsh
       oh-my-posh
       nerd-fonts.meslo-lg
       nerd-fonts.jetbrains-mono
       chroma # required by the colorize plugin for omz
-      zsh-autosuggestions
-      zsh-nix-shell
       zsh-powerlevel10k
     ];
 
@@ -89,9 +86,6 @@ in {
         initContent = ''
           # zsh-interactive-cd plugin
           bindkey '^I' zic-completion
-
-          # zsh-nix-shell plugin
-          source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
         '';
 
         oh-my-zsh = {
@@ -165,8 +159,7 @@ in {
             --color=scrollbar:#27a1b9 \
             --color=separator:#ff9e64 \
             --color=spinner:#ff007c" \
-            fzf
-          '';
+            fzf'';
           ns = "nix-shell --run zsh -p";
           dev = "${pkgs.nix-output-monitor}/bin/nom develop --command zsh";
         };

@@ -399,32 +399,17 @@ in {
           }
           {
             key = "ctrl+shift+up";
-            command = "-editor.action.insertCursorAbove";
+            command = "editor.action.insertCursorAbove";
             when = "editorTextFocus";
           }
           {
             key = "ctrl+shift+down";
-            command = "-editor.action.insertCursorBelow";
-            when = "editorTextFocus";
-          }
-          {
-            key = "shift+alt+up";
-            command = "-editor.action.insertCursorAbove";
-            when = "editorTextFocus";
-          }
-          {
-            key = "shift+alt+down";
-            command = "-editor.action.insertCursorBelow";
+            command = "editor.action.insertCursorBelow";
             when = "editorTextFocus";
           }
           {
             key = "shift+alt+down";
             command = "editor.action.copyLinesDownAction";
-            when = "editorTextFocus && !editorReadonly";
-          }
-          {
-            key = "ctrl+shift+alt+down";
-            command = "-editor.action.copyLinesDownAction";
             when = "editorTextFocus && !editorReadonly";
           }
           {
