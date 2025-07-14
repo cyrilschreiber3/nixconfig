@@ -78,6 +78,7 @@ in {
 
               # Ansible
               redhat.ansible
+              samuelcolvin.jinjahtml
               wolfmah.ansible-vault-inline
 
               # Bash
