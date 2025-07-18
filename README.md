@@ -73,7 +73,10 @@ Each branch maintains its own host configurations and specialized modules for th
 ### Initial Setup
 
 1. Boot from the NixOS live image
-2. Run the installation script: `curl -L https://raw.githubusercontent.com/cyrilschreiber3/nixconfig/main/utilities/installation/install.sh | bash`
+2. Run the installation script: 
+    ```bash    
+    curl -L https://raw.githubusercontent.com/cyrilschreiber3/nixconfig/main/utilities/installation/install.sh | bash
+    ```
 3. The script will guide you through:
    - Selecting the target drive
    - Formatting and partitioning with disko
