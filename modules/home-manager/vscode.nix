@@ -106,6 +106,11 @@ in {
               # Json
               zainchen.json
 
+              # MAAS
+              sztheory.vscode-packer-powertools
+              peterjonsson.kickstart-language-support
+              bit2pixel.kickstart-highlighter
+
               # Makefile
               ms-vscode.makefile-tools
 
