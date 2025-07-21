@@ -203,12 +203,16 @@
     };
   };
 
+  # Enable Docker
+  virtualisation.docker.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   mainUser = {
     enable = true;
     userName = "cyril";
     fullUserName = "Cyril Schreiber";
-    extraGroups = ["networkmanager" "wheels" "audio"];
+    extraGroups = ["networkmanager" "wheels" "audio" "docker"];
     importSshKeysFromGithub = true;
   };
 
