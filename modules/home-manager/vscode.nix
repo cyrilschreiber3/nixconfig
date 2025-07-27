@@ -106,6 +106,9 @@ in {
               # Json
               zainchen.json
 
+              # Kubernetes
+              ms-kubernetes-tools.vscode-kubernetes-tools
+
               # MAAS
               sztheory.vscode-packer-powertools
               peterjonsson.kickstart-language-support
