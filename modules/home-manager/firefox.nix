@@ -114,6 +114,9 @@ in {
           "browser.search.order.1" = "StartPage";
         };
 
+        # To get the extension ID, execute this in the browser console:
+        # Object.keys(JSON.parse(document.getElementById("redux-store-state").innerHTML).addons.byGUID)[0]
+
         ExtensionsUpdate = false;
         ExtensionSettings = {
           "*" = {
@@ -182,6 +185,12 @@ in {
           # Refined GitHub
           "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi";
+            installation_mode = "force_installed";
+            default_area = "menupanel";
+          };
+          # Dark Reader
+          "addon@darkreader.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
