@@ -311,6 +311,7 @@ in {
             "javascript" = true;
             "jsonc" = true;
             "python" = true;
+            "zone" = false;
           };
           "latex-workshop.intellisense.package.enabled" = true;
           "latex-workshop.latex.tools" = [
