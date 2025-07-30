@@ -55,6 +55,7 @@ in {
                 arrterian.nix-env-selector
                 signageos.signageos-vscode-sops
                 signageos.signageos-vscode-sops-beta
+                edwinkofler.vscode-assorted-languages
 
                 # remote development
                 ms-vscode.remote-server
