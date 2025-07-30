@@ -53,6 +53,7 @@ in {
                 selfrefactor.order-props
                 jkillian.custom-local-formatters
                 arrterian.nix-env-selector
+                signageos.signageos-vscode-sops-beta
 
                 # remote development
                 ms-vscode.remote-server
