@@ -53,6 +53,8 @@
       url = "https://github.com/cyrilschreiber3.keys";
       flake = false;
     };
+
+    nix-citizen.url = "github:LovingMelody/nix-citizen";
   };
 
   outputs = {
