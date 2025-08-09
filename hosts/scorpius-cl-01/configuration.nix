@@ -48,6 +48,12 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
+  # For Star Citizen: https://github.com/starcitizen-lug/knowledge-base/wiki/Tips-and-Tricks#nixos
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 16777216;
+    "fs.file-max" = 524288;
+  };
+
   boot.plymouth.enable = true;
   boot.plymouth.theme = "loader_2";
   boot.plymouth.themePackages = [

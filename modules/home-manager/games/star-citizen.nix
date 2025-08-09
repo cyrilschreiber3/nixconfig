@@ -19,6 +19,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     home.packages = lib.mkIf cfg.enable [
+      pkgs.wineWow64Packages.stableFull
       inputs.nix-citizen.packages.${pkgs.system}.lug-helper
       (lib.mkIf cfg.installPackage cfg.package)
     ];
