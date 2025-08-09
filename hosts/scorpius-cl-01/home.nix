@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   outputs,
@@ -203,7 +204,8 @@
 
   starCitizenConfig = {
     enable = true;
-    installPackage = false;
+    installPackage = true;
+    package = inputs.nix-citizen.packages.${pkgs.system}.star-citizen;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
