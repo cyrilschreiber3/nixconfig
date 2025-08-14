@@ -42,6 +42,7 @@
     gimp
     obs-studio
     kdePackages.kdenlive
+    darktable
     figma-linux
     davinci-resolve-studio
 
