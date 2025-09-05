@@ -74,7 +74,7 @@
           rate = "60.00";
         };
         odyssey = {
-          resolution = "2560x1440";
+          resolution = "3440x1440";
           rate = "59.96";
         };
         dell = {
@@ -129,7 +129,7 @@
           dell = {
             enable = true;
             primary = false;
-            position = "4080x120";
+            position = "5360x120";
             mode = config.dell.resolution;
             rate = config.dell.rate;
           };
@@ -177,17 +177,17 @@
   services.upower.ignoreLid = true;
 
   # Run autorandr on startup
-  # environment.etc."xdg/autostart/autorandr-init.desktop" = {
-  #   text = ''
-  #     [Desktop Entry]
-  #     Type=Application
-  #     Name=Autorandr init
-  #     Description=Apply autorandr configuration once the graphical session is ready.
-  #     Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
-  #     X-GNOME-Autostart-enabled=true
-  #   '';
-  #   mode = "0644";
-  # };
+  environment.etc."xdg/autostart/autorandr-init.desktop" = {
+    text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Autorandr init
+      Description=Apply autorandr configuration once the graphical session is ready.
+      Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
+      X-GNOME-Autostart-enabled=true
+    '';
+    mode = "0644";
+  };
 
   # services.udev.extraRules = ''
   #   ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr --change --match-edid"
