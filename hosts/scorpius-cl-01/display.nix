@@ -106,30 +106,33 @@
         };
         config = {
           integrated = {
-            enable = false;
-            # primary = false;
-            # position = "0x230";
-            # mode = config.integrated.resolution;
-            # rate = config.integrated.rate;
+            enable = true;
+            primary = false;
+            position = "0x0";
+            mode = config.integrated.resolution;
+            rate = config.integrated.rate;
           };
           imac = {
             enable = true;
             primary = false;
-            position = "0x180";
+            position = "1920x180";
+            # position = "0x180";
             mode = config.imac.resolution;
             rate = config.imac.rate;
           };
           odyssey = {
             enable = true;
             primary = true;
-            position = "1920x0";
+            position = "3840x0";
+            # position = "1920x0";
             mode = config.odyssey.resolution;
             rate = config.odyssey.rate;
           };
           dell = {
             enable = true;
             primary = false;
-            position = "5360x120";
+            position = "7280x120";
+            # position = "5360x120";
             mode = config.dell.resolution;
             rate = config.dell.rate;
           };
@@ -177,17 +180,17 @@
   services.upower.ignoreLid = true;
 
   # Run autorandr on startup
-  environment.etc."xdg/autostart/autorandr-init.desktop" = {
-    text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=Autorandr init
-      Description=Apply autorandr configuration once the graphical session is ready.
-      Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
-      X-GNOME-Autostart-enabled=true
-    '';
-    mode = "0644";
-  };
+  # environment.etc."xdg/autostart/autorandr-init.desktop" = {
+  #   text = ''
+  #     [Desktop Entry]
+  #     Type=Application
+  #     Name=Autorandr init
+  #     Description=Apply autorandr configuration once the graphical session is ready.
+  #     Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
+  #     X-GNOME-Autostart-enabled=true
+  #   '';
+  #   mode = "0644";
+  # };
 
   # services.udev.extraRules = ''
   #   ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr --change --match-edid"
