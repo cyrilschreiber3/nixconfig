@@ -11,10 +11,6 @@
       "gaming"
     ];
 
-    services.xserver.screenSection = ''
-      Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
-    '';
-
     boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
