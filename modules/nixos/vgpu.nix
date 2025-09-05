@@ -74,8 +74,10 @@ in {
       "${cfg.cpuType}_iommu=on"
       "kvm.ignore_msrs=1"
       "iommu=pt"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia-drm.modeset=1"
     ];
-    boot.kernelModules = [
+    boot.kernelModules = lib.mkIf (config.specialisation != {}) [
       "vfio"
       "vfio_iommu_type1"
       "vfio_pci"

@@ -177,21 +177,21 @@
   services.upower.ignoreLid = true;
 
   # Run autorandr on startup
-  environment.etc."xdg/autostart/autorandr-init.desktop" = {
-    text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=Autorandr init
-      Description=Apply autorandr configuration once the graphical session is ready.
-      Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
-      X-GNOME-Autostart-enabled=true
-    '';
-    mode = "0644";
-  };
+  # environment.etc."xdg/autostart/autorandr-init.desktop" = {
+  #   text = ''
+  #     [Desktop Entry]
+  #     Type=Application
+  #     Name=Autorandr init
+  #     Description=Apply autorandr configuration once the graphical session is ready.
+  #     Exec=${pkgs.autorandr}/bin/autorandr --change --match-edid
+  #     X-GNOME-Autostart-enabled=true
+  #   '';
+  #   mode = "0644";
+  # };
 
-  services.udev.extraRules = ''
-    ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr --change --match-edid"
-  '';
+  # services.udev.extraRules = ''
+  #   ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr --change --match-edid"
+  # '';
 
   services.xserver.xkb = {
     layout = "ch";
