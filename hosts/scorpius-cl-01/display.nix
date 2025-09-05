@@ -4,6 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    displaylink
     # display color management
     colord
     xcalib
