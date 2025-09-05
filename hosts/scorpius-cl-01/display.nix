@@ -107,33 +107,30 @@
         };
         config = {
           integrated = {
-            enable = true;
-            primary = false;
-            position = "0x0";
-            mode = config.integrated.resolution;
-            rate = config.integrated.rate;
+            enable = false;
+            # primary = false;
+            # position = "0x0";
+            # mode = config.integrated.resolution;
+            # rate = config.integrated.rate;
           };
           imac = {
             enable = true;
             primary = false;
-            position = "1920x180";
-            # position = "0x180";
+            position = "0x180";
             mode = config.imac.resolution;
             rate = config.imac.rate;
           };
           odyssey = {
             enable = true;
             primary = true;
-            position = "3840x0";
-            # position = "1920x0";
+            position = "1920x0";
             mode = config.odyssey.resolution;
             rate = config.odyssey.rate;
           };
           dell = {
             enable = true;
             primary = false;
-            position = "7280x120";
-            # position = "5360x120";
+            position = "5360x120";
             mode = config.dell.resolution;
             rate = config.dell.rate;
           };
