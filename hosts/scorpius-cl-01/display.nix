@@ -26,8 +26,8 @@
   services.xserver = {
     enable = true;
     dpi = lib.mkDefault 104;
-    # videoDrivers = ["nvidia"];
-    videoDrivers = ["nvidia" "displaylink"];
+    videoDrivers = ["nvidia"];
+    # videoDrivers = ["nvidia" "displaylink"];
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {
@@ -97,7 +97,7 @@
           };
         };
       };
-      desk = {
+      deskNew = {
         fingerprint = {
           integrated = fingerprints.integrated;
           imac = fingerprints.imac;
@@ -114,14 +114,14 @@
           };
           imac = {
             enable = true;
-            primary = true;
+            primary = false;
             position = "0x180";
             mode = config.imac.resolution;
             rate = config.imac.rate;
           };
           odyssey = {
             enable = true;
-            primary = false;
+            primary = true;
             position = "1920x0";
             mode = config.odyssey.resolution;
             rate = config.odyssey.rate;
@@ -130,6 +130,36 @@
             enable = true;
             primary = false;
             position = "4080x120";
+            mode = config.dell.resolution;
+            rate = config.dell.rate;
+          };
+        };
+      };
+      desk = {
+        fingerprint = {
+          integrated = fingerprints.integrated;
+          imac = fingerprints.imac;
+          dell = fingerprints.dell;
+        };
+        config = {
+          integrated = {
+            enable = true;
+            primary = false;
+            position = "0x230";
+            mode = config.integrated.resolution;
+            rate = config.integrated.rate;
+          };
+          imac = {
+            enable = true;
+            primary = true;
+            position = "1920x0";
+            mode = config.imac.resolution;
+            rate = config.imac.rate;
+          };
+          dell = {
+            enable = true;
+            primary = false;
+            position = "3840x0";
             mode = config.dell.resolution;
             rate = config.dell.rate;
           };
