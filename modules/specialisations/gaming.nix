@@ -15,6 +15,8 @@
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
+      "nvidia.NVreg_EnableGpuFirmware=0"
+      "nvidia.NVreg_EnableStreamMemOPs=0"
     ];
     hardware = {
       nvidia = {
