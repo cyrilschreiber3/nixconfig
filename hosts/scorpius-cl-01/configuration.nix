@@ -201,6 +201,8 @@
     #media-session.enable = true;
   };
 
+  services.hardware.bolt.enable = true;
+
   # Enable the OpenSSH server.
   services.openssh = {
     enable = true;
