@@ -27,8 +27,7 @@
   services.xserver = {
     enable = true;
     dpi = lib.mkDefault 104;
-    # videoDrivers = ["nvidia"];
-    videoDrivers = ["nvidia" "displaylink"];
+    videoDrivers = ["nvidia"];
     displayManager.lightdm = {
       enable = true;
       greeters.slick = {

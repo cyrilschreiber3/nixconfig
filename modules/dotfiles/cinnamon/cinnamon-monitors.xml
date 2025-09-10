@@ -39,82 +39,6 @@
       </monitor>
     </logicalmonitor>
   </configuration>
-<!-- All 4 -->
-  <configuration>
-    <logicalmonitor>
-      <x>1920</x>
-      <y>180</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>DVI-I-3-2</connector>
-          <vendor>ROW</vendor>
-          <product>AAA</product>
-          <serial>0x00000000</serial>
-        </monitorspec>
-        <mode>
-          <width>1920</width>
-          <height>1080</height>
-          <rate>60</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>7280</x>
-      <y>120</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>DVI-I-2-1</connector>
-          <vendor>DEL</vendor>
-          <product>DELL U2412M</product>
-          <serial>Y1H5T1CO4PML</serial>
-        </monitorspec>
-        <mode>
-          <width>1920</width>
-          <height>1200</height>
-          <rate>59.950172424316406</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>eDP-1</connector>
-          <vendor>BOE</vendor>
-          <product>0x08df</product>
-          <serial>0x00000000</serial>
-        </monitorspec>
-        <mode>
-          <width>1920</width>
-          <height>1080</height>
-          <rate>144.0018310546875</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>3840</x>
-      <y>0</y>
-      <scale>1</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI-1-0</connector>
-          <vendor>unknown</vendor>
-          <product>unknown</product>
-          <serial>unknown</serial>
-        </monitorspec>
-        <mode>
-          <width>3440</width>
-          <height>1440</height>
-          <rate>59.959136962890625</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
 <!-- Only 3 vers. A -->
   <configuration>
     <logicalmonitor>
@@ -123,7 +47,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-3-2</connector>
+          <connector>DP-1-0.1</connector>
           <vendor>ROW</vendor>
           <product>AAA</product>
           <serial>0x00000000</serial>
@@ -141,7 +65,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-2-1</connector>
+          <connector>DP-1-0.3</connector>
           <vendor>DEL</vendor>
           <product>DELL U2412M</product>
           <serial>Y1H5T1CO4PML</serial>
@@ -189,7 +113,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-2-1</connector>
+          <connector>DP-1-0.3</connector>
           <vendor>ROW</vendor>
           <product>AAA</product>
           <serial>0x00000000</serial>
@@ -207,7 +131,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-3-2</connector>
+          <connector>DP-1-0.1</connector>
           <vendor>DEL</vendor>
           <product>DELL U2412M</product>
           <serial>Y1H5T1CO4PML</serial>
@@ -255,7 +179,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-3-2</connector>
+          <connector>DP-1-0.1</connector>
           <vendor>ROW</vendor>
           <product>AAA</product>
           <serial>0x00000000</serial>
@@ -273,7 +197,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-2-1</connector>
+          <connector>DP-1-0.3</connector>
           <vendor>DEL</vendor>
           <product>DELL U2412M</product>
           <serial>Y1H5T1CO4PML</serial>
@@ -321,7 +245,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-2-1</connector>
+          <connector>DP-1-0.3</connector>
           <vendor>ROW</vendor>
           <product>AAA</product>
           <serial>0x00000000</serial>
@@ -339,7 +263,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DVI-I-3-2</connector>
+          <connector>DP-1-0.1</connector>
           <vendor>DEL</vendor>
           <product>DELL U2412M</product>
           <serial>Y1H5T1CO4PML</serial>
