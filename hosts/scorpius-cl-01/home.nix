@@ -76,6 +76,7 @@
     neofetch
     powershell
     speedtest-cli
+    dig
 
     # dev
     nixd
