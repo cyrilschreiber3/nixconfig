@@ -111,6 +111,7 @@
     onedrive
     onedrivegui
     onedriver
+    flameshot
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
