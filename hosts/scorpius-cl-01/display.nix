@@ -4,34 +4,39 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    displaylink
     # display color management
     colord
-    xcalib
-    argyllcms
-    xorg.xgamma
-    (pkgs.makeDesktopItem {
-      name = "autorandr-refresh";
-      desktopName = "Autorandr refresh";
-      comment = "Refresh autorandr configuration";
-      exec = "${pkgs.autorandr}/bin/autorandr --change --match-edid";
-      icon = "utilities-terminal";
-      terminal = false;
-      categories = ["Utility" "System"];
-      genericName = "Update display configuration";
-      keywords = ["autorandr" "refresh" "display" "fix" "reload"];
-    })
+    # xcalib
+    # argyllcms
+    # xorg.xgamma
+    # (pkgs.makeDesktopItem {
+    #   name = "autorandr-refresh";
+    #   desktopName = "Autorandr refresh";
+    #   comment = "Refresh autorandr configuration";
+    #   exec = "${pkgs.autorandr}/bin/autorandr --change --match-edid";
+    #   icon = "utilities-terminal";
+    #   terminal = false;
+    #   categories = ["Utility" "System"];
+    #   genericName = "Update display configuration";
+    #   keywords = ["autorandr" "refresh" "display" "fix" "reload"];
+    # })
   ];
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
 
   # Enable the X11 windowing system, lightdm display manager and cinnamon desktop environment.
   services.xserver = {
-    enable = true;
+    enable = false;
     dpi = lib.mkDefault 104;
     videoDrivers = ["nvidia"];
     displayManager.lightdm = {
-      enable = true;
+      enable = false;
       greeters.slick = {
-        enable = true;
+        enable = false;
         theme = {
           name = "Tokyonight-Dark-BL-LB";
           package = "${pkgs.callPackage ./../../modules/themes/tokyonight-gtk-theme.nix {}}";
@@ -44,14 +49,14 @@
       background = "${pkgs.copyPathToStore ./../../modules/assets/login-wallpaper.jpg}";
     };
     desktopManager = {
-      cinnamon.enable = true;
-      wallpaper.combineScreens = true;
+      cinnamon.enable = false;
+      wallpaper.combineScreens = false;
       wallpaper.mode = "fill";
     };
   };
 
   services.autorandr = {
-    enable = true;
+    enable = false;
     matchEdid = true;
     hooks.postswitch = {
       notify-display-change = ''${pkgs.libnotify}/bin/notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE"'';

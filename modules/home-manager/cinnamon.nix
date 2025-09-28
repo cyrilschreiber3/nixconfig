@@ -175,3 +175,40 @@ in {
     };
   };
 }
+/*
+If cinnamon is enabled, you can exclude it's default packages from your nixos configuration like this:
+
+    environment.cinnamon.excludePackages = with pkgs; [
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    cheese # webcam tool
+    baobab # disk usage
+    totem # video player
+    eog # image viewer
+    evince # document viewer
+    seahorse # password manager
+    epiphany # web browser
+    geary # email reader
+    yelp # Help view
+    simple-scan
+    gnome-logs
+    gnome-characters
+    gnome-music
+    gnome-contacts
+    gnome-initial-setup
+    gnome-characters
+    gnome-clocks
+    gnome-maps
+    gnome-weather
+    gnome-calculator
+    gnome-calendar
+    gnome-font-viewer
+    gnome-disk-utility
+    gnome-photos
+    gnome-tour
+    loupe # image viewer
+  ];
+*/
+
