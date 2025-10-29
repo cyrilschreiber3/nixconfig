@@ -165,11 +165,11 @@
   btopConfig.enable = true;
 
   cinnamonConfig = {
-    enable = false;
+    enable = true;
     enableSharesBookmarks = true;
   };
 
-  hyprlandConfig.enable = true;
+  hyprlandConfig.enable = false;
 
   firefoxConfig.enable = true;
 

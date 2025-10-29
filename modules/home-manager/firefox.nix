@@ -119,9 +119,14 @@ in {
 
         ExtensionsUpdate = false;
         ExtensionSettings = {
+          # TODO: https://addons.mozilla.org/en-US/firefox/addon/fran%C3%A7ais-language-pack/
           "*" = {
             blocked_install_message = "Please install extensions from the NixOS configuration";
             installeation_mode = "blocked";
+          };
+          "langpack-fr@firefox.mozilla.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/français-language-pack/latest.xpi";
+            installation_mode = "force_installed";
           };
           # Tokyonight Theme
           "{4520dc08-80f4-4b2e-982a-c17af42e5e4d}" = {
