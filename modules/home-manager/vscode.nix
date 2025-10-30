@@ -56,6 +56,7 @@ in {
                 signageos.signageos-vscode-sops
                 signageos.signageos-vscode-sops-beta
                 edwinkofler.vscode-assorted-languages
+                jota0222.multi-formatter
 
                 # remote development
                 ms-vscode.remote-server
