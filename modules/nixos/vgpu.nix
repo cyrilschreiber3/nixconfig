@@ -44,7 +44,7 @@ in {
       spice
       spice-gtk
       spice-protocol
-      win-virtio
+      virtio-win
       win-spice
       adwaita-icon-theme
       parsec-bin
@@ -139,10 +139,11 @@ in {
 
         qemu = {
           package = pkgs.qemu_kvm;
-          ovmf = {
-            enable = true;
-            packages = [pkgs.OVMFFull.fd];
-          };
+          # The 'virtualisation.libvirtd.qemu.ovmf' submodule has been removed. All OVMF images distributed with QEMU are now available by default.
+          # ovmf = {
+          #   enable = true;
+          #   packages = [pkgs.OVMFFull.fd];
+          # };
           swtpm.enable = true;
         };
       };

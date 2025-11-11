@@ -107,7 +107,7 @@
     # misc
     obsidian
     postman
-    bitwarden
+    bitwarden-desktop
     onedrive
     onedrivegui
     onedriver
