@@ -246,6 +246,10 @@
     # EDITOR = "emacs";
   };
 
+  programs.zsh.initContent = ''
+    # test comment
+  '';
+
   fonts.fontconfig.enable = true;
 
   # DO NOT CHANGE
