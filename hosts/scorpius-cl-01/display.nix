@@ -12,10 +12,10 @@
     # displayManager = "lightdm";
   };
 
-  services.logind = {
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
-    lidSwitch = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitch = "ignore";
   };
 
   services.upower.ignoreLid = true;
