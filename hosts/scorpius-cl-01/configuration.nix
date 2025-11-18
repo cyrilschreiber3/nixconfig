@@ -77,6 +77,11 @@
     "1.1.1.1"
     "192.168.1.1"
   ];
+  networking.resolvconf.extraOptions = [
+    "timeout:2"
+    "attempts:1"
+    "rotate"
+  ];
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     # SSH
@@ -290,6 +295,10 @@
     enable = true;
     enabledDefaultShares = ["media1" "media2" "turboVault" "vault"];
     customShares = [];
+  };
+
+  gamesConfig = {
+    enable = true;
   };
 
   printersConfig = {
