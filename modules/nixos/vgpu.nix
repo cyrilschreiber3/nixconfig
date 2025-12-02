@@ -2,7 +2,7 @@
 {
   config,
   lib,
-  imports,
+  inputs,
   pkgs,
   vgpu4nixos,
   fastapi-dls-nixos,
@@ -11,8 +11,8 @@
   cfg = config.vGPUVMConfig;
 in {
   imports = [
-    imports.vgpu4nixos.nixosModules.host
-    imports.fastapi-dls-nixos.nixosModules.default
+    inputs.vgpu4nixos.nixosModules.host
+    inputs.fastapi-dls-nixos.nixosModules.default
   ];
 
   options = {
