@@ -24,6 +24,11 @@ in {
       default = "tokyonight";
       description = "General theme name";
     };
+    disableNvidia = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Disable NVIDIA drivers even if a NVIDIA GPU is detected";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -49,7 +54,7 @@ in {
     services.xserver = {
       enable = true;
       dpi = lib.mkDefault 104;
-      videoDrivers = ["nvidia"];
+      videoDrivers = lib.mkIf (cfg.disableNvidia == false) ["nvidia"];
       displayManager.lightdm = lib.mkIf (cfg.displayManager == "lightdm") {
         enable = true;
         greeters.slick = {
