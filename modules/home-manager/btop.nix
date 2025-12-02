@@ -9,7 +9,7 @@ in {
     enable = lib.mkEnableOption "Enable Btop module";
     colorTheme = lib.mkOption {
       type = lib.types.str;
-      default = "Default";
+      default = "tokyo-night";
       description = "The color theme to use for Btop";
     };
   };

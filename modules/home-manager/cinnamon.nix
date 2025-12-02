@@ -5,10 +5,6 @@
   ...
 }: let
   cfg = config.cinnamonConfig;
-
-  themeName = "Tokyonight-Dark-BL-LB";
-  iconThemeName = "WhiteSur-dark";
-  cursorThemeName = "WhiteSur-cursors";
 in {
   options.cinnamonConfig = {
     enable = lib.mkEnableOption "Enable Cinnamon tweaks";
@@ -17,43 +13,18 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      sassc
-      gtk-engine-murrine
-      gnome-themes-extra
-      dconf-editor
       albert
       diodon
       zeitgeist
-
-      (whitesur-icon-theme.override {
-        alternativeIcons = true;
-      })
     ];
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = themeName;
-        package = "${import ./../themes/tokyonight-gtk-theme.nix {inherit pkgs;}}";
-      };
-      cursorTheme = {
-        name = cursorThemeName;
-        package = pkgs.whitesur-cursors;
-      };
-      iconTheme = {
-        name = iconThemeName;
-      };
-    };
+    themes.themeGTK = true;
 
     home.sessionVariables = {
-      GTK_THEME = "Tokyonight-Dark-BL-LB";
       ZEITGEIST_DATABASE_PATH = ":memory:";
     };
 
     xdg.configFile = {
-      "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-      "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-      "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
       "autostart/albert.desktop".source = "${pkgs.albert}/share/applications/albert.desktop";
       "albert/config".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert.conf}";
       "albert/websearch/engines.json".source = "${pkgs.copyPathToStore ./../dotfiles/albert/albert_search.json}";
@@ -122,17 +93,18 @@ in {
         idle-brightness = 30;
       };
       "org/cinnamon/theme" = {
-        name = themeName;
+        name = config.gtk.theme.name;
+      };
+      "/org/gnome/desktop/interface" = {
+        gtk-theme = config.gtk.theme.name;
+        icon-theme = config.gtk.iconTheme.name;
+        cursor-theme = config.gtk.cursorTheme.name;
+        color-scheme = "prefer-${config.global.theme.variant}";
       };
       "org/cinnamon/desktop/interface" = {
-        gtk-theme = themeName;
-        icon-theme = iconThemeName;
-        color-scheme = "prefer-dark";
-      };
-      "org/gnome/desktop/interface" = {
-        gtk-theme = themeName;
-        icon-theme = iconThemeName;
-        color-scheme = "prefer-dark";
+        gtk-theme = config.gtk.theme.name;
+        icon-theme = config.gtk.iconTheme.name;
+        cursor-theme = config.gtk.cursorTheme.name;
       };
       "org/nemo/preferences" = {
         default-folder-viewer = "icon-view";
@@ -145,12 +117,16 @@ in {
         geometry = "1244x730+1989+35";
         sidebar-bookmark-breakpoint = 2;
       };
+      "org/gnome/terminal/legacy/profiles:/:273f07db-8f33-49f7-8909-da4b9946a21f" = {
+        default-size-columns = lib.hm.gvariant.mkInt32 125;
+        default-size-rows = lib.hm.gvariant.mkInt32 32;
+      };
       "org/cinnamon/desktop/a11y/applications" = {
         screen-keyboard-enabled = false;
         togglekeys-enable-osd = true;
       };
       "org/x/apps/portal" = {
-        color-scheme = "prefer-dark";
+        color-scheme = "prefer-${config.global.theme.variant}";
       };
       "org/x/editor/preferences/editor" = {
         bracket-matching = true;
@@ -171,6 +147,49 @@ in {
       };
       "net/launchpad/diodon/plugins" = {
         active-plugins = [];
+      };
+    };
+
+    programs.gnome-terminal = let
+      colors = config.global.theme.colorPalette;
+    in {
+      enable = true;
+      themeVariant = colors.variant;
+      showMenubar = false;
+      profile = {
+        "273f07db-8f33-49f7-8909-da4b9946a21f" = {
+          default = true;
+          visibleName = config.global.theme.prettyName;
+          cursorShape = "block";
+          transparencyPercent = 30;
+          font = "${config.global.fonts.monospace} 10";
+          colors = {
+            backgroundColor = colors.background;
+            foregroundColor = colors.foreground;
+            cursor = {
+              foreground = colors.background;
+              background = colors.foreground;
+            };
+            palette = [
+              colors.color00
+              colors.color01
+              colors.color02
+              colors.color03
+              colors.color04
+              colors.color05
+              colors.color06
+              colors.color07
+              colors.color08
+              colors.color09
+              colors.color10
+              colors.color11
+              colors.color12
+              colors.color13
+              colors.color14
+              colors.color15
+            ];
+          };
+        };
       };
     };
   };

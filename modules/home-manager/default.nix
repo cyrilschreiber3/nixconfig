@@ -1,16 +1,19 @@
 {...}: {
   imports = [
     ./games
+    ./hyprland
     ./btop.nix
     ./cinnamon.nix
     ./firefox.nix
+    ./fonts.nix
     ./git.nix
     ./gnome.nix
-    ./hyprland.nix
     ./mimeApps.nix
+    ./plasma.nix
     ./remmina.nix
     ./spotify.nix
     ./vscode.nix
     ./zsh.nix
+    ./../themes/themes.nix
   ];
 }

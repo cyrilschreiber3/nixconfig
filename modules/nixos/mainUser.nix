@@ -39,5 +39,7 @@ in {
       shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = lib.mkIf cfg.importSshKeysFromGithub [inputs.ssh-keys.outPath];
     };
+
+    nix.settings.trusted-users = [cfg.userName];
   };
 }

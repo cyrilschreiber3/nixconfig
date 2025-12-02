@@ -5,6 +5,14 @@
   ...
 }: let
   cfg = config.gitConfig;
+
+  # Home Manager 24.05+ uses 'settings', older versions use 'extraConfig'
+  useNewGitConfig = lib.versionAtLeast config.home.version.release "25.11";
+
+  gitConfigAttr =
+    if useNewGitConfig
+    then "settings"
+    else "extraConfig";
 in {
   options.gitConfig = {
     enable = lib.mkEnableOption "Enable git module";
@@ -20,7 +28,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      settings = {
+      ${gitConfigAttr} = {
         init = {
           defaultBranch = "master";
         };

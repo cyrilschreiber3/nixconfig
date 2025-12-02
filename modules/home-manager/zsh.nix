@@ -8,7 +8,6 @@
 in {
   options.zshConfig = {
     enable = lib.mkEnableOption "Enable Zsh module";
-    enableCinnamonDE = lib.mkEnableOption "Enable Cinnamon DE tweaks";
     useLegacyP10k = lib.mkEnableOption "Use Zsh p10k module instead of oh-my-posh";
   };
 
@@ -18,7 +17,6 @@ in {
       lsd
       oh-my-zsh
       oh-my-posh
-      nerd-fonts.meslo-lg
       nerd-fonts.jetbrains-mono
       chroma # required by the colorize plugin for omz
       zsh-powerlevel10k
@@ -90,24 +88,28 @@ in {
 
         oh-my-zsh = {
           enable = !cfg.useLegacyP10k;
-          plugins = [
-            "ansible"
-            "colored-man-pages"
-            "colorize"
-            "command-not-found"
-            "cp"
-            "dotenv"
-            "encode64"
-            "extract"
-            "fzf"
-            "git"
-            "rsync"
-            "screen"
-            "ssh"
-            "systemadmin"
-            "vscode"
-            # "zsh-interactive-cd"
-          ];
+          plugins =
+            [
+              "ansible"
+              "colored-man-pages"
+              "colorize"
+              "command-not-found"
+              "cp"
+              "dotenv"
+              "encode64"
+              "extract"
+              "fzf"
+              "git"
+              "rsync"
+              "screen"
+              "ssh"
+              "systemadmin"
+              # "zsh-interactive-cd"
+            ]
+            ++ lib.optionals config.vscodeConfig.enable [
+              "vscode"
+            ];
+
           extraConfig = ''
             # Display red dots whilst waiting for completion.
             COMPLETION_WAITING_DOTS="true"
@@ -115,8 +117,14 @@ in {
             # Chroma plugin config
             ZSH_COLORIZE_TOOL=chroma
             ZSH_COLORIZE_STYLE="tokyonight-night"
-            # VSCode plugin
-            VSCODE="code"
+            ${
+              if config.vscodeConfig.enable
+              then ''
+                # VSCode plugin
+                VSCODE="code"
+              ''
+              else ""
+            }
             # fzf plugin
             DISABLE_FZF_AUTO_COMPLETION="true"
             FZF_BASE=${pkgs.fzf}/bin
@@ -172,47 +180,6 @@ in {
         settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json"));
       };
 
-      gnome-terminal = {
-        enable = cfg.enableCinnamonDE;
-        themeVariant = "dark";
-        showMenubar = false;
-        profile = {
-          "273f07db-8f33-49f7-8909-da4b9946a21f" = {
-            default = true;
-            visibleName = "Tokyo Night";
-            cursorShape = "block";
-            transparencyPercent = 30;
-            font = "MesloLGS Nerd Font 10";
-            colors = {
-              backgroundColor = "#1A1B26";
-              foregroundColor = "#C0CAF5";
-              cursor = {
-                foreground = "#C0CAF5";
-                background = "#C0CAF5";
-              };
-              palette = [
-                "#414868"
-                "#F7768E"
-                "#9ECE6A"
-                "#E0AF68"
-                "#7AA2F7"
-                "#BB9AF7"
-                "#7DCFFF"
-                "#A9B1D6"
-                "#414868"
-                "#F7768E"
-                "#9ECE6A"
-                "#E0AF68"
-                "#7AA2F7"
-                "#BB9AF7"
-                "#7DCFFF"
-                "#C0CAF5"
-              ];
-            };
-          };
-        };
-      };
-
       vim = {
         enable = true;
         extraConfig = ''
@@ -232,13 +199,6 @@ in {
       nix-index = {
         enable = true;
         enableZshIntegration = true;
-      };
-    };
-
-    dconf.settings = lib.mkIf cfg.enableCinnamonDE {
-      "org/gnome/terminal/legacy/profiles:/:273f07db-8f33-49f7-8909-da4b9946a21f" = {
-        default-size-columns = lib.hm.gvariant.mkInt32 125;
-        default-size-rows = lib.hm.gvariant.mkInt32 32;
       };
     };
   };

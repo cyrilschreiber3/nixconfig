@@ -158,6 +158,11 @@
     "autostart/OneDriveGUI.desktop".source = "${pkgs.onedrivegui}/share/applications/OneDriveGUI.desktop";
   };
 
+  themes = {
+    enable = true;
+    theme = "tokyonight";
+  };
+
   # ------------------------ #
   # --- Programs configs --- #
   # ------------------------ #
@@ -195,7 +200,6 @@
 
   zshConfig = {
     enable = true;
-    enableCinnamonDE = true;
     useLegacyP10k = false;
   };
 
@@ -246,11 +250,7 @@
     # EDITOR = "emacs";
   };
 
-  programs.zsh.initContent = ''
-    # test comment
-  '';
-
-  fonts.fontconfig.enable = true;
+  fontsConfig.enable = true;
 
   # DO NOT CHANGE
   programs.home-manager.enable = true;
