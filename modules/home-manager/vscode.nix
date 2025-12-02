@@ -23,6 +23,11 @@ in {
     home.packages = with pkgs; [
       # Needed for foxundermoon.shell-format
       shfmt
+
+      # Needed for jnoortheen.nix-ide and kamadorueda.alejandra
+      nixd
+      alejandra
+      nixpkgs-fmt
     ];
 
     programs.vscode = {
@@ -68,6 +73,10 @@ in {
                 # theme
                 enkia.tokyo-night
                 vscode-icons-team.vscode-icons
+
+                # Nix
+                jnoortheen.nix-ide
+                kamadorueda.alejandra
 
                 # Copilot
                 github.copilot
