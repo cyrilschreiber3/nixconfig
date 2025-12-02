@@ -17,7 +17,7 @@ in {
     };
   };
 
-  imports = [
+  imports = lib.optional cfg.enable [
     inputs.plasma-manager.homeModules.plasma-manager
   ];
 

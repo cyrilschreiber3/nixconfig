@@ -8,7 +8,7 @@
 }: let
   cfg = config.vGPUVMConfig;
 in {
-  imports = [
+  imports = lib.optionals cfg.enable [
     inputs.vgpu4nixos.nixosModules.host
     inputs.fastapi-dls-nixos.nixosModules.default
   ];
