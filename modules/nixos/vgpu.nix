@@ -1,16 +1,17 @@
 # most of this is copied from https://github.com/Yeshey/nixOS-Config/blob/36b521712fb45c7b65f6c8f409af127acc8a35f5/nixos/hyrulecastle/vgpu.nix
 {
   config,
-  inputs,
   lib,
   pkgs,
+  vgpu4nixos,
+  fastapi-dls-nixos,
   ...
 }: let
   cfg = config.vGPUVMConfig;
 in {
-  imports = lib.optionals cfg.enable [
-    inputs.vgpu4nixos.nixosModules.host
-    inputs.fastapi-dls-nixos.nixosModules.default
+  imports = [
+    vgpu4nixos.nixosModules.host
+    fastapi-dls-nixos.nixosModules.default
   ];
 
   options = {
