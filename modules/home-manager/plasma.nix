@@ -32,7 +32,7 @@ in {
         colorScheme = config.global.theme.plasma.colorScheme;
         cursor = {
           theme = config.global.theme.cursorTheme.name;
-          cursorFeedback = "Static"; # Might want to switch to "None"
+          cursorFeedback = "None";
         };
         iconTheme = config.global.theme.iconTheme.name;
         soundTheme = "ocean";

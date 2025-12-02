@@ -4,8 +4,6 @@
   lib,
   inputs,
   pkgs,
-  vgpu4nixos,
-  fastapi-dls-nixos,
   ...
 }: let
   cfg = config.vGPUVMConfig;
