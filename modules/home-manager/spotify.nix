@@ -12,7 +12,7 @@ in {
     enableSpicetify = lib.mkEnableOption "Enable Spicetify tweaks";
   };
 
-  imports = lib.optional cfg.enable [inputs.spicetify-nix.homeManagerModules.default];
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
 
   config = lib.mkIf cfg.enable {
     home.packages = lib.mkIf (!cfg.enableSpicetify) (with pkgs; [

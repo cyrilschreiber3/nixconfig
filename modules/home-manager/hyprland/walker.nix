@@ -6,7 +6,7 @@
 }: let
   cfg = config.walkerConfig;
 in {
-  imports = lib.optional cfg.enable [inputs.walker.homeManagerModules.default];
+  imports = [inputs.walker.homeManagerModules.default];
 
   options.walkerConfig = {
     enable = lib.mkEnableOption "Enable Walker module";
