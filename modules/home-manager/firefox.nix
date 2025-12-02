@@ -67,15 +67,6 @@ in {
             };
           };
         };
-        app = {
-          id = 1;
-          name = "Firefox App Profile";
-          isDefault = false;
-          bookmarks = {
-            force = true;
-            settings = lib.mkDefault [];
-          };
-        };
       };
 
       policies = {
