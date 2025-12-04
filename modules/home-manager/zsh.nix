@@ -143,6 +143,20 @@ in {
               local pkg=$1
               realpath $(which $pkg)
             }
+
+            explorer() {
+              ${
+              if config.plasmaConfig.enable
+              then ''
+                dolphin --new-window "$@" >/dev/null 2>&1 & disown
+              ''
+              else if config.cinnamonConfig.enable
+              then ''
+                nemo "$@" >/dev/null 2>&1 & disown
+              ''
+              else "echo 'no supported file manager enabled'"
+            }
+            }
           '';
         };
 
