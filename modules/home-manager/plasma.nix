@@ -15,6 +15,11 @@ in {
       default = true;
       description = "Enable battery widget in the system tray";
     };
+    disableSleep = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Disable the sleep function";
+    };
   };
 
   imports = [
@@ -181,6 +186,11 @@ in {
           ];
         }
       ];
+
+      powerdevil.AC = lib.mkIf cfg.disableSleep {
+        autoSuspend.action = "nothing";
+        autoSuspend.idleTimeout = "never";
+      };
 
       kscreenlocker = {
         appearance = {
