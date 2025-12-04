@@ -189,7 +189,7 @@ in {
 
       powerdevil.AC = lib.mkIf cfg.disableSleep {
         autoSuspend.action = "nothing";
-        autoSuspend.idleTimeout = "never";
+        autoSuspend.idleTimeout = null;
       };
 
       kscreenlocker = {
