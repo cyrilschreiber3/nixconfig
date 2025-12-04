@@ -138,6 +138,11 @@ in {
                 shift
                 nix run "nixpkgs#$pkg" -- "$@"
             }
+
+            realrealpath() {
+              local pkg=$1
+              realpath $(which $pkg)
+            }
           '';
         };
 
