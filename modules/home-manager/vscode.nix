@@ -306,7 +306,7 @@ in {
           "formattingToggle.affects" = ["editor.formatOnSave" "editor.formatOnType"];
           "git.autofetch" = true;
           "git.confirmSync" = false;
-          "git.enableCommitSigning" = true;
+          "git.enableCommitSigning" = lib.mkIf config.gitConfig.enableGPG true;
           "git.enableSmartCommit" = true;
           "git.replaceTagsWhenPull" = true;
           "github.copilot.editor.enableAutoCompletions" = true;
