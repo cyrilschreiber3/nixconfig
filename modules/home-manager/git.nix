@@ -10,7 +10,7 @@
   useNewGitConfig = lib.versionAtLeast config.home.version.release "25.11";
 
   defaultPinentry =
-    if config.plasma.enable
+    if config.plasmaConfig.enable
     then pkgs.pinentry-qt
     else pkgs.pinentry-gnome3;
 
