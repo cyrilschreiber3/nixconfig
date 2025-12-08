@@ -9,6 +9,11 @@
   # Home Manager 24.05+ uses 'settings', older versions use 'extraConfig'
   useNewGitConfig = lib.versionAtLeast config.home.version.release "25.11";
 
+  defaultPinentry =
+    if config.plasma.enable
+    then pkgs.pinentry-qt
+    else pkgs.pinentry-gnome3;
+
   gitConfigAttr =
     if useNewGitConfig
     then "settings"
@@ -64,7 +69,7 @@ in {
       enableZshIntegration = true;
       defaultCacheTtl = 28800;
       maxCacheTtl = 86400;
-      pinentry.package = lib.mkIf (!cfg.useWindowsPinentry) pkgs.pinentry-gnome3;
+      pinentry.package = lib.mkIf (!cfg.useWindowsPinentry) defaultPinentry;
       extraConfig = lib.mkIf cfg.useWindowsPinentry ''
         pinentry-program "/mnt/c/Program Files (x86)/GnuPG/bin/pinentry-basic.exe"
       '';
