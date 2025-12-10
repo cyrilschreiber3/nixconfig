@@ -99,7 +99,6 @@ in {
                 };
               };
             }
-            "org.kde.plasma.pager"
             {
               iconTasks = {
                 launchers = [
@@ -210,6 +209,14 @@ in {
           left = lib.mkDefault [];
           right = lib.mkDefault ["minimize" "maximize" "close"];
         };
+
+        virtualDesktops = {
+          names = [
+            "Main"
+            "Communication"
+            "Nixconfig"
+          ];
+        };
       };
 
       session = {
@@ -221,6 +228,23 @@ in {
           captureRectangularRegion = "Print";
           # TODO: add more shortcuts here
         };
+      };
+
+      # https://github.com/Eryoneta/nixos-config/blob/cb4ab5e3f8a7408d54fa0e892793aeb92a0c4130/public-config/programs/desktop-environments/plasma%2Bshortcuts.nix#L10
+      shortcuts = {
+        # Virtual desktop actions
+        "kwin"."Switch One Desktop to the Left" = "Meta+Ctrl+Left"; # Switch to virtual desktop at left
+        "kwin"."Switch One Desktop to the Right" = "Meta+Ctrl+Right"; # Switch to virtual desktop at righ
+        # Window actions (Move)
+        "kwin"."Window One Desktop to the Left" = "Meta+Ctrl+Shift+Left"; # Move window to the virtual desktop at left
+        "kwin"."Window One Desktop to the Right" = "Meta+Ctrl+Shift+Right"; # Move window to the virtual desktop at right
+        # Window actions (Switch)
+        "kwin"."Switch Window Up" = "Meta+Alt+Up"; # Switch to the window above
+        "kwin"."Switch Window Down" = "Meta+Alt+Down"; # Switch to the window below
+        "kwin"."Switch Window Left" = "Meta+Alt+Left"; # Switch to the window at left
+        "kwin"."Switch Window Right" = "Meta+Alt+Right"; # Switch to the window at right
+        "kwin"."Walk Through Windows" = "Alt+Tab"; # Switch through a list of windows
+        "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
       };
 
       windows.allowWindowsToRememberPositions = true;
