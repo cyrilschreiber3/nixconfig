@@ -71,10 +71,10 @@
   systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce []; # Disable wait-online for faster boot
   networking.networkmanager.dns = "systemd-resolved";
   networking.networkmanager.insertNameservers = [
+    "1.1.1.1"
     "192.168.1.13"
     "10.1.1.51"
     "10.1.1.52"
-    "1.1.1.1"
     "192.168.1.1"
   ];
   networking.resolvconf.extraOptions = [
