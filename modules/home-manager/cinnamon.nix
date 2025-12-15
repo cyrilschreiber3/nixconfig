@@ -95,7 +95,7 @@ in {
       "org/cinnamon/theme" = {
         name = config.gtk.theme.name;
       };
-      "/org/gnome/desktop/interface" = {
+      "org/gnome/desktop/interface" = {
         gtk-theme = config.gtk.theme.name;
         icon-theme = config.gtk.iconTheme.name;
         cursor-theme = config.gtk.cursorTheme.name;

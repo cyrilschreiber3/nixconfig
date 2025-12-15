@@ -72,15 +72,15 @@
   networking.networkmanager.dns = "systemd-resolved";
   networking.networkmanager.insertNameservers = [
     "1.1.1.1"
-    # "192.168.1.13"
-    # "10.1.1.51"
-    # "10.1.1.52"
-    # "192.168.1.1"
+    "192.168.1.13"
+    "10.1.1.51"
+    "10.1.1.52"
+    "192.168.1.1"
   ];
   networking.resolvconf.extraOptions = [
     "timeout:2"
     "attempts:1"
-    "rotate"
+    # "rotate"
   ];
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
