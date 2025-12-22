@@ -169,7 +169,7 @@ in {
             --info=inline-right \
             --ansi \
             --layout=reverse \
-            --border=none \
+            --border=none" \
             fzf'';
           ns = "nix-shell --run zsh -p";
           dev = "${pkgs.nix-output-monitor}/bin/nom develop --command zsh";
