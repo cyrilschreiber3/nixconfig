@@ -170,22 +170,6 @@ in {
             --ansi \
             --layout=reverse \
             --border=none \
-            --color=bg+:#283457 \
-            --color=bg:#16161e \
-            --color=border:#27a1b9 \
-            --color=fg:#c0caf5 \
-            --color=gutter:#16161e \
-            --color=header:#ff9e64 \
-            --color=hl+:#2ac3de \
-            --color=hl:#2ac3de \
-            --color=info:#545c7e \
-            --color=marker:#ff007c \
-            --color=pointer:#ff007c \
-            --color=prompt:#2ac3de \
-            --color=query:#c0caf5:regular \
-            --color=scrollbar:#27a1b9 \
-            --color=separator:#ff9e64 \
-            --color=spinner:#ff007c" \
             fzf'';
           ns = "nix-shell --run zsh -p";
           dev = "${pkgs.nix-output-monitor}/bin/nom develop --command zsh";
@@ -211,6 +195,41 @@ in {
         enableZshIntegration = true;
         changeDirWidgetOptions = ["--height 7"];
         defaultOptions = [""];
+        colors = {
+          #   --color=bg+:#283457 \
+          #   --color=bg:#16161e \
+          #   --color=border:#27a1b9 \
+          #   --color=fg:#c0caf5 \
+          #   --color=gutter:#16161e \
+          #   --color=header:#ff9e64 \
+          #   --color=hl+:#2ac3de \
+          #   --color=hl:#2ac3de \
+          #   --color=info:#545c7e \
+          #   --color=marker:#ff007c \
+          #   --color=pointer:#ff007c \
+          #   --color=prompt:#2ac3de \
+          #   --color=query:#c0caf5:regular \
+          #   --color=scrollbar:#27a1b9 \
+          #   --color=separator:#ff9e64 \
+          #   --color=spinner:#ff007c" \
+
+          bg = "#16161e";
+          "bg+" = "#283457";
+          border = "#27a1b9";
+          fg = "#c0caf5";
+          gutter = "#16161e";
+          header = "#ff9e64";
+          "hl+" = "#2ac3de";
+          hl = "#2ac3de";
+          info = "#545c7e";
+          marker = "#ff007c";
+          pointer = "#ff007c";
+          prompt = "#2ac3de";
+          "query:regular" = "#c0caf5";
+          scrollbar = "#27a1b9";
+          separator = "#ff9e64";
+          spinner = "#ff007c";
+        };
       };
 
       # For command-not-found module
