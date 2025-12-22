@@ -12,6 +12,8 @@
   defaultPinentry =
     if config.plasmaConfig.enable
     then pkgs.pinentry-qt
+    else if pkgs.stdenv.isDarwin
+    then pkgs.pinentry-mac
     else pkgs.pinentry-gnome3;
 
   gitConfigAttr =
