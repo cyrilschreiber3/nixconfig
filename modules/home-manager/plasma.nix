@@ -67,6 +67,13 @@ in {
         ];
       };
 
+      hotkeys.commands = {
+        terminal = {
+          command = "foot";
+          key = "Meta+Enter";
+        };
+      };
+
       panels = [
         {
           location = "bottom";
@@ -104,7 +111,7 @@ in {
                 launchers = [
                   "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
-                  "applications:org.kde.konsole.desktop"
+                  "applications:foot.desktop"
                 ];
                 appearance = {
                   highlightWindows = true;
