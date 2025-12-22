@@ -6,6 +6,9 @@
 }: let
   cfg = config.themes;
 
+  # isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+
   colorHelpers = rec {
     # Internal helper: Convert 2-char hex string (e.g., "FF") to int (255)
     hexToDec = hexString: let
@@ -130,7 +133,7 @@
         variant = "dark";
       };
     };
-    iconThemes = {
+    iconThemes = lib.optionalAttrs isLinux {
       whitesur = {
         name = "WhiteSur-dark";
         package = pkgs.whitesur-icon-theme.override {
@@ -138,7 +141,7 @@
         };
       };
     };
-    cursorThemes = {
+    cursorThemes = lib.optionalAttrs isLinux {
       whitesur = {
         name = "WhiteSur-cursors";
         package = pkgs.whitesur-cursors;
@@ -152,11 +155,11 @@
       iconTheme =
         if cfg.iconThemeOverride != null
         then availableThemes.iconThemes.${cfg.iconThemeOverride}
-        else availableThemes.iconThemes.${availableThemes.themes.${cfg.theme}.defaultIconTheme};
+        else availableThemes.iconThemes.${availableThemes.themes.${cfg.theme}.defaultIconTheme} or null;
       cursorTheme =
         if cfg.cursorThemeOverride != null
         then availableThemes.cursorThemes.${cfg.cursorThemeOverride}
-        else availableThemes.cursorThemes.${availableThemes.themes.${cfg.theme}.defaultCursorTheme};
+        else availableThemes.cursorThemes.${availableThemes.themes.${cfg.theme}.defaultCursorTheme} or null;
       wallpaper =
         if cfg.wallpaperOverride != null
         then pkgs.copyPathToStore cfg.wallpaperOverride
@@ -195,8 +198,13 @@ in {
       };
       themeGTK = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = isLinux;
         description = "Enable GTK theme configuration";
+      };
+      themeQt = lib.mkOption {
+        type = lib.types.bool;
+        default = isLinux;
+        description = "Enable Qt theme configuration";
       };
     };
   };
@@ -215,7 +223,7 @@ in {
           dconf-editor
         ])
         (
-          lib.mkIf (selectedTheme.plasma.package != null)
+          lib.mkIf (cfg.themeQt && selectedTheme.plasma.package != null)
           [selectedTheme.plasma.package]
         )
       ];
