@@ -67,10 +67,9 @@ in {
         ];
       };
 
-      hotkeys.commands = {
-        terminal = {
-          command = "foot";
-          key = "Meta+Enter";
+      shortcuts = {
+        "services/foot.desktop" = {
+          _launch = "Meta+Shift+Return";
         };
       };
 
