@@ -33,6 +33,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [
+      defaultPinentry
+    ];
+
     programs.git = {
       enable = true;
       ${gitConfigAttr} = {
