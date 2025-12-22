@@ -244,8 +244,8 @@ in {
       };
     };
 
-    home.sessionVariables = {
-      GTK_THEME = lib.mkIf cfg.themeGTK selectedTheme.gtk.name;
+    home.sessionVariables = lib.mkIf cfg.themeGTK {
+      GTK_THEME = selectedTheme.gtk.name;
     };
 
     xdg.configFile = lib.mkMerge [
