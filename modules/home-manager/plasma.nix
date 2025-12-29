@@ -223,10 +223,12 @@ in {
             "Nixconfig"
           ];
         };
+
+        edgeBarrier = 0;
       };
 
       session = {
-        sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+        sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
       };
 
       spectacle = {
