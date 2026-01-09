@@ -255,6 +255,8 @@
   # Enable udisks2 to mount USB drives
   services.udisks2.enable = true;
 
+  services.pcscd.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
