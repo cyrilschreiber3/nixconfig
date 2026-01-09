@@ -3,6 +3,7 @@ keys:
       - &scorpius_cl_01 age18jjzz654zck4yuna87w895tzyn803junh5aup9u7ppkjf5zppqgqefp57t
     users:
       - &cyril_at_scorpius age148jrkzdhyv0eq985fg6gyexsgnv3ud4z3s453nkdat9hl2879cuqrt6pmn
+      - &yubikey_personal 2C07F2ED2147C8125DB109071A9379E10C62C984
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     mac_only_encrypted: true
@@ -10,3 +11,5 @@ creation_rules:
       - age:
           - *scorpius_cl_01
           - *cyril_at_scorpius
+        pgp:
+          - *yubikey_personal

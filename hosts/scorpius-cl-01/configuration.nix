@@ -307,6 +307,10 @@
     enable = true;
   };
 
+  sopsConfig = {
+    enable = true;
+  };
+
   vGPUVMConfig = {
     enable = true;
     cpuType = "intel";

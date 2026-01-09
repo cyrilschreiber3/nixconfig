@@ -4,6 +4,7 @@
     ./games.nix
     ./mainUser.nix
     ./printers.nix
+    ./sops.nix
     ./vgpu.nix
     ./wayland.nix
     ./wireguard-client.nix

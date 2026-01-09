@@ -11,6 +11,7 @@
     ./mimeApps.nix
     ./plasma.nix
     ./remmina.nix
+    ./sops.nix
     ./spotify.nix
     ./vscode.nix
     ./zsh.nix

@@ -187,6 +187,10 @@
 
   remminaConfig.enable = true;
 
+  sopsConfig = {
+    enable = true;
+  };
+
   spotifyConfig = {
     enable = true;
     enableSpicetify = true;
