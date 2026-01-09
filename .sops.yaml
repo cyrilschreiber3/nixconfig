@@ -1,0 +1,11 @@
+keys:
+  - &raspi_sika age1sky759zw2hxgwusf3jdfx3xqmq59477a4hr2vcu0jfpkydjhqq6q467a6e
+  - &cyril_at_scorpius age148jrkzdhyv0eq985fg6gyexsgnv3ud4z3s453nkdat9hl2879cuqrt6pmn
+creation_rules:
+  - path_regex: dotfiles/wifi-networks\.yaml$
+    mac_only_encrypted: true
+    encrypted_regex: ^(passwords)$
+    key_groups:
+      - age:
+          - *raspi_sika
+          - *cyril_at_scorpius

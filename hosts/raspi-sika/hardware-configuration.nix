@@ -10,10 +10,16 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [];
+  boot.initrd.availableKernelModules = [
+    "vc4"
+    "bcm2835_dma"
+    "i2c_bcm2835"
+  ];
   boot.initrd.kernelModules = [];
   boot.kernelModules = [];
   boot.extraModulePackages = [];
+
+  hardware.raspberry-pi."4".gpio.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";

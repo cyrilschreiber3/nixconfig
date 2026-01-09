@@ -1,0 +1,30 @@
+wifi_networks:
+    schreibernet: null
+    SDISvolontaire: null
+    Cyril’s Phone: null
+passwords: ENC[AES256_GCM,data:63n64IJCnZS/c4GKLBIaXftt2S2cDZCRLBxDNUoReLpc5wYXrGcA/4hRGiuMRaF4qWH6rtoXvUeeL1jaHzMuIYW33VF2uy0VpZ5SLyvytPls4UvFEU41NpGXqhxsdzD+tCP9e/Wj86U9+5Tz2IX04taujviYoyMJ78khdF5L2ToMyESI/RX3rLuK/wLBVjjp,iv:oyfZF+6TPK9pq1mnocOiP4zk+bHY4v7PhYwnIQfKtxs=,tag:tC3FR3iIjjL3SuBV1GDjTw==,type:str]
+sops:
+    age:
+        - recipient: age1sky759zw2hxgwusf3jdfx3xqmq59477a4hr2vcu0jfpkydjhqq6q467a6e
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2N3pDenRJQmFSZm5HeDJp
+            dkFWTlVTdmlmWEFIRDVtWHdVTm1Edlltb0dBCjRhd2ZLR21DL3FncS90QjBjTStk
+            UGRZMFNDMStCNi9NZXpnS3Bsb2J3Y0UKLS0tIElxK25MWkNDVVVWWWFCaGRHOVh5
+            WXRKRy90eENpMktnS00zS256dWVpM3MKs1rbMvXD8UDVOLyNOme1Nk42N3XjM7ff
+            4LXg0TmEkJ37BcBRy1u8yb56yJ6vCoh1ug2f6vpeBWjcpMkxc8ssww==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age148jrkzdhyv0eq985fg6gyexsgnv3ud4z3s453nkdat9hl2879cuqrt6pmn
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVeXhWNG82b1NSeUVKT2Jj
+            OUFDdHlTdVNmcStBd2sxakIvMXMxY2pxK2t3CnN6NW80R0VFL1hOb2NGRVhsVkFm
+            UkRVbXJWYUhaYUpDcVFTM3NvYSthYm8KLS0tIDZuQVhMVk9ENFF0bWdJWXdaQTV2
+            Q1pQYnUyMHFjaExJM0NMR1FCTFMvcncKxpWGObtehuHnxkHAaC8K1eqi8Xpjdnyp
+            INW/i3vOtWxan1rVE2NzEdazcDNBkrK93Up/TzoGAY8XzH9juR4/Hw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-01-09T20:46:20Z"
+    mac: ENC[AES256_GCM,data:PXMF7BqwLNQ/ecBmSL7WX6l4e+VcwuiAUzUDzG2e15ScELh1qrQIV+YSxBdYaPX16nnL88kyiunJt/Vp9T1RvsGSqaiimqIodYDwfL6BNDi3CuinHYr8o89wxJrEYDJa+8badzUYrOnJUvKsVWX74a4zNfM1sNBVM1T+EodfWus=,iv:YDZ0OghD141eGJSfWIhMWcwAouchbDa6kGe2wruXYr4=,tag:aKMvbWV0Kyb8hcSvVMWVaQ==,type:str]
+    encrypted_regex: ^(passwords)$
+    mac_only_encrypted: true
+    version: 3.11.0
