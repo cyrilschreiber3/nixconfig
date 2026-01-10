@@ -23,8 +23,14 @@ in {
 
     sops = {
       defaultSopsFile = "${inputs.self.outPath}/secrets/secrets.yaml";
+      defaultSopsFormat = "yaml";
+      defaultSymlinkPath = "/run/user/1000/secrets";
+      defaultSecretsMountPoint = "/run/user/1000/secrets.d";
+
       age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
       age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+
+      secrets = {};
     };
   };
 }

@@ -112,6 +112,7 @@
     onedrivegui
     onedriver
     flameshot
+    qelectrotech
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
     # ]
