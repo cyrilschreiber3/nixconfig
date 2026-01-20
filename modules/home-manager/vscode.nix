@@ -51,7 +51,7 @@ in {
                 chunsen.bracket-select
                 esbenp.prettier-vscode
                 ritwickdey.liveserver
-                rangav.vscode-thunder-client
+                bruno-api-client.bruno
                 shardulm94.trailing-spaces
                 usernamehw.errorlens
                 gruntfuggly.todo-tree
