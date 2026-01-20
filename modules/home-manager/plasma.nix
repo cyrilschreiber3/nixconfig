@@ -220,6 +220,7 @@ in {
           names = [
             "Main"
             "Communication"
+            "Dev"
             "Nixconfig"
           ];
         };
