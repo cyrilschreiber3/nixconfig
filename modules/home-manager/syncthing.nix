@@ -26,6 +26,7 @@ in {
       enable = true;
       passwordFile = config.sops.secrets.syncthingUIPasswd.path;
       settings = {
+        guiAddress = "127.0.0.1:8385";
         gui = {
           user = "cyril";
           address = "127.0.0.1:8385";
