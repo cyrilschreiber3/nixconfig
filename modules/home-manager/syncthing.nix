@@ -63,13 +63,13 @@ in {
             id = "admin";
             label = "admin";
             path = "~/Documents/admin";
-            devices = ["scorpius-cl-01" "mercury-fs-01"];
+            devices = ["scorpius-cl-01" "mercury-fs-01" "macbook"];
           };
           pompiers = {
             id = "pompiers";
             label = "pompiers";
             path = "~/Documents/pompiers";
-            devices = ["scorpius-cl-01" "mercury-fs-01"];
+            devices = ["scorpius-cl-01" "mercury-fs-01" "macbook"];
           };
         };
       };
