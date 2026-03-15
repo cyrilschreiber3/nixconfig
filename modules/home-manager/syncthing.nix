@@ -28,6 +28,7 @@ in {
       settings = {
         gui = {
           user = "cyril";
+          address = "127.0.0.1:8385";
           sendBasicAuthPrompt = true;
         };
         options = {
@@ -43,22 +44,22 @@ in {
           ];
         };
         devices = {
-          # desktop = {
-          #   id = "LFOIYQH-XC2G2JD-K43ZTWW-OBUGWUM-3NUZKOD-5M6NGWI-UKVBWM4-7WIXSAW";
-          #   addresses = ["dynamic"];
-          # };
-          # macbook = {
-          #   id = "ADWFG42-2KLFZIM-UATQGZX-AEZORQQ-MGUH4I7-INANQ6S-TG2ZUIM-WGIRUQX";
-          #   addresses = ["dynamic"];
-          # };
+          scorpius-cl-01 = {
+            id = "DXF3L4P-IHDSQ5S-DA6UEHM-EJUMFVT-M4AQBAO-AINMX3T-QCQ4EBL-AZWEKAU";
+            addresses = ["dynamic"];
+          };
+          macbook = {
+            id = "VNO7ST7-MH233QW-6YJ7YZN-JF5X6AL-CANMOEQ-A3WKC67-OSSXCYZ-NXGADQN";
+            addresses = ["dynamic"];
+          };
         };
         folders = {
-          # admin = {
-          #   id = "admin";
-          #   label = "admin";
-          #   path = "~/Documents/Admin";
-          #   devices = ["desktop" "macbook"];
-          # };
+          admin = {
+            id = "admin";
+            label = "admin";
+            path = "~/Documents/Admin";
+            devices = ["scorpius-cl-01" "macbook"];
+          };
           # obsidian = {
           #   id = "obsidian";
           #   label = "obsidian";
