@@ -53,20 +53,18 @@ in {
             id = "VNO7ST7-MH233QW-6YJ7YZN-JF5X6AL-CANMOEQ-A3WKC67-OSSXCYZ-NXGADQN";
             addresses = ["dynamic"];
           };
+          mercury-fs-01 = {
+            id = "FJ6CB6Q-6GVVWFE-IPDNXKI-4H7KFPI-ZPTJPSM-PIIGFOQ-QMDNEHA-2BD7KA2";
+            addresses = ["dynamic"];
+          };
         };
         folders = {
           admin = {
             id = "admin";
             label = "admin";
-            path = "~/Documents/Admin";
-            devices = ["scorpius-cl-01" "macbook"];
+            path = "~/Documents/admin";
+            devices = ["scorpius-cl-01" "macbook" "mercury-fs-01"];
           };
-          # obsidian = {
-          #   id = "obsidian";
-          #   label = "obsidian";
-          #   path = "~/Documents/Obsidian";
-          #   devices = ["desktop" "macbook"];
-          # };
         };
       };
     };
