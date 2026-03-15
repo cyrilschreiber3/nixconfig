@@ -197,6 +197,8 @@
     enableSpicetify = true;
   };
 
+  syncthingConfig.enable = true;
+
   vscodeConfig = {
     enable = true;
     enableBaseExtensions = true;

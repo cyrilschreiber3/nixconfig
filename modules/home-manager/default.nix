@@ -13,6 +13,7 @@
     ./remmina.nix
     ./sops.nix
     ./spotify.nix
+    ./syncthing.nix
     ./vscode.nix
     ./zsh.nix
     ./../themes/themes.nix
