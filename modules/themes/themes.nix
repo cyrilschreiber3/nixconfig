@@ -230,6 +230,7 @@ in {
 
     gtk = lib.mkIf cfg.themeGTK {
       enable = true;
+      gtk4.theme = config.gtk.theme; # As of 26.05, this default changed to null, so we need to set it explicitly
       theme = {
         name = selectedTheme.gtk.name;
         package = selectedTheme.gtk.package;

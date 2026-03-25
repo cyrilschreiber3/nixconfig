@@ -73,7 +73,7 @@
     nano
     rsync
     screen
-    neofetch
+    fastfetch
     powershell
     speedtest-cli
     dig
@@ -200,7 +200,7 @@
   syncthingConfig.enable = true;
 
   vscodeConfig = {
-    enable = true;
+    enable = false;
     enableBaseExtensions = true;
     enableLanguageExtensions = true;
   };
