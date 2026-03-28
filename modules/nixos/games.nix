@@ -17,7 +17,7 @@ in {
 
     programs.steam = {
       enable = true;
-      package = pkgs.stable.steam;
+      # package = pkgs.stable.steam;
       gamescopeSession.enable = true;
     };
 
