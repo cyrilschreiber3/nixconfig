@@ -14,6 +14,7 @@
     ./sops.nix
     ./spotify.nix
     ./syncthing.nix
+    ./tmux.nix
     ./vscode.nix
     ./zsh.nix
     ./../themes/themes.nix

@@ -199,6 +199,8 @@
 
   syncthingConfig.enable = true;
 
+  tmuxConfig.enable = true;
+
   vscodeConfig = {
     enable = true;
     enableBaseExtensions = true;
