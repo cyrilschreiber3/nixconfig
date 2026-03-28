@@ -200,7 +200,7 @@
   syncthingConfig.enable = true;
 
   vscodeConfig = {
-    enable = false;
+    enable = true;
     enableBaseExtensions = true;
     enableLanguageExtensions = true;
   };
