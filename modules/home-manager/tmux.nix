@@ -87,8 +87,8 @@ in {
         # Fix message text color
         set -g message-style 'bg=${config.global.theme.colorPalette.color04},fg=${config.global.theme.colorPalette.background}'
 
-        bind f run-shell "tmux neww ${python}/bin/python ${pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_sessionizer.py}"
-        bind g run-shell "tmux neww ${python}/bin/python ${pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_select_session.py}"
+        bind f run-shell "tmux neww ${python}/bin/python ${pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_select_session.py}"
+        bind g run-shell "tmux neww ${python}/bin/python ${pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_sessionizer.py}"
         bind h run-shell "tmux neww ${python}/bin/python ${pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_select_pane.py}"
         #bind m run-shell "tmux neww ${python}/bin/python {pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_ssh_group.py}"
         #bind j run-shell "tmux neww ${python}/bin/python {pkgs.copyPathToStore ./../bin/tmuxScripts/tmux_multi_ssh.py}"

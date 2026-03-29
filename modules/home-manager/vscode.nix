@@ -116,6 +116,9 @@ in {
               ecmel.vscode-html-css
               zignd.html-css-class-completion
 
+              # Javascript
+              adrianwilczynski.alpine-js-intellisense
+
               # Json
               zainchen.json
 
