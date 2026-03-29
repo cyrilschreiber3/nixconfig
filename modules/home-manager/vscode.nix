@@ -117,7 +117,7 @@ in {
               zignd.html-css-class-completion
 
               # Javascript
-              adrianwilczynski.alpine-js-intellisense
+              pcbowers.alpine-intellisense
 
               # Json
               zainchen.json
