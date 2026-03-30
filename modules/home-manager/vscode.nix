@@ -43,44 +43,52 @@ in {
         extensions = with pkgs.vscode-marketplace;
           lib.flatten [
             (lib.optional cfg.enableBaseExtensions [
-              # utilities
-              formulahendry.auto-close-tag
-              formulahendry.auto-rename-tag
-              aaron-bond.better-comments
-              ryuta46.multi-command
-              chunsen.bracket-select
-              esbenp.prettier-vscode
-              ritwickdey.liveserver
-              bruno-api-client.bruno
-              shardulm94.trailing-spaces
-              usernamehw.errorlens
-              gruntfuggly.todo-tree
-              selfrefactor.order-props
-              jkillian.custom-local-formatters
-              arrterian.nix-env-selector
-              signageos.signageos-vscode-sops
-              signageos.signageos-vscode-sops-beta
-              edwinkofler.vscode-assorted-languages
-              jota0222.multi-formatter
+                # utilities
+                formulahendry.auto-close-tag
+                formulahendry.auto-rename-tag
+                aaron-bond.better-comments
+                ryuta46.multi-command
+                chunsen.bracket-select
+                esbenp.prettier-vscode
+                ritwickdey.liveserver
+                bruno-api-client.bruno
+                shardulm94.trailing-spaces
+                usernamehw.errorlens
+                gruntfuggly.todo-tree
+                selfrefactor.order-props
+                jkillian.custom-local-formatters
+                arrterian.nix-env-selector
+                signageos.signageos-vscode-sops
+                signageos.signageos-vscode-sops-beta
+                edwinkofler.vscode-assorted-languages
+                jota0222.multi-formatter
 
-              # remote development
-              ms-vscode.remote-server
-              ms-vscode.remote-explorer
-              ms-vscode-remote.remote-ssh
-              ms-vscode.remote-repositories
-              ms-vscode-remote.remote-containers
+                # remote development
+                ms-vscode.remote-server
+                ms-vscode.remote-explorer
+                ms-vscode-remote.remote-ssh
+                ms-vscode.remote-repositories
+                ms-vscode-remote.remote-containers
 
-              # theme
-              enkia.tokyo-night
-              vscode-icons-team.vscode-icons
+                # theme
+                enkia.tokyo-night
+                vscode-icons-team.vscode-icons
 
-              # Nix
-              jnoortheen.nix-ide
-              kamadorueda.alejandra
-              # ]
-              # ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
-              #   "github.copilot-chat"
-            ])
+                # Nix
+                jnoortheen.nix-ide
+                kamadorueda.alejandra
+                # ]
+                # ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
+                #   "github.copilot-chat"
+              ]
+              ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+                {
+                  name = "copilot-chat";
+                  publisher = "github";
+                  version = "0.39.2";
+                  sha256 = "sha256-bgxVdj1t6Z6P2d63o/I8gaSo751a/J4Xoa2WCVB1tc0=";
+                }
+              ])
 
             (lib.optional cfg.enableLanguageExtensions [
               # Actions
