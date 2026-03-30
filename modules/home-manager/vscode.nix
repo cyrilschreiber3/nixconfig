@@ -77,9 +77,6 @@ in {
                 # Nix
                 jnoortheen.nix-ide
                 kamadorueda.alejandra
-
-                # Copilot
-                github.copilot
               ]
               ++ pkgs.nix4vscode.forVscodeVersion pkgs.vscode.version [
                 "github.copilot-chat"
