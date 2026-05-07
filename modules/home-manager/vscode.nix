@@ -154,6 +154,7 @@ in {
               formulahendry.vscode-mysql
               qwtel.sqlite-viewer
               mtxr.sqltools
+              mtxr.sqltools-driver-pg
 
               # Templ
               a-h.templ
