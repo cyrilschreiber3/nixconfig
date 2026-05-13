@@ -198,6 +198,8 @@
     enableSpicetify = true;
   };
 
+  sshConfig.enable = true;
+
   syncthingConfig.enable = true;
 
   tmuxConfig.enable = true;
