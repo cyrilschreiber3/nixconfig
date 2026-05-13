@@ -52,6 +52,7 @@
     # voip
     discord
     legcord
+    telegram-desktop
 
     # gaming
     # steam
