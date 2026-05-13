@@ -35,5 +35,5 @@ fi
 
 echo "Connecting to $HOST..."
 
-sshpass -f /Users/cschreiber/Documents/Polylan/.switchpasswd ssh admin@$HOST
+sshpass -f $HOME/Documents/Polylan/.switchpasswd ssh admin@$HOST
 
