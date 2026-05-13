@@ -115,6 +115,7 @@
     qelectrotech
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    (writeScriptBin "sss" (builtins.readFile ./../../modules/bin/ssh-polylan.sh))
     # ]
     # ++ [
     #   # mypkgs.example-package
