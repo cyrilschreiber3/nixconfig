@@ -4,8 +4,11 @@
 HOST="$1"
 HEIGHT="$2"
 
+PASSWD_FILE="$HOME/Documents/Polylan/.switchpasswd"
+
 if [[ "$HOST" == "rack" ]]; then
-    HOST="switch-rack-1.polylan.ch"
+    HOST="switch-rack-1.polylan-infra.ch"
+    PASSWD_FILE="$HOME/Documents/Polylan/.switchrackpasswd"
 fi
 
 if [[ "$HOST" =~ ^r([0-9]{1,2})$ ]]; then
@@ -35,5 +38,5 @@ fi
 
 echo "Connecting to $HOST..."
 
-sshpass -f $HOME/Documents/Polylan/.switchpasswd ssh admin@$HOST
+sshpass -f "$PASSWD_FILE" ssh admin@$HOST
 
