@@ -5,7 +5,7 @@ HOST="$1"
 HEIGHT="$2"
 
 if [[ "$HOST" == "rack" ]]; then
-    HOST="rack01.polylan-infra.ch"
+    HOST="switch-rack-1.polylan.ch"
 fi
 
 if [[ "$HOST" =~ ^r([0-9]{1,2})$ ]]; then

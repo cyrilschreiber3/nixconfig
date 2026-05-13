@@ -60,6 +60,17 @@ in {
           KexAlgorithms = "+diffie-hellman-group1-sha1";
         };
       };
+      matchBlocks."switch-rack-*" = {
+        host = "switch-rack-*";
+        user = "admin";
+        extraOptions = {
+          Ciphers = "aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc";
+          MACs = "hmac-md5,hmac-sha1,umac-64@openssh.com";
+          HostKeyAlgorithms = "+ssh-rsa";
+          KexAlgorithms = "+diffie-hellman-group1-sha1";
+          StrictHostKeyChecking = "accept-new";
+        };
+      };
       matchBlocks."distrib-*" = {
         host = "distrib-*";
         user = "admin";
