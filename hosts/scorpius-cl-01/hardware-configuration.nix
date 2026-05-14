@@ -18,6 +18,7 @@
   boot.initrd.availableKernelModules = ["nvme" "xhci_hcd" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "sr_mod"];
   boot.initrd.kernelModules = ["nvidia"];
   boot.kernelModules = ["kvm-intel"];
+  boot.blacklistedKernelModules = ["pn533" "pn533_usb"];
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
   boot.kernelParams = ["quiet"]; # Disables Systemd load screen for faster boot
 
