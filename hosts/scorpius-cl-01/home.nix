@@ -116,6 +116,7 @@
     qelectrotech
 
     (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+    (writeScriptBin "s" (builtins.readFile ./../../modules/bin/ssh-sudo.sh))
     (writeScriptBin "sss" (builtins.readFile ./../../modules/bin/ssh-polylan.sh))
     # ]
     # ++ [
