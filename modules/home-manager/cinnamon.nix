@@ -65,6 +65,7 @@ in {
         picture-options = "zoom";
       };
       "org/cinnamon/desktop/keybindings" = {
+        looking-glass-keybinding = ["<Shift><Super>l"];
         custom-list = ["custom0" "custom1"];
       };
       "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
@@ -79,6 +80,7 @@ in {
       };
       "org/cinnamon/desktop/keybindings/media-keys" = {
         terminal = ["<Super>t"];
+        screensaver = ["<Super>l"];
       };
       "org/cinnamon/settings-daemon/plugins/power" = {
         sleep-display-ac = 1800; # 30min
