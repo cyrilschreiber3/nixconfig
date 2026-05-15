@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  # pkgs,
+  pkgs,
   ...
 }: let
   cfg = config.wireguardClientConfig;

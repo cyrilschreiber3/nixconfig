@@ -84,6 +84,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      wireguard-tools
+    ];
+
     environment.etc = builtins.listToAttrs (
       map (tunnel: {
         name = "wireguard/${tunnel.name}.conf";
