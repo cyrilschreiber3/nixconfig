@@ -17,6 +17,7 @@
     ./syncthing.nix
     ./tmux.nix
     ./vscode.nix
+    ./wg-tray-go.nix
     ./zsh.nix
     ./../themes/themes.nix
   ];

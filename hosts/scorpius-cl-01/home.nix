@@ -212,6 +212,8 @@
     enableLanguageExtensions = true;
   };
 
+  wgTrayGoConfig.enable = true;
+
   zshConfig = {
     enable = true;
     useLegacyP10k = false;

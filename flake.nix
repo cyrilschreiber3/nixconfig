@@ -84,6 +84,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wg-tray-go = {
+      url = "github:cyrilschreiber3/wg-tray-go";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
