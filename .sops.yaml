@@ -4,6 +4,7 @@ keys:
     users:
       - &cyril_at_scorpius age148jrkzdhyv0eq985fg6gyexsgnv3ud4z3s453nkdat9hl2879cuqrt6pmn
       - &yubikey_personal 2C07F2ED2147C8125DB109071A9379E10C62C984
+      - &yubikey_arcanite 2CA51290CBA2C1640EAACD978CA5477713152551
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     mac_only_encrypted: true
@@ -12,4 +13,11 @@ creation_rules:
           - *scorpius_cl_01
           - *cyril_at_scorpius
         pgp:
+          - *yubikey_personal
+
+  - path_regex: TunnelsSecrets.yaml$
+    mac_only_encrypted: true
+    key_groups:
+      - pgp:
+          - *yubikey_arcanite
           - *yubikey_personal
