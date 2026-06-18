@@ -11,11 +11,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1767993380,
-        "narHash": "sha256-WzhmPzM2c9JLpvH0pjxAVKd04FNCehtEcV285gWdwmE=",
+        "lastModified": 1781821461,
+        "narHash": "sha256-dMqzZPvAKa9QdmE4Hcw+Bvk5tm3OvDe+TuPWIS0Rvfk=",
         "owner": "cyrilschreiber3",
         "repo": "bar-sika",
-        "rev": "b26398b13d4c09e03f5a44003ae9b03ffc707ab1",
+        "rev": "88b6e05b9edc4fe26d5922f8606a4a2cdebd307e",
         "type": "github"
       },
       "original": {
