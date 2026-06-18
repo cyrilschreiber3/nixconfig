@@ -1,8 +1,8 @@
 wifi_networks:
-    schreibernet: null
+    Schreibernet: null
     SDISvolontaire: null
     Cyril’s Phone: null
-passwords: ENC[AES256_GCM,data:63n64IJCnZS/c4GKLBIaXftt2S2cDZCRLBxDNUoReLpc5wYXrGcA/4hRGiuMRaF4qWH6rtoXvUeeL1jaHzMuIYW33VF2uy0VpZ5SLyvytPls4UvFEU41NpGXqhxsdzD+tCP9e/Wj86U9+5Tz2IX04taujviYoyMJ78khdF5L2ToMyESI/RX3rLuK/wLBVjjp,iv:oyfZF+6TPK9pq1mnocOiP4zk+bHY4v7PhYwnIQfKtxs=,tag:tC3FR3iIjjL3SuBV1GDjTw==,type:str]
+passwords: ENC[AES256_GCM,data:dnHp+NXzJEZD/yUS6pr0PhVdEhXcerKSebcyXEFzJb0bt1Xa1OgWxkPIL/2jABpsF+PQy2jbC33y5CUVNkT1/MXTo1w7TsBtwZ9LvI4r8gg+w5jBsaqBOP6sKFs9TLrqqNMGT0XUqSyYTDqo2lE3WMhpMb8q8y/2tTPaaAX19sgegly/o101sfkN5WnLh85lmrrgqb8=,iv:0plUtC9Wl42mFKnkL2J8MWhubkQJchLAj7JAf6Ub2ro=,tag:7Kh/gno+MAYsnR9FJbBkdg==,type:str]
 sops:
     age:
         - recipient: age1sky759zw2hxgwusf3jdfx3xqmq59477a4hr2vcu0jfpkydjhqq6q467a6e
@@ -23,8 +23,8 @@ sops:
             Q1pQYnUyMHFjaExJM0NMR1FCTFMvcncKxpWGObtehuHnxkHAaC8K1eqi8Xpjdnyp
             INW/i3vOtWxan1rVE2NzEdazcDNBkrK93Up/TzoGAY8XzH9juR4/Hw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-09T20:46:20Z"
-    mac: ENC[AES256_GCM,data:PXMF7BqwLNQ/ecBmSL7WX6l4e+VcwuiAUzUDzG2e15ScELh1qrQIV+YSxBdYaPX16nnL88kyiunJt/Vp9T1RvsGSqaiimqIodYDwfL6BNDi3CuinHYr8o89wxJrEYDJa+8badzUYrOnJUvKsVWX74a4zNfM1sNBVM1T+EodfWus=,iv:YDZ0OghD141eGJSfWIhMWcwAouchbDa6kGe2wruXYr4=,tag:aKMvbWV0Kyb8hcSvVMWVaQ==,type:str]
+    lastmodified: "2026-06-18T21:46:02Z"
+    mac: ENC[AES256_GCM,data:IcGqPpdVSyc+nH/rr+ff9MG8BM9Fgst4Z4l25YYXeI77UexgYl+CKvFsXzY3efQfoioa04PKSvqugUeVGa0f5Mn86oKxaBcSXaaRICHNZ5BJ1dAzTDJJml6qFqmdZ8lnVIASWN2i5LWRyWI3uFs5dogdJ2QLepS0cPODk2Q36/8=,iv:5yUYVFVoQjL85FhKT9UOuSytwgSguLNyMVs+u9uxk7o=,tag:+a2fwbqxMp8huZlT81GjQQ==,type:str]
     encrypted_regex: ^(passwords)$
     mac_only_encrypted: true
-    version: 3.11.0
+    version: 3.12.2
