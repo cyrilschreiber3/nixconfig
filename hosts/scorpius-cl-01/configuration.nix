@@ -294,7 +294,10 @@
   programs = {
     dconf.enable = true;
     zsh.enable = true;
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = [config.boot.kernelPackages.nvidia_x11];
+    };
   };
 
   autofsConfig = {
