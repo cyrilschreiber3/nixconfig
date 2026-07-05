@@ -34,95 +34,97 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # media
-    ffmpeg-full
-    yt-dlp
-    vlc
-    gimp
-    obs-studio
-    kdePackages.kdenlive
-    figma-linux
-    davinci-resolve-studio
+  home.packages = with pkgs;
+    [
+      # media
+      ffmpeg-full
+      yt-dlp
+      vlc
+      gimp
+      obs-studio
+      kdePackages.kdenlive
+      figma-linux
+      davinci-resolve-studio
 
-    # work
-    onlyoffice-desktopeditors
-    xreader
+      # work
+      onlyoffice-desktopeditors
+      xreader
 
-    # voip
-    discord
-    legcord
-    telegram-desktop
+      # voip
+      discord
+      legcord
+      telegram-desktop
 
-    # gaming
-    # steam
-    # lutris
-    # winetricks
-    # flatpak
-    mypkgs-2405.yuzu
+      # gaming
+      # steam
+      # lutris
+      # winetricks
+      # flatpak
+      mypkgs-2405.yuzu
 
-    # cli
-    git
-    gh
-    tree
-    unzip
-    rclone
-    ondir
-    libnotify
-    nix-output-monitor
-    btop
-    nano
-    rsync
-    screen
-    fastfetch
-    powershell
-    speedtest-cli
-    dig
+      # cli
+      git
+      gh
+      tree
+      unzip
+      rclone
+      ondir
+      libnotify
+      nix-output-monitor
+      btop
+      nano
+      rsync
+      screen
+      fastfetch
+      powershell
+      speedtest-cli
+      dig
 
-    # dev
-    nixd
-    alejandra
-    nixpkgs-fmt
-    nodejs
-    python3
-    bruno
-    yaak
+      # dev
+      nixd
+      alejandra
+      nixpkgs-fmt
+      nodejs
+      python3
+      bruno
+      yaak
 
-    # docker
-    docker
-    #nvidia-container-toolkit
+      # docker
+      docker
+      #nvidia-container-toolkit
 
-    # browsers
-    chromium
-    google-chrome
-    brave
+      # browsers
+      chromium
+      google-chrome
+      brave
 
-    # virtualization / emulation
+      # virtualization / emulation
 
-    # formatting
-    gparted
-    exfatprogs
-    xfsprogs
-    btrfs-progs
+      # formatting
+      gparted
+      exfatprogs
+      xfsprogs
+      btrfs-progs
 
-    # misc
-    obsidian
-    postman
-    bitwarden-desktop
-    onedrive
-    onedrivegui
-    onedriver
-    flameshot
-    qelectrotech
+      # misc
+      obsidian
+      postman
+      bitwarden-desktop
+      onedrive
+      onedrivegui
+      onedriver
+      flameshot
+      qelectrotech
 
-    (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
-    (writeScriptBin "s" (builtins.readFile ./../../modules/bin/ssh-sudo.sh))
-    (writeScriptBin "sss" (builtins.readFile ./../../modules/bin/ssh-polylan.sh))
-    # ]
-    # ++ [
-    #   # mypkgs.example-package
-    #   pkgs.mypkgs-2405.yuzu
-  ];
+      (writeShellScriptBin "rebuild" (builtins.readFile ./../../modules/bin/rebuild.sh))
+      (writeScriptBin "s" (builtins.readFile ./../../modules/bin/ssh-sudo.sh))
+      (writeScriptBin "sss" (builtins.readFile ./../../modules/bin/ssh-polylan.sh))
+    ]
+    ++ [
+      # pkgs.mypkgs.example-package
+      # pkgs.mypkgs-2405.yuzu
+      pkgs.mypkgs.ipmi-jviewer
+    ];
 
   mimeApps = {
     enable = true;
