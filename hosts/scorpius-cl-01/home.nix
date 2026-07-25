@@ -88,6 +88,7 @@
       python3
       bruno
       yaak
+      claude-code
 
       # docker
       docker
