@@ -150,6 +150,9 @@ in {
               ms-python.vscode-pylance
               ms-python.debugpy
               ms-toolsai.jupyter
+              kevinrose.vsc-python-indent
+              charliermarsh.ruff
+              wholroyd.jinja
 
               # SQL
               formulahendry.vscode-mysql
