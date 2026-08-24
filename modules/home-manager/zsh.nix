@@ -180,7 +180,8 @@ in {
       oh-my-posh = {
         enable = !cfg.useLegacyP10k;
         enableZshIntegration = true;
-        settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json"));
+        settings = {};
+        configFile = "${config.home.homeDirectory}/.config/oh-my-posh/config.omp.json";
       };
 
       vim = {
@@ -238,6 +239,10 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
+    };
+
+    xdg.configFile = {
+      "oh-my-posh/config.omp.json".source = "${pkgs.callPackage ./../dotfiles/omp/oh-my-posh-config.nix {}}/share/oh-my-posh/themes/p10k.omp.json";
     };
   };
 }

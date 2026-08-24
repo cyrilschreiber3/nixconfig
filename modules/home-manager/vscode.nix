@@ -199,6 +199,9 @@ in {
           "[properties]" = {
             "editor.defaultFormatter" = "foxundermoon.shell-format";
           };
+          "[python]" = {
+            "editor.defaultFormatter" = "charliermarsh.ruff";
+          };
           "[shellscript]" = {
             "editor.defaultFormatter" = "foxundermoon.shell-format";
           };
