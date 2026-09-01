@@ -54,6 +54,7 @@
       discord
       legcord
       telegram-desktop
+      whatsapp-electron
 
       # gaming
       # steam
