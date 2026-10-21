@@ -16,6 +16,11 @@ in {
   options = {
     vGPUVMConfig = {
       enable = lib.mkEnableOption "Enable vGPU VM";
+      active = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether the vGPU VM is active or not";
+      };
       mainUser = lib.mkOption {
         type = lib.types.str;
         description = "The main user of the system";
@@ -33,129 +38,129 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      looking-glass-client
-      mdevctl
-      pciutils
-      virt-manager
-      virt-viewer
-      virtiofsd
-      spice
-      spice-gtk
-      spice-protocol
-      virtio-win
-      win-spice
-      adwaita-icon-theme
-      parsec-bin
-      cifs-utils
-      (pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh))
-      (pkgs.makeDesktopItem {
-        name = "merlin-cl-06-init";
-        desktopName = "Start Merlin-CL-06";
-        comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
-        exec = "merlin-cl-06-init";
-        icon = "utilities-terminal";
-        terminal = false;
-        categories = ["Utility" "System"];
-        genericName = "Virtual Machine Display";
-        keywords = ["merlin" "cl" "06" "vm" "looking-glass"];
-      })
-    ];
-
-    services.fastapi-dls = {
-      enable = true;
-      debug = true;
-      listen.ip = "0.0.0.0";
-    };
-    networking.firewall.interfaces.virbr0.allowedTCPPorts = [443];
-
-    boot.kernelParams = [
-      "${cfg.cpuType}_iommu=on"
-      "kvm.ignore_msrs=1"
-      "iommu=pt"
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia-drm.modeset=1"
-    ];
-    boot.kernelModules = lib.mkIf (config.specialisation != {}) [
-      "vfio"
-      "vfio_iommu_type1"
-      "vfio_pci"
-      "vfio_virqfd"
-      "nvidia-vgpu-vfio"
-    ];
-    # TODO: check https://alexbakker.me/post/nixos-pci-passthrough-qemu-vfio.html for passthrough
-    boot.extraModprobeConfig = ''
-      options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
-    '';
-    boot.blacklistedKernelModules = [
-      "i2c_nvidia_gpu"
-    ];
-
-    services.udev.extraRules = ''
-      SUBSYSTEM=="block", ATTRS{serial}=="24434Y4A1N09", MODE="0660", GROUP="libvirtd"
-    '';
-
-    systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 ${cfg.mainUser} libvirtd -"
-    ];
-
-    boot.kernelPackages = pkgs.linuxPackages_6_6;
-
-    hardware.nvidia.package = lib.mkIf (config.specialisation != {}) config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
-    hardware.nvidia.vgpu = lib.mkIf (config.specialisation != {}) {
-      patcher = {
-        enable = true;
-        options = {
-          remapP40ProfilesToV100D = true; # for 17_x
-        };
-        copyVGPUProfiles = {
-          "1f54:0000" = "1E30:12BA";
-        };
-      };
-      driverSource = {
-        name = "NVIDIA-GRID-Linux-KVM-550.90.05-550.90.07-552.74.zip";
-        url = "http://cdn.the127001.ch/config/nixos/NVIDIA-GRID-Linux-KVM-550.90.05-550.90.07-552.74.zip";
-      };
-    };
-    # hardware.nvidia.open = true;
-
-    hardware.graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        libva
-        libva-utils
-        libva-vdpau-driver
-        mesa
+  config = lib.mkIf cfg.enable (lib.mkMerge [
+    {
+      environment.systemPackages = with pkgs; [
+        looking-glass-client
+        mdevctl
+        pciutils
+        virt-manager
+        virt-viewer
+        virtiofsd
+        spice
+        spice-gtk
+        spice-protocol
       ];
-    };
 
-    # VM configuration
+      users.users.${cfg.mainUser}.extraGroups = ["libvirtd" "kvm"];
+      virtualisation = {
+        libvirtd = {
+          enable = true;
+          qemu = {
+            package = pkgs.qemu_kvm;
+            swtpm.enable = true;
+          };
+        };
+        spiceUSBRedirection.enable = true;
+      };
+      services.spice-vdagentd.enable = true;
+    }
+    (lib.mkIf cfg.active {
+      environment.systemPackages = with pkgs; [
+        virtio-win
+        win-spice
+        adwaita-icon-theme
+        parsec-bin
+        cifs-utils
+        (pkgs.writeShellScriptBin "merlin-cl-06-init" (builtins.readFile ./../bin/startMerlin.sh))
+        (pkgs.makeDesktopItem {
+          name = "merlin-cl-06-init";
+          desktopName = "Start Merlin-CL-06";
+          comment = "Start the Merlin-CL-06 VM and launch Looking Glass.";
+          exec = "merlin-cl-06-init";
+          icon = "utilities-terminal";
+          terminal = false;
+          categories = ["Utility" "System"];
+          genericName = "Virtual Machine Display";
+          keywords = ["merlin" "cl" "06" "vm" "looking-glass"];
+        })
+      ];
 
-    users.users.${cfg.mainUser}.extraGroups = ["libvirtd" "kvm"];
-    virtualisation = {
-      libvirtd = {
+      services.fastapi-dls = {
         enable = true;
+        debug = true;
+        listen.ip = "0.0.0.0";
+      };
+      networking.firewall.interfaces.virbr0.allowedTCPPorts = [443];
 
-        qemu = {
-          package = pkgs.qemu_kvm;
-          # The 'virtualisation.libvirtd.qemu.ovmf' submodule has been removed. All OVMF images distributed with QEMU are now available by default.
-          # ovmf = {
-          #   enable = true;
-          #   packages = [pkgs.OVMFFull.fd];
-          # };
-          swtpm.enable = true;
+      boot.kernelParams = [
+        "${cfg.cpuType}_iommu=on"
+        "kvm.ignore_msrs=1"
+        "iommu=pt"
+        "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+        "nvidia-drm.modeset=1"
+      ];
+      boot.kernelModules = [
+        "vfio"
+        "vfio_iommu_type1"
+        "vfio_pci"
+        "vfio_virqfd"
+        "nvidia-vgpu-vfio"
+      ];
+      # TODO: check https://alexbakker.me/post/nixos-pci-passthrough-qemu-vfio.html for passthrough
+      boot.extraModprobeConfig = ''
+        options nvidia vup_sunlock=1 vup_swrlwar=1 vup_qmode=1
+      '';
+      boot.blacklistedKernelModules = [
+        "i2c_nvidia_gpu"
+      ];
+
+      services.udev.extraRules = ''
+        SUBSYSTEM=="block", ATTRS{serial}=="24434Y4A1N09", MODE="0660", GROUP="libvirtd"
+      '';
+
+      systemd.tmpfiles.rules = [
+        "f /dev/shm/looking-glass 0660 ${cfg.mainUser} libvirtd -"
+      ];
+
+      boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_6;
+
+      hardware.nvidia.package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
+      hardware.nvidia.vgpu = {
+        patcher = {
+          enable = true;
+          options = {
+            remapP40ProfilesToV100D = true; # for 17_x
+          };
+          copyVGPUProfiles = {
+            "1f54:0000" = "1E30:12BA";
+          };
+        };
+        driverSource = {
+          name = "NVIDIA-GRID-Linux-KVM-550.90.05-550.90.07-552.74.zip";
+          url = "http://cdn.the127001.ch/config/nixos/NVIDIA-GRID-Linux-KVM-550.90.05-550.90.07-552.74.zip";
         };
       };
-      spiceUSBRedirection.enable = true;
-    };
-    services.spice-vdagentd.enable = true;
+      hardware.nvidia.open = lib.mkForce false;
 
-    environment.etc = let
-      hooksPath = "libvirt/hooks/qemu.d";
-    in {
-      "${hooksPath}/Merlin-CL-06/prepare/begin/start.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/prepare/begin/start.sh}";
-      "${hooksPath}/Merlin-CL-06/release/end/revert.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/release/end/revert.sh}";
-    };
-  };
+      hardware.graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+          libva
+          libva-utils
+          libva-vdpau-driver
+          mesa
+        ];
+      };
+
+      # VM configuration
+
+      environment.etc = let
+        hooksPath = "libvirt/hooks/qemu.d";
+      in {
+        "${hooksPath}/Merlin-CL-06/prepare/begin/start.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/prepare/begin/start.sh}";
+        "${hooksPath}/Merlin-CL-06/release/end/revert.sh" .source = "${./../dotfiles/libvirt/Merlin-CL-06/release/end/revert.sh}";
+      };
+    })
+  ]);
 }

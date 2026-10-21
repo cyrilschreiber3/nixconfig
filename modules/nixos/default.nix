@@ -2,6 +2,7 @@
   imports = [
     ./autofs.nix
     ./games.nix
+    ./graphics.nix
     ./mainUser.nix
     ./printers.nix
     ./sops.nix

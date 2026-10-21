@@ -6,12 +6,14 @@
 force=false
 update=false
 garbageCollect=false
+switchAt=switch
 host=$(hostname)
-while getopts "fugH:" flag; do
+while getopts "fugbH:" flag; do
     case $flag in
     f) force=true ;;
     u) update=true ;;
     g) garbageCollect=true ;;
+    b) switchAt=boot ;;
     H) host=$OPTARG ;;
     esac
 done
@@ -84,7 +86,7 @@ echo "" >nixos-switch.log
 nix flake update ssh-keys --experimental-features "nix-command flakes"
 
 # Rebuild and output simplified errors
-sudo nixos-rebuild switch --flake ./#$host --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
+sudo nixos-rebuild $switchAt --flake ./#$host --accept-flake-config --log-format internal-json -v 2>&1 |& tee nixos-switch.log |& nom --json || (
     echo "Rebuild failed..."
     handleExit
 )

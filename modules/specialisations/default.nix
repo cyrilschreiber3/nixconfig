@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./gaming.nix
+    ./vgpu.nix
   ];
   environment.sessionVariables = lib.mkIf (config.specialisation != {}) {
     SPECIALISATION = "none";
@@ -17,7 +17,13 @@
         exit 1
       fi
 
-      sudo /nix/var/nix/profiles/system/specialisation/$1/bin/switch-to-configuration switch
+      if [ "$1" == "default" ]; then
+        SPECIALISATION="system"
+      else
+        SPECIALISATION="system/specialisation/$1"
+      fi
+
+      sudo /nix/var/nix/profiles/$SPECIALISATION/bin/switch-to-configuration switch
     '')
   ];
 }

@@ -37,7 +37,7 @@ in {
       colord
       xcalib
       argyllcms
-      xorg.xgamma
+      xgamma
       (pkgs.makeDesktopItem {
         name = "autorandr-refresh";
         desktopName = "Autorandr refresh";
