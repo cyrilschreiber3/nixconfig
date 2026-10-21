@@ -6,6 +6,7 @@
     ./cinnamon.nix
     ./firefox.nix
     ./fonts.nix
+    ./foot.nix
     ./git.nix
     ./gnome.nix
     ./mimeApps.nix

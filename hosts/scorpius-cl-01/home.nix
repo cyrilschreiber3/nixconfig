@@ -186,10 +186,12 @@
 
   firefoxConfig.enable = true;
 
+  footConfig.enable = true;
+
   gitConfig = {
     enable = true;
     enableGPG = true;
-    mainGPGKey = "43FF705A6EDF1601";
+    mainGPGKey = "1A9379E10C62C984";
     useWindowsPinentry = false;
   };
 
