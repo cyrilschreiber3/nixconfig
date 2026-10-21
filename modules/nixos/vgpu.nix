@@ -125,7 +125,8 @@ in {
 
       boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_6;
 
-      hardware.nvidia.package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
+      # No longer compatible with the current nixos rev.
+      # hardware.nvidia.package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.vgpu_17_3;
       hardware.nvidia.vgpu = {
         patcher = {
           enable = true;

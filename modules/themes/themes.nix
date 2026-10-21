@@ -218,7 +218,6 @@ in {
           sassc
         ]
         (lib.mkIf cfg.themeGTK [
-          gtk-engine-murrine
           gnome-themes-extra
           dconf-editor
         ])

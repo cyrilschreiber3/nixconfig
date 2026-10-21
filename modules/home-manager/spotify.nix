@@ -45,7 +45,7 @@ in {
           hidePodcasts
           shuffle
           songStats
-          betterGenres
+          # betterGenres (Deprecated)
           playNext
         ];
       };

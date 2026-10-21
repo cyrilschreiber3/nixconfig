@@ -118,7 +118,7 @@
   };
 
   # Limit journald log size to keep fast boot times
-  services.journald.extraConfig = "SystemMaxUse=50M";
+  # services.journald.extraConfig = "SystemMaxUse=50M"; # setting deprecated, couldn't find the new option suggested in the error message (services.journald.settings.Journal)
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";

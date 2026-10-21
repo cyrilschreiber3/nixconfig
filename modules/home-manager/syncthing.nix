@@ -24,8 +24,11 @@ in {
 
     services.syncthing = {
       enable = true;
-      passwordFile = config.sops.secrets.syncthingUIPasswd.path;
       guiAddress = "127.0.0.1:8385";
+      guiCredentials = {
+        username = "cyril";
+        passwordFile = config.sops.secrets.syncthingUIPasswd.path;
+      };
       settings = {
         gui = {
           user = "cyril";

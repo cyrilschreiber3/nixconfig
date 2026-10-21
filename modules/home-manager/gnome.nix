@@ -13,7 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       sassc
-      gtk-engine-murrine
       gnome-themes-extra
       dconf-editor
       gnomeExtensions.user-themes

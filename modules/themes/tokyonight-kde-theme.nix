@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation {
     owner = "Jayy-Dev";
     repo = "Plasma-Tokyo-Night";
     rev = "plasma-6";
-    hash = "sha256-Y+ta28tOYA5woAj9bcTunz5+9o3QUdKgeBAB//c48gk=";
+    hash = "sha256-9BvoDnHwlDo3qe2bhW4tQU858HRXxCL7Rk38IMCRtbA=";
   };
 
   dontUnpack = false;
