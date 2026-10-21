@@ -1,15 +1,16 @@
 {...}: {
-  xServerConfig = {
-    enable = true;
-    displayManager = "lightdm";
-    desktopManager = "cinnamon";
-    theme = "tokyonight";
-  };
+  # xServerConfig = {
+  #   enable = true;
+  #   displayManager = "lightdm";
+  #   desktopManager = "cinnamon";
+  #   theme = "tokyonight";
+  # };
 
   waylandConfig = {
-    enable = false;
-    desktopManager = "hyprland";
-    # displayManager = "lightdm";
+    enable = true;
+    desktopManager = "plasma";
+    displayManager = "sddm";
+    theme = "tokyonight";
   };
 
   services.logind.settings.Login = {

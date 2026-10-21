@@ -36,6 +36,8 @@ in {
       terminal = "tmux-256color";
       mouse = true;
       keyMode = "vi";
+      # https://tmuxai.dev/tmux-increase-scrollback/
+      historyLimit = 20000;
 
       plugins = with pkgs; [
         {

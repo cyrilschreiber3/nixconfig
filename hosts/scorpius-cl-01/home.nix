@@ -163,7 +163,7 @@
   };
 
   xdg.configFile = {
-    "autostart/OneDriveGUI.desktop".source = "${pkgs.onedrivegui}/share/applications/OneDriveGUI.desktop";
+    # "autostart/OneDriveGUI.desktop".source = "${pkgs.onedrivegui}/share/applications/OneDriveGUI.desktop";
   };
 
   themes = {
@@ -177,10 +177,10 @@
 
   btopConfig.enable = true;
 
-  cinnamonConfig = {
-    enable = true;
-    enableSharesBookmarks = true;
-  };
+  # cinnamonConfig = {
+  #   enable = true;
+  #   enableSharesBookmarks = true;
+  # };
 
   hyprlandConfig.enable = false;
 
@@ -191,6 +191,12 @@
     enableGPG = true;
     mainGPGKey = "43FF705A6EDF1601";
     useWindowsPinentry = false;
+  };
+
+  plasmaConfig = {
+    enable = true;
+    enableBatteryWidget = false;
+    disableSleep = true;
   };
 
   remminaConfig.enable = true;

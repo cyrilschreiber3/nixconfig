@@ -64,8 +64,8 @@ in {
         };
         credential.credentialStore = lib.mkIf cfg.enableGPG "gpg";
         commit.gpgsign = cfg.enableGPG;
-        signing.format = "openpgp";
       };
+      signing.format = "openpgp";
     };
 
     programs.gpg = {

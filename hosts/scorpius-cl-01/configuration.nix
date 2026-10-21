@@ -335,10 +335,10 @@
     gpgUser = config.mainUser.userName;
   };
 
-  x11vncConfig = {
-    enable = true;
-    mainUser = "cyril";
-  };
+  # x11vncConfig = {
+  #   enable = true;
+  #   mainUser = "cyril";
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
