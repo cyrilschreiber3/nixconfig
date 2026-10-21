@@ -67,6 +67,16 @@ in {
         ];
       };
 
+      input.mice = [
+        {
+          name = "MX Master 3S B Mouse";
+          vendorId = "046d";
+          productId = "b035";
+          acceleration = 0.400;
+          accelerationProfile = "none";
+        }
+      ];
+
       input.touchpads = [
         {
           name = "MSFT0001:01 06CB:CE2D Touchpad";
