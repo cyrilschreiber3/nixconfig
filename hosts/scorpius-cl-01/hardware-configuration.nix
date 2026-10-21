@@ -23,6 +23,8 @@
   boot.kernelParams = ["quiet"]; # Disables Systemd load screen for faster boot
 
   hardware = {
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
     enableRedistributableFirmware = true;
     nvidia = {
       modesetting.enable = lib.mkDefault true;

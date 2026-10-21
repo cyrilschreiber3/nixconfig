@@ -26,9 +26,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      colord
-    ];
+    environment.systemPackages = with pkgs;
+      lib.mkMerge [
+        [
+          colord
+        ]
+        (lib.mkIf (cfg.desktopManager == "plasma") [
+          kdePackages.bluedevil
+        ])
+      ];
 
     programs.hyprland = lib.mkIf (cfg.desktopManager == "hyprland") {
       enable = true;

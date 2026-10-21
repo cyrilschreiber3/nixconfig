@@ -21,7 +21,7 @@ in {
           font = "${config.global.fonts.monospace}:size=10";
         };
         scrollback.lines = 10000;
-        colors = {
+        colors-dark = {
           foreground = colors.foreground.hexNoHash;
           background = colors.background.hexNoHash;
           regular0 = colors.color00.hexNoHash;

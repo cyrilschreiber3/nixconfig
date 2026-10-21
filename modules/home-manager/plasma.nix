@@ -67,6 +67,15 @@ in {
         ];
       };
 
+      input.touchpads = [
+        {
+          name = "MSFT0001:01 06CB:CE2D Touchpad";
+          vendorId = "06cb";
+          productId = "ce2d";
+          naturalScroll = true;
+        }
+      ];
+
       shortcuts = {
         "services/foot.desktop" = {
           _launch = "Meta+Shift+Return";
