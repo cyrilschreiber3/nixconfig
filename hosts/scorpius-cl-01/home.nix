@@ -114,7 +114,7 @@
       bitwarden-desktop
       onedrive
       onedrivegui
-      onedriver
+      # onedriver
       flameshot
       qelectrotech
 
@@ -170,6 +170,8 @@
     enable = true;
     theme = "tokyonight";
   };
+
+  services.kdeconnect.enable = true;
 
   # ------------------------ #
   # --- Programs configs --- #
