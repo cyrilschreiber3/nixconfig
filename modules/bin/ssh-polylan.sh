@@ -39,4 +39,3 @@ fi
 echo "Connecting to $HOST..."
 
 sshpass -f "$PASSWD_FILE" ssh admin@$HOST
-
