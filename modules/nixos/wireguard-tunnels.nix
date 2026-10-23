@@ -50,7 +50,7 @@
       name = "Homelab";
       server = "vpn.the127001.ch";
       port = "51821";
-      publicKey = "/6c1Itjq4e3a18QFiaWsVYYkgupj9p7EK+LR58CAJiM=";
+      publicKey = "suedfEsW20nI7oL5FnZtHDs6J0wuM0bDjlfYbPYtemk=";
       allowedips = "10.1.0.0/16";
       address = "10.1.5.3/24";
       dns = null;
