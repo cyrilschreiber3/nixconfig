@@ -68,6 +68,9 @@
   # Enable networking
   networking.hostName = "scorpius-cl-01";
   networking.search = ["schreibernet.dev"];
+  networking.hosts = {
+    "188.60.51.120" = ["plex.cyrilschreiber.ch"];
+  };
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce []; # Disable wait-online for faster boot
   # networking.networkmanager.dns = "systemd-resolved";

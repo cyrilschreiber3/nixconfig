@@ -79,6 +79,10 @@ in {
         host = "*.polylan-infra.ch";
         user = "CYRILpasMP4";
       };
+      matchBlocks."*.polylan.ch" = {
+        host = "*.polylan.ch";
+        user = "CYRILpasMP4";
+      };
     };
   };
 }
