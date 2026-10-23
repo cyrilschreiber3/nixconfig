@@ -46,6 +46,19 @@
         groups = ["Polylan"];
       };
     }
+    {
+      name = "Homelab";
+      server = "vpn.the127001.ch";
+      port = "51821";
+      publicKey = "/6c1Itjq4e3a18QFiaWsVYYkgupj9p7EK+LR58CAJiM=";
+      allowedips = "10.1.0.0/16";
+      address = "10.1.5.3/24";
+      dns = "10.1.1.1";
+      wg-tray = {
+        topLevel = true;
+        groups = [];
+      };
+    }
   ];
 
   wireguardTunnelsSecrets = pkgs.copyPathToStore ./../dotfiles/wireguard/TunnelsSecrets.yaml;
