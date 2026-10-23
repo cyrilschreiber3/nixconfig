@@ -32,7 +32,7 @@ if [[ "$HOST" =~ ^d([0-9]{1,2})$ ]]; then
     fi
 fi
 
-if [[ "$HOST" =~ ^[a-z-]+$ ]]; then
+if [[ "$HOST" =~ ^[a-z0-9-]+$ ]]; then
     HOST="$HOST.polylan-infra.ch"
 fi
 
