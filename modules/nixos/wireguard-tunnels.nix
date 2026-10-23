@@ -53,7 +53,7 @@
       publicKey = "/6c1Itjq4e3a18QFiaWsVYYkgupj9p7EK+LR58CAJiM=";
       allowedips = "10.1.0.0/16";
       address = "10.1.5.3/24";
-      dns = "10.1.1.1";
+      dns = null;
       wg-tray = {
         topLevel = true;
         groups = [];
