@@ -248,7 +248,7 @@ in {
       };
 
       session = {
-        sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
+        sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
       };
 
       spectacle = {
