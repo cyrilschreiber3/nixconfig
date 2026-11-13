@@ -115,6 +115,17 @@
           ./hosts/scorpius-cl-01/configuration.nix
         ];
       };
+      scorpius-cl-01-2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs outputs;
+        };
+        modules = [
+          disko.nixosModules.disko
+          home-manager.nixosModules.default
+          ./hosts/scorpius-cl-01-2/configuration.nix
+        ];
+      };
       scorpius-cl-01-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
