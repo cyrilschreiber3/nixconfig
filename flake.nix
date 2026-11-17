@@ -115,7 +115,7 @@
           ./hosts/scorpius-cl-01/configuration.nix
         ];
       };
-      scorpius-cl-01-2 = nixpkgs.lib.nixosSystem {
+      scorpius-cl-02 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs outputs;

@@ -180,7 +180,7 @@
   gitConfig = {
     enable = true;
     enableGPG = true;
-    mainGPGKey = "0AE6492301BBFC56";
+    mainGPGKey = "1A9379E10C62C984";
     useWindowsPinentry = false;
   };
 

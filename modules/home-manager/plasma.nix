@@ -84,6 +84,13 @@ in {
           productId = "ce2d";
           naturalScroll = true;
         }
+        {
+          name = "PIXA3854:00 093A:1343 Touchpad";
+          vendorId = "093a";
+          productId = "1343";
+          rightClickMethod = "twoFingers";
+          naturalScroll = true;
+        }
       ];
 
       shortcuts = {
@@ -276,6 +283,10 @@ in {
       };
 
       windows.allowWindowsToRememberPositions = true;
+
+      configFile = {
+        spectaclerc.GuiConfig.quitAfterSaveCopyExport = true;
+      };
     };
   };
 }

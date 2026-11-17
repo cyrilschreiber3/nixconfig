@@ -259,6 +259,11 @@
   # Enable udisks2 to mount USB drives
   services.udisks2.enable = true;
 
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
+  };
+
   services.pcscd.enable = true;
 
   # Allow unfree packages
@@ -282,6 +287,7 @@
     # Filesystem
     ntfs3g
     bashmount
+    fuse
 
     # Audio
     alsa-scarlett-gui
@@ -289,6 +295,9 @@
 
     # Package Management
     cachix
+
+    # Other
+    libimobiledevice
   ];
 
   programs = {
